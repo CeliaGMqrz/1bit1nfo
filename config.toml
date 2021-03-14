@@ -103,5 +103,3 @@ url = "mailto:mail@example.com"
   url = "/contact/"
 
 
-[params]
-displayMode = "dark"
