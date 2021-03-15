@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Aumento del rendimiento de Nginx con Varnish </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/varnish/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Aumento del rendimiento de Nginx con Varnish"/>
+<meta name="twitter:description" content="Para ver la introducción a este tema puedes entrar en este post:"/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Aumento del rendimiento de Nginx con Varnish</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Tue, Feb 16, 2021 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">6-minute read</span>
+                    </div>
+                
+            </div>
+
+            <blockquote>
+<p>Para ver la introducción a este tema puedes entrar en este post:</p>
+</blockquote>
+<p><a href="https://unbitdeinformacioncadadia.netlify.app/posts/2021/02/gesti%C3%B3n-de-peticiones-y-rendimiento-de-servidores-web/">Gestión de peticiones y rendimiento de servidores Web</a></p>
+<p><img src="/images/rendimiento/varnish.png" alt="varnish.png"></p>
+<h2 id="1-concepto-varnish">1. Concepto: Varnish</h2>
+<p>Varnish es un acelerador de HTTP que funciona como <strong>proxy inverso</strong>. Se sitúa delante del servidor web, cacheando la respuesta del servidor web en memoria. De forma que cuando un cliente demanda la url por segunda vez, Varnish le da la respuesta ahorrando recursos en el backend y permitiendo más conexiones simultáneas. También se puede usar como <strong>balanceador de carga</strong>.</p>
+<p>Características:</p>
+<ul>
+<li>Es estable y muy rápido</li>
+<li>Dispone de un lenguaje propio de configuración llamado VCL</li>
+<li>Escrito en C</li>
+<li>Ofrece soporte para GZIP y ESI</li>
+</ul>
+<h2 id="2-aumento-de-rendimiento-en-la-ejecución-de-scripts-php">2. Aumento de rendimiento en la ejecución de scripts PHP</h2>
+<h3 id="21-configurar-una-máquina-con-nginx--fpm_php-ansible">2.1. Configurar una máquina con Nginx + fpm_php. Ansible.</h3>
+<p>Vamos a configurar una máquina con Nginx y el módulo de fpm_php. Para que sea más rápido vamos a usar un repositorio preparado con una receta para Ansible.</p>
+<p>Previamente tenemos que haber configurado el <a href="https://unbitdeinformacioncadadia.netlify.app/posts/2021/01/introducci%C3%B3n-a-ansible/">entorno virtual para Ansible</a>.</p>
+<ul>
+<li>Desde el entorno virtual vamos a clonar el siguiente <a href="https://github.com/josedom24/ansible_nginx_fpm_php">repositorio</a></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">(</span>ansible<span class="o">)</span> celiagm@debian:~/venv/ansible$ git clone https://github.com/josedom24/ansible_nginx_fpm_php.git
+
+</code></pre></div><ul>
+<li>Comprobamos la configuración. Cambiaremos la ip por la nuestra, en este caso una máquina del cloud.</li>
+</ul>
+<p><code>hosts</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">[</span>servidores_web<span class="o">]</span>
+nodo1 <span class="nv">ansible_ssh_host</span><span class="o">=</span>172.22.200.152 <span class="nv">ansible_python_interpreter</span><span class="o">=</span>/usr/bin/python3
+</code></pre></div><p><code>site.yaml</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">
+<span class="c1">#- hosts: all</span>
+<span class="c1">#  become: true</span>
+<span class="c1">#  roles:</span>
+<span class="c1">#   - role: commons</span>
+
+- hosts: servidores_web
+  become: <span class="nb">true</span>
+  roles:
+   - role: nginx
+
+- hosts: servidores_web
+  become: <span class="nb">true</span>
+  roles:
+   - role: mariadb
+
+- hosts: servidores_web
+  become: <span class="nb">true</span>
+  roles:
+   - role: wordpress
+
+</code></pre></div><ul>
+<li>Ejecutamos la receta</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">ansible-playbook site.yaml 
+</code></pre></div><ul>
+<li>Vemos el recap</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">PLAY RECAP ***********************************************************************************************************************
+nodo1                      : <span class="nv">ok</span><span class="o">=</span><span class="m">17</span>   <span class="nv">changed</span><span class="o">=</span><span class="m">14</span>   <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>
+</code></pre></div><ul>
+<li>Nos dirigimos a la url correspondiente y configuramos wordpress</li>
+</ul>
+<p><img src="/images/rendimiento/wordpress.png" alt="wordpress.png"></p>
+<ul>
+<li>Terminamos de configurar wordpress</li>
+</ul>
+<p><img src="/images/rendimiento/misitio.png" alt="misitio.png"></p>
+<h2 id="23-pruebas-de-rendimiento">2.3. Pruebas de rendimiento</h2>
+<p>Vamos a ejecutar pruebas de rendimiento con la utilidad ab desde la misma máquina. En este caso vamos a usar la máquina anfitriona.</p>
+<p>Realizaremos las pruebas con distintos niveles de concurrencia (50, 100, 250, 500), reiniciaremos el servicio de nginx y fpm-php justo antes de hacer cada prueba.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Nivel de concurrencia = 50</span>
+ab -t <span class="m">10</span> -c <span class="m">50</span> -k http://172.22.200.152/wordpress/index.php
+<span class="c1"># Respuestas por segundo </span>
+Requests per second:    28.08 <span class="o">[</span><span class="c1">#/sec] (mean)</span>
+
+<span class="c1"># Nivel de concurrencia = 100</span>
+ab -t <span class="m">10</span> -c <span class="m">100</span> -k http://172.22.200.152/wordpress/index.php
+<span class="c1"># Respuestas por segundo </span>
+Requests per second:    28.30 <span class="o">[</span><span class="c1">#/sec] (mean)</span>
+
+<span class="c1"># Nivel de concurrencia = 250</span>
+ab -t <span class="m">10</span> -c <span class="m">250</span> -k http://172.22.200.152/wordpress/index.php
+<span class="c1"># Respuestas por segundo </span>
+Requests per second:    1279.42 <span class="o">[</span><span class="c1">#/sec] (mean)</span>
+
+<span class="c1"># Nivel de concurrencia = 500</span>
+ab -t <span class="m">10</span> -c <span class="m">500</span> -k http://172.22.200.152/wordpress/index.php
+<span class="c1"># Respuestas por segundo </span>
+Requests per second:    2848.06 <span class="o">[</span><span class="c1">#/sec] (mean)</span>
+
+</code></pre></div><h2 id="24-proxy-inverso---caché-varnish">2.4. Proxy inverso - Caché Varnish</h2>
+<p>Vamos a configurar un proxy inverso con Varnish, escuchando en el puerto 80, por lo que tnedremos que configurar nginx para que escuche por el puerto 8080.</p>
+<ul>
+<li>Configuramos nginx para que utilize el puerto 8080, editando el fichero de configuración default ubicado en sites-available.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">        listen <span class="m">8080</span> default_server<span class="p">;</span>
+        listen <span class="o">[</span>::<span class="o">]</span>:8080 default_server<span class="p">;</span>
+</code></pre></div><ul>
+<li>Reiniciamos el servicio de nginx y comprobamos que está escuchando el puerto 8080</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo systemctl restart nginx
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo netstat putan
+
+. . . 
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:8080            0.0.0.0:*               LISTEN      21218/nginx: master 
+. . . 
+
+</code></pre></div><ul>
+<li>Instalamos Varnish</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt-get install varnish
+</code></pre></div><ul>
+<li>Configuramos Varnish para que escuche en el puerto 80</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo nano /etc/default/varnish
+</code></pre></div><p>Configuracion:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">. . . 
+<span class="nv">DAEMON_OPTS</span><span class="o">=</span><span class="s2">&#34;-a :80 \
+</span><span class="s2">             -T localhost:6082 \
+</span><span class="s2">             -f /etc/varnish/default.vcl \
+</span><span class="s2">             -S /etc/varnish/secret \
+</span><span class="s2">             -s malloc,256m&#34;</span>
+. . .
+</code></pre></div><ul>
+<li>Cambiamos la unidad de systemd para que varnish arranque desde el puerto 80</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo nano /lib/systemd/system/varnish.service
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">ExecStart</span><span class="o">=</span>/usr/sbin/varnishd -j unix,user<span class="o">=</span>vcache -F -a :80 -T localhost:6082 -f /etc/varnish/default.vcl -S /etc/varnish/secret -s malloc,256m
+
+</code></pre></div><ul>
+<li>Reiniciamos la unidad de systemd y reiniciamos el servicio</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo systemctl daemon-reload
+sudo systemctl restart varnish
+</code></pre></div><p><strong>Lenguaje de configuración VLC</strong></p>
+<p>Varnish utiliza un lenguaje de configuración llamado VCL (Varnish Configuration Language). Su sintaxis recuerda un poco a C o Perl, ejecutará directivas de caché según estén definidas en un archivo de Varnish.</p>
+<ul>
+<li>Editamos el fichero de configuracion de varnish, suponiendo que tenemos ya configurado nginx para que escuche por el puerto 8080 tendrá el siguiente aspecto.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo nano /etc/varnish/default.vcl
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">backend default <span class="o">{</span>
+    .host <span class="o">=</span> <span class="s2">&#34;127.0.0.1&#34;</span><span class="p">;</span>
+    .port <span class="o">=</span> <span class="s2">&#34;8080&#34;</span><span class="p">;</span>
+<span class="o">}</span>
+</code></pre></div><ul>
+<li>Con el siguiente comando podemos ver la estadística de uso de varnish</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">varnishstat
+</code></pre></div><p><img src="/images/rendimiento/varnishstat.png" alt="varnishstat.png"></p>
+<h3 id="25comprobación-de-la-configuracion-de-varnish-y-nginx">2.5.Comprobación de la configuracion de Varnish y Nginx</h3>
+<p>Como podemos ver tenemos a varnish escuchando en el puerto 80 y a nginx en el puerto 8080</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@ansible:~$ sudo netstat -putan
+Active Internet connections <span class="o">(</span>servers and established<span class="o">)</span>
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:80              0.0.0.0:*               LISTEN      23552/varnishd      
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:8080            0.0.0.0:*               LISTEN      21218/nginx: master 
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:22              0.0.0.0:*               LISTEN      560/sshd            
+tcp        <span class="m">0</span>      <span class="m">0</span> 127.0.0.1:6082          0.0.0.0:*               LISTEN      23552/varnishd      
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:3306            0.0.0.0:*               LISTEN      20409/mysqld        
+tcp        <span class="m">0</span>    <span class="m">524</span> 10.0.0.8:22             172.23.0.82:49430       ESTABLISHED 22493/sshd: debian  
+tcp6       <span class="m">0</span>      <span class="m">0</span> :::80                   :::*                    LISTEN      23552/varnishd      
+tcp6       <span class="m">0</span>      <span class="m">0</span> :::8080                 :::*                    LISTEN      21218/nginx: master 
+tcp6       <span class="m">0</span>      <span class="m">0</span> :::22                   :::*                    LISTEN      560/sshd            
+udp        <span class="m">0</span>      <span class="m">0</span> 10.0.0.8:123            0.0.0.0:*                           532/ntpd            
+udp        <span class="m">0</span>      <span class="m">0</span> 127.0.0.1:123           0.0.0.0:*                           532/ntpd            
+udp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:123             0.0.0.0:*                           532/ntpd            
+udp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:68              0.0.0.0:*                           403/dhclient        
+udp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:68              0.0.0.0:*                           318/dhclient        
+udp6       <span class="m">0</span>      <span class="m">0</span> fe80::f816:3eff:fe5:123 :::*                                532/ntpd            
+udp6       <span class="m">0</span>      <span class="m">0</span> ::1:123                 :::*                                532/ntpd            
+udp6       <span class="m">0</span>      <span class="m">0</span> :::123                  :::*                                532/ntpd    
+</code></pre></div><h2 id="3-pruebas-de-rendimiento-con-varnish-ya-configurado">3. Pruebas de rendimiento con Varnish ya configurado</h2>
+<p>Como podemos ver responde más peticiones por segundo con varnish ya configurado.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Nivel de concurrencia = 50</span>
+ab -t <span class="m">10</span> -c <span class="m">50</span> -k http://172.22.200.152/wordpress/index.php
+<span class="c1"># Respuestas por segundo </span>
+Requests per second:    425.86 <span class="o">[</span><span class="c1">#/sec] (mean)</span>
+
+<span class="c1"># Nivel de concurrencia = 100</span>
+ab -t <span class="m">10</span> -c <span class="m">100</span> -k http://172.22.200.152/wordpress/index.php
+<span class="c1"># Respuestas por segundo </span>
+Requests per second:    928.78 <span class="o">[</span><span class="c1">#/sec] (mean)</span>
+
+<span class="c1"># Nivel de concurrencia = 250</span>
+ab -t <span class="m">10</span> -c <span class="m">250</span> -k http://172.22.200.152/wordpress/index.php
+<span class="c1"># Respuestas por segundo </span>
+Requests per second:    2212.44 <span class="o">[</span><span class="c1">#/sec] (mean)</span>
+
+<span class="c1"># Nivel de concurrencia = 500</span>
+ab -t <span class="m">10</span> -c <span class="m">500</span> -k http://172.22.200.152/wordpress/index.php
+<span class="c1"># Respuestas por segundo </span>
+Requests per second:    3167.86 <span class="o">[</span><span class="c1">#/sec] (mean)</span>
+</code></pre></div><ul>
+<li>Si hacemos varias peticiones a la misma url podemos ver cuantas peticiones llegan al servidor web. Con un wc y filtrando con grep podríamos contar cuantas peticiones se han hecho a la url en concreto.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">172.23.0.82 - - <span class="o">[</span>17/Feb/2021:09:15:43 +0000<span class="o">]</span> <span class="s2">&#34;GET http://172.22.200.152/wordpress/index.php HTTP/1.0&#34;</span> <span class="m">301</span> <span class="m">0</span> <span class="s2">&#34;-&#34;</span> <span class="s2">&#34;ApacheBench/2.3&#34;</span>
+172.23.0.82 - - <span class="o">[</span>17/Feb/2021:09:15:43 +0000<span class="o">]</span> <span class="s2">&#34;GET http://172.22.200.152/wordpress/index.php HTTP/1.0&#34;</span> <span class="m">301</span> <span class="m">0</span> <span class="s2">&#34;-&#34;</span> <span class="s2">&#34;ApacheBench/2.3&#34;</span>
+172.23.0.82 - - <span class="o">[</span>17/Feb/2021:09:15:43 +0000<span class="o">]</span> <span class="s2">&#34;GET http://172.22.200.152/wordpress/index.php HTTP/1.0&#34;</span> <span class="m">301</span> <span class="m">0</span> <span class="s2">&#34;-&#34;</span> <span class="s2">&#34;ApacheBench/2.3&#34;</span>
+172.23.0.82 - - <span class="o">[</span>17/Feb/2021:09:15:44 +0000<span class="o">]</span> <span class="s2">&#34;GET http://172.22.200.152/wordpress/index.php HTTP/1.0&#34;</span> <span class="m">301</span> <span class="m">0</span> <span class="s2">&#34;-&#34;</span> <span class="s2">&#34;ApacheBench/2.3&#34;</span>
+172.23.0.82 - - <span class="o">[</span>17/Feb/2021:09:15:44 +0000<span class="o">]</span> <span class="s2">&#34;GET http://172.22.200.152/wordpress/index.php HTTP/1.0&#34;</span> <span class="m">301</span> <span class="m">0</span> <span class="s2">&#34;-&#34;</span> <span class="s2">&#34;ApacheBench/2.3&#34;</span>
+172.23.0.82 - - <span class="o">[</span>17/Feb/2021:09:15:44 +0000<span class="o">]</span> <span class="s2">&#34;GET http://172.22.200.152/wordpress/index.php HTTP/1.0&#34;</span> <span class="m">301</span> <span class="m">0</span> <span class="s2">&#34;-&#34;</span> <span class="s2">&#34;ApacheBench/2.3&#34;</span>
+172.23.0.82 - - <span class="o">[</span>17/Feb/2021:09:15:44 +0000<span class="o">]</span> <span class="s2">&#34;GET http://172.22.200.152/wordpress/index.php HTTP/1.0&#34;</span> <span class="m">301</span> <span class="m">0</span> <span class="s2">&#34;-&#34;</span> <span class="s2">&#34;ApacheBench/2.3&#34;</span>
+172.23.0.82 - - <span class="o">[</span>17/Feb/2021:09:15:44 +0000<span class="o">]</span> <span class="s2">&#34;GET http://172.22.200.152/wordpress/index.php HTTP/1.0&#34;</span> <span class="m">301</span> <span class="m">0</span> <span class="s2">&#34;-&#34;</span> <span class="s2">&#34;ApacheBench/2.3&#34;</span>
+172.23.0.82 - - <span class="o">[</span>17/Feb/2021:09:15:44 +0000<span class="o">]</span> <span class="s2">&#34;GET http://172.22.200.152/wordpress/index.php HTTP/1.0&#34;</span> <span class="m">301</span> <span class="m">0</span> <span class="s2">&#34;-&#34;</span> <span class="s2">&#34;ApacheBench/2.3&#34;</span>
+172.23.0.82 - - <span class="o">[</span>17/Feb/2021:09:15:44 +0000<span class="o">]</span> <span class="s2">&#34;GET http://172.22.200.152/wordpress/index.php HTTP/1.0&#34;</span> <span class="m">301</span> <span class="m">0</span> <span class="s2">&#34;-&#34;</span> <span class="s2">&#34;ApacheBench/2.3&#34;</span>
+172.23.0.82 - - <span class="o">[</span>17/Feb/2021:09:15:44 +0000<span class="o">]</span> <span class="s2">&#34;GET http://172.22.200.152/wordpress/index.php HTTP/1.0&#34;</span> <span class="m">301</span> <span class="m">0</span> <span class="s2">&#34;-&#34;</span> <span class="s2">&#34;ApacheBench/2.3&#34;</span>
+172.23.0.82 - - <span class="o">[</span>17/Feb/2021:09:15:44 +0000<span class="o">]</span> <span class="s2">&#34;GET http://172.22.200.152/wordpress/index.php HTTP/1.0&#34;</span> <span class="m">301</span> <span class="m">0</span> <span class="s2">&#34;-&#34;</span> <span class="s2">&#34;ApacheBench/2.3&#34;</span>
+
+</code></pre></div></div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/varnish/">varnish</a><a class="tag" href="/tags/rendimiento/">rendimiento</a><a class="tag" href="/tags/apache/">apache</a><a class="tag" href="/tags/nginx/">nginx</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

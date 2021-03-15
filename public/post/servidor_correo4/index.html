@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Servidor de Correos. Postfix (IV). Webmail Roundcube. </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/servidor_correo4/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Servidor de Correos. Postfix (IV). Webmail Roundcube."/>
+<meta name="twitter:description" content="Descripción (Tarea 10 y 12)
+Vamos a instalar un webmail (Roundcube), sobre Debian Buster alojado en una máquina de OVH, para gestionar el correo del equipo mediante una interfaz web."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Servidor de Correos. Postfix (IV). Webmail Roundcube.</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Mon, Jan 25, 2021 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">4-minute read</span>
+                    </div>
+                
+            </div>
+
+            <h2 id="descripción">Descripción</h2>
+<p>(Tarea 10 y 12)</p>
+<p>Vamos a instalar un webmail (Roundcube), sobre Debian Buster alojado en una máquina de OVH, para gestionar el correo del equipo mediante una interfaz web. Recibo y envío de correos.</p>
+<p><em>RoundCube</em> es un cliente de correo electrónico IMAP, de código abierto y escrito en PHP. Para instalar este webmail deberemos de tener en funcionamiento un servidor de correos.</p>
+<h2 id="1-requisitos">1. Requisitos:</h2>
+<ul>
+<li>
+<p>Tener en funcionamiento un servidor de web, en este caso usaremos <a href="https://github.com/CeliaGMqrz/servidor_Nginx">Nginx</a></p>
+</li>
+<li>
+<p>Un gestor de base de datos, usaremos <em>MariaDB</em>.</p>
+</li>
+<li>
+<p>Servidor de correos, en este caso usaremos <a href="https://unbitdeinformacioncadadia.netlify.app/posts/2021/01/servidor-de-correos.-postfix-i/">Postfix</a></p>
+</li>
+<li>
+<p>Un servidor DNS, en este caso OVH se encarga de ello pero podemos configurarlo con <a href="https://unbitdeinformacioncadadia.netlify.app/posts/2021/01/configurar-un-dns-con-bind9/">Bind9</a>, de forma que se cree un subdominio o dominio que se usará para roundcube, en este caso el subdominio será mail.iesgn05.es. que es un CNAME de nuestra máquina kiara.iesgn05.es.</p>
+</li>
+</ul>
+<h2 id="2-instalación-de-extensiones-php">2. Instalación de extensiones PHP</h2>
+<ul>
+<li>Intalamos las extensiones que nos harán falta para roundcube</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt-get install php php-cli php-gd php-intl php-fpm php-curl php-imagick php-mysql php-zip php-xml php-mbstring php-bcmath -y
+</code></pre></div><ul>
+<li>Establecer zona horaria en php.ini, según la nuestra evidentemente.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo sed -i <span class="s1">&#39;s/;date.timezone =/date.timezone = Europe\/Madrid/g&#39;</span> /etc/php/7.3/fpm/php.ini
+</code></pre></div><ul>
+<li>Reiniciar php-fpm</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo systemctl restart php7.3-fpm
+</code></pre></div><h2 id="2-configuración-mariadb-crear-usuario-y-base-de-datos-para-roundcube">2. Configuración MariaDB. Crear usuario y base de datos para roundcube</h2>
+<ul>
+<li>Entramos a MySQL como superusuario</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo mysql -u root -p
+</code></pre></div><ul>
+<li>Creamos la base de datos para roundcube</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">CREATE DATABASE roundcube DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci<span class="p">;</span>
+</code></pre></div><ul>
+<li>Creamos el usuario para la base de datos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">CREATE USER <span class="s1">&#39;roundcube&#39;</span>@<span class="s1">&#39;localhost&#39;</span> IDENTIFIED BY <span class="s1">&#39;roundcube&#39;</span><span class="p">;</span>
+</code></pre></div><ul>
+<li>Le otorgamos los permisos necesarios para la nueva base de datos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">GRANT ALL PRIVILEGES ON roundcube.* TO <span class="s1">&#39;roundcube&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+</code></pre></div><ul>
+<li>Actualizamos los permisos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">flush privileges<span class="p">;</span>
+</code></pre></div><ul>
+<li>Salimos del MySQL</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">quit
+</code></pre></div><h2 id="3-crear-certificado-para-usar-https-con-letsencrypt">3. Crear certificado para usar https con Letsencrypt</h2>
+<ul>
+<li>Si no tenemos instalado LetsEncrypt lo instalamos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">nano /etc/apt/sources.list
+<span class="c1"># Agregamos:</span>
+deb http://ftp.debian.org/debian buster-backports main
+<span class="c1"># Actualizamos:</span>
+apt-get update
+<span class="c1"># Instalamos:</span>
+apt install certbot -t buster-backports
+<span class="c1"># Una vez instlado comentamos la línea de backports de nuevo y volvemos a hacer un apt update, porque ya no nos hará falta.</span>
+</code></pre></div><ul>
+<li>Paramos nuestro servidor web nginx</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo systemctl stop nginx
+</code></pre></div><ul>
+<li>Creamos los certificados para correo.iesgn05.es</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo certbot -d mail.iesgn05.es --agree-tos -m debian@iesgn05.es
+</code></pre></div><h2 id="4-configuración-de-nginx">4. Configuración de NGINX</h2>
+<p>Una vez instalado y configurado Nginx con un sitio web inicial y comprobado que el sitio web funciona vamos a configurar el virtualhost que va servir nuestro webmail.</p>
+<ul>
+<li>Crearemos un fichero de configuración nuevo</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo nano /etc/nginx/sites-available/mail.iesgn05.es
+</code></pre></div><ul>
+<li>Le añadimos el siguiente contenido, como podemos ver hemos añadido la configuración pertinente para usar https y que sea un sitio de confianza. Tambien podemos ver que hemos añadido los parámetros pertinentes para que php funcione.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">server <span class="o">{</span>
+    listen 80<span class="p">;</span>
+    server_name mail.iesgn05.es<span class="p">;</span>
+    <span class="k">return</span> <span class="m">301</span> https://<span class="nv">$host$request_uri</span><span class="p">;</span>
+<span class="o">}</span>
+ 
+server <span class="o">{</span>
+    listen <span class="m">443</span> ssl http2<span class="p">;</span>
+    server_name mail.iesgn05.es<span class="p">;</span>
+    root /var/www/roundcubemail<span class="p">;</span>
+    index index.php index.htm index.html<span class="p">;</span>
+ 
+    ssl_certificate /etc/letsencrypt/live/mail.iesgn05.es/fullchain.pem<span class="p">;</span>
+    ssl_certificate_key /etc/letsencrypt/live/mail.iesgn05.es/privkey.pem<span class="p">;</span>
+ 
+    location / <span class="o">{</span>
+        try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ /index.php?<span class="nv">$args</span><span class="p">;</span>
+    <span class="o">}</span>
+ 
+    location ~ <span class="se">\.</span>php<span class="o">(</span>?:$<span class="p">|</span>/<span class="o">)</span> <span class="o">{</span>
+        try_files <span class="nv">$uri</span> <span class="o">=</span>404<span class="p">;</span>
+        fastcgi_split_path_info ^<span class="o">(</span>.+<span class="se">\.</span>php<span class="o">)(</span>/.+<span class="o">)</span>$<span class="p">;</span>
+        include fastcgi_params<span class="p">;</span>
+        fastcgi_param SCRIPT_FILENAME <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+        fastcgi_param PATH_INFO <span class="nv">$fastcgi_path_info</span><span class="p">;</span>
+        fastcgi_param HTTPS on<span class="p">;</span>
+        fastcgi_param modHeadersAvailable true<span class="p">;</span>
+        fastcgi_pass unix:/run/php/php7.3-fpm.sock<span class="p">;</span>
+        fastcgi_intercept_errors on<span class="p">;</span>
+        fastcgi_buffers <span class="m">4</span> 256k<span class="p">;</span>
+        fastcgi_busy_buffers_size 256k<span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><ul>
+<li>Creamos el enlace</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo ln -s /etc/nginx/sites-available/mail.iesgn05.es /etc/nginx/sites-enabled/
+</code></pre></div><ul>
+<li>Comprobamos la sintaxis</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo nginx -t
+</code></pre></div><h2 id="5-instalación-de-roundcube">5. Instalación de Roundcube</h2>
+<ul>
+<li>Obtenemos el paquete</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo wget https://github.com/roundcube/roundcubemail/releases/download/1.4.8/roundcubemail-1.4.8-complete.tar.gz -P /var/www/
+</code></pre></div><ul>
+<li>Lo descomprimimos en el documenroot</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo tar zxvf /var/www/roundcubemail-1.4.8-complete.tar.gz -C /var/www/
+</code></pre></div><ul>
+<li>Renombramos el directorio</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo mv /var/www/roundcubemail-1.4.8 /var/www/roundcubemail
+</code></pre></div><ul>
+<li>Le damos los permisos necesarios para nginx</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo chown www-data:www-data -R /var/www/roundcubemail
+</code></pre></div><ul>
+<li>Comprobamos que la sintaxis de nginx es correcta, reinciamos el servicio y comprobamos que está en funcionamiento.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo nginx -t
+sudo systemctl restart nginx
+sudo systemctl status nginx
+</code></pre></div><ul>
+<li>Nos dirigmos al navegador e introducimos la url: mail.iesgn05.es/installer</li>
+</ul>
+<p>Nos saldrá el entorno de instalación de roundcube.</p>
+<p><img src="/images/ovh_correo/r1.png" alt="r1.png"></p>
+<p>Le damos a NEXT y continuamos con la instalación.</p>
+<p>Ahora vamos a crear la configuración:</p>
+<ul>
+<li>General configuration: Lo dejaremos por defecto.</li>
+</ul>
+<p><img src="/images/ovh_correo/r2.png" alt="r2.png"></p>
+<ul>
+<li>Logging &amp; Debugging: Se trata de los ficheros de log, los dejaremos por defecto.</li>
+</ul>
+<p><img src="/images/ovh_correo/r3.png" alt="r3.png"></p>
+<ul>
+<li>Database setup: Aqui elegiremos la base de datos, El nombre de la base de datos, el usuario y la contraseña</li>
+</ul>
+<p><img src="/images/ovh_correo/r4.png" alt="r4.png"></p>
+<ul>
+<li>
+<p>Aquí se hará la configuración de IMAP, la dejaremos por defecto que coja el puerto 143.</p>
+</li>
+<li>
+<p>Aquí se indicará la configuracion de SMTP</p>
+</li>
+</ul>
+<p><img src="/images/ovh_correo/r6.png" alt="r6.png"></p>
+<ul>
+<li>Lo demás lo dejamos por defecto todo y le damos a &lsquo;Create config&rsquo; y después a CONTINUE.</li>
+</ul>
+<p>Ahora Vamos a comprobar la configuración, Inicializamos la base de datos para que se copien las tablas, en &lsquo;Initialize database&rsquo;</p>
+<p><img src="/images/ovh_correo/r7.png" alt="r7.png"></p>
+<p>Ahora hacemos el test para el envío por SMTP</p>
+<p><img src="/images/ovh_correo/r8.png" alt="r8.png"></p>
+<p>Comprobamos que lo recibimos</p>
+<p><img src="/images/ovh_correo/mensaje.png" alt="mensaje.png"></p>
+<p>Por último comprobamos el IMAP</p>
+<p><img src="/images/ovh_correo/r10.png" alt="r10.png"></p>
+<p>Una vez comprobado todo vamos a eliminar el instalador</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo rm -fr /var/www/roundcubemail/installer/
+</code></pre></div><p>Una vez eliminado vamos a abrir un navegador e indicar la url mail.iesgn05.es, nos pedirá el nombre de usuario y la contraseña para imap y se nos abrirá nuestro correo.</p>
+<p><img src="/images/ovh_correo/webmailyes.png" alt="webmailyes.png"></p>
+<p>Probamos enviar y recibir correos desde Webmail y funciona correctamente</p>
+<p><img src="/images/ovh_correo/wm1.png" alt="wm1.png"></p>
+<p><img src="/images/ovh_correo/wm2.png" alt="wm2.png"></p>
+<p><img src="/images/ovh_correo/wm3.png" alt="wm3.png"></p>
+<p><img src="/images/ovh_correo/wm4.png" alt="wm4.png"></p>
+<p>Fuentes:</p>
+<ul>
+<li><a href="https://atetux.com/how-to-install-roundcube-webmail-1-4-on-debian-10">https://atetux.com/how-to-install-roundcube-webmail-1-4-on-debian-10</a></li>
+</ul>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/servidor-de-correos/">servidor de correos</a><a class="tag" href="/tags/roundcube/">roundcube</a><a class="tag" href="/tags/webmail/">webmail</a><a class="tag" href="/tags/nginx/">nginx</a><a class="tag" href="/tags/mariadb/">mariadb</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

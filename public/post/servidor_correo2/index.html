@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Servidor de Correos. Postfix (II). Alias y Redirecciones. </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/servidor_correo2/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Servidor de Correos. Postfix (II). Alias y Redirecciones."/>
+<meta name="twitter:description" content="1. Uso de cron para notificar a root de una tarea Vamos a comprobar como los procesos del servidor pueden mandar correos para informar sobre su estado."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Servidor de Correos. Postfix (II). Alias y Redirecciones.</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Fri, Jan 22, 2021 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">3-minute read</span>
+                    </div>
+                
+            </div>
+
+            <h3 id="1-uso-de-cron-para-notificar-a-root-de-una-tarea">1. Uso de cron para notificar a root de una tarea</h3>
+<p>Vamos a comprobar como los procesos del servidor pueden mandar correos para informar sobre su estado. Por ejemplo cada vez que se ejecuta una tarea cron podemos enviar un correo informando del resultado. Normalmente estos correos se mandan al usuario root del servidor, para ello:</p>
+<p>Vamos a crear un script sencillo que muestre las 10 últimas líneas de log de postfix:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Creamos el script</span>
+nano /root/mostrar_log_mail.sh
+
+<span class="c1">#Con el siguiente contenido</span>
+
+<span class="c1">#!/bin/sh</span>
+
+tail -n10 /var/log/mail.log
+
+<span class="c1">#Le damos los permisos oportunos y lo ejecutamos para ver que funciona</span>
+
+chmod <span class="m">744</span> mostrar_log_mail.sh
+bash mostrar_log_mail.sh
+
+</code></pre></div><ul>
+<li>Ahora ejecutamos el crontab -e, para inicializar la tarea y le indicamos a quien va ir dirigido el correo, en este caso a ROOT.</li>
+</ul>
+<p><code>crontab -e</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@kiara:~$ crontab -e
+no crontab <span class="k">for</span> debian - using an empty one
+
+Select an editor.  To change later, run <span class="s1">&#39;select-editor&#39;</span>.
+  1. /usr/bin/joe
+  2. /usr/bin/jstar
+  3. /usr/bin/jpico
+  4. /usr/bin/jmacs
+  5. /bin/nano        &lt;---- easiest
+  6. /usr/bin/vim.basic
+  7. /usr/bin/rjoe
+  8. /usr/bin/vim.tiny
+
+Choose 1-8 <span class="o">[</span>5<span class="o">]</span>:  
+crontab: installing new crontab
+</code></pre></div><ul>
+<li>Indicamos donde se va a enviar el correo cada vez que ejecute</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">MAILTO</span><span class="o">=</span> root
+</code></pre></div><ul>
+<li>Ejecutamos <strong>mail</strong> con el usuario root y comprobamos que tenemos un correo mostrando el log</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@kiara:~# mail
+Mail version 8.1.2 01/15/2001.  Type ? <span class="k">for</span> help.
+<span class="s2">&#34;/var/mail/root&#34;</span>: <span class="m">2</span> messages <span class="m">2</span> new
+&gt;N  <span class="m">1</span> root@kiara.iesgn0  Mon Jan <span class="m">25</span> 10:39   22/783   Cron &lt;debian@kiara&gt; /root/mostrar_log_mail.sh
+ N  <span class="m">2</span> root@kiara.iesgn0  Mon Jan <span class="m">25</span> 10:39   31/1832  Cron &lt;root@kiara&gt; /root/mostrar_log_mail.sh
+<span class="p">&amp;</span> w
+No file specified.
+<span class="p">&amp;</span> <span class="m">2</span>
+Message 2:
+From root@kiara.iesgn05.es  Mon Jan <span class="m">25</span> 10:39:01 <span class="m">2021</span>
+X-Original-To: root
+From: root@kiara.iesgn05.es <span class="o">(</span>Cron Daemon<span class="o">)</span>
+To: root@kiara.iesgn05.es
+Subject: Cron &lt;root@kiara&gt; /root/mostrar_log_mail.sh
+MIME-Version: 1.0
+Content-Type: text/plain<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>UTF-8
+Content-Transfer-Encoding: 8bit
+X-Cron-Env: &lt;<span class="nv">MAILTO</span><span class="o">=</span>root&gt;
+X-Cron-Env: &lt;<span class="nv">SHELL</span><span class="o">=</span>/bin/sh&gt;
+X-Cron-Env: &lt;<span class="nv">HOME</span><span class="o">=</span>/root&gt;
+X-Cron-Env: &lt;<span class="nv">PATH</span><span class="o">=</span>/usr/bin:/bin&gt;
+X-Cron-Env: &lt;<span class="nv">LOGNAME</span><span class="o">=</span>root&gt;
+Date: Mon, <span class="m">25</span> Jan <span class="m">2021</span> 10:39:01 +0000 <span class="o">(</span>UTC<span class="o">)</span>
+
+Jan <span class="m">25</span> 10:38:01 kiara postfix/pickup<span class="o">[</span>29459<span class="o">]</span>: 1610A4231B: <span class="nv">uid</span><span class="o">=</span><span class="m">1000</span> <span class="nv">from</span><span class="o">=</span>&lt;debian&gt;
+Jan <span class="m">25</span> 10:38:01 kiara postfix/cleanup<span class="o">[</span>29250<span class="o">]</span>: 1610A4231B: message-id<span class="o">=</span>&lt;20210125103801.1610A4231B@kiara.iesgn05.es&gt;
+Jan <span class="m">25</span> 10:38:01 kiara postfix/qmgr<span class="o">[</span>27861<span class="o">]</span>: 1610A4231B: <span class="nv">from</span><span class="o">=</span>&lt;debian@kiara.iesgn05.es&gt;, <span class="nv">size</span><span class="o">=</span>649, <span class="nv">nrcpt</span><span class="o">=</span><span class="m">1</span> <span class="o">(</span>queue active<span class="o">)</span>
+Jan <span class="m">25</span> 10:38:01 kiara postfix/local<span class="o">[</span>29253<span class="o">]</span>: 1610A4231B: <span class="nv">to</span><span class="o">=</span>&lt;root@kiara.iesgn05.es&gt;, <span class="nv">orig_to</span><span class="o">=</span>&lt;root&gt;, <span class="nv">relay</span><span class="o">=</span>local, <span class="nv">delay</span><span class="o">=</span>0.01, <span class="nv">delays</span><span class="o">=</span>0.01/0/0/0, <span class="nv">dsn</span><span class="o">=</span>2.0.0, <span class="nv">status</span><span class="o">=</span>sent <span class="o">(</span>delivered to mailbox<span class="o">)</span>
+Jan <span class="m">25</span> 10:38:01 kiara postfix/qmgr<span class="o">[</span>27861<span class="o">]</span>: 1610A4231B: removed
+Jan <span class="m">25</span> 10:38:01 kiara postfix/pickup<span class="o">[</span>29459<span class="o">]</span>: 18E484231B: <span class="nv">uid</span><span class="o">=</span><span class="m">0</span> <span class="nv">from</span><span class="o">=</span>&lt;root&gt;
+Jan <span class="m">25</span> 10:38:01 kiara postfix/cleanup<span class="o">[</span>29250<span class="o">]</span>: 18E484231B: message-id<span class="o">=</span>&lt;20210125103801.18E484231B@kiara.iesgn05.es&gt;
+Jan <span class="m">25</span> 10:38:01 kiara postfix/qmgr<span class="o">[</span>27861<span class="o">]</span>: 18E484231B: <span class="nv">from</span><span class="o">=</span>&lt;root@kiara.iesgn05.es&gt;, <span class="nv">size</span><span class="o">=</span>784, <span class="nv">nrcpt</span><span class="o">=</span><span class="m">1</span> <span class="o">(</span>queue active<span class="o">)</span>
+Jan <span class="m">25</span> 10:38:01 kiara postfix/local<span class="o">[</span>29253<span class="o">]</span>: 18E484231B: <span class="nv">to</span><span class="o">=</span>&lt;root@kiara.iesgn05.es&gt;, <span class="nv">orig_to</span><span class="o">=</span>&lt;root&gt;, <span class="nv">relay</span><span class="o">=</span>local, <span class="nv">delay</span><span class="o">=</span>0.01, <span class="nv">delays</span><span class="o">=</span>0/0/0/0, <span class="nv">dsn</span><span class="o">=</span>2.0.0, <span class="nv">status</span><span class="o">=</span>sent <span class="o">(</span>delivered to mailbox<span class="o">)</span>
+Jan <span class="m">25</span> 10:38:01 kiara postfix/qmgr<span class="o">[</span>27861<span class="o">]</span>: 18E484231B: removed
+
+<span class="p">&amp;</span> quit
+Saved <span class="m">1</span> message in /root/mbox
+Held <span class="m">1</span> message in /var/mail/root
+You have mail in /var/mail/root
+root@kiara:~# nano mostrar_log_mail.sh 
+You have new mail in /var/mail/root
+
+</code></pre></div><h3 id="2-alias-y-redirecciones-para-que-nos-llegue-a-un-correo-personal">2. Alias y redirecciones para que nos llegue a un correo personal</h3>
+<p>Si queremos redireccionar los correos al usuario debian solo tenemos que indicarlo en el siguiente fichero</p>
+<p><code>/etc/aliases</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root: debian
+</code></pre></div><p>Ejecutar</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">newaliases
+</code></pre></div><p>Si abrimos el buzón de mail de <strong>debian</strong> veremos como se nos redirecciona</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@kiara:~# mail
+Mail version 8.1.2 01/15/2001.  Type ? <span class="k">for</span> help.
+<span class="s2">&#34;/var/mail/root&#34;</span>: <span class="m">2</span> messages <span class="m">2</span> new
+&gt;N  <span class="m">1</span> root@kiara.iesgn0  Mon Jan <span class="m">25</span> 10:39   22/783   Cron &lt;debian@kiara&gt; /root/mostrar_log_mail.sh
+</code></pre></div><p>Si además queremos que se redirecciona al exterior a <strong>nuestro correo electrónico</strong>, tenemos que crear el siguiente fichero</p>
+<p><code>nano /home/debian/.forward</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">cgarmai95@gmail.com
+</code></pre></div><p>Ejecutamos el script y comprobamos que se ha enviado un correo notificando su ejecución.</p>
+<p><img src="/images/ovh_correo/redir_gmail.png" alt="redir_gmail.png"></p>
+<blockquote>
+<p>Si queremos listar o eliminar las tareas de cron</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">crontab -l
+crontab -r
+</code></pre></div></div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/servidor-correos/">servidor correos</a><a class="tag" href="/tags/alias/">alias</a><a class="tag" href="/tags/redirecciones/">redirecciones</a><a class="tag" href="/tags/postfix/">postfix</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

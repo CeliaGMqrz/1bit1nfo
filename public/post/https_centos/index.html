@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Configurar HTTPS en Centos 8 (Quijote) </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/https_centos/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Configurar HTTPS en Centos 8 (Quijote)"/>
+<meta name="twitter:description" content="¡! Este post está relacionado con un entrono de trabajo con openstack incluido en otras entradas de mi blog."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Configurar HTTPS en Centos 8 (Quijote)</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Thu, Jan 21, 2021 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">4-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p><img src="/images/candado.jpeg" alt="https.jpeg"></p>
+<p><strong>¡!</strong> Este post está relacionado con un entrono de trabajo con openstack incluido en otras entradas de mi blog.</p>
+<h3 id="1-creación-de-un-certificado-ssl-wilcard">1. Creación de un certificado SSL Wilcard</h3>
+<p><strong>Concepto: ¿Qué es un certificado SSL Wilcard?</strong></p>
+<p>Es un certificado que protege la dirección URL de un sitio web, así como también sus subdominios.</p>
+<p><strong>Crear clave privada y certificado</strong></p>
+<p>El certificado principalmente se va a generar en Freston, nuestra máquina donde tenemos configurado el DNS de nuestro escenario.</p>
+<ul>
+<li>Generar la clvave privada:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">openssl genrsa <span class="m">4069</span> &gt; /etc/ssl/private/wc_private.key
+</code></pre></div><ul>
+<li>Generar el certificado:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@freston:/home/debian# openssl req -new -key /etc/ssl/private/wc_private.key -out /home/debian/wc_celia.csr
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter <span class="s1">&#39;.&#39;</span>, the field will be left blank.
+-----
+Country Name <span class="o">(</span><span class="m">2</span> letter code<span class="o">)</span> <span class="o">[</span>AU<span class="o">]</span>:ES
+State or Province Name <span class="o">(</span>full name<span class="o">)</span> <span class="o">[</span>Some-State<span class="o">]</span>:Sevilla
+Locality Name <span class="o">(</span>eg, city<span class="o">)</span> <span class="o">[]</span>:Dos Hermanas
+Organization Name <span class="o">(</span>eg, company<span class="o">)</span> <span class="o">[</span>Internet Widgits Pty Ltd<span class="o">]</span>:IES Gonzalo Nazareno
+Organizational Unit Name <span class="o">(</span>eg, section<span class="o">)</span> <span class="o">[]</span>:Informatica
+Common Name <span class="o">(</span>e.g. server FQDN or YOUR name<span class="o">)</span> <span class="o">[]</span>:*.celia.gonzalonazareno.org
+Email Address <span class="o">[]</span>:
+
+Please enter the following <span class="s1">&#39;extra&#39;</span> attributes
+to be sent with your certificate request
+A challenge password <span class="o">[]</span>:
+An optional company name <span class="o">[]</span>:
+</code></pre></div><ul>
+<li>
+<p>Enviar dicho certificado a la autoridad certificadora y esperar a que lo firmen. Debamos obtener un fichero.crt firmado y el de la autoridad certificadora, que en este caso es: gonzalonazareno.crt, que nos hemos bajado de gestiona.</p>
+</li>
+<li>
+<p>Los certificados deben estar  alojados en /etc/ssl/certs, y la clave privada en /etc/ssl/private.</p>
+</li>
+</ul>
+<h3 id="2-configurar-https-en-quijote">2. Configurar https en Quijote</h3>
+<ul>
+<li>
+<p>Ubicamos la clave privada en el lugar correcto /etc/pki/tls/private</p>
+</li>
+<li>
+<p>Ubicamos el certificado firmado en el lugar correcto /etc/pki/tls/certs</p>
+</li>
+<li>
+<p>Comprobamos los permisos:</p>
+</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">[</span>centos@quijote ~<span class="o">]</span>$ ls -l /etc/pki/tls/private/
+total <span class="m">8</span>
+-rw-------. <span class="m">1</span> root root <span class="m">3247</span> Nov <span class="m">30</span> 22:28 postfix.key
+-rw-------. <span class="m">1</span> root root <span class="m">3215</span> Jan <span class="m">18</span> 12:11 wc_private.key
+
+
+<span class="o">[</span>centos@quijote ~<span class="o">]</span>$ sudo ls -l /etc/pki/tls/certs/
+total <span class="m">16</span>
+lrwxrwxrwx. <span class="m">1</span> root root   <span class="m">49</span> Nov <span class="m">30</span> 22:25 ca-bundle.crt -&gt; /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+lrwxrwxrwx. <span class="m">1</span> root root   <span class="m">55</span> Nov <span class="m">30</span> 22:25 ca-bundle.trust.crt -&gt; /etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+-rw-r--r--. <span class="m">1</span> root root <span class="m">2216</span> Nov <span class="m">30</span> 22:28 postfix.pem
+-rw-r--r--. <span class="m">1</span> root root <span class="m">9965</span> Jan <span class="m">18</span> 12:11 wc_celia_sign.crt
+
+</code></pre></div><ul>
+<li>
+<p>Previamente tendremos que tener instalado apache y el sitio web funcionando, como hemos hecho en el siguiente <a href="">post</a>.ç</p>
+</li>
+<li>
+<p>Instalamos el módulo de https de apache</p>
+</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo dnf install mod_ssl
+</code></pre></div><ul>
+<li>Tenemos que reiniciar el servicio:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo systemctl restart httpd
+</code></pre></div><ul>
+<li>Creamos el fichero de configuración de nuestro virtualhosts para https (en mi caso he copiado el archivo de configuración inicial y lo he editado), de forma que, le agregamos las líneas pertinentes para habilitar https, indicando la ruta del certificado, clave privada y además ponemos en escucha al puerto 443.</li>
+</ul>
+<p><code>/etc/httpd/sites-available/https.celia.gonzalonazareno.org.conf </code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">&lt;VirtualHost *:443&gt;
+    ServerName www.celia.gonzalonazareno.org
+    DocumentRoot /var/www/iesgn
+    ErrorLog /var/www/iesgn/log/error.log
+    CustomLog /var/www/iesgn/log/requests.log combined
+
+        &lt;Proxy <span class="s2">&#34;unix:/run/php-fpm/www.sock|fcgi://php-fpm&#34;</span>&gt;
+                ProxySet <span class="nv">disablereuse</span><span class="o">=</span>off
+        &lt;/Proxy&gt;
+
+        &lt;FilesMatch <span class="se">\.</span>php$&gt;
+                SetHandler proxy:fcgi://php-fpm
+        &lt;/FilesMatch&gt;
+
+    SSLEngine on
+    SSLCertificateFile /etc/pki/tls/certs/wc_celia_sign.crt
+    SSLCertificateKeyFile /etc/pki/tls/private/wc_private.key
+
+&lt;/VirtualHost&gt;
+
+
+</code></pre></div><ul>
+<li>En el fichero de configuración inicial de nuestro sitio web, vamos a editarlo y crear una redirección se acceda por el otro virtualhost y utilice https.</li>
+</ul>
+<p><code>/etc/httpd/sites-available/celia.gonzalonazareno.org.conf</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">&lt;VirtualHost *:80&gt;
+    ServerName www.celia.gonzalonazareno.org
+    DocumentRoot /var/www/iesgn
+    ErrorLog /var/www/iesgn/log/error.log
+    CustomLog /var/www/iesgn/log/requests.log combined
+
+    Redirect permanent / https://www.celia.gonzalonazareno.org
+&lt;/VirtualHost&gt;
+
+</code></pre></div><p><strong>¡!</strong> Es recomendable deshabilitar selinux, se puede deshabilitar en /etc/selinux/config</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># This file controls the state of SELinux on the system.</span>
+<span class="c1"># SELINUX= can take one of these three values:</span>
+<span class="c1">#     enforcing - SELinux security policy is enforced.</span>
+<span class="c1">#     permissive - SELinux prints warnings instead of enforcing.</span>
+<span class="c1">#     disabled - No SELinux policy is loaded.</span>
+<span class="nv">SELINUX</span><span class="o">=</span>disabled 
+<span class="c1"># SELINUXTYPE= can take one of three values:</span>
+<span class="c1">#     targeted - Targeted processes are protected,</span>
+<span class="c1">#     minimum - Modification of targeted policy. Only selected processes are protected. </span>
+<span class="c1">#     mls - Multi Level Security protection.</span>
+<span class="nv">SELINUXTYPE</span><span class="o">=</span>targeted
+
+</code></pre></div><h3 id="3-agregar-regla-de-iptables">3. Agregar regla de iptables</h3>
+<p>Tenemos que agregar la regla de iptables para que se pueda usar https</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">iptables -A OUTPUT -p tcp -m tcp --dport <span class="m">443</span> -j ACCEPT 
+
+sudo iptables -t nat -A PREROUTING -p tcp --dport <span class="m">443</span> -i eth0 -j DNAT --to 10.0.2.4:443
+</code></pre></div><ul>
+<li>Vemos las reglas aplicadas</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@dulcinea:~$ sudo iptables -t nat -L -nv
+Chain PREROUTING <span class="o">(</span>policy ACCEPT <span class="m">0</span> packets, <span class="m">0</span> bytes<span class="o">)</span>
+ pkts bytes target     prot opt in     out     <span class="nb">source</span>               destination         
+    <span class="m">6</span>   <span class="m">360</span> DNAT       tcp  --  eth0   *       0.0.0.0/0            0.0.0.0/0            tcp dpt:80 to:10.0.2.4:80
+    <span class="m">6</span>   <span class="m">360</span> DNAT       tcp  --  eth0   *       0.0.0.0/0            0.0.0.0/0            tcp dpt:443 to:10.0.2.4:443
+
+Chain INPUT <span class="o">(</span>policy ACCEPT <span class="m">0</span> packets, <span class="m">0</span> bytes<span class="o">)</span>
+ pkts bytes target     prot opt in     out     <span class="nb">source</span>               destination         
+
+Chain POSTROUTING <span class="o">(</span>policy ACCEPT <span class="m">0</span> packets, <span class="m">0</span> bytes<span class="o">)</span>
+ pkts bytes target     prot opt in     out     <span class="nb">source</span>               destination         
+  <span class="m">202</span> <span class="m">15404</span> MASQUERADE  all  --  *      eth0    10.0.1.0/24          0.0.0.0/0           
+   <span class="m">30</span>  <span class="m">1896</span> MASQUERADE  all  --  *      eth0    10.0.2.0/24          0.0.0.0/0           
+
+Chain OUTPUT <span class="o">(</span>policy ACCEPT <span class="m">0</span> packets, <span class="m">0</span> bytes<span class="o">)</span>
+ pkts bytes target     prot opt in     out     <span class="nb">source</span>               destination      
+</code></pre></div><h3 id="4-funcionamiento">4. Funcionamiento</h3>
+<ul>
+<li>Ahora solo tendríamos que reiniciar el servicio de httdp y comprobar que funciona. Es posible que se deba de reinciar la máquina ya que hemos deshabilitado el sellinux.</li>
+</ul>
+<p>Recuerda que el /etc/resolv.conf tiene que apuntar a la ip flotante de dulcinea.</p>
+<p>Comprobamos que funciona y que estamos en un sitio seguro</p>
+<p><img src="/images/escenario/safe1.png" alt="safe1.png"></p>
+<p><img src="/images/escenario/safe2.png" alt="safe2.png"></p>
+<p><img src="/images/escenario/safe3.png" alt="safe3.png"></p>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/https/">https</a><a class="tag" href="/tags/centos8/">centos8</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Configurar HTTPS con Let&#39;s Encrypt en un servidor con Nginx </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/ovh_httpss/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Configurar HTTPS con Let&#39;s Encrypt en un servidor con Nginx"/>
+<meta name="twitter:description" content="HTTPS (Seguridad) Objetivo: Vamos a configurar el protocolo HTTPS para el acceso a nuestras aplicaciones, para ello tienes que tener en cuenta los siguiente."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Configurar HTTPS con Let&#39;s Encrypt en un servidor con Nginx</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Sun, Nov 29, 2020 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">11-minute read</span>
+                    </div>
+                
+            </div>
+
+            <h2 id="https-seguridad">HTTPS (Seguridad)</h2>
+<h3 id="objetivo">Objetivo:</h3>
+<p>Vamos a configurar el protocolo HTTPS para el acceso a nuestras aplicaciones, para ello tienes que tener en cuenta los siguiente.</p>
+<h2 id="1-vamos-a-utilizar-el-servicio-letsencrypt-para-solicitar-los-certificados-de-nuestras-páginas">1. Vamos a utilizar el servicio letsencrypt para solicitar los certificados de nuestras páginas.</h2>
+<p>Let&rsquo;s Encrypt se trata de una <strong>autoridad de certificación</strong>, conocida como CA, libre y gratuita, que permite generar certificados SSL gratuitos y automáticos para nuestros sitios web, con el objetivo de promover que el tráfico de Internet sea seguro.</p>
+<h2 id="2-explica-detenidamente-cómo-se-solicita-un-certificado-en-lets-encrypt-en-tu-explicación-deberás-responder-a-estas-preguntas">2. Explica detenidamente cómo se solicita un certificado en Let&rsquo;s Encrypt. En tu explicación deberás responder a estas preguntas:</h2>
+<p><strong>¿Qué función tiene el cliente ACME?</strong></p>
+<p>El cliente ACME permite automatizar la implementación de certificados SSL/TLS y eliminar el tiempo que pasa llevando a cabo las instalaciones de certificados manualmente.</p>
+<p><strong>¿Qué configuración se realiza en el servidor web?</strong></p>
+<p>Se toma una configuración para proteger el sitio web de tal manera que, autogenera un certificado y una clave para asegurar nuestro sitio y añade los puertos de escucha al 443 que son los necesarios para el sistema de seguridad ssl.</p>
+<p><strong>¿Qué pruebas realiza Let&rsquo;s Encrypt para asegurar que somos los administrados del sitio web?</strong></p>
+<p>Let&rsquo;s Encrypt identifica el administrador del servidor por la llave pública. La primera vez que el software del agente interactúa con este, genera un par de claves y demuestra a Let&rsquo;s Encrypt que el servidor controla uno o más dominios.</p>
+<p>Puede demostrar el control sobre el dominio de dos formas, aprovisionando de un recurso HTTP en un fichero (well-known URI) o aprovisionando un record DNS.</p>
+<p><strong>¿Se puede usar el DNS para verificar que somos administradores del sitio?</strong></p>
+<p>Sí. Crea un registro en el DNS con una determinada información que permite verificar que somos administradores del sitio.</p>
+<hr>
+<p>Para solicitar un certificado en Let&rsquo;s Encrypt necesitamos una herramienta (el agente cerbot): Cerbot que será el que permita su obtención. Para ello vamos a instalar esta herramienta, con el plugin para nginx.</p>
+<p><strong>Instalar cerbot</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">nano</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">apt</span><span class="p">/</span><span class="n">sources</span><span class="p">.</span><span class="n">list</span>
+<span class="c"># Agregamos:</span>
+<span class="n">deb</span> <span class="n">http</span><span class="err">:</span><span class="p">//</span><span class="n">ftp</span><span class="p">.</span><span class="n">debian</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">debian</span> <span class="n">buster-backports</span> <span class="n">main</span>
+<span class="c"># Actualizamos:</span>
+<span class="n">apt-get</span> <span class="n">update</span>
+<span class="c"># Instalamos:</span>
+<span class="n">apt</span> <span class="n">install</span> <span class="n">python-certbot-nginx</span> <span class="n">-t</span> <span class="n">buster-backports</span>
+</code></pre></div><p><strong>Obtener Certificado</strong></p>
+<p>Ejecutamos</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">cerbot</span> <span class="p">-</span><span class="n">-nginx</span> <span class="n">-d</span> <span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span>
+</code></pre></div><p>Como es la primera vez que iniciamos cerbot nos pedirá un correo electrónico y que aceptemos las condiciones y términos.</p>
+<p>Tendremos decirle que todas las peticiones las redirija a un https y ya tendremos nuestro certificado.</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@kiara</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">debian</span><span class="c"># certbot --nginx -d www.iesgn05.es</span>
+<span class="n">Saving</span> <span class="n">debug</span> <span class="n">log</span> <span class="n">to</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">log</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">.</span><span class="n">log</span>
+<span class="n">Plugins</span> <span class="n">selected</span><span class="err">:</span> <span class="n">Authenticator</span> <span class="n">nginx</span><span class="p">,</span> <span class="n">Installer</span> <span class="n">nginx</span>
+<span class="n">Enter</span> <span class="n">email</span> <span class="n">address</span> <span class="p">(</span><span class="n">used</span> <span class="k">for</span> <span class="n">urgent</span> <span class="n">renewal</span> <span class="n">and</span> <span class="n">security</span> <span class="n">notices</span><span class="p">)</span> <span class="p">(</span><span class="n">Enter</span> <span class="s1">&#39;c&#39;</span> <span class="n">to</span>
+<span class="n">cancel</span><span class="p">)</span><span class="err">:</span> <span class="n">cg</span><span class="p">.</span><span class="n">marquez95</span><span class="nv">@gmail</span><span class="p">.</span><span class="n">com</span>
+
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+<span class="n">Please</span> <span class="n">read</span> <span class="n">the</span> <span class="n">Terms</span> <span class="n">of</span> <span class="n">Service</span> <span class="n">at</span>
+<span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">letsencrypt</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">documents</span><span class="p">/</span><span class="n">LE-SA-v1</span><span class="p">.</span><span class="n">2-November</span><span class="p">-</span><span class="n">15</span><span class="p">-</span><span class="n">2017</span><span class="p">.</span><span class="n">pdf</span><span class="p">.</span> <span class="n">You</span> <span class="n">must</span>
+<span class="n">agree</span> <span class="k">in</span> <span class="n">order</span> <span class="n">to</span> <span class="n">register</span> <span class="n">with</span> <span class="n">the</span> <span class="n">ACME</span> <span class="n">server</span> <span class="n">at</span>
+<span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">acme-v02</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">letsencrypt</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">directory</span>
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+<span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="n">gree</span><span class="p">/(</span><span class="n">C</span><span class="p">)</span><span class="n">ancel</span><span class="err">:</span> <span class="n">A</span>
+
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+<span class="n">Would</span> <span class="n">you</span> <span class="n">be</span> <span class="n">willing</span> <span class="n">to</span> <span class="n">share</span> <span class="n">your</span> <span class="n">email</span> <span class="n">address</span> <span class="n">with</span> <span class="n">the</span> <span class="n">Electronic</span> <span class="n">Frontier</span>
+<span class="n">Foundation</span><span class="p">,</span> <span class="n">a</span> <span class="n">founding</span> <span class="n">partner</span> <span class="n">of</span> <span class="n">the</span> <span class="n">Let</span><span class="s1">&#39;s Encrypt project and the non-profit
+</span><span class="s1">organization that develops Certbot? We&#39;</span><span class="n">d</span> <span class="n">like</span> <span class="n">to</span> <span class="n">send</span> <span class="n">you</span> <span class="n">email</span> <span class="n">about</span> <span class="n">our</span> <span class="n">work</span>
+<span class="n">encrypting</span> <span class="n">the</span> <span class="n">web</span><span class="p">,</span> <span class="n">EFF</span> <span class="n">news</span><span class="p">,</span> <span class="n">campaigns</span><span class="p">,</span> <span class="n">and</span> <span class="n">ways</span> <span class="n">to</span> <span class="n">support</span> <span class="n">digital</span> <span class="n">freedom</span><span class="p">.</span>
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+<span class="p">(</span><span class="n">Y</span><span class="p">)</span><span class="n">es</span><span class="p">/(</span><span class="n">N</span><span class="p">)</span><span class="n">o:</span> <span class="n">Y</span>
+<span class="n">Obtaining</span> <span class="n">a</span> <span class="n">new</span> <span class="n">certificate</span>
+<span class="n">Performing</span> <span class="n">the</span> <span class="n">following</span> <span class="n">challenges</span><span class="err">:</span>
+<span class="n">http</span><span class="p">-</span><span class="n">01</span> <span class="n">challenge</span> <span class="k">for</span> <span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span>
+<span class="n">Waiting</span> <span class="k">for</span> <span class="n">verification</span><span class="p">...</span>
+<span class="n">Cleaning</span> <span class="n">up</span> <span class="n">challenges</span>
+<span class="n">Deploying</span> <span class="n">Certificate</span> <span class="n">to</span> <span class="n">VirtualHost</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">nginx</span><span class="p">/</span><span class="n">sites-enabled</span><span class="p">/</span><span class="n">iesgn05</span>
+
+<span class="n">Please</span> <span class="n">choose</span> <span class="n">whether</span> <span class="n">or</span> <span class="n">not</span> <span class="n">to</span> <span class="n">redirect</span> <span class="n">HTTP</span> <span class="n">traffic</span> <span class="n">to</span> <span class="n">HTTPS</span><span class="p">,</span> <span class="n">removing</span> <span class="n">HTTP</span> <span class="n">access</span><span class="p">.</span>
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+<span class="n">1</span><span class="err">:</span> <span class="n">No</span> <span class="n">redirect</span> <span class="p">-</span> <span class="n">Make</span> <span class="n">no</span> <span class="n">further</span> <span class="n">changes</span> <span class="n">to</span> <span class="n">the</span> <span class="n">webserver</span> <span class="n">configuration</span><span class="p">.</span>
+<span class="n">2</span><span class="err">:</span> <span class="n">Redirect</span> <span class="p">-</span> <span class="n">Make</span> <span class="n">all</span> <span class="n">requests</span> <span class="n">redirect</span> <span class="n">to</span> <span class="n">secure</span> <span class="n">HTTPS</span> <span class="n">access</span><span class="p">.</span> <span class="n">Choose</span> <span class="n">this</span> <span class="k">for</span>
+<span class="n">new</span> <span class="n">sites</span><span class="p">,</span> <span class="n">or</span> <span class="k">if</span> <span class="n">you</span><span class="s1">&#39;re confident your site works on HTTPS. You can undo this
+</span><span class="s1">change by editing your web server&#39;</span><span class="n">s</span> <span class="n">configuration</span><span class="p">.</span>
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+<span class="nb">Select </span><span class="n">the</span> <span class="n">appropriate</span> <span class="n">number</span> <span class="p">[</span><span class="n">1</span><span class="p">-</span><span class="n">2</span><span class="p">]</span> <span class="n">then</span> <span class="no">[enter]</span> <span class="p">(</span><span class="n">press</span> <span class="s1">&#39;c&#39;</span> <span class="n">to</span> <span class="n">cancel</span><span class="p">)</span><span class="err">:</span> <span class="n">2</span>
+<span class="n">Redirecting</span> <span class="n">all</span> <span class="n">traffic</span> <span class="n">on</span> <span class="n">port</span> <span class="n">80</span> <span class="n">to</span> <span class="n">ssl</span> <span class="k">in</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">nginx</span><span class="p">/</span><span class="n">sites-enabled</span><span class="p">/</span><span class="n">iesgn05</span>
+
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+<span class="n">Congratulations</span><span class="p">!</span> <span class="n">You</span> <span class="n">have</span> <span class="n">successfully</span> <span class="n">enabled</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span>
+
+<span class="n">You</span> <span class="n">should</span> <span class="n">test</span> <span class="n">your</span> <span class="n">configuration</span> <span class="n">at</span><span class="err">:</span>
+<span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">www</span><span class="p">.</span><span class="n">ssllabs</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">ssltest</span><span class="p">/</span><span class="n">analyze</span><span class="p">.</span><span class="n">html</span><span class="k">?</span><span class="n">d</span><span class="p">=</span><span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span>
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+
+<span class="n">IMPORTANT</span> <span class="n">NOTES</span><span class="err">:</span>
+ <span class="p">-</span> <span class="n">Congratulations</span><span class="p">!</span> <span class="n">Your</span> <span class="n">certificate</span> <span class="n">and</span> <span class="n">chain</span> <span class="n">have</span> <span class="n">been</span> <span class="n">saved</span> <span class="n">at</span><span class="err">:</span>
+   <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">live</span><span class="p">/</span><span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">/</span><span class="n">fullchain</span><span class="p">.</span><span class="n">pem</span>
+   <span class="n">Your</span> <span class="n">key</span> <span class="n">file</span> <span class="n">has</span> <span class="n">been</span> <span class="n">saved</span> <span class="n">at</span><span class="err">:</span>
+   <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">live</span><span class="p">/</span><span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">/</span><span class="n">privkey</span><span class="p">.</span><span class="n">pem</span>
+   <span class="n">Your</span> <span class="n">cert</span> <span class="n">will</span> <span class="n">expire</span> <span class="n">on</span> <span class="n">2021</span><span class="p">-</span><span class="n">02</span><span class="p">-</span><span class="n">27</span><span class="p">.</span> <span class="n">To</span> <span class="n">obtain</span> <span class="n">a</span> <span class="n">new</span> <span class="n">or</span> <span class="n">tweaked</span>
+   <span class="n">version</span> <span class="n">of</span> <span class="n">this</span> <span class="n">certificate</span> <span class="k">in</span> <span class="n">the</span> <span class="n">future</span><span class="p">,</span> <span class="n">simply</span> <span class="n">run</span> <span class="n">certbot</span> <span class="n">again</span>
+   <span class="n">with</span> <span class="n">the</span> <span class="s2">&#34;certonly&#34;</span> <span class="n">option</span><span class="p">.</span> <span class="n">To</span> <span class="n">non-interactively</span> <span class="n">renew</span> <span class="p">*</span><span class="n">all</span><span class="p">*</span> <span class="n">of</span>
+   <span class="n">your</span> <span class="n">certificates</span><span class="p">,</span> <span class="n">run</span> <span class="s2">&#34;certbot renew&#34;</span>
+ <span class="p">-</span> <span class="n">Your</span> <span class="n">account</span> <span class="n">credentials</span> <span class="n">have</span> <span class="n">been</span> <span class="n">saved</span> <span class="k">in</span> <span class="n">your</span> <span class="n">Certbot</span>
+   <span class="n">configuration</span> <span class="n">directory</span> <span class="n">at</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">.</span> <span class="n">You</span> <span class="n">should</span> <span class="n">make</span> <span class="n">a</span>
+   <span class="n">secure</span> <span class="n">backup</span> <span class="n">of</span> <span class="n">this</span> <span class="n">folder</span> <span class="n">now</span><span class="p">.</span> <span class="n">This</span> <span class="n">configuration</span> <span class="n">directory</span> <span class="n">will</span>
+   <span class="n">also</span> <span class="n">contain</span> <span class="n">certificates</span> <span class="n">and</span> <span class="n">private</span> <span class="n">keys</span> <span class="n">obtained</span> <span class="n">by</span> <span class="n">Certbot</span> <span class="n">so</span>
+   <span class="n">making</span> <span class="n">regular</span> <span class="n">backups</span> <span class="n">of</span> <span class="n">this</span> <span class="n">folder</span> <span class="n">is</span> <span class="n">ideal</span><span class="p">.</span>
+ <span class="p">-</span> <span class="k">If</span> <span class="n">you</span> <span class="n">like</span> <span class="n">Certbot</span><span class="p">,</span> <span class="n">please</span> <span class="n">consider</span> <span class="n">supporting</span> <span class="n">our</span> <span class="n">work</span> <span class="n">by</span><span class="err">:</span>
+
+   <span class="n">Donating</span> <span class="n">to</span> <span class="n">ISRG</span> <span class="p">/</span> <span class="n">Let</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">Encrypt</span><span class="err">:</span>   <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">letsencrypt</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">donate</span>
+   <span class="n">Donating</span> <span class="n">to</span> <span class="n">EFF</span><span class="err">:</span>                    <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">eff</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">donate</span><span class="o">-le</span>
+
+</code></pre></div><p>Como nos dice el certificado se ha generado en la ruta <em>/etc/letsencrypt/live/www.iesgn05.es/fullchain.pem</em> y la clave está en  <em>/etc/letsencrypt/live/www.iesgn05.es/privkey.pem</em></p>
+<p>Ahora podemos comprobar que nuestro sitio es un sitio seguro:</p>
+<p><img src="/images/ovh_https/seguro1.jpeg" alt="seguro1.jpeg"></p>
+<p><img src="/images/ovh_https/certificado.png" alt="certificado.png"></p>
+<h2 id="3-utiliza-dos-ficheros-de-configuración-de-nginx-uno-para-la-configuración-del-virtualhost-http-y-otro-para-la-configuración-del-virtualhost-https">3. Utiliza dos ficheros de configuración de nginx: uno para la configuración del virtualhost HTTP y otro para la configuración del virtualhost HTTPS.</h2>
+<p>Para configurar nuestro dominio <a href="http://www.iesgn05.es">www.iesgn05.es</a>, hemos utilizado el plugin de certbox nginx por lo que no necesitamos un segundo fichero para hacer la redirección. En el mismo fichero de configuración está la redirección.</p>
+<p><strong><a href="http://www.iesgn05.es">www.iesgn05.es</a></strong></p>
+<p>Esto es lo que ha añadido cerbot en la configuración de nuestro fichero iesgn05</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell">    <span class="n">listen</span> <span class="p">[::]</span><span class="err">:</span><span class="n">443</span> <span class="n">ssl</span> <span class="n">ipv6only</span><span class="p">=</span><span class="n">on</span><span class="p">;</span> <span class="c"># managed by Certbot</span>
+    <span class="n">listen</span> <span class="n">443</span> <span class="n">ssl</span><span class="p">;</span> <span class="c"># managed by Certbot</span>
+    <span class="n">ssl_certificate</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">live</span><span class="p">/</span><span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">/</span><span class="n">fullchain</span><span class="p">.</span><span class="n">pem</span><span class="p">;</span> <span class="c"># managed by Certbot</span>
+    <span class="n">ssl_certificate_key</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">live</span><span class="p">/</span><span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">/</span><span class="n">privkey</span><span class="p">.</span><span class="n">pem</span><span class="p">;</span> <span class="c"># managed by Certbot</span>
+    <span class="n">include</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">options-ssl-nginx</span><span class="p">.</span><span class="n">conf</span><span class="p">;</span> <span class="c"># managed by Certbot</span>
+    <span class="n">ssl_dhparam</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">ssl-dhparams</span><span class="p">.</span><span class="n">pem</span><span class="p">;</span> <span class="c"># managed by Certbot</span>
+
+<span class="p">}</span>
+
+<span class="n">server</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$host</span> <span class="p">=</span> <span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">301</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="nv">$host$request_uri</span><span class="p">;</span>
+    <span class="p">}</span> <span class="c"># managed by Certbot</span>
+
+
+        <span class="n">listen</span> <span class="n">80</span><span class="p">;</span>
+        <span class="n">listen</span> <span class="p">[::]</span><span class="err">:</span><span class="n">80</span><span class="p">;</span>
+
+        <span class="n">server_name</span> <span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">404</span><span class="p">;</span> <span class="c"># managed by Certbot</span>
+<span class="p">}</span>
+</code></pre></div><p><strong>portal.iesgn05.es</strong></p>
+<p>Sin embargo para configurar nuestro dominio portal.iesgn05.es vamos a configurar dos ficheros de configuración, uno para http y otro para https.</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">certbot</span> <span class="n">certonly</span> <span class="p">-</span><span class="n">-standalone</span> <span class="p">-</span><span class="n">-preferred-challenges</span> <span class="n">http</span> <span class="n">-d</span> <span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span>
+</code></pre></div><p>Vemos que se ha generado unas claves</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@kiara</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">debian</span><span class="c"># ls /etc/letsencrypt/live/portal.iesgn05.es/</span>
+<span class="n">cert</span><span class="p">.</span><span class="n">pem</span>  <span class="n">chain</span><span class="p">.</span><span class="n">pem</span>  <span class="n">fullchain</span><span class="p">.</span><span class="n">pem</span>  <span class="n">privkey</span><span class="p">.</span><span class="n">pem</span>  <span class="n">README</span>
+
+</code></pre></div><p>Ahora ponemos la configuración adecuada en el fichero https de portal.iesgn05.es</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@kiara</span><span class="err">:</span><span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">nginx</span><span class="p">/</span><span class="n">sites-available</span><span class="c"># cat /etc/nginx/sites-available/portal.iesgn05.es</span>
+<span class="c"># Default server configuration</span>
+<span class="c">#</span>
+<span class="n">server</span> <span class="p">{</span>
+
+<span class="c">#        listen 80;</span>
+<span class="c">#        listen [::]:80;</span>
+
+        <span class="n">root</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">;</span>
+
+        <span class="c"># Add index.php to the list if you are using PHP</span>
+	<span class="n">index</span> <span class="n">index</span><span class="p">.</span><span class="n">html</span> <span class="n">index</span><span class="p">.</span><span class="n">htm</span> <span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="p">;</span>
+        <span class="n">server_name</span> <span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">;</span>
+
+  <span class="n">location</span> <span class="p">/</span> <span class="p">{</span>
+
+    <span class="c"># First attempt to serve request as file, then</span>
+    <span class="c"># as directory, then fall back to displaying a 404.</span>
+
+    <span class="n">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri</span><span class="p">/</span> <span class="p">=</span><span class="n">404</span> <span class="nv">@rewrite</span><span class="p">;</span>
+
+  <span class="p">}</span>
+
+  <span class="n">location</span> <span class="nv">@rewrite</span> <span class="p">{</span>
+
+    <span class="c"># Some modules enforce no slash (/) at the end of the URL</span>
+    <span class="c"># Else this rewrite block wouldnt be needed (GlobalRedirect)</span>
+
+    <span class="n">rewrite</span> <span class="p">^/(.*)$</span> <span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="k">?</span><span class="n">q</span><span class="p">=</span><span class="nv">$1</span><span class="p">;</span>
+
+  <span class="p">}</span>
+
+        <span class="n">location</span> <span class="p">~\.</span><span class="n">php</span><span class="p">$</span> <span class="p">{</span>
+               <span class="n">include</span> <span class="n">snippets</span><span class="p">/</span><span class="n">fastcgi-php</span><span class="p">.</span><span class="n">conf</span><span class="p">;</span>
+               <span class="c"># With php-fpm (or other unix sockets):</span>
+               <span class="n">fastcgi_pass</span> <span class="n">unix</span><span class="err">:</span><span class="p">/</span><span class="n">run</span><span class="p">/</span><span class="n">php</span><span class="p">/</span><span class="n">php7</span><span class="p">.</span><span class="n">3-fpm</span><span class="p">.</span><span class="n">sock</span><span class="p">;</span>
+               <span class="c"># With php-cgi (or other tcp sockets):</span>
+               <span class="c">#fastcgi_pass 127.0.0.1:9000;</span>
+        <span class="p">}</span>
+
+    <span class="n">listen</span> <span class="p">[::]</span><span class="err">:</span><span class="n">443</span> <span class="n">ssl</span><span class="p">;</span>
+    <span class="n">listen</span> <span class="n">443</span> <span class="n">ssl</span><span class="p">;</span>
+
+    <span class="n">ssl_certificate</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">live</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">/</span><span class="n">fullchain</span><span class="p">.</span><span class="n">pem</span><span class="p">;</span>
+    <span class="n">ssl_certificate_key</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">live</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">/</span><span class="n">privkey</span><span class="p">.</span><span class="n">pem</span><span class="p">;</span>
+
+    <span class="n">include</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">options-ssl-nginx</span><span class="p">.</span><span class="n">conf</span><span class="p">;</span>
+    <span class="n">ssl_dhparam</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">ssl-dhparams</span><span class="p">.</span><span class="n">pem</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+</code></pre></div><h2 id="4-realiza-una-redirección-o-una-reescritura-para-que-cuando-accedas-a-http-te-redirija-al-sitio-https">4. Realiza una redirección o una reescritura para que cuando accedas a HTTP te redirija al sitio HTTPS.</h2>
+<p>Fichero de configuración para http <strong>portal.iesgn05.es.http</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@kiara</span><span class="err">:</span><span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">nginx</span><span class="p">/</span><span class="n">sites-available</span><span class="c"># cat /etc/nginx/sites-available/portal.iesgn05.es.http </span>
+<span class="c"># Default server configuration</span>
+<span class="c">#</span>
+<span class="n">server</span> <span class="p">{</span>
+    <span class="n">listen</span> <span class="n">80</span><span class="p">;</span>
+    <span class="n">listen</span> <span class="p">[::]</span><span class="err">:</span><span class="n">80</span><span class="p">;</span>
+    <span class="n">server_name</span> <span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">301</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="nv">$request_uri</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div><h2 id="5-comprueba-que-se-ha-creado-una-tarea-cron-que-renueva-el-certificado-cada-3-meses">5. Comprueba que se ha creado una tarea cron que renueva el certificado cada 3 meses.</h2>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">0</span> <span class="n">3</span> <span class="p">*</span> <span class="p">*</span> <span class="p">*</span> <span class="n">certbot</span> <span class="p">-</span><span class="n">-nginx</span> <span class="n">renew</span> <span class="p">&gt;/</span><span class="n">dev</span><span class="p">/</span><span class="n">null</span> <span class="n">2</span><span class="p">&gt;&amp;</span><span class="n">1</span>
+</code></pre></div><p>Lo comprobamos haceiendo una simulacion</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@kiara</span><span class="err">:</span><span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">nginx</span><span class="p">/</span><span class="n">sites-available</span><span class="c"># certbot renew --dry-run</span>
+<span class="n">Saving</span> <span class="n">debug</span> <span class="n">log</span> <span class="n">to</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">log</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">.</span><span class="n">log</span>
+
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+<span class="n">Processing</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">renewal</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">.</span><span class="n">conf</span>
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+<span class="n">Cert</span> <span class="n">not</span> <span class="n">due</span> <span class="k">for</span> <span class="n">renewal</span><span class="p">,</span> <span class="n">but</span> <span class="n">simulating</span> <span class="n">renewal</span> <span class="k">for</span> <span class="n">dry</span> <span class="n">run</span>
+<span class="n">Plugins</span> <span class="n">selected</span><span class="err">:</span> <span class="n">Authenticator</span> <span class="n">nginx</span><span class="p">,</span> <span class="n">Installer</span> <span class="n">nginx</span>
+<span class="n">Renewing</span> <span class="n">an</span> <span class="n">existing</span> <span class="n">certificate</span>
+<span class="n">Performing</span> <span class="n">the</span> <span class="n">following</span> <span class="n">challenges</span><span class="err">:</span>
+<span class="n">http</span><span class="p">-</span><span class="n">01</span> <span class="n">challenge</span> <span class="k">for</span> <span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span>
+<span class="n">Waiting</span> <span class="k">for</span> <span class="n">verification</span><span class="p">...</span>
+<span class="n">Cleaning</span> <span class="n">up</span> <span class="n">challenges</span>
+
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+<span class="n">new</span> <span class="n">certificate</span> <span class="n">deployed</span> <span class="n">with</span> <span class="n">reload</span> <span class="n">of</span> <span class="n">nginx</span> <span class="n">server</span><span class="p">;</span> <span class="n">fullchain</span> <span class="n">is</span>
+<span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">live</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">/</span><span class="n">fullchain</span><span class="p">.</span><span class="n">pem</span>
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+<span class="n">Processing</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">renewal</span><span class="p">/</span><span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">.</span><span class="n">conf</span>
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+<span class="n">Cert</span> <span class="n">not</span> <span class="n">due</span> <span class="k">for</span> <span class="n">renewal</span><span class="p">,</span> <span class="n">but</span> <span class="n">simulating</span> <span class="n">renewal</span> <span class="k">for</span> <span class="n">dry</span> <span class="n">run</span>
+<span class="n">Plugins</span> <span class="n">selected</span><span class="err">:</span> <span class="n">Authenticator</span> <span class="n">nginx</span><span class="p">,</span> <span class="n">Installer</span> <span class="n">nginx</span>
+<span class="n">Renewing</span> <span class="n">an</span> <span class="n">existing</span> <span class="n">certificate</span>
+<span class="n">Performing</span> <span class="n">the</span> <span class="n">following</span> <span class="n">challenges</span><span class="err">:</span>
+<span class="n">http</span><span class="p">-</span><span class="n">01</span> <span class="n">challenge</span> <span class="k">for</span> <span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span>
+<span class="n">Waiting</span> <span class="k">for</span> <span class="n">verification</span><span class="p">...</span>
+<span class="n">Cleaning</span> <span class="n">up</span> <span class="n">challenges</span>
+
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+<span class="n">new</span> <span class="n">certificate</span> <span class="n">deployed</span> <span class="n">with</span> <span class="n">reload</span> <span class="n">of</span> <span class="n">nginx</span> <span class="n">server</span><span class="p">;</span> <span class="n">fullchain</span> <span class="n">is</span>
+<span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">live</span><span class="p">/</span><span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">/</span><span class="n">fullchain</span><span class="p">.</span><span class="n">pem</span>
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+<span class="p">**</span> <span class="n">DRY</span> <span class="n">RUN</span><span class="err">:</span> <span class="n">simulating</span> <span class="s1">&#39;certbot renew&#39;</span> <span class="n">close</span> <span class="n">to</span> <span class="n">cert</span> <span class="n">expiry</span>
+<span class="p">**</span>          <span class="p">(</span><span class="n">The</span> <span class="n">test</span> <span class="n">certificates</span> <span class="n">below</span> <span class="n">have</span> <span class="n">not</span> <span class="n">been</span> <span class="n">saved</span><span class="p">.)</span>
+
+<span class="n">Congratulations</span><span class="p">,</span> <span class="n">all</span> <span class="n">renewals</span> <span class="n">succeeded</span><span class="p">.</span> <span class="n">The</span> <span class="n">following</span> <span class="n">certs</span> <span class="n">have</span> <span class="n">been</span> <span class="n">renewed</span><span class="err">:</span>
+  <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">live</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">/</span><span class="n">fullchain</span><span class="p">.</span><span class="n">pem</span> <span class="p">(</span><span class="n">success</span><span class="p">)</span>
+  <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">/</span><span class="n">live</span><span class="p">/</span><span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">/</span><span class="n">fullchain</span><span class="p">.</span><span class="n">pem</span> <span class="p">(</span><span class="n">success</span><span class="p">)</span>
+<span class="p">**</span> <span class="n">DRY</span> <span class="n">RUN</span><span class="err">:</span> <span class="n">simulating</span> <span class="s1">&#39;certbot renew&#39;</span> <span class="n">close</span> <span class="n">to</span> <span class="n">cert</span> <span class="n">expiry</span>
+<span class="p">**</span>          <span class="p">(</span><span class="n">The</span> <span class="n">test</span> <span class="n">certificates</span> <span class="n">above</span> <span class="n">have</span> <span class="n">not</span> <span class="n">been</span> <span class="n">saved</span><span class="p">.)</span>
+<span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span> <span class="p">-</span>
+
+<span class="n">IMPORTANT</span> <span class="n">NOTES</span><span class="err">:</span>
+ <span class="p">-</span> <span class="n">Your</span> <span class="n">account</span> <span class="n">credentials</span> <span class="n">have</span> <span class="n">been</span> <span class="n">saved</span> <span class="k">in</span> <span class="n">your</span> <span class="n">Certbot</span>
+   <span class="n">configuration</span> <span class="n">directory</span> <span class="n">at</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">letsencrypt</span><span class="p">.</span> <span class="n">You</span> <span class="n">should</span> <span class="n">make</span> <span class="n">a</span>
+   <span class="n">secure</span> <span class="n">backup</span> <span class="n">of</span> <span class="n">this</span> <span class="n">folder</span> <span class="n">now</span><span class="p">.</span> <span class="n">This</span> <span class="n">configuration</span> <span class="n">directory</span> <span class="n">will</span>
+   <span class="n">also</span> <span class="n">contain</span> <span class="n">certificates</span> <span class="n">and</span> <span class="n">private</span> <span class="n">keys</span> <span class="n">obtained</span> <span class="n">by</span> <span class="n">Certbot</span> <span class="n">so</span>
+   <span class="n">making</span> <span class="n">regular</span> <span class="n">backups</span> <span class="n">of</span> <span class="n">this</span> <span class="n">folder</span> <span class="n">is</span> <span class="n">ideal</span><span class="p">.</span>
+
+</code></pre></div><h2 id="6-comprueba-que-las-páginas-son-accesible-por-https-y-visualiza-los-detalles-del-certificado-que-has-creado">6. Comprueba que las páginas son accesible por HTTPS y visualiza los detalles del certificado que has creado.</h2>
+<p><a href="http://www.iesgn05.es">www.iesgn05.es</a></p>
+<ul>
+<li><img src="/images/ovh_https/certificado.png" alt="certificado.png"></li>
+</ul>
+<p><a href="http://www.iesgn05.es/cloud">www.iesgn05.es/cloud</a></p>
+<ul>
+<li><img src="/images/ovh_https/cloud_seguro.png" alt="cloud_seguro.png"></li>
+</ul>
+<p>portal.iesgn05.es</p>
+<ul>
+<li>
+<p><img src="/images/ovh_https/portal_seguro.png" alt="portal_seguro.png"></p>
+</li>
+<li>
+<p><img src="/images/ovh_https/portal_seguro1.png" alt="portal_seguro1.png"></p>
+</li>
+</ul>
+<h2 id="7-modifica-la-configuración-del-cliente-de-nextcloud-para-comprobar-que-sigue-en-funcionamiento-con-https">7. Modifica la configuración del cliente de Nextcloud para comprobar que sigue en funcionamiento con HTTPS.</h2>
+<p>Eliminamos la sincronización existente y añadimos una nueva para que se haga correctamente la redirección a https</p>
+<p><img src="/images/ovh_https/cliente.png" alt="cliente.png"></p>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/https/">https</a><a class="tag" href="/tags/lets-encrypt/">Let’s Encrypt</a><a class="tag" href="/tags/cerbot/">Cerbot</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

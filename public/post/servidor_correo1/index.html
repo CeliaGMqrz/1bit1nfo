@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Servidor de Correos. Postfix (I) </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/servidor_correo1/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Servidor de Correos. Postfix (I)"/>
+<meta name="twitter:description" content="1. Objetivo. Instalación y configuración de un servidor de correos en una máquina de OVH, para el dominio iesgn05."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Servidor de Correos. Postfix (I)</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Fri, Jan 22, 2021 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">4-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p><img src="/images/ovh_correo/postfix.png" alt="postfix.png"></p>
+<h2 id="1-objetivo">1. Objetivo.</h2>
+<p>Instalación y configuración de un servidor de correos en una máquina de OVH, para el dominio <strong>iesgn05</strong>. El nombre del servidor de correo será <strong>mail.iesgn05.es</strong>.</p>
+<p>Configurar un registro <strong>SPF</strong>, que es un mecanismo de autenticación que mediante un registro DNS de tipo TXT describe las direcciones IPs y nombres DNS autorizados a enviar correo @DOMINIO.</p>
+<p>Suponiendo que el servidor de correo se llama <strong>mail.iesgn05.es</strong>, crearemos un registro MX siendo este <strong>mail.iesgn05.es</strong>, de la siguiente forma en el panel de ovh.</p>
+<p><img src="/images/ovh_correo/registromx1.png" alt="registromx.png"></p>
+<p>Además <strong>mail</strong> será un <strong>CNAME</strong> de kiara.iesgn05.es</p>
+<p><img src="/images/ovh_correo/cname.png" alt="cname.png"></p>
+<h2 id="2-gestión-de-correos-desde-el-servidor">2. Gestión de correos desde el servidor</h2>
+<h3 id="21-instalación-del-servidor-de-correos">2.1. Instalación del servidor de correos</h3>
+<p>Para instalar el servidor de correos vamos a descargar e instalar el paquete
+<strong>postfix</strong>  y la utilidad <strong>bsd-mailx</strong>  para leer los correos.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt-get install postfix bsd-mailx
+</code></pre></div><p>Cuando instalemos postfix, dejaremos la configuración por defecto por el momento, dejando la opción &lsquo;Internet Site&rsquo;, le indicaremos que el dominio de nuestro correo será <strong>iesgn05.es</strong>. Este dominio se puede configurar en el fichero <strong>/etc/mailname</strong>.</p>
+<h3 id="22-enviar-un-correo-de-prueba-desde-el-servidor-de-correos-al-exterior">2.2. Enviar un correo de prueba desde el servidor de correos al exterior</h3>
+<p><strong>Tarea 1</strong>: Documenta una prueba de funcionamiento, donde envíes desde tu servidor local al exterior. Muestra el log donde se vea el envío. Muestra el correo que has recibido. Muestra el registro SPF.</p>
+<ul>
+<li>Mandamos el correo de prueba:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@kiara:~$ mail cgarmai95@gmail.com
+Subject: Prueba Postfix
+Hola esto es una prueba para la tarea de postfix
+Cc: 
+You have mail in /var/mail/debian
+</code></pre></div><ul>
+<li>Comprobamos que nos llega el correo</li>
+</ul>
+<p><img src="/images/ovh_correo/correo1.png" alt="correo1.png"></p>
+<ul>
+<li>Mostramos el log</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@kiara:~$ sudo tail  /var/log/mail.log
+Feb  <span class="m">2</span> 12:49:27 kiara postfix/smtpd<span class="o">[</span>1636<span class="o">]</span>: connect from unknown<span class="o">[</span>193.56.29.44<span class="o">]</span>
+Feb  <span class="m">2</span> 12:49:27 kiara postfix/smtpd<span class="o">[</span>1636<span class="o">]</span>: disconnect from unknown<span class="o">[</span>193.56.29.44<span class="o">]</span> <span class="nv">ehlo</span><span class="o">=</span><span class="m">1</span> <span class="nv">auth</span><span class="o">=</span>0/1 <span class="nv">rset</span><span class="o">=</span><span class="m">1</span> <span class="nv">quit</span><span class="o">=</span><span class="m">1</span> <span class="nv">commands</span><span class="o">=</span>3/4
+Feb  <span class="m">2</span> 12:52:47 kiara postfix/anvil<span class="o">[</span>1638<span class="o">]</span>: statistics: max connection rate 1/60s <span class="k">for</span> <span class="o">(</span>smtp:209.85.167.181<span class="o">)</span> at Feb  <span class="m">2</span> 12:48:57
+Feb  <span class="m">2</span> 12:52:47 kiara postfix/anvil<span class="o">[</span>1638<span class="o">]</span>: statistics: max connection count <span class="m">1</span> <span class="k">for</span> <span class="o">(</span>smtp:209.85.167.181<span class="o">)</span> at Feb  <span class="m">2</span> 12:48:57
+Feb  <span class="m">2</span> 12:52:47 kiara postfix/anvil<span class="o">[</span>1638<span class="o">]</span>: statistics: max cache size <span class="m">2</span> at Feb  <span class="m">2</span> 12:49:27
+Feb  <span class="m">2</span> 12:57:45 kiara postfix/pickup<span class="o">[</span>1551<span class="o">]</span>: C4F0661F15: <span class="nv">uid</span><span class="o">=</span><span class="m">1000</span> <span class="nv">from</span><span class="o">=</span>&lt;debian&gt;
+Feb  <span class="m">2</span> 12:57:45 kiara postfix/cleanup<span class="o">[</span>1696<span class="o">]</span>: C4F0661F15: message-id<span class="o">=</span>&lt;20210202125745.C4F0661F15@kiara.iesgn05.es&gt;
+Feb  <span class="m">2</span> 12:57:45 kiara postfix/qmgr<span class="o">[</span>1552<span class="o">]</span>: C4F0661F15: <span class="nv">from</span><span class="o">=</span>&lt;debian@iesgn05.es&gt;, <span class="nv">size</span><span class="o">=</span>448, <span class="nv">nrcpt</span><span class="o">=</span><span class="m">1</span> <span class="o">(</span>queue active<span class="o">)</span>
+Feb  <span class="m">2</span> 12:57:46 kiara postfix/smtp<span class="o">[</span>1698<span class="o">]</span>: C4F0661F15: <span class="nv">to</span><span class="o">=</span>&lt;cgarmai95@gmail.com&gt;, <span class="nv">relay</span><span class="o">=</span>gmail-smtp-in.l.google.com<span class="o">[</span>64.233.167.27<span class="o">]</span>:25, <span class="nv">delay</span><span class="o">=</span>0.81, <span class="nv">delays</span><span class="o">=</span>0.02/0.01/0.4/0.39, <span class="nv">dsn</span><span class="o">=</span>2.0.0, <span class="nv">status</span><span class="o">=</span>sent <span class="o">(</span><span class="m">250</span> 2.0.0 OK  <span class="m">1612270666</span> y16si2203772wmi.219 - gsmtp<span class="o">)</span>
+Feb  <span class="m">2</span> 12:57:46 kiara postfix/qmgr<span class="o">[</span>1552<span class="o">]</span>: C4F0661F15: removed
+
+</code></pre></div><ul>
+<li>Mostrar registro SPF</li>
+</ul>
+<p><img src="/images/ovh_correo/spf1.png" alt="spf1.png"></p>
+<p><img src="/images/ovh_correo/spf2.png" alt="spf2.png"></p>
+<p><img src="/images/ovh_correo/spf3.png" alt="spf3.png"></p>
+<h3 id="22-enviar-un-correo-de-prueba-del-exterior-al-servidor-de-correos">2.2. Enviar un correo de prueba del exterior al servidor de correos</h3>
+<p><strong>Tarea 2</strong>: Documenta una prueba de funcionamiento, donde envíes un correo desde el exterior (gmail, hotmail,…) a tu servidor local. Muestra el log donde se vea el envío. Muestra cómo has leído el correo. Muestra el registro MX de tu dominio.</p>
+<ul>
+<li>Enviamos el correo de prueba</li>
+</ul>
+<p><img src="/images/ovh_correo/correo3.png" alt="correo3.png"></p>
+<ul>
+<li>Mostramos el log del envio</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">MIME-Version: 1.0
+Date: Tue, <span class="m">2</span> Feb <span class="m">2021</span> 14:04:59 +0100
+Message-ID: &lt;CA+p9fxqyBkUsnr5Yt6Rn-SXZBbtxLCkgnfYPF7cLijtyuW6rfA@mail.gmail.com&gt;
+Subject: Prueba desde gmail a kiara
+From: <span class="s2">&#34;Celia García Márquez&#34;</span> &lt;cgarmai95@gmail.com&gt;
+To: Debian &lt;debian@iesgn05.es&gt;
+Content-Type: multipart/alternative<span class="p">;</span> <span class="nv">boundary</span><span class="o">=</span><span class="s2">&#34;0000000000002f3ef505ba5a1eb0&#34;</span>
+
+--0000000000002f3ef505ba5a1eb0
+Content-Type: text/plain<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span><span class="s2">&#34;UTF-8&#34;</span>
+Content-Transfer-Encoding: quoted-printable
+
+Hola que tal
+--<span class="o">=</span><span class="m">20</span>
+*Atte. Celia <span class="nv">Garc</span><span class="o">=</span><span class="nv">C3</span><span class="o">=</span>ADa <span class="nv">M</span><span class="o">=</span><span class="nv">C3</span><span class="o">=</span>A1rquez*
+
+--0000000000002f3ef505ba5a1eb0
+Content-Type: text/html<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span><span class="s2">&#34;UTF-8&#34;</span>
+Content-Transfer-Encoding: quoted-printable
+
+&lt;div <span class="nv">dir</span><span class="o">=</span>3D<span class="s2">&#34;ltr&#34;</span>&gt;&lt;br <span class="nv">clear</span><span class="o">=</span>3D<span class="s2">&#34;all&#34;</span>&gt;&lt;div&gt;Hola que tal&lt;/div&gt;-- &lt;br&gt;&lt;div <span class="nv">dir</span><span class="o">=</span>
+<span class="o">=</span>3D<span class="s2">&#34;ltr&#34;</span> <span class="nv">class</span><span class="o">=</span>3D<span class="s2">&#34;gmail_signature&#34;</span> data-smartmail<span class="o">=</span>3D<span class="s2">&#34;gmail_signature&#34;</span>&gt;&lt;<span class="nv">div</span> <span class="o">=</span>
+<span class="nv">dir</span><span class="o">=</span>3D<span class="s2">&#34;ltr&#34;</span>&gt;&lt;i&gt;Atte. Celia <span class="nv">Garc</span><span class="o">=</span><span class="nv">C3</span><span class="o">=</span>ADa <span class="nv">M</span><span class="o">=</span><span class="nv">C3</span><span class="o">=</span>A1rquez&lt;/i&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+
+--0000000000002f3ef505ba5a1eb0--
+</code></pre></div><ul>
+<li>Comprobamos que nos ha llegado el correo, vemos el mendaje con la utilidad <code>mail</code></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">Message 2:
+From cgarmai95@gmail.com  Tue Feb  <span class="m">2</span> 13:05:11 <span class="m">2021</span>
+X-Original-To: debian@iesgn05.es
+DKIM-Signature: <span class="nv">v</span><span class="o">=</span>1<span class="p">;</span> <span class="nv">a</span><span class="o">=</span>rsa-sha256<span class="p">;</span> <span class="nv">c</span><span class="o">=</span>relaxed/relaxed<span class="p">;</span>
+        <span class="nv">d</span><span class="o">=</span>gmail.com<span class="p">;</span> <span class="nv">s</span><span class="o">=</span>20161025<span class="p">;</span>
+        <span class="nv">h</span><span class="o">=</span>mime-version:from:date:message-id:subject:to<span class="p">;</span>
+        <span class="nv">bh</span><span class="o">=</span>maUT1zl1aFw8XLXYFAOZU0IOOc11ZQ/6jx4DBNw3yLE<span class="o">=</span><span class="p">;</span>
+        <span class="nv">b</span><span class="o">=</span>bW4Oc6T+/mxK0rs2yU1nsJOMnYFk9k6aZNbW0OYjbNhmojxgq/KRhilSDcXwd2uNuD
+         XD5cgKurDhiEN/KBxAQ02HebFwBkpXXAqTHaKBq93tbVEVeiKwP23zmdIyC15F5d5DTZ
+         e3Ldy0SgMb2MBVBZbCxBaRhEt29GhWZ3xy8iNQxDvmUgh5uuJWkSRvyhVj5LlxVrNojY
+         mRbTeHrfiGDBis12GNcjBrMqFI3iT7iv9WWkZSb41V/UzcVsH7y+Eszw38R+2qIF32DK
+         CCY846MJ7j1w2dGwXiGFKuU6sa9rm3KiQVFa4SHqkQyLYtPpHGzbdj3HS2/bCUnVYyhm
+         <span class="nv">g03A</span><span class="o">==</span>
+X-Google-DKIM-Signature: <span class="nv">v</span><span class="o">=</span>1<span class="p">;</span> <span class="nv">a</span><span class="o">=</span>rsa-sha256<span class="p">;</span> <span class="nv">c</span><span class="o">=</span>relaxed/relaxed<span class="p">;</span>
+        <span class="nv">d</span><span class="o">=</span>1e100.net<span class="p">;</span> <span class="nv">s</span><span class="o">=</span>20161025<span class="p">;</span>
+        <span class="nv">h</span><span class="o">=</span>x-gm-message-state:mime-version:from📅message-id:subject:to<span class="p">;</span>
+        <span class="nv">bh</span><span class="o">=</span>maUT1zl1aFw8XLXYFAOZU0IOOc11ZQ/6jx4DBNw3yLE<span class="o">=</span><span class="p">;</span>
+        <span class="nv">b</span><span class="o">=</span>ogIOae0bD2FjhHW9NPoLTLB/9rCSViFOYYqwPlzQyAlWnr6eR08nZw8GGYH4YlTa29
+         HBLvcAspZ2V+yKp2lqgYFl3ss0InMVOeLKYYFsaNhDxgVNfTNs6woifu867g09UN68Lp
+         gs0rCoKPIfBlrhlqSbGGOQtLH84SEuG1N+34e5K2JIidrwywJ6BcGP4oZ2DEl3kv0Ix1
+         ExJN5ahfGJF2FQrxzMyYwE5Cc0cZ8KOHeGkN6dx92fAxFUZr4+0moADSOCc/81PWoIpP
+         /6z8AxxhKdtGPM9u8fH3gdnb/86Q1Gr/lTZkLAM7errvBY6Zc9Ltsih2kqrDRAjyzaoi
+         <span class="nv">CCug</span><span class="o">==</span>
+X-Gm-Message-State: AOAM532/qsslGhRD+9WipCJyDD31ZwFieJqoUCOw/ubHeX28zBYqpVMy
+        QU/VpMTn38JwS/iKo/mw8oQZhZjaGVJYwbGNrQ5A/UMNqi//dw<span class="o">==</span>
+X-Google-Smtp-Source: ABdhPJzX7CidzRiM76WU6nBIX72hHFyIQlQcSlWOmle/Bp7QIbR/J3P1bI1aFSHIV7GhKS6mi+SY+lWRrS9W0ahnXtk<span class="o">=</span>
+X-Received: by 2002:a05:6808:904:: with SMTP id w4mr2662510oih.160.1612271110121<span class="p">;</span>
+ Tue, <span class="m">02</span> Feb <span class="m">2021</span> 05:05:10 -0800 <span class="o">(</span>PST<span class="o">)</span>
+MIME-Version: 1.0
+From: <span class="o">=</span>?UTF-8?Q?Celia_Garc<span class="o">=</span><span class="nv">C3</span><span class="o">=</span><span class="nv">ADa_M</span><span class="o">=</span><span class="nv">C3</span><span class="o">=</span>A1rquez?<span class="o">=</span> &lt;cgarmai95@gmail.com&gt;
+Date: Tue, <span class="m">2</span> Feb <span class="m">2021</span> 14:04:59 +0100
+Subject: Prueba desde gmail a kiara
+To: Debian &lt;debian@iesgn05.es&gt;
+Content-Type: multipart/alternative<span class="p">;</span> <span class="nv">boundary</span><span class="o">=</span><span class="s2">&#34;000000000000ccecca05ba5a1e91&#34;</span>
+
+--000000000000ccecca05ba5a1e91
+Content-Type: text/plain<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span><span class="s2">&#34;UTF-8&#34;</span>
+Content-Transfer-Encoding: quoted-printable
+
+Hola que tal
+--<span class="o">=</span><span class="m">20</span>
+*Atte. Celia <span class="nv">Garc</span><span class="o">=</span><span class="nv">C3</span><span class="o">=</span>ADa <span class="nv">M</span><span class="o">=</span><span class="nv">C3</span><span class="o">=</span>A1rquez*
+
+--000000000000ccecca05ba5a1e91
+Content-Type: text/html<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span><span class="s2">&#34;UTF-8&#34;</span>
+Content-Transfer-Encoding: quoted-printable
+
+&lt;div <span class="nv">dir</span><span class="o">=</span>3D<span class="s2">&#34;ltr&#34;</span>&gt;&lt;br <span class="nv">clear</span><span class="o">=</span>3D<span class="s2">&#34;all&#34;</span>&gt;&lt;div&gt;Hola que tal&lt;/div&gt;-- &lt;br&gt;&lt;div <span class="nv">dir</span><span class="o">=</span>
+<span class="o">=</span>3D<span class="s2">&#34;ltr&#34;</span> <span class="nv">class</span><span class="o">=</span>3D<span class="s2">&#34;gmail_signature&#34;</span> data-smartmail<span class="o">=</span>3D<span class="s2">&#34;gmail_signature&#34;</span>&gt;&lt;<span class="nv">div</span> <span class="o">=</span>
+<span class="nv">dir</span><span class="o">=</span>3D<span class="s2">&#34;ltr&#34;</span>&gt;&lt;i&gt;Atte. Celia <span class="nv">Garc</span><span class="o">=</span><span class="nv">C3</span><span class="o">=</span>ADa <span class="nv">M</span><span class="o">=</span><span class="nv">C3</span><span class="o">=</span>A1rquez&lt;/i&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+
+--000000000000ccecca05ba5a1e91--
+</code></pre></div><ul>
+<li>Registro MX de mi dominio</li>
+</ul>
+<p><img src="/images/ovh_correo/correo4.png" alt="correo4.png"></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~$ dig mx gmail.com
+
+<span class="p">;</span> &lt;&lt;&gt;&gt; DiG 9.11.5-P4-5.1+deb10u2-Debian &lt;&lt;&gt;&gt; mx gmail.com
+<span class="p">;;</span> global options: +cmd
+<span class="p">;;</span> Got answer:
+<span class="p">;;</span> -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: <span class="m">7515</span>
+<span class="p">;;</span> flags: qr rd ra<span class="p">;</span> QUERY: 1, ANSWER: 5, AUTHORITY: 4, ADDITIONAL: <span class="m">9</span>
+
+<span class="p">;;</span> OPT PSEUDOSECTION:
+<span class="p">;</span> EDNS: version: 0, flags:<span class="p">;</span> udp: <span class="m">4096</span>
+<span class="p">;</span> COOKIE: 0f190ff7eb9f031ae3a4a3c160194ecd3909e7e1206a7f73 <span class="o">(</span>good<span class="o">)</span>
+<span class="p">;;</span> QUESTION SECTION:
+<span class="p">;</span>gmail.com.			IN	MX
+
+<span class="p">;;</span> ANSWER SECTION:
+gmail.com.		1928	IN	MX	<span class="m">40</span> alt4.gmail-smtp-in.l.google.com.
+gmail.com.		1928	IN	MX	<span class="m">30</span> alt3.gmail-smtp-in.l.google.com.
+gmail.com.		1928	IN	MX	<span class="m">20</span> alt2.gmail-smtp-in.l.google.com.
+gmail.com.		1928	IN	MX	<span class="m">5</span> gmail-smtp-in.l.google.com.
+gmail.com.		1928	IN	MX	<span class="m">10</span> alt1.gmail-smtp-in.l.google.com.
+
+<span class="p">;;</span> AUTHORITY SECTION:
+gmail.com.		15078	IN	NS	ns1.google.com.
+gmail.com.		15078	IN	NS	ns3.google.com.
+gmail.com.		15078	IN	NS	ns2.google.com.
+gmail.com.		15078	IN	NS	ns4.google.com.
+
+<span class="p">;;</span> ADDITIONAL SECTION:
+ns1.google.com.		971	IN	A	216.239.32.10
+ns2.google.com.		971	IN	A	216.239.34.10
+ns3.google.com.		971	IN	A	216.239.36.10
+ns4.google.com.		971	IN	A	216.239.38.10
+ns1.google.com.		971	IN	AAAA	2001:4860:4802:32::a
+ns2.google.com.		971	IN	AAAA	2001:4860:4802:34::a
+ns3.google.com.		971	IN	AAAA	2001:4860:4802:36::a
+ns4.google.com.		971	IN	AAAA	2001:4860:4802:38::a
+
+<span class="p">;;</span> Query time: <span class="m">1</span> msec
+<span class="p">;;</span> SERVER: 192.168.202.2#53<span class="o">(</span>192.168.202.2<span class="o">)</span>
+<span class="p">;;</span> WHEN: mar feb <span class="m">02</span> 14:08:29 CET <span class="m">2021</span>
+<span class="p">;;</span> MSG SIZE  rcvd: <span class="m">437</span>
+
+</code></pre></div></div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/servidor-correos/">servidor correos</a><a class="tag" href="/tags/spf/">spf</a><a class="tag" href="/tags/mailx/">mailx</a><a class="tag" href="/tags/postfix/">postfix</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>autoridad certificadora on 1bit1nfo</title>
+    <link>https://1bit1nfo.netlify.app/tags/autoridad-certificadora/</link>
+    <description>Recent content in autoridad certificadora on 1bit1nfo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 19 Nov 2020 18:51:45 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/autoridad-certificadora/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Crear Autoridad Certificadora y Certificado autofirmado</title>
+      <link>https://1bit1nfo.netlify.app/post/entidadca/</link>
+      <pubDate>Thu, 19 Nov 2020 18:51:45 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/post/entidadca/</guid>
+      <description>HTTPS / SSL Tarea 1: Certificado autofirmado PARTE 1 OBJETIVO:</description>
+    </item>
+    
+  </channel>
+</rss>

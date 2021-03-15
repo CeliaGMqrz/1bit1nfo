@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Actualizacion de Centos7 a Centos8 </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/actualizacion_centos/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Actualizacion de Centos7 a Centos8"/>
+<meta name="twitter:description" content="Objetivo: Actualizar CentOS 7 a CentOS 8 garantizando que todos los servicios previos continúen funcionando:"/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Actualizacion de Centos7 a Centos8</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Mon, Nov 30, 2020 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">2-minute read</span>
+                    </div>
+                
+            </div>
+
+            <h3 id="objetivo">Objetivo:</h3>
+<p>Actualizar CentOS 7 a CentOS 8 garantizando que todos los servicios previos continúen funcionando:</p>
+<hr>
+<p>Actualmente tenemos la versión 7.9.2009 de Centos</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">root</span><span class="nv">@quijote</span> <span class="n">centos</span><span class="p">]</span><span class="c"># cat /etc/centos-release</span>
+<span class="n">CentOS</span> <span class="n">Linux</span> <span class="n">release</span> <span class="n">7</span><span class="p">.</span><span class="n">9</span><span class="p">.</span><span class="n">2009</span> <span class="p">(</span><span class="n">Core</span><span class="p">)</span>
+</code></pre></div><p>Vamos a proceder a actualizar Centos siguiendo varios pasos.</p>
+<h3 id="preparar-el-sistema-para-su-actualización">Preparar el sistema para su actualización</h3>
+<p>Habilitamos el repositorio de &lsquo;epel-release&rsquo;</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">yum</span> <span class="n">install</span> <span class="n">epel-release</span> <span class="n">-y</span>
+</code></pre></div><p>Necesitaremos instalar las herramientas para el gestor de paquetes YUM</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">yum</span> <span class="n">install</span> <span class="n">yum-utils</span> <span class="n">-y</span>
+</code></pre></div><p>Resolvemos los paquetes RPM, de forma que, rpmconf se encarga de buscar los archivos .rpmnew, .rpmsave y .rpmorigfiles y indicar si mantenemos la versión actual o no.</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">yum</span> <span class="n">install</span> <span class="n">rpmconf</span> <span class="n">-y</span>
+<span class="n">rpmconf</span> <span class="n">-a</span>
+</code></pre></div><p>Limpiamos los paquetes que no necesitamos</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">package-cleanup</span> <span class="p">-</span><span class="n">-leaves</span>
+<span class="n">package-cleanup</span> <span class="p">-</span><span class="n">-orphans</span>
+</code></pre></div><h3 id="gestor-de-paqutes-dnf">Gestor de paqutes: DNF</h3>
+<p>DNF es el gestor de paquetes que sustituye a YUM, y necesitamos instalarlo para nuestra nueva versión.</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">yum</span> <span class="n">install</span> <span class="n">dnf</span>
+</code></pre></div><p>Lo mejor es desinstalar YUM, no entran en conflicto si se instalan los dos pero no es necesario.</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dnf</span> <span class="n">-y</span> <span class="n">remove</span> <span class="n">yum</span> <span class="n">yum-metadata-parser</span>
+<span class="nb">rm </span><span class="n">-Rf</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">yum</span>
+</code></pre></div><h3 id="actualizar-versión-de-centos-7-a-centos-8">Actualizar versión de Centos 7 a Centos 8</h3>
+<p>Actualizamos el sistema</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dnf</span> <span class="n">upgrade</span> <span class="n">-y</span>
+</code></pre></div><h3 id="habilitar-repositorios-de-centos-8">Habilitar repositorios de Centos 8</h3>
+<p>Habilitamos los repositorios propios de Centos 8</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dnf</span> <span class="n">install</span> <span class="p">\</span>
+<span class="n">http</span><span class="err">:</span><span class="p">//</span><span class="n">mirror</span><span class="p">.</span><span class="n">centos</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">centos</span><span class="p">/</span><span class="n">8</span><span class="p">/</span><span class="n">BaseOS</span><span class="p">/</span><span class="n">x86_64</span><span class="p">/</span><span class="n">os</span><span class="p">/</span><span class="n">Packages</span><span class="p">/</span><span class="n">centos-repos</span><span class="p">-</span><span class="n">8</span><span class="p">.</span><span class="n">2</span><span class="p">-</span><span class="n">2</span><span class="p">.</span><span class="n">2004</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">el8</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span> <span class="p">\</span>
+<span class="n">http</span><span class="err">:</span><span class="p">//</span><span class="n">mirror</span><span class="p">.</span><span class="n">centos</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">centos</span><span class="p">/</span><span class="n">8</span><span class="p">/</span><span class="n">BaseOS</span><span class="p">/</span><span class="n">x86_64</span><span class="p">/</span><span class="n">os</span><span class="p">/</span><span class="n">Packages</span><span class="p">/</span><span class="n">centos-release</span><span class="p">-</span><span class="n">8</span><span class="p">.</span><span class="n">2</span><span class="p">-</span><span class="n">2</span><span class="p">.</span><span class="n">2004</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">el8</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span> <span class="p">\</span>
+<span class="n">http</span><span class="err">:</span><span class="p">//</span><span class="n">mirror</span><span class="p">.</span><span class="n">centos</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">centos</span><span class="p">/</span><span class="n">8</span><span class="p">/</span><span class="n">BaseOS</span><span class="p">/</span><span class="n">x86_64</span><span class="p">/</span><span class="n">os</span><span class="p">/</span><span class="n">Packages</span><span class="p">/</span><span class="n">centos-gpg-keys</span><span class="p">-</span><span class="n">8</span><span class="p">.</span><span class="n">2</span><span class="p">-</span><span class="n">2</span><span class="p">.</span><span class="n">2004</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">el8</span><span class="p">.</span><span class="n">noarch</span><span class="p">.</span><span class="n">rpm</span>
+
+</code></pre></div><p>Actualiamos repositorios</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dnf</span> <span class="n">upgrade</span> <span class="n">-y</span> <span class="n">epel-release</span>
+</code></pre></div><p>Limpiamos la caché y eliminamos los archivos temporales</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dnf</span> <span class="n">makecache</span>
+<span class="n">dnf</span> <span class="n">clean</span> <span class="n">all</span>
+</code></pre></div><p>Eliminamos las versiones de kernel que ya no nos sirven</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">rpm</span> <span class="n">-e</span> <span class="p">`</span><span class="n">rpm</span> <span class="n">-q</span> <span class="n">kernel</span><span class="p">`</span>
+</code></pre></div><p>Eliminamos los paquetes conflictivos</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">rpm</span> <span class="n">-e</span> <span class="p">-</span><span class="n">-nodeps</span> <span class="n">sysvinit-tools</span>
+
+</code></pre></div><p>Ahora <strong>actualizamos todo el sistema</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dnf</span> <span class="n">-y</span> <span class="p">-</span><span class="n">-releasever</span><span class="p">=</span><span class="n">8</span> <span class="p">-</span><span class="n">-allowerasing</span> <span class="p">-</span><span class="n">-setopt</span><span class="p">=</span><span class="n">deltarpm</span><span class="p">=</span><span class="n">false</span> <span class="n">distro-sync</span>
+</code></pre></div><p>Es posible que nos encontremos con paquetes conflictivos. En mi caso he tenido que resolver estos conflictos de esta forma.</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">rpm</span> <span class="n">-e</span> <span class="p">-</span><span class="n">-justdb</span> <span class="n">python36-rpmconf</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">22</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">el7</span><span class="p">.</span><span class="n">noarch</span> <span class="n">rpmconf</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">22</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">el7</span><span class="p">.</span><span class="n">noarch</span>
+<span class="n">rpm</span> <span class="n">-e</span> <span class="p">-</span><span class="n">-justdb</span> <span class="p">-</span><span class="n">-nodeps</span> <span class="n">python3-setuptools</span><span class="p">-</span><span class="n">39</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">0</span><span class="p">-</span><span class="n">10</span><span class="p">.</span><span class="n">el7</span><span class="p">.</span><span class="n">noarch</span>
+<span class="n">rpm</span> <span class="n">-e</span> <span class="p">-</span><span class="n">-justdb</span> <span class="p">-</span><span class="n">-nodeps</span> <span class="n">python3-pip</span><span class="p">-</span><span class="n">9</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">3</span><span class="p">-</span><span class="n">7</span><span class="p">.</span><span class="n">el7_7</span><span class="p">.</span><span class="n">noarch</span>
+<span class="n">rpm</span> <span class="n">-e</span> <span class="p">-</span><span class="n">-justdb</span> <span class="p">-</span><span class="n">-nodeps</span> <span class="n">vim-minimal</span>
+
+<span class="n">dnf</span> <span class="n">upgrade</span> <span class="p">-</span><span class="n">-best</span> <span class="p">-</span><span class="n">-allowerasing</span> <span class="n">rpm</span>
+</code></pre></div><p>Volvemos a ejecutar el mismo proceso que antes, y no deberia de darnos más conflictos</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dnf</span> <span class="n">-y</span> <span class="p">-</span><span class="n">-releasever</span><span class="p">=</span><span class="n">8</span> <span class="p">-</span><span class="n">-allowerasing</span> <span class="p">-</span><span class="n">-setopt</span><span class="p">=</span><span class="n">deltarpm</span><span class="p">=</span><span class="n">false</span> <span class="n">distro-sync</span>
+</code></pre></div><h3 id="versión-de-kernel-y-paquetes-mínimos">Versión de kernel y paquetes mínimos</h3>
+<p>Instalamos el último kernel de Centos 8</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dnf</span> <span class="n">install</span> <span class="n">-y</span> <span class="n">kernel-core</span>
+</code></pre></div><p>Instalamos los paquetes mínimos del sistema</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dnf</span> <span class="n">-y</span> <span class="n">groupupdate</span> <span class="s2">&#34;Core&#34;</span> <span class="s2">&#34;Minimal Install&#34;</span> <span class="p">\</span>
+<span class="p">-</span><span class="n">-allowerasing</span> <span class="p">-</span><span class="n">-skip-broken</span>
+</code></pre></div><p>Reiniciamos el sistema</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">reboot</span>
+</code></pre></div><p>Comprobamos que se ha actualizado correctamente y tiene la ultima versión de kernel a día de hoy</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">centos</span><span class="nv">@quijote</span> <span class="p">~]$</span> <span class="nb">cat </span><span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">redhat-release</span>
+<span class="n">CentOS</span> <span class="n">Linux</span> <span class="n">release</span> <span class="n">8</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">2004</span> <span class="p">(</span><span class="n">Core</span><span class="p">)</span> 
+<span class="p">[</span><span class="n">centos</span><span class="nv">@quijote</span> <span class="p">~]$</span> <span class="n">uname</span> <span class="n">-ro</span>
+<span class="n">4</span><span class="p">.</span><span class="n">18</span><span class="p">.</span><span class="n">0</span><span class="p">-</span><span class="n">193</span><span class="p">.</span><span class="n">28</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">el8_2</span><span class="p">.</span><span class="n">x86_64</span> <span class="n">GNU</span><span class="p">/</span><span class="n">Linux</span>
+
+</code></pre></div></div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/upgrade-centos/">upgrade centos</a><a class="tag" href="/tags/centos7/">centos7</a><a class="tag" href="/tags/centos8/">centos8</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

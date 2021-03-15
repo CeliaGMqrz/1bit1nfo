@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Instalar Openstackclient y deshabilitar la seguridad de puertos </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/openstackclient/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Instalar Openstackclient y deshabilitar la seguridad de puertos"/>
+<meta name="twitter:description" content="Necesitamos instalar Openstackclient, para ello lo vamos hacer desde un entorno virtual para no comprometer la paquetería de nuestro sistema, ya que no es necesario para nuestro sistema actualmente."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Instalar Openstackclient y deshabilitar la seguridad de puertos</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Thu, Nov 19, 2020 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">5-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>Necesitamos instalar <em>Openstackclient</em>, para ello lo vamos hacer desde un entorno virtual para no comprometer la paquetería de nuestro sistema, ya que no es necesario para nuestro sistema actualmente.</p>
+<hr>
+<p>Recordamos como creamos un <strong>entorno virtual</strong> con <em>venv</em></p>
+<ul>
+<li>Instalamos el paquete necesario para instalar módulos:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apt-get install python3-venv
+</code></pre></div><ul>
+<li>Desde el usuario sin privilegios podemos crear un entorno virtual con python3:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">python3 -m venv entorno
+</code></pre></div><ul>
+<li>Activar y desactivar el entorno</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">source</span> entorno/bin/activate
+<span class="o">(</span>entorno<span class="o">)</span>$ deactivate
+</code></pre></div><hr>
+<p>Usando el entorno virtual creado previamente, vamos a instalar el paquete Openstackclient (<em>necesitaremos la libreria de python3</em>).</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt install python3-dev
+pip install python-openstackclient
+</code></pre></div><p>Nos vamos al &lsquo;<em>Acceso y Seguridad</em>&rsquo; del cloud y descargamos el fichero con las variables de entorno de nuestro proyecto. Este fichero tiene una extensión sh. Este script se ejecuta desde nuestro entorno virtual en el directorio del mismo. Pero antes deberemos de editar el fichero proporcionando la ruta del certificado del IES, añadiendo las siguiente línea (la ruta puede variar dependiendo de donde tengamos el certificado).</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">export</span> <span class="n">OS_CACERT</span><span class="p">=/</span><span class="n">usr</span><span class="p">/</span><span class="n">local</span><span class="p">/</span><span class="n">share</span><span class="p">/</span><span class="n">ca-certificates</span><span class="p">/</span><span class="n">gonzalonazareno</span><span class="p">.</span><span class="n">crt</span>
+</code></pre></div><p>A tener en cuenta:</p>
+<ul>
+<li>Deberemos de tener en nuestro fichero /etc/hosts bien configurada la ip con el nombre del cloud, siendo este:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">(</span><span class="n">entorno</span><span class="p">)</span> <span class="n">celiagm</span><span class="nv">@debian</span><span class="err">:</span><span class="p">~/</span><span class="n">venv</span><span class="p">/</span><span class="n">entorno</span><span class="p">$</span> <span class="n">sudo</span> <span class="n">nano</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">hosts</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">222</span><span class="p">.</span><span class="n">1</span>    <span class="n">jupiter</span><span class="p">.</span><span class="n">gonzalonazareno</span><span class="p">.</span><span class="n">org</span>
+</code></pre></div><ul>
+<li>Como hemos dicho anteriormente el script debe estar ubicado dentro de nuestro entorno virtual. Lo ejecutamos con <strong>source</strong> y le pasamos la contraseña</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell">
+<span class="p">(</span><span class="n">entorno</span><span class="p">)</span> <span class="n">celiagm</span><span class="nv">@debian</span><span class="err">:</span><span class="p">~/</span><span class="n">venv</span><span class="p">/</span><span class="n">entorno</span><span class="p">$</span> <span class="n">source</span> <span class="n">Proyecto</span><span class="p">\</span> <span class="n">de</span><span class="p">\</span> <span class="n">celia</span><span class="p">.</span><span class="n">garcia-openrc</span><span class="p">.</span><span class="n">sh</span>
+<span class="n">Please</span> <span class="n">enter</span> <span class="n">your</span> <span class="n">OpenStack</span> <span class="n">Password</span> <span class="k">for</span> <span class="n">project</span> <span class="n">Proyecto</span> <span class="n">de</span> <span class="n">celia</span><span class="p">.</span><span class="n">garcia</span> <span class="n">as</span> <span class="n">user</span> <span class="n">celia</span><span class="p">.</span><span class="n">garcia</span><span class="err">:</span> 
+</code></pre></div><ul>
+<li>Ahora listamos los servidores que tenemos en nuestro proyecto</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">$</span> <span class="n">openstack</span> <span class="n">server</span> <span class="n">list</span>
+
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell">
+<span class="p">(</span><span class="n">entorno</span><span class="p">)</span> <span class="n">celiagm</span><span class="nv">@debian</span><span class="err">:</span><span class="p">~/</span><span class="n">venv</span><span class="p">/</span><span class="n">entorno</span><span class="p">$</span> <span class="n">openstack</span> <span class="n">server</span> <span class="n">list</span>
+<span class="p">+--------------------------------------+----------------+--------+---------------------------------------------------------------------+--------------------------------+---------+</span>
+<span class="p">|</span> <span class="n">ID</span>                                   <span class="p">|</span> <span class="n">Name</span>           <span class="p">|</span> <span class="n">Status</span> <span class="p">|</span> <span class="n">Networks</span>                                                            <span class="p">|</span> <span class="n">Image</span>                          <span class="p">|</span> <span class="n">Flavor</span>  <span class="p">|</span>
+<span class="p">+--------------------------------------+----------------+--------+---------------------------------------------------------------------+--------------------------------+---------+</span>
+<span class="p">|</span> <span class="n">c39a7cc7-f485</span><span class="p">-</span><span class="n">4617-a62f-acdd39a19682</span> <span class="p">|</span> <span class="n">Dulcinea</span>       <span class="p">|</span> <span class="n">ACTIVE</span> <span class="p">|</span> <span class="n">celia</span><span class="p">.</span><span class="n">garcia</span><span class="p">=</span><span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">6</span><span class="p">;</span> <span class="n">red</span> <span class="n">de</span> <span class="n">celia</span><span class="p">.</span><span class="n">garcia</span><span class="p">=</span><span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">3</span><span class="p">,</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">200</span><span class="p">.</span><span class="n">222</span> <span class="p">|</span> <span class="n">Debian</span> <span class="n">Buster</span> <span class="n">10</span><span class="p">.</span><span class="n">6</span>             <span class="p">|</span> <span class="n">m1</span><span class="p">.</span><span class="n">mini</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">e23fc109-de1b</span><span class="p">-</span><span class="n">4bdf</span><span class="p">-</span><span class="n">8b88-cf7b2721350c</span> <span class="p">|</span> <span class="n">Quijote</span>        <span class="p">|</span> <span class="n">ACTIVE</span> <span class="p">|</span> <span class="n">celia</span><span class="p">.</span><span class="n">garcia</span><span class="p">=</span><span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">13</span>                                              <span class="p">|</span> <span class="n">CentOS</span> <span class="n">7</span>                       <span class="p">|</span> <span class="n">m1</span><span class="p">.</span><span class="n">mini</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">26e2f672</span><span class="p">-</span><span class="n">2408</span><span class="p">-</span><span class="n">40d8-bcec</span><span class="p">-</span><span class="n">752059db35fa</span> <span class="p">|</span> <span class="n">Sancho</span>         <span class="p">|</span> <span class="n">ACTIVE</span> <span class="p">|</span> <span class="n">celia</span><span class="p">.</span><span class="n">garcia</span><span class="p">=</span><span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">11</span>                                              <span class="p">|</span> <span class="n">Ubuntu</span> <span class="n">20</span><span class="p">.</span><span class="n">04</span> <span class="n">LTS</span> <span class="p">(</span><span class="n">focal</span> <span class="n">fossa</span><span class="p">)</span> <span class="p">|</span> <span class="n">m1</span><span class="p">.</span><span class="n">mini</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">a460fd00-f4d7</span><span class="p">-</span><span class="n">4999-bc05-a42f54e3dd56</span> <span class="p">|</span> <span class="n">cliente_nginx</span>  <span class="p">|</span> <span class="n">ACTIVE</span> <span class="p">|</span> <span class="n">red</span> <span class="n">de</span> <span class="n">celia</span><span class="p">.</span><span class="n">garcia</span><span class="p">=</span><span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">6</span><span class="p">,</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">200</span><span class="p">.</span><span class="n">148</span>                        <span class="p">|</span> <span class="n">Debian</span> <span class="n">Buster</span> <span class="n">10</span><span class="p">.</span><span class="n">6</span>             <span class="p">|</span> <span class="n">m1</span><span class="p">.</span><span class="n">mini</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">d88962ae</span><span class="p">-</span><span class="n">4617</span><span class="p">-</span><span class="n">4fe3-be33-c1bbfe686c69</span> <span class="p">|</span> <span class="n">servidor_nginx</span> <span class="p">|</span> <span class="n">ACTIVE</span> <span class="p">|</span> <span class="n">red</span> <span class="n">de</span> <span class="n">celia</span><span class="p">.</span><span class="n">garcia</span><span class="p">=</span><span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">5</span><span class="p">,</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">200</span><span class="p">.</span><span class="n">152</span>                        <span class="p">|</span> <span class="n">Debian</span> <span class="n">Buster</span> <span class="n">10</span><span class="p">.</span><span class="n">6</span>             <span class="p">|</span> <span class="n">m1</span><span class="p">.</span><span class="n">mini</span> <span class="p">|</span>
+<span class="p">+--------------------------------------+----------------+--------+---------------------------------------------------------------------+--------------------------------+---------+</span>
+
+</code></pre></div><ul>
+<li>Listamos las redes que tenemos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">$</span> <span class="n">openstack</span> <span class="n">network</span> <span class="n">list</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">+--------------------------------------+---------------------+----------------------------------------------------------------------------+</span>
+<span class="p">|</span> <span class="n">ID</span>                                   <span class="p">|</span> <span class="n">Name</span>                <span class="p">|</span> <span class="n">Subnets</span>                                                                    <span class="p">|</span>
+<span class="p">+--------------------------------------+---------------------+----------------------------------------------------------------------------+</span>
+<span class="p">|</span> <span class="n">21124241-dddf</span><span class="p">-</span><span class="n">4c06-b646-eb15ed5cd84a</span> <span class="p">|</span> <span class="n">celia</span><span class="p">.</span><span class="n">garcia</span>        <span class="p">|</span> <span class="n">46e30aa0</span><span class="p">-</span><span class="n">10de</span><span class="p">-</span><span class="n">4883-a8c7</span><span class="p">-</span><span class="n">707b5a884eec</span>                                       <span class="p">|</span>
+<span class="p">|</span> <span class="n">49812d85</span><span class="p">-</span><span class="n">8e7a</span><span class="p">-</span><span class="n">4c31-baa2-d427692f6568</span> <span class="p">|</span> <span class="n">ext-net</span>             <span class="p">|</span> <span class="n">158bbe3e</span><span class="p">-</span><span class="n">3c98</span><span class="p">-</span><span class="n">485e</span><span class="p">-</span><span class="n">8042-ba6402111ea6</span><span class="p">,</span> <span class="n">6218710b-aa05</span><span class="p">-</span><span class="n">46f7-b198</span><span class="p">-</span><span class="n">7639efe3da95</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">90c37b05-bd26</span><span class="p">-</span><span class="n">49a3-b797-c6038b49a169</span> <span class="p">|</span> <span class="n">red</span> <span class="n">de</span> <span class="n">celia</span><span class="p">.</span><span class="n">garcia</span> <span class="p">|</span> <span class="n">029d2907</span><span class="p">-</span><span class="n">1315</span><span class="p">-</span><span class="n">41f3-af12-c1285ceb43d2</span>                                       <span class="p">|</span>
+
+</code></pre></div><ul>
+<li>Listar los puertos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">$</span> <span class="n">openstack</span> <span class="n">port</span> <span class="n">list</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">(</span><span class="n">entorno</span><span class="p">)</span> <span class="n">celiagm</span><span class="nv">@debian</span><span class="err">:</span><span class="p">~/</span><span class="n">venv</span><span class="p">/</span><span class="n">entorno</span><span class="p">$</span> <span class="n">openstack</span> <span class="n">port</span> <span class="n">list</span>
+<span class="p">+--------------------------------------+------+-------------------+--------------------------------------------------------------------------+--------+</span>
+<span class="p">|</span> <span class="n">ID</span>                                   <span class="p">|</span> <span class="n">Name</span> <span class="p">|</span> <span class="n">MAC</span> <span class="n">Address</span>       <span class="p">|</span> <span class="n">Fixed</span> <span class="n">IP</span> <span class="n">Addresses</span>                                                       <span class="p">|</span> <span class="n">Status</span> <span class="p">|</span>
+<span class="p">+--------------------------------------+------+-------------------+--------------------------------------------------------------------------+--------+</span>
+<span class="p">|</span> <span class="n">73876736</span><span class="p">-</span><span class="n">71bc</span><span class="p">-</span><span class="n">4bfc-b240-e2bb0f1ca505</span> <span class="p">|</span>      <span class="p">|</span> <span class="n">fa</span><span class="err">:</span><span class="n">16</span><span class="err">:</span><span class="n">3e</span><span class="err">:</span><span class="n">f7</span><span class="err">:</span><span class="n">be</span><span class="err">:</span><span class="n">35</span> <span class="p">|</span> <span class="n">ip_address</span><span class="p">=</span><span class="s1">&#39;10.0.1.13&#39;</span><span class="p">,</span> <span class="n">subnet_id</span><span class="p">=</span><span class="s1">&#39;46e30aa0-10de-4883-a8c7-707b5a884eec&#39;</span> <span class="p">|</span> <span class="n">ACTIVE</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">85b0d349</span><span class="p">-</span><span class="n">4240</span><span class="p">-</span><span class="n">4ea5-b277-fbd2bef00928</span> <span class="p">|</span>      <span class="p">|</span> <span class="n">fa</span><span class="err">:</span><span class="n">16</span><span class="err">:</span><span class="n">3e</span><span class="err">:</span><span class="n">77</span><span class="err">:</span><span class="n">40</span><span class="err">:</span><span class="n">7a</span> <span class="p">|</span> <span class="n">ip_address</span><span class="p">=</span><span class="s1">&#39;10.0.0.3&#39;</span><span class="p">,</span> <span class="n">subnet_id</span><span class="p">=</span><span class="s1">&#39;029d2907-1315-41f3-af12-c1285ceb43d2&#39;</span>  <span class="p">|</span> <span class="n">ACTIVE</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">a9bdd25d-cd44</span><span class="p">-</span><span class="n">44e1</span><span class="p">-</span><span class="n">96f3-fb5228872245</span> <span class="p">|</span>      <span class="p">|</span> <span class="n">fa</span><span class="err">:</span><span class="n">16</span><span class="err">:</span><span class="n">3e</span><span class="err">:</span><span class="n">04</span><span class="err">:</span><span class="n">0d</span><span class="err">:</span><span class="n">c4</span> <span class="p">|</span> <span class="n">ip_address</span><span class="p">=</span><span class="s1">&#39;10.0.0.1&#39;</span><span class="p">,</span> <span class="n">subnet_id</span><span class="p">=</span><span class="s1">&#39;029d2907-1315-41f3-af12-c1285ceb43d2&#39;</span>  <span class="p">|</span> <span class="n">ACTIVE</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">b20a13b0</span><span class="p">-</span><span class="n">107c</span><span class="p">-</span><span class="n">44e1</span><span class="p">-</span><span class="n">91ad-b05c4c4ab6fb</span> <span class="p">|</span>      <span class="p">|</span> <span class="n">fa</span><span class="err">:</span><span class="n">16</span><span class="err">:</span><span class="n">3e</span><span class="err">:</span><span class="n">eb</span><span class="err">:</span><span class="n">33</span><span class="err">:</span><span class="n">51</span> <span class="p">|</span> <span class="n">ip_address</span><span class="p">=</span><span class="s1">&#39;10.0.0.2&#39;</span><span class="p">,</span> <span class="n">subnet_id</span><span class="p">=</span><span class="s1">&#39;029d2907-1315-41f3-af12-c1285ceb43d2&#39;</span>  <span class="p">|</span> <span class="n">ACTIVE</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">d6d4a998</span><span class="p">-</span><span class="n">73e9</span><span class="p">-</span><span class="n">4bc0</span><span class="p">-</span><span class="n">9ad1</span><span class="p">-</span><span class="n">57b481c146c5</span> <span class="p">|</span>      <span class="p">|</span> <span class="n">fa</span><span class="err">:</span><span class="n">16</span><span class="err">:</span><span class="n">3e</span><span class="err">:</span><span class="n">08</span><span class="err">:</span><span class="n">7a</span><span class="err">:</span><span class="n">18</span> <span class="p">|</span> <span class="n">ip_address</span><span class="p">=</span><span class="s1">&#39;10.0.0.6&#39;</span><span class="p">,</span> <span class="n">subnet_id</span><span class="p">=</span><span class="s1">&#39;029d2907-1315-41f3-af12-c1285ceb43d2&#39;</span>  <span class="p">|</span> <span class="n">ACTIVE</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">d87620fe-c4e4</span><span class="p">-</span><span class="n">47e1</span><span class="p">-</span><span class="n">9381-ee47211795e3</span> <span class="p">|</span>      <span class="p">|</span> <span class="n">fa</span><span class="err">:</span><span class="n">16</span><span class="err">:</span><span class="n">3e</span><span class="err">:</span><span class="n">e8</span><span class="err">:</span><span class="n">a3</span><span class="err">:</span><span class="n">f7</span> <span class="p">|</span> <span class="n">ip_address</span><span class="p">=</span><span class="s1">&#39;10.0.1.2&#39;</span><span class="p">,</span> <span class="n">subnet_id</span><span class="p">=</span><span class="s1">&#39;46e30aa0-10de-4883-a8c7-707b5a884eec&#39;</span>  <span class="p">|</span> <span class="n">ACTIVE</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">dac3549b</span><span class="p">-</span><span class="n">9fb3</span><span class="p">-</span><span class="n">488d-b399-ed7ee94ea724</span> <span class="p">|</span>      <span class="p">|</span> <span class="n">fa</span><span class="err">:</span><span class="n">16</span><span class="err">:</span><span class="n">3e</span><span class="err">:</span><span class="n">9a</span><span class="err">:</span><span class="n">c0</span><span class="err">:</span><span class="n">6a</span> <span class="p">|</span> <span class="n">ip_address</span><span class="p">=</span><span class="s1">&#39;10.0.0.5&#39;</span><span class="p">,</span> <span class="n">subnet_id</span><span class="p">=</span><span class="s1">&#39;029d2907-1315-41f3-af12-c1285ceb43d2&#39;</span>  <span class="p">|</span> <span class="n">ACTIVE</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">e99aaf3f-c607</span><span class="p">-</span><span class="n">4d1d</span><span class="p">-</span><span class="n">9e05-fec50b132296</span> <span class="p">|</span>      <span class="p">|</span> <span class="n">fa</span><span class="err">:</span><span class="n">16</span><span class="err">:</span><span class="n">3e</span><span class="err">:</span><span class="n">f2</span><span class="err">:</span><span class="n">65</span><span class="err">:</span><span class="n">68</span> <span class="p">|</span> <span class="n">ip_address</span><span class="p">=</span><span class="s1">&#39;10.0.1.11&#39;</span><span class="p">,</span> <span class="n">subnet_id</span><span class="p">=</span><span class="s1">&#39;46e30aa0-10de-4883-a8c7-707b5a884eec&#39;</span> <span class="p">|</span> <span class="n">ACTIVE</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">fa58e181-e88f</span><span class="p">-</span><span class="n">4453</span><span class="p">-</span><span class="n">8f20-c4bd7d190179</span> <span class="p">|</span>      <span class="p">|</span> <span class="n">fa</span><span class="err">:</span><span class="n">16</span><span class="err">:</span><span class="n">3e</span><span class="err">:</span><span class="n">e0</span><span class="err">:</span><span class="n">bc</span><span class="err">:</span><span class="n">db</span> <span class="p">|</span> <span class="n">ip_address</span><span class="p">=</span><span class="s1">&#39;10.0.1.6&#39;</span><span class="p">,</span> <span class="n">subnet_id</span><span class="p">=</span><span class="s1">&#39;46e30aa0-10de-4883-a8c7-707b5a884eec&#39;</span>  <span class="p">|</span> <span class="n">ACTIVE</span> <span class="p">|</span>
+<span class="p">+--------------------------------------+------+-------------------+--------------------------------------------------------------------------+--------+</span>
+
+
+</code></pre></div><hr>
+<h3 id="deshabilitar-seguridad-de-un-puerto">Deshabilitar seguridad de un puerto</h3>
+<ul>
+<li>Vemos las caracteristicas de Dulcinea</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">$</span> <span class="n">openstack</span> <span class="n">server</span> <span class="n">show</span> <span class="n">Dulcinea</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">(</span><span class="n">entorno</span><span class="p">)</span> <span class="n">celiagm</span><span class="nv">@debian</span><span class="err">:</span><span class="p">~/</span><span class="n">venv</span><span class="p">/</span><span class="n">entorno</span><span class="p">$</span> <span class="n">openstack</span> <span class="n">server</span> <span class="n">show</span> <span class="n">Dulcinea</span>
+<span class="p">+-----------------------------+---------------------------------------------------------------------+</span>
+<span class="p">|</span> <span class="n">Field</span>                       <span class="p">|</span> <span class="n">Value</span>                                                               <span class="p">|</span>
+<span class="p">+-----------------------------+---------------------------------------------------------------------+</span>
+<span class="p">|</span> <span class="n">OS-DCF</span><span class="err">:</span><span class="n">diskConfig</span>           <span class="p">|</span> <span class="n">AUTO</span>                                                                <span class="p">|</span>
+<span class="p">|</span> <span class="n">OS-EXT-AZ</span><span class="err">:</span><span class="n">availability_zone</span> <span class="p">|</span> <span class="n">nova</span>                                                                <span class="p">|</span>
+<span class="p">|</span> <span class="n">OS-EXT-STS</span><span class="err">:</span><span class="n">power_state</span>      <span class="p">|</span> <span class="n">Running</span>                                                             <span class="p">|</span>
+<span class="p">|</span> <span class="n">OS-EXT-STS</span><span class="err">:</span><span class="n">task_state</span>       <span class="p">|</span> <span class="n">None</span>                                                                <span class="p">|</span>
+<span class="p">|</span> <span class="n">OS-EXT-STS</span><span class="err">:</span><span class="n">vm_state</span>         <span class="p">|</span> <span class="n">active</span>                                                              <span class="p">|</span>
+<span class="p">|</span> <span class="n">OS-SRV-USG</span><span class="err">:</span><span class="n">launched_at</span>      <span class="p">|</span> <span class="n">2020</span><span class="p">-</span><span class="n">11</span><span class="p">-</span><span class="n">19T20</span><span class="err">:</span><span class="n">28</span><span class="err">:</span><span class="n">18</span><span class="p">.</span><span class="n">000000</span>                                          <span class="p">|</span>
+<span class="p">|</span> <span class="n">OS-SRV-USG</span><span class="err">:</span><span class="n">terminated_at</span>    <span class="p">|</span> <span class="n">None</span>                                                                <span class="p">|</span>
+<span class="p">|</span> <span class="n">accessIPv4</span>                  <span class="p">|</span>                                                                     <span class="p">|</span>
+<span class="p">|</span> <span class="n">accessIPv6</span>                  <span class="p">|</span>                                                                     <span class="p">|</span>
+<span class="p">|</span> <span class="n">addresses</span>                   <span class="p">|</span> <span class="n">celia</span><span class="p">.</span><span class="n">garcia</span><span class="p">=</span><span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">6</span><span class="p">;</span> <span class="n">red</span> <span class="n">de</span> <span class="n">celia</span><span class="p">.</span><span class="n">garcia</span><span class="p">=</span><span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">3</span><span class="p">,</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">200</span><span class="p">.</span><span class="n">222</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">config_drive</span>                <span class="p">|</span>                                                                     <span class="p">|</span>
+<span class="p">|</span> <span class="n">created</span>                     <span class="p">|</span> <span class="n">2020</span><span class="p">-</span><span class="n">11</span><span class="p">-</span><span class="n">19T20</span><span class="err">:</span><span class="n">27</span><span class="err">:</span><span class="n">57Z</span>                                                <span class="p">|</span>
+<span class="p">|</span> <span class="n">flavor</span>                      <span class="p">|</span> <span class="n">m1</span><span class="p">.</span><span class="n">mini</span> <span class="p">(</span><span class="n">12</span><span class="p">)</span>                                                        <span class="p">|</span>
+<span class="p">|</span> <span class="n">hostId</span>                      <span class="p">|</span> <span class="n">829ef6cbc520f728c22007cd80702af381d72417f6ce13fbdcbf53e5</span>            <span class="p">|</span>
+<span class="p">|</span> <span class="n">id</span>                          <span class="p">|</span> <span class="n">c39a7cc7-f485</span><span class="p">-</span><span class="n">4617-a62f-acdd39a19682</span>                                <span class="p">|</span>
+<span class="p">|</span> <span class="n">image</span>                       <span class="p">|</span> <span class="n">Debian</span> <span class="n">Buster</span> <span class="n">10</span><span class="p">.</span><span class="n">6</span> <span class="p">(</span><span class="n">51b38ecf</span><span class="p">-</span><span class="n">99e1</span><span class="p">-</span><span class="n">46a3-a497</span><span class="p">-</span><span class="n">9e1cc9c3c2d4</span><span class="p">)</span>           <span class="p">|</span>
+<span class="p">|</span> <span class="n">key_name</span>                    <span class="p">|</span> <span class="n">msi</span>                                                                 <span class="p">|</span>
+<span class="p">|</span> <span class="n">name</span>                        <span class="p">|</span> <span class="n">Dulcinea</span>                                                            <span class="p">|</span>
+<span class="p">|</span> <span class="n">progress</span>                    <span class="p">|</span> <span class="n">0</span>                                                                   <span class="p">|</span>
+<span class="p">|</span> <span class="n">project_id</span>                  <span class="p">|</span> <span class="n">bf33696e5463476b95e310dd1e17f5f3</span>                                    <span class="p">|</span>
+<span class="p">|</span> <span class="n">properties</span>                  <span class="p">|</span>                                                                     <span class="p">|</span>
+<span class="p">|</span> <span class="n">status</span>                      <span class="p">|</span> <span class="n">ACTIVE</span>                                                              <span class="p">|</span>
+<span class="p">|</span> <span class="n">updated</span>                     <span class="p">|</span> <span class="n">2020</span><span class="p">-</span><span class="n">11</span><span class="p">-</span><span class="n">23T12</span><span class="err">:</span><span class="n">04</span><span class="err">:</span><span class="n">44Z</span>                                                <span class="p">|</span>
+<span class="p">|</span> <span class="n">user_id</span>                     <span class="p">|</span> <span class="n">bdfca7c57468ff40b7445535735bf867c444239818b740f4f59474b105c27dec</span>    <span class="p">|</span>
+<span class="p">|</span> <span class="n">volumes_attached</span>            <span class="p">|</span>                                                                     <span class="p">|</span>
+<span class="p">+-----------------------------+---------------------------------------------------------------------+</span>
+
+</code></pre></div><ul>
+<li>Le quitamos el grupo de seguridad</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">openstack</span> <span class="n">server</span> <span class="n">remove</span> <span class="n">security</span> <span class="nb">group </span><span class="n">Dulcinea</span> <span class="k">default</span>
+</code></pre></div><ul>
+<li>
+<p>Miramos la ip fija que tiene , en este caso es la 10.0.0.11</p>
+</li>
+<li>
+<p>Listamos los puertos y obtenemos el identificador de la máquina según la ip</p>
+</li>
+<li>
+<p>Le quitamos la seguridad de puertos tanto de la red interna como de la red externa.</p>
+</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">openstack</span> <span class="n">port</span> <span class="nb">set </span><span class="p">-</span><span class="n">-disable-port-security</span> <span class="n">fa58e181-e88f</span><span class="p">-</span><span class="n">4453</span><span class="p">-</span><span class="n">8f20-c4bd7d190179</span>
+<span class="n">openstack</span> <span class="n">port</span> <span class="nb">set </span><span class="p">-</span><span class="n">-disable-port-security</span> <span class="n">85b0d349</span><span class="p">-</span><span class="n">4240</span><span class="p">-</span><span class="n">4ea5-b277-fbd2bef00928</span>
+</code></pre></div><ul>
+<li>Ahora comprobamos la conexión y vemos que es correcta:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">(</span><span class="n">entorno</span><span class="p">)</span> <span class="n">celiagm</span><span class="nv">@debian</span><span class="err">:</span><span class="p">~/</span><span class="n">venv</span><span class="p">/</span><span class="n">entorno</span><span class="p">$</span> <span class="n">ping</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">200</span><span class="p">.</span><span class="n">222</span>
+<span class="n">PING</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">200</span><span class="p">.</span><span class="n">222</span> <span class="p">(</span><span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">200</span><span class="p">.</span><span class="n">222</span><span class="p">)</span> <span class="n">56</span><span class="p">(</span><span class="n">84</span><span class="p">)</span> <span class="n">bytes</span> <span class="n">of</span> <span class="n">data</span><span class="p">.</span>
+<span class="n">64</span> <span class="n">bytes</span> <span class="n">from</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">200</span><span class="p">.</span><span class="n">222</span><span class="err">:</span> <span class="n">icmp_seq</span><span class="p">=</span><span class="n">1</span> <span class="n">ttl</span><span class="p">=</span><span class="n">61</span> <span class="n">time</span><span class="p">=</span><span class="n">71</span><span class="p">.</span><span class="n">1</span> <span class="n">ms</span>
+<span class="n">64</span> <span class="n">bytes</span> <span class="n">from</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">200</span><span class="p">.</span><span class="n">222</span><span class="err">:</span> <span class="n">icmp_seq</span><span class="p">=</span><span class="n">2</span> <span class="n">ttl</span><span class="p">=</span><span class="n">61</span> <span class="n">time</span><span class="p">=</span><span class="n">70</span><span class="p">.</span><span class="n">1</span> <span class="n">ms</span>
+<span class="n">64</span> <span class="n">bytes</span> <span class="n">from</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">200</span><span class="p">.</span><span class="n">222</span><span class="err">:</span> <span class="n">icmp_seq</span><span class="p">=</span><span class="n">3</span> <span class="n">ttl</span><span class="p">=</span><span class="n">61</span> <span class="n">time</span><span class="p">=</span><span class="n">95</span><span class="p">.</span><span class="n">5</span> <span class="n">ms</span>
+<span class="p">^</span><span class="n">C</span>
+<span class="p">---</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">200</span><span class="p">.</span><span class="n">222</span> <span class="n">ping</span> <span class="n">statistics</span> <span class="p">---</span>
+<span class="n">3</span> <span class="n">packets</span> <span class="n">transmitted</span><span class="p">,</span> <span class="n">3</span> <span class="n">received</span><span class="p">,</span> <span class="n">0</span><span class="p">%</span> <span class="n">packet</span> <span class="n">loss</span><span class="p">,</span> <span class="n">time</span> <span class="n">4ms</span>
+<span class="n">rtt</span> <span class="n">min</span><span class="p">/</span><span class="n">avg</span><span class="p">/</span><span class="n">max</span><span class="p">/</span><span class="n">mdev</span> <span class="p">=</span> <span class="n">70</span><span class="p">.</span><span class="n">115</span><span class="p">/</span><span class="n">78</span><span class="p">.</span><span class="n">910</span><span class="p">/</span><span class="n">95</span><span class="p">.</span><span class="n">549</span><span class="p">/</span><span class="n">11</span><span class="p">.</span><span class="n">771</span> <span class="n">ms</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">(</span><span class="n">entorno</span><span class="p">)</span> <span class="n">celiagm</span><span class="nv">@debian</span><span class="err">:</span><span class="p">~/</span><span class="n">venv</span><span class="p">/</span><span class="n">entorno</span><span class="p">$</span> <span class="n">ssh</span> <span class="n">debian</span><span class="nv">@172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">200</span><span class="p">.</span><span class="n">222</span>
+<span class="n">Linux</span> <span class="n">dulcinea</span> <span class="n">4</span><span class="p">.</span><span class="n">19</span><span class="p">.</span><span class="n">0</span><span class="p">-</span><span class="n">12-cloud-amd64</span> <span class="c">#1 SMP Debian 4.19.152-1 (2020-10-18) x86_64</span>
+
+<span class="n">The</span> <span class="n">programs</span> <span class="n">included</span> <span class="n">with</span> <span class="n">the</span> <span class="n">Debian</span> <span class="n">GNU</span><span class="p">/</span><span class="n">Linux</span> <span class="n">system</span> <span class="n">are</span> <span class="n">free</span> <span class="n">software</span><span class="p">;</span>
+<span class="n">the</span> <span class="n">exact</span> <span class="n">distribution</span> <span class="n">terms</span> <span class="k">for</span> <span class="n">each</span> <span class="n">program</span> <span class="n">are</span> <span class="n">described</span> <span class="k">in</span> <span class="n">the</span>
+<span class="n">individual</span> <span class="n">files</span> <span class="k">in</span> <span class="p">/</span><span class="n">usr</span><span class="p">/</span><span class="n">share</span><span class="p">/</span><span class="n">doc</span><span class="p">/*/</span><span class="n">copyright</span><span class="p">.</span>
+
+<span class="n">Debian</span> <span class="n">GNU</span><span class="p">/</span><span class="n">Linux</span> <span class="n">comes</span> <span class="n">with</span> <span class="n">ABSOLUTELY</span> <span class="n">NO</span> <span class="n">WARRANTY</span><span class="p">,</span> <span class="n">to</span> <span class="n">the</span> <span class="n">extent</span>
+<span class="n">permitted</span> <span class="n">by</span> <span class="n">applicable</span> <span class="n">law</span><span class="p">.</span>
+<span class="n">Last</span> <span class="n">login</span><span class="err">:</span> <span class="n">Mon</span> <span class="n">Nov</span> <span class="n">23</span> <span class="n">15</span><span class="err">:</span><span class="n">59</span><span class="err">:</span><span class="n">42</span> <span class="n">2020</span> <span class="n">from</span> <span class="n">172</span><span class="p">.</span><span class="n">23</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">70</span>
+<span class="n">debian</span><span class="nv">@dulcinea</span><span class="err">:</span><span class="p">~$</span> 
+
+</code></pre></div></div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/openstackclient/">openstackclient</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

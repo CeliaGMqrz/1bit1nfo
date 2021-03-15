@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Introducción a Ansible </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/ansible/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Introducción a Ansible"/>
+<meta name="twitter:description" content="Conceptos Ansible es un software que automatiza el aprovisionamiento de software, la gestión de configuraciones y el depliegue de aplicaciones."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Introducción a Ansible</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Wed, Jan 20, 2021 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">3-minute read</span>
+                    </div>
+                
+            </div>
+
+            <h2 id="conceptos">Conceptos</h2>
+<p><strong>Ansible</strong> es un software que automatiza el aprovisionamiento de software, la gestión de configuraciones y el depliegue de aplicaciones. Está categorizado como una <strong>herramienta de orquestación</strong>. Es muy útil para administradores de sistemas y DevOps</p>
+<p>Ansible permite <strong>gestionar los servidores</strong>, configuraciones y aplicaciones de forma sencilla.</p>
+<p>Utiliza <strong>ssh</strong> para conectarse a los nodos y únicamente requiere <strong>python</strong> en el servidor remoto que se vaya a ejecutar para poder utilizarlo.</p>
+<p>Usa un fichero <strong>YAML</strong> para definir las configuraciones y las acciones que se van a desarrollar en los servidores.</p>
+<h2 id="entorno-virtual">Entorno virtual</h2>
+<p>Necesitamos crear un entorno virtual para tener python al alcance.</p>
+<ul>
+<li>Crear un entorno virtual, lo vamos a llamar &lsquo;ansible&rsquo;</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apt-get install python3-venv
+python3 -m venv ansible
+<span class="nb">source</span> ansible/bin/activate
+</code></pre></div><ul>
+<li>Instalamos Ansible en nuestro entorno</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">pip install ansible
+</code></pre></div><p>Vamos a clonar el siguiente repositorio para hacer la prueba de uso</p>
+<ul>
+<li>Clonar el repositorio:  <a href="https://github.com/josedom24/automatizacion_iaw">https://github.com/josedom24/automatizacion_iaw</a></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">git clone https://github.com/josedom24/automatizacion_iaw.git
+</code></pre></div><ul>
+<li>Comprobamos la versión de Ansible</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">(</span>ansible<span class="o">)</span> celiagm@debian:~/venv/ansible/automatizacion_iaw$ ansible --version
+ansible 2.10.5
+  config <span class="nv">file</span> <span class="o">=</span> /home/celiagm/venv/ansible/automatizacion_iaw/ansible.cfg
+  configured module search <span class="nv">path</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;/home/celiagm/.ansible/plugins/modules&#39;</span>, <span class="s1">&#39;/usr/share/ansible/plugins/modules&#39;</span><span class="o">]</span>
+  ansible python module <span class="nv">location</span> <span class="o">=</span> /home/celiagm/venv/ansible/lib/python3.7/site-packages/ansible
+  executable <span class="nv">location</span> <span class="o">=</span> /home/celiagm/venv/ansible/bin/ansible
+  python <span class="nv">version</span> <span class="o">=</span> 3.7.3 <span class="o">(</span>default, Jul <span class="m">25</span> 2020, 13:03:44<span class="o">)</span> <span class="o">[</span>GCC 8.3.0<span class="o">]</span>
+</code></pre></div><ul>
+<li>Nos aseguramos de nuestra configuración, en la que en la parte de hosts tenemos la ip de el servidor remoto al que nos vamos a conectar y donde vamos a instalar los servicios.</li>
+</ul>
+<p><code>hosts</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">[</span>servidores_web<span class="o">]</span>
+nodo1 <span class="nv">ansible_ssh_host</span><span class="o">=</span>172.22.200.150 <span class="nv">ansible_python_interpreter</span><span class="o">=</span>/usr/bin/python3
+</code></pre></div><ul>
+<li>En site.yaml vamos a tener la configuración para indicar los servicios que vamos a instalar a través de unos roles.</li>
+</ul>
+<p><code>site.yaml</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">- hosts: all
+  become: <span class="nb">true</span>
+  roles:
+   - role: commons
+
+- hosts: servidores_web
+  become: <span class="nb">true</span>
+  roles:
+   - role: apache2
+
+- hosts: servidores_web
+  become: <span class="nb">true</span>
+  roles:
+   - role: mariadb
+
+- hosts: servidores_web
+  become: <span class="nb">true</span>
+  roles:
+   - role: wordpress
+
+</code></pre></div><ul>
+<li>Ejecutamos ansible-playbook con el fichero de configuración, de esta forma se van a ir instalando los servicios en el servidor remoto.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">ansible-playbook site.yaml 
+</code></pre></div><p>Salida:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">(</span>ansible<span class="o">)</span> celiagm@debian:~/venv/ansible/automatizacion_iaw$ ansible-playbook site.yaml 
+
+PLAY <span class="o">[</span>all<span class="o">]</span> **********************************************************************************************
+
+TASK <span class="o">[</span>Gathering Facts<span class="o">]</span> **********************************************************************************
+ok: <span class="o">[</span>nodo1<span class="o">]</span>
+
+TASK <span class="o">[</span>commons : Ensure system is updated<span class="o">]</span> ***************************************************************
+<span class="o">[</span>WARNING<span class="o">]</span>: Updating cache and auto-installing missing dependency: python3-apt
+changed: <span class="o">[</span>nodo1<span class="o">]</span>
+
+PLAY <span class="o">[</span>servidores_web<span class="o">]</span> ***********************************************************************************
+
+TASK <span class="o">[</span>Gathering Facts<span class="o">]</span> **********************************************************************************
+ok: <span class="o">[</span>nodo1<span class="o">]</span>
+
+TASK <span class="o">[</span>apache2 : install apache2+php<span class="o">]</span> ********************************************************************
+ok: <span class="o">[</span>nodo1<span class="o">]</span>
+
+TASK <span class="o">[</span>apache2 : Copy index.html<span class="o">]</span> ************************************************************************
+changed: <span class="o">[</span>nodo1<span class="o">]</span>
+
+TASK <span class="o">[</span>apache2 : Copy info.php<span class="o">]</span> **************************************************************************
+changed: <span class="o">[</span>nodo1<span class="o">]</span>
+
+RUNNING HANDLER <span class="o">[</span>apache2 : restart apache2<span class="o">]</span> *************************************************************
+changed: <span class="o">[</span>nodo1<span class="o">]</span>
+
+PLAY <span class="o">[</span>servidores_web<span class="o">]</span> ***********************************************************************************
+
+TASK <span class="o">[</span>Gathering Facts<span class="o">]</span> **********************************************************************************
+ok: <span class="o">[</span>nodo1<span class="o">]</span>
+
+TASK <span class="o">[</span>mariadb : ensure mariadb is installed<span class="o">]</span> ************************************************************
+ok: <span class="o">[</span>nodo1<span class="o">]</span>
+
+TASK <span class="o">[</span>mariadb : ensure mariadb binds to internal interface<span class="o">]</span> *********************************************
+changed: <span class="o">[</span>nodo1<span class="o">]</span>
+
+RUNNING HANDLER <span class="o">[</span>mariadb : restart mariadb<span class="o">]</span> *************************************************************
+changed: <span class="o">[</span>nodo1<span class="o">]</span>
+
+PLAY <span class="o">[</span>servidores_web<span class="o">]</span> ***********************************************************************************
+
+TASK <span class="o">[</span>Gathering Facts<span class="o">]</span> **********************************************************************************
+ok: <span class="o">[</span>nodo1<span class="o">]</span>
+
+TASK <span class="o">[</span>wordpress : install unzip<span class="o">]</span> ************************************************************************
+changed: <span class="o">[</span>nodo1<span class="o">]</span>
+
+TASK <span class="o">[</span>wordpress : download wordpress<span class="o">]</span> *******************************************************************
+changed: <span class="o">[</span>nodo1<span class="o">]</span>
+
+TASK <span class="o">[</span>wordpress : unzip wordpress<span class="o">]</span> **********************************************************************
+changed: <span class="o">[</span>nodo1<span class="o">]</span>
+
+TASK <span class="o">[</span>wordpress : create database wordpress<span class="o">]</span> ************************************************************
+changed: <span class="o">[</span>nodo1<span class="o">]</span>
+
+TASK <span class="o">[</span>wordpress : create user mysql wordpress<span class="o">]</span> **********************************************************
+changed: <span class="o">[</span>nodo1<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">(</span><span class="nv">item</span><span class="o">=</span>localhost<span class="o">)</span>
+
+TASK <span class="o">[</span>wordpress : copy wp-config.php<span class="o">]</span> *******************************************************************
+changed: <span class="o">[</span>nodo1<span class="o">]</span>
+
+RUNNING HANDLER <span class="o">[</span>wordpress : restart apache2<span class="o">]</span> ***********************************************************
+changed: <span class="o">[</span>nodo1<span class="o">]</span>
+
+PLAY RECAP **********************************************************************************************
+nodo1                      : <span class="nv">ok</span><span class="o">=</span><span class="m">19</span>   <span class="nv">changed</span><span class="o">=</span><span class="m">13</span>   <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
+
+</code></pre></div></div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/ansible/">ansible</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

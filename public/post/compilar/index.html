@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Compilar un programa en C con Makefile </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/compilar/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Compilar un programa en C con Makefile"/>
+<meta name="twitter:description" content="Compilación de un programa en C utilizando un Makefile Requisitos previos  Suponemos que tenemos una máquina virtual con Debian Buster, en este caso voy a usar Vagrant con qemu-kvm para crearla."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Compilar un programa en C con Makefile</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Sat, Oct 31, 2020 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">6-minute read</span>
+                    </div>
+                
+            </div>
+
+            <h1 id="compilación-de-un-programa-en-c-utilizando-un-makefile">Compilación de un programa en C utilizando un Makefile</h1>
+<h2 id="requisitos-previos">Requisitos previos</h2>
+<ul>
+<li>Suponemos que tenemos una máquina virtual con Debian Buster, en este caso voy a usar <strong>Vagrant</strong> con <strong>qemu-kvm</strong> para crearla. Necesitaremos tener instalado los paquetes necesarios (vagrant, qemu-kvm, virt-manager&hellip;).</li>
+</ul>
+<p>Usaremos el siguiente fichero Vagrantfile:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">Vagrant.configure<span class="o">(</span><span class="s2">&#34;2&#34;</span><span class="o">)</span> <span class="k">do</span> <span class="p">|</span>config<span class="p">|</span>
+    config.vm.box <span class="o">=</span> <span class="s2">&#34;debian/buster64&#34;</span>
+    config.vm.hostname <span class="o">=</span> <span class="s2">&#34;buster&#34;</span>
+    config.vm.synced_folder <span class="s2">&#34;.&#34;</span>, <span class="s2">&#34;/vagrant&#34;</span>, disabled: <span class="nb">true</span>
+    config.vm.provider :libvirt <span class="k">do</span> <span class="p">|</span>libvirt<span class="p">|</span>
+        libvirt.uri <span class="o">=</span> <span class="s1">&#39;qemu+unix:///system&#39;</span>
+        libvirt.host <span class="o">=</span> <span class="s2">&#34;debian&#34;</span>
+        libvirt.cpus <span class="o">=</span> <span class="m">1</span>
+        libvirt.memory <span class="o">=</span> <span class="m">512</span>
+    end
+end
+</code></pre></div><ul>
+<li>La máquina deberá estar actualizada y con los repositorios en orden</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">nano /etc/apt/souces.list
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">deb http://deb.debian.org/debian buster main
+deb-src http://deb.debian.org/debian buster main
+
+deb http://deb.debian.org/debian-security/ buster/updates main
+deb-src http://deb.debian.org/debian-security/ buster/updates main
+
+deb http://deb.debian.org/debian buster-updates main
+deb-src http://deb.debian.org/debian buster-updates main
+
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt update
+sudo apt upgrade
+</code></pre></div><ul>
+<li>Ademas necesitaremos instalar algunos paquetes claves que nos pedirá al hacer la compilación e instalación de nuestro paquete. Uno de ellos lo vamos a descargar ya. Se trata de un paquete que contiene una lista informativa de los paquetes que se consideran esenciales para la creación de paquetes Debian, este es <strong>build-essential</strong>.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt-get install build-essential
+</code></pre></div><h2 id="programa-escrito-en-c-lynx">Programa escrito en C: Lynx</h2>
+<p><strong>Lynx</strong> es un navegador web y cliente de gopher en modo texto. Este navegador es usado desde la linea de comandos, en terminales. Es muy útil para sistemas sin entorno gráfico y a la vez es fácil e intuitivo para su manejo.</p>
+<p>Está escrito en C, y en las fuentes aparece un fichero Makefile para poder compilarlo.</p>
+<ul>
+<li>
+<p><a href="https://packages.debian.org/buster/lynx">Información oficial del paquete</a></p>
+</li>
+<li>
+<p><a href="https://sources.debian.org/src/lynx/2.8.9rel.1-3/">Contenido del paquete</a></p>
+</li>
+</ul>
+<h3 id="descargar-las-fuentes">Descargar las fuentes</h3>
+<ul>
+<li>Primero vamos a ubicarnos en un sitio adecuado para descargar las fuentes. En este caso vamos a /usr/local para no interferir con otros archivos del sistema y creamos una carpeta llamada lynx.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> /usr/local
+mkdir lynx
+</code></pre></div><ul>
+<li>Vamos a descargarnos el código fuente:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ sudo apt <span class="nb">source</span> lynx
+</code></pre></div><ul>
+<li>Vemos el contenido:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@buster:/usr/local/lynx# ls
+lynx-2.8.9rel.1			 lynx_2.8.9rel.1-3.dsc	       lynx_2.8.9rel.1.orig.tar.bz2.asc
+lynx_2.8.9rel.1-3.debian.tar.xz  lynx_2.8.9rel.1.orig.tar.bz2
+
+
+</code></pre></div><ul>
+<li>Descomprimimos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ sudo tar -xjvf lynx_2.8.9rel.1.orig.tar.bz2 
+
+</code></pre></div><ul>
+<li>Vemos el contenido de nuestra carpeta descomprimida</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">vagrant@buster:/usr/local/lynx/lynx2.8.9rel.1$ ls
+ABOUT-NLS       COPYING.asc      VMSPrint.com  config.guess  fixed512.com  make-msc.bat  samples
+AUTHORS         INSTALLATION     WWW           config.hin    install-sh    makefile.bcb  scripts
+BUILD           LYHelp.hin       aclocal.m4    config.sub    lib           makefile.in   src
+CHANGES         LYMessages_en.h  bcblibs.bat   configure     lynx.cfg      makefile.msc  <span class="nb">test</span>
+COPYHEADER      PACKAGE          build.bat     configure.in  lynx.hlp      makelynx.bat  userdefs.h
+COPYHEADER.asc  PROBLEMS         build.com     descrip.mms   lynx.man      makew32.bat
+COPYING         README           clean.com     docs          lynx_help     po
+
+</code></pre></div><p>Como podemos comprobar hay un fichero llamado <em>INSTALLATION</em>, que nos va a indicar como tenemos que compilar e instalar lynx.</p>
+<h3 id="autoconfigurar-debemos-utilizar-configure">Autoconfigurar. Debemos utilizar ./configure</h3>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@buster:/usr/local/lynx/lynx2.8.9rel.1# ./configure
+</code></pre></div><ul>
+<li>Nos encontramos con el siguiente error:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">configure: WARNING: pkg-config is not installed
+
+</code></pre></div><p>Nos está diciendo que necesitamos un paquete esencial para la compilación, lo instalamos:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt-get install pkg-config
+</code></pre></div><ul>
+<li>Volvemos a ejecutar <strong>./configure</strong> y encontramos otro error:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">configure: error: No curses header-files found
+</code></pre></div><p>Buscando este error por internet, he encontrado que se debe a que necesita una biblioteca que permite escribir interfaces basadas en texto llamada Ncurses. En concreto nos hace falta una librería que es la siguiente:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apt-get install libncurses5-dev
+</code></pre></div><ul>
+<li>Volvemos a ejecutar configure y vemos que ahora se ejecuta perfectamente.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">./configure
+</code></pre></div><p>Haz click aquí para ver la salida -&raquo; <a href="https://github.com/CeliaGMqrz/utilidades/blob/main/salida.md">salida</a></p>
+<h3 id="compilar-makefile">COMPILAR. MAKEFILE</h3>
+<ul>
+<li>Según la guía de <em>INSTALLATION</em> ahora tenemos que ejecutar <strong>make</strong> para crear los objetos y archivos necesarios.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">make
+</code></pre></div><ul>
+<li>Estas son las últimas líneas que nos han salido:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">Copying Lynx executable into top-level directory
+rm -f ../lynx
+cp lynx ../
+Welcome to Lynx!
+make<span class="o">[</span>1<span class="o">]</span>: Leaving directory <span class="s1">&#39;/usr/local/lynx/lynx2.8.9rel.1/src&#39;</span>
+
+</code></pre></div><ul>
+<li>Vamos al directorio que nos ha creado y vemos donde están todos los ficheros objetos:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> lynx/lynx2.8.9rel.1/src/
+
+</code></pre></div><p><img src="/images/objetos.png" alt="objetos.png"></p>
+<ul>
+<li>Ahora deberemos de hacer un <em>make install</em> en el directorio adecuado:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@buster:/usr/local/lynx/lynx2.8.9rel.1# make install
+/bin/sh -c <span class="s2">&#34;P=`echo lynx|sed &#39;s,x,x,&#39;`; \
+</span><span class="s2">if test -f /usr/local/bin/</span><span class="nv">$P</span><span class="s2"> ; then \
+</span><span class="s2">      mv -f /usr/local/bin/</span><span class="nv">$P</span><span class="s2"> /usr/local/bin/</span><span class="nv">$P</span><span class="s2">.old; fi&#34;</span>
+/usr/bin/install -c lynx /usr/local/bin/<span class="sb">`</span><span class="nb">echo</span> lynx<span class="p">|</span>sed <span class="s1">&#39;s,x,x,&#39;</span><span class="sb">`</span>
+mkdir -p /usr/local/share/man/man1
+/usr/bin/install -c -m <span class="m">644</span> ./lynx.man /usr/local/share/man/man1/<span class="sb">`</span><span class="nb">echo</span> lynx<span class="p">|</span>sed <span class="s1">&#39;s,x,x,&#39;</span><span class="sb">`</span>.1
+** installing ./lynx.cfg as /usr/local/etc/lynx.cfg
+** installing ./samples/lynx.lss as /usr/local/etc/lynx.lss
+
+Use make install-help to install the help-files
+Use make install-doc to install extra documentation files
+
+</code></pre></div><p>Después de todo esto ya tendriamos instalado <strong>lynx</strong>, nos muestra cómo podemos instalar la ayuda y la documentación extra.</p>
+<ul>
+<li>Ahora ejecutamos <strong>lynx</strong> y vemos que funciona perfectamente.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">lynx www.google.es
+</code></pre></div><p><img src="/images/googlelynx.png" alt="googlelynx.png"></p>
+<h2 id="instalar-la-ayuda">Instalar la ayuda</h2>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@buster:/usr/local/lynx/lynx2.8.9rel.1# make install-help
+mkdir -p /usr/local/share/lynx_help
+/bin/sh -c <span class="s1">&#39;if cd &#34;/usr/local/share/lynx_help&#34; ; then \
+</span><span class="s1">	WD=`pwd` ; \
+</span><span class="s1">	TAIL=`basename &#34;/usr/local/share/lynx_help&#34;` ; \
+</span><span class="s1">	HEAD=`echo &#34;$WD&#34;|sed -e &#34;s,/${TAIL}$,,&#34;` ; \
+</span><span class="s1">	test &#34;x$WD&#34; != &#34;x$HEAD&#34; &amp;&amp; rm -fr * ; \
+</span><span class="s1">	fi&#39;</span>
+<span class="nb">test</span> -d /usr/local/share/lynx_help/keystrokes <span class="o">||</span> mkdir /usr/local/share/lynx_help/keystrokes
+Translating/copying html files
+/bin/sh -c <span class="s1">&#39;sed_prog=`pwd`/help_files.sed &amp;&amp; \
+</span><span class="s1">	cd ./lynx_help &amp;&amp; \
+</span><span class="s1">	dirs=keystrokes &amp;&amp; \
+</span><span class="s1">	files=&#34;*.html */*.html&#34; &amp;&amp; \
+</span><span class="s1">	for f in $files ; do \
+</span><span class="s1">		sed -f $sed_prog $f &gt; /usr/local/share/lynx_help/$f ; \
+</span><span class="s1">	done &amp;&amp; \
+</span><span class="s1">	if test &#34;&#34; != &#34;&#34; ; then \
+</span><span class="s1">		(cd /usr/local/share/lynx_help &amp;&amp;  $files ) \
+</span><span class="s1">	fi&#39;</span>
+Updating /usr/local/etc/lynx.cfg
+/bin/sh -c <span class="se">\
+</span><span class="se"></span><span class="s1">&#39;if test -f /usr/local/etc/lynx.cfg ; then \
+</span><span class="s1">	mv /usr/local/etc/lynx.cfg /usr/local/etc/lynx.tmp ; \
+</span><span class="s1">else \
+</span><span class="s1">	cp ./lynx.cfg /usr/local/etc/lynx.tmp ; \
+</span><span class="s1">fi&#39;</span>
+Updating /usr/local/etc/lynx.cfg to point to installed help-files
+sed	-e <span class="s1">&#39;/^HELPFILE:http/s!^!#!&#39;</span> <span class="se">\
+</span><span class="se"></span>	-e <span class="s1">&#39;/^#HELPFILE:file/s!#!!&#39;</span> <span class="se">\
+</span><span class="se"></span>	/usr/local/etc/lynx.tmp <span class="p">|</span> <span class="se">\
+</span><span class="se"></span>/bin/sh ./scripts/cfg_path.sh lynx_help /usr/local/share/lynx_help <span class="p">|</span> <span class="se">\
+</span><span class="se"></span>/bin/sh ./scripts/cfg_path.sh lynx_doc  /usr/local/share/lynx_help <span class="p">|</span> <span class="se">\
+</span><span class="se"></span>sed	-e <span class="s1">&#39;/^HELPFILE:file/s!$!!&#39;</span> <span class="se">\
+</span><span class="se"></span>	-e <span class="s1">&#39;/^HELPFILE:file/s!$!!&#39;</span> <span class="se">\
+</span><span class="se"></span>	&gt;/usr/local/etc/lynx.cfg
+chmod <span class="m">644</span> /usr/local/etc/lynx.cfg
+rm -f /usr/local/etc/lynx.tmp
+
+</code></pre></div><ul>
+<li>Comprobamos que tenemos la ayuda instalada</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@buster:/usr/local/lynx/lynx2.8.9rel.1# lynx --help
+USAGE: lynx <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>file<span class="o">]</span>
+Options are:
+  -                 receive options and arguments from stdin
+  -accept_all_cookies 
+                    accept cookies without prompting <span class="k">if</span> Set-Cookie handling
+                    is on <span class="o">(</span>off<span class="o">)</span>
+  -anonymous        apply restrictions <span class="k">for</span> anonymous account,
+                    see also -restrictions
+  -assume_charset<span class="o">=</span>MIMEname
+                    charset <span class="k">for</span> documents that don<span class="err">&#39;</span>t specify it
+  -assume_local_charset<span class="o">=</span>MIMEname
+                    charset assumed <span class="k">for</span> <span class="nb">local</span> files
+  -assume_unrec_charset<span class="o">=</span>MIMEname
+                    use this instead of unrecognized charsets
+  -auth<span class="o">=</span>id:pw       authentication information <span class="k">for</span> protected documents
+  -base             prepend a request URL comment and BASE tag to text/html
+                    outputs <span class="k">for</span> -source dumps
+  -bibhost<span class="o">=</span>URL      <span class="nb">local</span> bibp server <span class="o">(</span>default http://bibhost/<span class="o">)</span>
+  -book             use the bookmark page as the startfile <span class="o">(</span>off<span class="o">)</span>
+  -buried_news      toggles scanning of news articles <span class="k">for</span> buried references <span class="o">(</span>on<span class="o">)</span>
+  -cache<span class="o">=</span>NUMBER     NUMBER of documents cached in memory
+
+</code></pre></div><ul>
+<li>También podemos instalar la documentación</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@buster:/usr/local/lynx/lynx2.8.9rel.1# make install-doc
+mkdir -p /usr/local/share/lynx_doc
+Copying sample files
+/bin/sh -c <span class="s1">&#39;\
+</span><span class="s1">	( umask 022; \
+</span><span class="s1">	  cd . &amp;&amp; \
+</span><span class="s1">	  /usr/bin/tar -cf - C[HO]* PROBLEMS README docs samples test ) | \
+</span><span class="s1">	( umask 022; \
+</span><span class="s1">	  cd /usr/local/share/lynx_doc &amp;&amp; \
+</span><span class="s1">	  chmod -R u+w . &amp;&amp; /usr/bin/tar -xf - )&#39;</span>
+/bin/sh -c <span class="s1">&#39;if test &#34;&#34; != &#34;&#34; ; then \
+</span><span class="s1">	(cd /usr/local/share/lynx_doc &amp;&amp;  -f docs/CHANGES*.[0-9] docs/*.announce ) \
+</span><span class="s1">fi&#39;</span>
+/bin/sh -c <span class="s1">&#39;for name in COPYING COPYHEADER; do \
+</span><span class="s1">	cd /usr/local/share/lynx_help &amp;&amp; rm -f $name ;\
+</span><span class="s1">	r= ;\
+</span><span class="s1">	test &#34;ln -s&#34; = &#34;ln -s&#34; || r=`echo /usr/local/share/lynx_help|sed -e &#34;s%[^/]\+%..%g&#34; -e &#34;s%^.%%&#34;`; \
+</span><span class="s1">	cd /usr/local/share/lynx_help &amp;&amp; ( ln -s $r/usr/local/share/lynx_doc/$name . || cp /usr/local/share/lynx_doc/$name . );\
+</span><span class="s1">	done&#39;</span>
+/bin/sh -c <span class="s1">&#39;case `id|sed -e &#34;s/(.*//&#34;` in uid=0) chown -R root /usr/local/share/lynx_doc;; esac&#39;</span>
+
+</code></pre></div><ul>
+<li>Miramos donde está instalado el paquete</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@buster:/home/vagrant# whereis lynx
+lynx: /usr/local/bin/lynx /usr/local/etc/lynx.lss /usr/local/etc/lynx.cfg /usr/local/lynx
+
+root@buster:/home/vagrant# which lynx
+/usr/local/bin/lynx
+</code></pre></div></div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/compilar/">compilar</a><a class="tag" href="/tags/compilar-c/">compilar c</a><a class="tag" href="/tags/c/">c</a><a class="tag" href="/tags/lynx/">lynx</a><a class="tag" href="/tags/compilar-lynx/">compilar lynx</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

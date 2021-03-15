@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cortafuegos on 1bit1nfo</title>
+    <link>https://1bit1nfo.netlify.app/tags/cortafuegos/</link>
+    <description>Recent content in cortafuegos on 1bit1nfo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 25 Jan 2021 17:15:21 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/cortafuegos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cortafuegos perimetral. Iptables</title>
+      <link>https://1bit1nfo.netlify.app/post/cortafuegos/</link>
+      <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/post/cortafuegos/</guid>
+      <description>Introducción Vamos a construir un cortafuegos en dulcinea que nos permita controlar el tráfico de nuestra red.</description>
+    </item>
+    
+  </channel>
+</rss>

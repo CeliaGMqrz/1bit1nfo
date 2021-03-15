@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Configurar LDAPs en Debian. OpenLDAP. (Freston) </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/ldaps/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Configurar LDAPs en Debian. OpenLDAP. (Freston)"/>
+<meta name="twitter:description" content="¡! Este post está relacionado con un entrono de trabajo con openstack incluido en otras entradas de mi blog."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Configurar LDAPs en Debian. OpenLDAP. (Freston)</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Mon, Jan 25, 2021 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">5-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p><img src="/images/escenario/ldaps.png" alt="ldaps.png"></p>
+<p><strong>¡!</strong> Este post está relacionado con un entrono de trabajo con openstack incluido en otras entradas de mi blog.</p>
+<h3 id="1-introducción">1. Introducción</h3>
+<h4 id="ldap-protocolo-ligero-de-acceso-a-directorio">LDAP. Protocolo Ligero de Acceso a Directorio.</h4>
+<p><strong>¿Qué es LDAP?</strong></p>
+<p>Es un <strong>protocolo</strong> muy utilizado por empresas que apuestan por el <strong>software libre</strong> al utilizar distribuciones de <strong>Linux</strong> para construir un **directorio activo **en el que se gestionan las credenciales de los trabajadores, los permisos y estaciones de trabajo.</p>
+<p>Funciona como un <strong>directorio remoto</strong> en el que un conjunto de objetos están organizados de <strong>forma jerárquica</strong>.</p>
+<p>Tenemos que saber que <strong>LDAP</strong> está basado en el protocolo <a href="https://es.wikipedia.org/wiki/X.500">X.500</a> para compartir directorios.</p>
+<p>El uso básico del directorio activo es almacenar información virtual de usuarios y compartirlo entre ellos con una serie de permisos y restricciones.</p>
+<blockquote>
+<p>Esto es sólo una breve introducción de LDAP. Para más información puedes entrar en este <a href="https://unbitdeinformacioncadadia.netlify.app/posts/2020/12/instalaci%C3%B3n-y-configuraci%C3%B3n-inicial-de-openldap/">post</a></p>
+</blockquote>
+<h3 id="2-objetivo">2. Objetivo:</h3>
+<p>Configura el servidor LDAP de frestón para que utilice el protocolo ldaps:// a la vez que el ldap:// utilizando el certificado x509 de la práctica de https o solicitando el correspondiente a través de gestiona. Realiza las modificaciones adecuadas en el cliente ldap de frestón para que todas las consultas se realicen por defecto utilizando ldaps://</p>
+<h3 id="3-creación-de-un-certificado-ssl-wilcard">3. Creación de un certificado SSL Wilcard</h3>
+<h4 id="31-concepto-qué-es-un-certificado-ssl-wilcard">3.1. Concepto: ¿Qué es un certificado SSL Wilcard?</h4>
+<p>Es un certificado que protege la dirección URL de un sitio web, así como también sus subdominios.</p>
+<h4 id="32-crear-clave-privada-y-certificado">3.2. Crear clave privada y certificado</h4>
+<p>El <strong>certificado</strong> principalmente se va a generar en Freston, nuestra máquina donde tenemos configurado el DNS de nuestro escenario.</p>
+<ul>
+<li>Generar la <strong>clave privada</strong>:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">openssl genrsa <span class="m">4069</span> &gt; /etc/ssl/private/wc_private.key
+</code></pre></div><ul>
+<li>Generar el <strong>certificado</strong>:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@freston:/home/debian# openssl req -new -key /etc/ssl/private/wc_private.key -out /home/debian/wc_celia.csr
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter <span class="s1">&#39;.&#39;</span>, the field will be left blank.
+-----
+Country Name <span class="o">(</span><span class="m">2</span> letter code<span class="o">)</span> <span class="o">[</span>AU<span class="o">]</span>:ES
+State or Province Name <span class="o">(</span>full name<span class="o">)</span> <span class="o">[</span>Some-State<span class="o">]</span>:Sevilla
+Locality Name <span class="o">(</span>eg, city<span class="o">)</span> <span class="o">[]</span>:Dos Hermanas
+Organization Name <span class="o">(</span>eg, company<span class="o">)</span> <span class="o">[</span>Internet Widgits Pty Ltd<span class="o">]</span>:IES Gonzalo Nazareno
+Organizational Unit Name <span class="o">(</span>eg, section<span class="o">)</span> <span class="o">[]</span>:Informatica
+Common Name <span class="o">(</span>e.g. server FQDN or YOUR name<span class="o">)</span> <span class="o">[]</span>:*.celia.gonzalonazareno.org
+Email Address <span class="o">[]</span>:
+
+Please enter the following <span class="s1">&#39;extra&#39;</span> attributes
+to be sent with your certificate request
+A challenge password <span class="o">[]</span>:
+An optional company name <span class="o">[]</span>:
+</code></pre></div><h4 id="33-enviar-el-certificado-a-la-autoridad-certificadora">3.3. Enviar el certificado a la autoridad certificadora</h4>
+<ul>
+<li>
+<p>Enviar dicho certificado a la <strong>autoridad certificadora</strong> y esperar a que lo firmen. Debamos obtener un fichero.crt firmado y el de la autoridad certificadora, que en este caso es: <strong>gonzalonazareno.crt</strong>, que nos hemos bajado de gestiona.</p>
+</li>
+<li>
+<p>Los certificados deben estar  alojados en <strong>/etc/ssl/certs</strong>, y la clave privada en <strong>/etc/ssl/private</strong>.</p>
+</li>
+</ul>
+<h3 id="4-crear-las-acls-access-control-lists">4. Crear las ACLs. Access Control Lists.</h3>
+<p>Con las ACLs podemos configurar &ldquo;quién tiene acceso a qué&rdquo;. Básicamente es una forma de determinar los <strong>permisos</strong> de acceso apropiados a un determinado objeto.</p>
+<h4 id="41-instalación-del-paquete-acl">4.1. Instalación del paquete acl</h4>
+<p>Necesitaremos instalar el paquete acl para Debian 10(Freston), donde tenemos nuestro directorio activo ya instalado.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt-get install acl
+</code></pre></div><h4 id="42-crear-acls">4.2. Crear ACLs</h4>
+<p>Creamos las ACLs para que el usuario debian tenga los permisos necesarios para trabajar con los certificados.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo setfacl -m u:openldap:r-x /etc/ssl/certs
+sudo setfacl -m u:openldap:r-x /etc/ssl/certs/gonzalonazareno.crt 
+sudo setfacl -m u:openldap:r-x /etc/ssl/certs/wc_celia_sign.crt 
+sudo setfacl -m u:openldap:r-x /etc/ssl/private/
+sudo setfacl -m u:openldap:r-x /etc/ssl/private/wc_private.key
+</code></pre></div><h3 id="5-fichero-de-configuración-ldif">5. Fichero de configuración .ldif</h3>
+<p>En el nuevo fichero .ldif vamos a indicar los certificados pertintentes y la clave privada de la siguiente manera:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">dn: <span class="nv">cn</span><span class="o">=</span>config
+changetype: modify
+add: olcTLSCACertificateFile
+olcTLSCACertificateFile: /etc/ssl/certs/gonzalonazareno.crt
+-
+replace: olcTLSCertificateFile
+olcTLSCertificateFile: /etc/ssl/certs/wc_celia_sign.crt
+-
+replace: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: /etc/ssl/private/wc_private.key
+</code></pre></div><p>Añadimos el nuevo fichero a la configuración</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo ldapmodify -Y EXTERNAL -H ldapi:/// -f ldaps.ldif
+
+<span class="c1">#Salida:</span>
+
+olcTLSCACertificateFile: /etc/ssl/certs/gonzalonazareno.crt
+olcTLSCertificateFile: /etc/ssl/certs/wc_celia_sign.crt
+olcTLSCertificateKeyFile: /etc/ssl/private/wc_private.key
+</code></pre></div><p>Nos aseguramos que no hay errores al añadirlo</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo slapcat -b <span class="s2">&#34;cn=config&#34;</span> <span class="p">|</span> grep -E <span class="s2">&#34;olcTLS&#34;</span> 
+
+<span class="c1"># Salida:</span>
+olcTLSCACertificateFile: /etc/ssl/certs/gonzalonazareno.crt
+olcTLSCertificateFile: /etc/ssl/certs/wc_celia_sign.crt
+olcTLSCertificateKeyFile: /etc/ssl/private/wc_private.key
+
+sudo slaptest -u
+
+<span class="c1"># Salida:</span>
+config file testing succeeded
+
+</code></pre></div><h3 id="6-configuración">6. Configuración</h3>
+<p><code>/etc/ldap/ldap.conf</code></p>
+<p>Añadimos el certificado de la autoridad certificadora</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">TLS_CACERT      /etc/ssl/certs/gonzalonazareno.crt
+</code></pre></div><p><code>/etc/default/slapd</code></p>
+<p>Activamos la opción de ldaps de la siguiente forma</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">SLAPD_SERVICES</span><span class="o">=</span><span class="s2">&#34;ldap:/// ldapi:/// ldaps:///&#34;</span>
+</code></pre></div><h3 id="7-funcionamiento">7. Funcionamiento</h3>
+<p>Debemos reiniciar el servicio de ldaps y comprobar que esta funcionando</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@freston:~$ sudo /etc/init.d/slapd restart
+<span class="o">[</span> ok <span class="o">]</span> Restarting slapd <span class="o">(</span>via systemctl<span class="o">)</span>: slapd.service.
+
+debian@freston:~$ sudo /etc/init.d/slapd status
+● slapd.service - LSB: OpenLDAP standalone server <span class="o">(</span>Lightweight Directory Access Protocol<span class="o">)</span>
+   Loaded: loaded <span class="o">(</span>/etc/init.d/slapd<span class="p">;</span> generated<span class="o">)</span>
+   Active: active <span class="o">(</span>running<span class="o">)</span> since Mon 2021-01-25 09:09:29 CET<span class="p">;</span> 4s ago
+     Docs: man:systemd-sysv-generator<span class="o">(</span>8<span class="o">)</span>
+  Process: <span class="m">1134</span> <span class="nv">ExecStart</span><span class="o">=</span>/etc/init.d/slapd start <span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited, <span class="nv">status</span><span class="o">=</span>0/SUCCESS<span class="o">)</span>
+    Tasks: <span class="m">3</span> <span class="o">(</span>limit: 562<span class="o">)</span>
+   Memory: 3.3M
+   CGroup: /system.slice/slapd.service
+           └─1143 /usr/sbin/slapd -h ldap:/// ldapi:/// ldaps:/// -g openldap -u openldap -F /etc/ldap/s…
+
+Jan <span class="m">25</span> 09:09:29 freston systemd<span class="o">[</span>1<span class="o">]</span>: Starting LSB: OpenLDAP standalone server <span class="o">(</span>Lightweight Directo…col<span class="o">)</span>...
+Jan <span class="m">25</span> 09:09:29 freston slapd<span class="o">[</span>1139<span class="o">]</span>: @<span class="o">(</span><span class="c1">#) $OpenLDAP: slapd  (Nov 17 2020 01:23:45) $</span>
+                                             Debian OpenLDAP Maintainers &lt;pkg-openldap-devel@list…an.org&gt;
+Jan <span class="m">25</span> 09:09:29 freston slapd<span class="o">[</span>1143<span class="o">]</span>: slapd starting
+Jan <span class="m">25</span> 09:09:29 freston slapd<span class="o">[</span>1134<span class="o">]</span>: Starting OpenLDAP: slapd.
+Jan <span class="m">25</span> 09:09:29 freston systemd<span class="o">[</span>1<span class="o">]</span>: Started LSB: OpenLDAP standalone server <span class="o">(</span>Lightweight Director…tocol<span class="o">)</span>.
+Hint: Some lines were ellipsized, use -l to show in full.
+</code></pre></div><p><strong>Consulta</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@freston:~$ ldapsearch -x -H ldaps://freston.celia.gonzalonazareno.org:636 -b <span class="s2">&#34;cn=admin,dc=freston,dc=celia,dc=gonzalonazareno,dc=org&#34;</span>
+<span class="c1"># extended LDIF</span>
+<span class="c1">#</span>
+<span class="c1"># LDAPv3</span>
+<span class="c1"># base &lt;cn=admin,dc=freston,dc=celia,dc=gonzalonazareno,dc=org&gt; with scope subtree</span>
+<span class="c1"># filter: (objectclass=*)</span>
+<span class="c1"># requesting: ALL</span>
+<span class="c1">#</span>
+
+<span class="c1"># admin, freston.celia.gonzalonazareno.org</span>
+dn: <span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>freston,dc<span class="o">=</span>celia,dc<span class="o">=</span>gonzalonazareno,dc<span class="o">=</span>org
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+description: LDAP administrator
+
+<span class="c1"># search result</span>
+search: <span class="m">2</span>
+result: <span class="m">0</span> Success
+
+<span class="c1"># numResponses: 2</span>
+<span class="c1"># numEntries: 1</span>
+
+</code></pre></div></div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/ldaps/">ldaps</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

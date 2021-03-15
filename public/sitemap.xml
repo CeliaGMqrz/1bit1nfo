@@ -3,33 +3,598 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://1bit1nfo.netlify.app/</loc>
-    <lastmod>2021-03-13T21:47:41+00:00</lastmod>
+    <loc>https://1bit1nfo.netlify.app/contact/</loc>
+    <lastmod>2021-03-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://1bit1nfo.netlify.app/tags/demo/</loc>
-    <lastmod>2021-03-13T21:47:41+00:00</lastmod>
+    <loc>https://1bit1nfo.netlify.app/about/</loc>
+    <lastmod>2021-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/</loc>
+    <lastmod>2021-03-08T12:53:56+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/integracion_continua/</loc>
+    <lastmod>2021-03-08T12:53:56+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://1bit1nfo.netlify.app/post/</loc>
-    <lastmod>2021-03-13T21:47:41+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/tags/shortcode/</loc>
-    <lastmod>2021-03-13T21:47:41+00:00</lastmod>
+    <lastmod>2021-03-08T12:53:56+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://1bit1nfo.netlify.app/tags/</loc>
-    <lastmod>2021-03-13T21:47:41+00:00</lastmod>
+    <lastmod>2021-03-08T12:53:56+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://1bit1nfo.netlify.app/post/figure-shortcode/</loc>
-    <lastmod>2021-03-13T21:47:41+00:00</lastmod>
+    <loc>https://1bit1nfo.netlify.app/tags/untagged/</loc>
+    <lastmod>2021-03-08T12:53:56+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/cms_java/</loc>
+    <lastmod>2021-03-07T21:11:44+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/guacamole/</loc>
+    <lastmod>2021-03-07T21:11:44+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/contenedores/</loc>
+    <lastmod>2021-03-07T21:11:44+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/java/</loc>
+    <lastmod>2021-03-07T21:11:44+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/vpn/</loc>
+    <lastmod>2021-02-24T08:27:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/vpn/</loc>
+    <lastmod>2021-02-24T08:27:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/site-to-site/</loc>
+    <lastmod>2021-02-24T08:27:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/apache/</loc>
+    <lastmod>2021-02-16T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/varnish/</loc>
+    <lastmod>2021-02-16T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/rendimiento/</loc>
+    <lastmod>2021-02-16T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/nginx/</loc>
+    <lastmod>2021-02-16T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/rendimiento/</loc>
+    <lastmod>2021-02-16T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/varnish/</loc>
+    <lastmod>2021-02-16T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/cortafuegos/</loc>
+    <lastmod>2021-01-25T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/cortafuegos/</loc>
+    <lastmod>2021-01-25T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/dovecot/</loc>
+    <lastmod>2021-01-25T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/imap/</loc>
+    <lastmod>2021-01-25T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/iptables/</loc>
+    <lastmod>2021-01-25T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/mariadb/</loc>
+    <lastmod>2021-01-25T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/roundcube/</loc>
+    <lastmod>2021-01-25T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/servidor-de-correos/</loc>
+    <lastmod>2021-01-25T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/servidor_correo3/</loc>
+    <lastmod>2021-01-25T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/servidor_correo4/</loc>
+    <lastmod>2021-01-25T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/webmail/</loc>
+    <lastmod>2021-01-25T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/ldaps/</loc>
+    <lastmod>2021-01-25T09:27:32+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/ldaps/</loc>
+    <lastmod>2021-01-25T09:27:32+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/alias/</loc>
+    <lastmod>2021-01-22T12:48:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/escenario/</loc>
+    <lastmod>2021-01-22T12:48:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/mailx/</loc>
+    <lastmod>2021-01-22T12:48:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/openstack/</loc>
+    <lastmod>2021-01-22T12:48:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/postfix/</loc>
+    <lastmod>2021-01-22T12:48:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/proyecto/</loc>
+    <lastmod>2021-01-22T12:48:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/redirecciones/</loc>
+    <lastmod>2021-01-22T12:48:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/servidor-correos/</loc>
+    <lastmod>2021-01-22T12:48:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/servidor_correo1/</loc>
+    <lastmod>2021-01-22T12:48:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/servidor_correo2/</loc>
+    <lastmod>2021-01-22T12:48:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/spf/</loc>
+    <lastmod>2021-01-22T12:48:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/cms/</loc>
+    <lastmod>2021-01-21T13:04:33+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/djando/</loc>
+    <lastmod>2021-01-21T13:04:33+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/django/</loc>
+    <lastmod>2021-01-21T13:04:33+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/mezzanine/</loc>
+    <lastmod>2021-01-21T13:04:33+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/app_web_python_django/</loc>
+    <lastmod>2021-01-21T13:04:33+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/mezzanine/</loc>
+    <lastmod>2021-01-21T13:04:33+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/python/</loc>
+    <lastmod>2021-01-21T13:04:33+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/wagtail/</loc>
+    <lastmod>2021-01-21T13:04:33+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/centos8/</loc>
+    <lastmod>2021-01-21T10:11:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/https_centos/</loc>
+    <lastmod>2021-01-21T10:11:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/https/</loc>
+    <lastmod>2021-01-21T10:11:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/ansible/</loc>
+    <lastmod>2021-01-20T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/ansible/</loc>
+    <lastmod>2021-01-20T17:15:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/mysql_sancho/</loc>
+    <lastmod>2021-01-13T14:51:48+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/ubuntu/</loc>
+    <lastmod>2021-01-13T14:51:48+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/httpd/</loc>
+    <lastmod>2021-01-13T11:36:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/httpd_centos/</loc>
+    <lastmod>2021-01-13T11:36:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/bind9/</loc>
+    <lastmod>2021-01-12T19:49:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/dns_freston/</loc>
+    <lastmod>2021-01-12T19:49:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/dns/</loc>
+    <lastmod>2021-01-12T19:49:10+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/vmware/</loc>
+    <lastmod>2020-12-22T13:53:35+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/vmware/</loc>
+    <lastmod>2020-12-22T13:53:35+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/ldap1/</loc>
+    <lastmod>2020-12-14T20:18:59+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/ldap/</loc>
+    <lastmod>2020-12-14T20:18:59+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/oracle19c/</loc>
+    <lastmod>2020-12-08T15:28:36+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/linux-8/</loc>
+    <lastmod>2020-12-08T15:28:36+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/oracle-database-19c/</loc>
+    <lastmod>2020-12-08T15:28:36+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/dmz/</loc>
+    <lastmod>2020-12-05T13:21:43+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/nat/</loc>
+    <lastmod>2020-12-05T13:21:43+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/modificacion/</loc>
+    <lastmod>2020-12-05T13:21:43+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/actualizacion_centos/</loc>
+    <lastmod>2020-11-30T20:59:38+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/centos7/</loc>
+    <lastmod>2020-11-30T20:59:38+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/upgrade-centos/</loc>
+    <lastmod>2020-11-30T20:59:38+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/cerbot/</loc>
+    <lastmod>2020-11-29T21:09:40+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/ovh_httpss/</loc>
+    <lastmod>2020-11-29T21:09:40+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/lets-encrypt/</loc>
+    <lastmod>2020-11-29T21:09:40+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/ovh_php/</loc>
+    <lastmod>2020-11-28T20:44:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/nextcloud/</loc>
+    <lastmod>2020-11-28T20:44:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/php/</loc>
+    <lastmod>2020-11-28T20:44:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/openstackclient/</loc>
+    <lastmod>2020-11-19T19:31:53+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/openstackclient/</loc>
+    <lastmod>2020-11-19T19:31:53+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/autoridad-certificadora/</loc>
+    <lastmod>2020-11-19T18:51:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/crear-autoridad-certificadora/</loc>
+    <lastmod>2020-11-19T18:51:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/entidadca/</loc>
+    <lastmod>2020-11-19T18:51:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/escenario/</loc>
+    <lastmod>2020-11-18T18:22:12+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/servidores/</loc>
+    <lastmod>2020-11-18T18:22:12+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/kernel/</loc>
+    <lastmod>2020-11-15T20:07:29+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/kernel-linux/</loc>
+    <lastmod>2020-11-15T20:07:29+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/entorno-lamp/</loc>
+    <lastmod>2020-11-11T19:21:43+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/lamp/</loc>
+    <lastmod>2020-11-11T19:21:43+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/instalar-lamp/</loc>
+    <lastmod>2020-11-11T19:21:43+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/lamp/</loc>
+    <lastmod>2020-11-11T19:21:43+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/linux/</loc>
+    <lastmod>2020-11-11T19:21:43+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/mysql/</loc>
+    <lastmod>2020-11-11T19:21:43+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/nginx/</loc>
+    <lastmod>2020-11-11T17:51:13+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/servidor-nginx/</loc>
+    <lastmod>2020-11-11T17:51:13+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/virtualhosting/</loc>
+    <lastmod>2020-11-11T17:51:13+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/c/</loc>
+    <lastmod>2020-10-31T18:13:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/compilar/</loc>
+    <lastmod>2020-10-31T18:13:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/compilar-c/</loc>
+    <lastmod>2020-10-31T18:13:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/compilar-lynx/</loc>
+    <lastmod>2020-10-31T18:13:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/compilar/</loc>
+    <lastmod>2020-10-31T18:13:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/lynx/</loc>
+    <lastmod>2020-10-31T18:13:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/cifrado-asim%C3%A9trico/</loc>
+    <lastmod>2020-10-24T14:45:15+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/cifrado_asimetrico/</loc>
+    <lastmod>2020-10-24T14:45:15+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/gpg/</loc>
+    <lastmod>2020-10-24T14:45:15+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/openssl/</loc>
+    <lastmod>2020-10-24T14:45:15+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/virtualhosting_apache/</loc>
+    <lastmod>2020-10-21T21:54:22+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/debian10/</loc>
+    <lastmod>2020-10-15T22:22:11+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/instalacion-visualcode/</loc>
+    <lastmod>2020-10-15T22:22:11+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/instalacion_vscode/</loc>
+    <lastmod>2020-10-15T22:22:11+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/visualcode/</loc>
+    <lastmod>2020-10-15T22:22:11+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/instalacion_vbox_debian/</loc>
+    <lastmod>2020-10-15T15:50:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/instalar-virtualbox/</loc>
+    <lastmod>2020-10-15T15:50:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/virtualbox/</loc>
+    <lastmod>2020-10-15T15:50:23+02:00</lastmod>
   </url>
   
   <url>
@@ -38,38 +603,8 @@
   </url>
   
   <url>
-    <loc>https://1bit1nfo.netlify.app/categories/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/tags/css/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/tags/html/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/tags/markdown/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/post/markdown-syntax/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/categories/syntax/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/categories/themes/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <loc>https://1bit1nfo.netlify.app/post/rich-content/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -78,43 +613,8 @@
   </url>
   
   <url>
-    <loc>https://1bit1nfo.netlify.app/post/rich-content/</loc>
-    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://1bit1nfo.netlify.app/tags/shortcodes/</loc>
     <lastmod>2019-03-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/post/placeholder-text/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/tags/text/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/contact/</loc>
-    <lastmod>2019-03-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/post/math-typesetting/</loc>
-    <lastmod>2019-03-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/tags/emoji/</loc>
-    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/post/emoji-support/</loc>
-    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -128,8 +628,11 @@
   </url>
   
   <url>
-    <loc>https://1bit1nfo.netlify.app/about/</loc>
-    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
+    <loc>https://1bit1nfo.netlify.app/post/kubernetes/</loc>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/categories/</loc>
   </url>
   
   <url>

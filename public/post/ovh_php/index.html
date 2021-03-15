@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Instalación/migración de aplicaciones web PHP </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/ovh_php/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Instalación/migración de aplicaciones web PHP"/>
+<meta name="twitter:description" content="OBJETIVO:
+Realizar la migración de la aplicación drupal que tienes instalada en el entorno de desarrollo a nuestro entorno de producción, para ello ten en cuenta lo siguiente:"/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Instalación/migración de aplicaciones web PHP</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Sat, Nov 28, 2020 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">11-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>OBJETIVO:</p>
+<p>Realizar la migración de la aplicación drupal que tienes instalada en el entorno de desarrollo a nuestro entorno de producción, para ello ten en cuenta lo siguiente:</p>
+<hr>
+<h3 id="1-la-aplicación-se-tendrá-que-migrar-a-un-nuevo-virtualhost-al-que-se-accederá-con-el-nombre-portaliesgnxxes">1. La aplicación se tendrá que migrar a un nuevo virtualhost al que se accederá con el nombre portal.iesgnXX.es.</h3>
+<ul>
+<li>Crear el nuevo virtualhost portal.iesgn05.es</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">cp </span><span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">nginx</span><span class="p">/</span><span class="n">sites-available</span><span class="p">/</span><span class="n">iesgn05</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">nginx</span><span class="p">/</span><span class="n">sites-available</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span>
+<span class="n">nano</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">nginx</span><span class="p">/</span><span class="n">sites-available</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># Default server configuration</span>
+<span class="c">#</span>
+<span class="n">server</span> <span class="p">{</span>
+        <span class="n">listen</span> <span class="n">80</span><span class="p">;</span>
+        <span class="n">listen</span> <span class="p">[::]</span><span class="err">:</span><span class="n">80</span><span class="p">;</span>
+
+        <span class="n">root</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">;</span>
+
+        <span class="c"># Add index.php to the list if you are using PHP</span>
+        <span class="n">index</span> <span class="n">index</span><span class="p">.</span><span class="n">html</span> <span class="n">index</span><span class="p">.</span><span class="n">htm</span> <span class="n">index</span><span class="p">.</span><span class="n">nginx-debian</span><span class="p">.</span><span class="n">html</span> <span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="p">;</span>
+
+        <span class="n">server_name</span> <span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">;</span>
+
+        <span class="n">location</span> <span class="p">/</span> <span class="p">{</span>
+                <span class="n">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri</span><span class="p">/</span> <span class="p">=</span><span class="n">404</span><span class="p">;</span>
+        <span class="p">}</span>
+
+
+        <span class="n">location</span> <span class="p">~\.</span><span class="n">php</span><span class="p">$</span> <span class="p">{</span>
+               <span class="n">include</span> <span class="n">snippets</span><span class="p">/</span><span class="n">fastcgi-php</span><span class="p">.</span><span class="n">conf</span><span class="p">;</span>
+               <span class="c"># With php-fpm (or other unix sockets):</span>
+               <span class="n">fastcgi_pass</span> <span class="n">unix</span><span class="err">:</span><span class="p">/</span><span class="n">run</span><span class="p">/</span><span class="n">php</span><span class="p">/</span><span class="n">php7</span><span class="p">.</span><span class="n">3-fpm</span><span class="p">.</span><span class="n">sock</span><span class="p">;</span>
+               <span class="c"># With php-cgi (or other tcp sockets):</span>
+               <span class="c">#fastcgi_pass 127.0.0.1:9000;</span>
+        <span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre></div><p>Creamos el directorio y el html</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">mkdir</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span>
+<span class="n">nano</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span>
+</code></pre></div><ul>
+<li>Necesitaremos otra zona DNS</li>
+</ul>
+<p><img src="/images/ovh_php/cname.png" alt="cname.png"></p>
+<ul>
+<li>Comprobamos que podemos acceder al sitio</li>
+</ul>
+<p><img src="/images/ovh_php/portal1.png" alt="portal1.png"></p>
+<h3 id="2-vamos-a-nombrar-el-servicio-de-base-de-datos-que-tenemos-en-producción-como-es-un-servicio-interno-no-la-vamos-a-nombrar-en-la-zona-dns-la-vamos-a-nombrar-usando-resolución-estática-el-nombre-del-servicio-de-base-de-datos-se-debe-llamar-bdiesgnxxes">2. Vamos a nombrar el servicio de base de datos que tenemos en producción. Como es un servicio interno no la vamos a nombrar en la zona DNS, la vamos a nombrar usando resolución estática. El nombre del servicio de base de datos se debe llamar: bd.iesgnXX.es.</h3>
+<ul>
+<li>Utilizamos la resolución estática</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span>       <span class="n">bd</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span>
+</code></pre></div><h3 id="3-por-lo-tanto-los-recursos-que-deberás-crear-en-la-base-de-datos-serán-respeta-los-nombres">3. Por lo tanto los recursos que deberás crear en la base de datos serán (respeta los nombres):</h3>
+<ul>
+<li>
+<p>Dirección de la base de datos: bd.iesgnXX.es</p>
+</li>
+<li>
+<p>Base de datos: bd_drupal</p>
+</li>
+<li>
+<p>Usuario: user_drupal</p>
+</li>
+<li>
+<p>Password: pass_drupal</p>
+</li>
+<li>
+<p>Comprobamos que mariadb esta en funcionamiento</p>
+</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@kiara</span><span class="err">:</span><span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="c"># systemctl status mariadb</span>
+<span class="err">●</span> <span class="n">mariadb</span><span class="p">.</span><span class="n">service</span> <span class="p">-</span> <span class="n">MariaDB</span> <span class="n">10</span><span class="p">.</span><span class="n">3</span><span class="p">.</span><span class="n">25</span> <span class="n">database</span> <span class="n">server</span>
+   <span class="n">Loaded</span><span class="err">:</span> <span class="n">loaded</span> <span class="p">(/</span><span class="n">lib</span><span class="p">/</span><span class="n">systemd</span><span class="p">/</span><span class="n">system</span><span class="p">/</span><span class="n">mariadb</span><span class="p">.</span><span class="n">service</span><span class="p">;</span> <span class="n">enabled</span><span class="p">;</span> <span class="n">vendor</span> <span class="n">preset</span><span class="err">:</span> <span class="n">enabled</span><span class="p">)</span>
+   <span class="n">Active</span><span class="err">:</span> <span class="n">active</span> <span class="p">(</span><span class="n">running</span><span class="p">)</span> <span class="n">since</span> <span class="n">Mon</span> <span class="n">2020</span><span class="p">-</span><span class="n">11</span><span class="p">-</span><span class="n">23</span> <span class="n">08</span><span class="err">:</span><span class="n">57</span><span class="err">:</span><span class="n">32</span> <span class="n">UTC</span><span class="p">;</span> <span class="n">4</span> <span class="n">days</span> <span class="n">ago</span>
+     <span class="n">Docs</span><span class="err">:</span> <span class="n">man</span><span class="err">:</span><span class="n">mysqld</span><span class="p">(</span><span class="n">8</span><span class="p">)</span>
+           <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">mariadb</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">kb</span><span class="p">/</span><span class="n">en</span><span class="p">/</span><span class="n">library</span><span class="p">/</span><span class="n">systemd</span><span class="p">/</span>
+  <span class="k">Process</span><span class="err">:</span> <span class="n">488</span> <span class="n">ExecStartPre</span><span class="p">=/</span><span class="n">usr</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">install</span> <span class="n">-m</span> <span class="n">755</span> <span class="n">-o</span> <span class="n">mysql</span> <span class="n">-g</span> <span class="n">root</span> <span class="n">-d</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">run</span><span class="p">/</span><span class="n">mysqld</span> <span class="p">(</span><span class="n">code</span><span class="p">=</span><span class="n">exited</span><span class="p">,</span> <span class="n">sta</span>
+  <span class="k">Process</span><span class="err">:</span> <span class="n">517</span> <span class="n">ExecStartPre</span><span class="p">=/</span><span class="n">bin</span><span class="p">/</span><span class="n">sh</span> <span class="n">-c</span> <span class="n">systemctl</span> <span class="n">unset-environment</span> <span class="n">_WSREP_START_POSITION</span> <span class="p">(</span><span class="n">code</span><span class="p">=</span><span class="n">exited</span><span class="p">,</span> <span class="n">st</span>
+  <span class="k">Process</span><span class="err">:</span> <span class="n">524</span> <span class="n">ExecStartPre</span><span class="p">=/</span><span class="n">bin</span><span class="p">/</span><span class="n">sh</span> <span class="n">-c</span> <span class="p">[</span> <span class="p">!</span> <span class="n">-e</span> <span class="p">/</span><span class="n">usr</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">galera_recovery</span> <span class="p">]</span> <span class="p">&amp;&amp;</span> <span class="n">VAR</span><span class="p">=</span> <span class="p">||</span>   <span class="n">VAR</span><span class="p">=`</span><span class="nb">cd </span><span class="p">/</span><span class="n">usr</span><span class="p">/</span><span class="n">bin</span><span class="p">/..</span>
+  <span class="k">Process</span><span class="err">:</span> <span class="n">608</span> <span class="n">ExecStartPost</span><span class="p">=/</span><span class="n">bin</span><span class="p">/</span><span class="n">sh</span> <span class="n">-c</span> <span class="n">systemctl</span> <span class="n">unset-environment</span> <span class="n">_WSREP_START_POSITION</span> <span class="p">(</span><span class="n">code</span><span class="p">=</span><span class="n">exited</span><span class="p">,</span> <span class="n">s</span>
+  <span class="k">Process</span><span class="err">:</span> <span class="n">611</span> <span class="n">ExecStartPost</span><span class="p">=/</span><span class="n">etc</span><span class="p">/</span><span class="n">mysql</span><span class="p">/</span><span class="n">debian-start</span> <span class="p">(</span><span class="n">code</span><span class="p">=</span><span class="n">exited</span><span class="p">,</span> <span class="n">status</span><span class="p">=</span><span class="n">0</span><span class="p">/</span><span class="n">SUCCESS</span><span class="p">)</span>
+ <span class="n">Main</span> <span class="n">PID</span><span class="err">:</span> <span class="n">577</span> <span class="p">(</span><span class="n">mysqld</span><span class="p">)</span>
+   <span class="n">Status</span><span class="err">:</span> <span class="s2">&#34;Taking your SQL requests now...&#34;</span>
+    <span class="n">Tasks</span><span class="err">:</span> <span class="n">30</span> <span class="p">(</span><span class="n">limit</span><span class="err">:</span> <span class="n">2318</span><span class="p">)</span>
+   <span class="n">Memory</span><span class="err">:</span> <span class="n">101</span><span class="p">.</span><span class="n">3M</span>
+   <span class="n">CGroup</span><span class="err">:</span> <span class="p">/</span><span class="n">system</span><span class="p">.</span><span class="n">slice</span><span class="p">/</span><span class="n">mariadb</span><span class="p">.</span><span class="n">service</span>
+           <span class="err">└─</span><span class="n">577</span> <span class="p">/</span><span class="n">usr</span><span class="p">/</span><span class="n">sbin</span><span class="p">/</span><span class="n">mysqld</span>
+
+<span class="n">Warning</span><span class="err">:</span> <span class="n">Journal</span> <span class="n">has</span> <span class="n">been</span> <span class="n">rotated</span> <span class="n">since</span> <span class="n">unit</span> <span class="n">was</span> <span class="n">started</span><span class="p">.</span> <span class="n">Log</span> <span class="n">output</span> <span class="n">is</span> <span class="n">incomplete</span> <span class="n">or</span> <span class="n">unavailable</span><span class="p">.</span>
+
+</code></pre></div><ul>
+<li>Creamos la base de datos, y el usuario y le damos privilegios.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">MariaDB</span> <span class="p">[(</span><span class="n">none</span><span class="p">)]&gt;</span> <span class="n">create</span> <span class="n">database</span> <span class="n">bd_drupal</span>
+    <span class="p">-&gt;</span> <span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="n">1</span> <span class="n">row</span> <span class="n">affected</span> <span class="p">(</span><span class="n">0</span><span class="p">.</span><span class="n">000</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MariaDB</span> <span class="p">[(</span><span class="n">none</span><span class="p">)]&gt;</span> <span class="n">create</span> <span class="n">user</span> <span class="s1">&#39;user_drupal&#39;</span><span class="p">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="n">0</span> <span class="n">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="n">0</span><span class="p">.</span><span class="n">000</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MariaDB</span> <span class="p">[(</span><span class="n">none</span><span class="p">)]&gt;</span> <span class="n">grant</span> <span class="n">all</span> <span class="n">privileges</span> <span class="n">on</span> <span class="n">bd_drupal</span><span class="p">.*</span> <span class="n">to</span> <span class="s1">&#39;user_drupal&#39;</span><span class="p">@</span><span class="s1">&#39;%&#39;</span> <span class="n">identified</span> <span class="n">by</span> <span class="s1">&#39;pass_drupal&#39;</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="n">0</span> <span class="n">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="n">0</span><span class="p">.</span><span class="n">000</span> <span class="n">sec</span><span class="p">)</span>
+
+</code></pre></div><h3 id="4-realiza-la-migración-de-la-aplicación">4. Realiza la migración de la aplicación.</h3>
+<ul>
+<li>Hacemos una copia de seguridad de la base de datos de local, y la mandamos a nuestro servidor. La base de datos se encuentra alojada en el cliente ya que creamos la opción multinodo que usaba la base de datos en otro nodo. Entonces entramos en el cliente y hacemos la copia de seguridad de la base de datos. Después la mandamos a nuestro servidor.</li>
+</ul>
+<p>Copia de seguridad:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">mysqldump</span> <span class="n">-v</span> <span class="p">-</span><span class="n">-opt</span> <span class="p">-</span><span class="n">-events</span> <span class="p">-</span><span class="n">-routines</span> <span class="p">-</span><span class="n">-triggers</span> <span class="p">-</span><span class="n">-default-character-set</span><span class="p">=</span><span class="n">utf8</span> <span class="n">-u</span> <span class="n">user</span> <span class="n">-p</span> <span class="n">test</span> <span class="p">&gt;</span> <span class="n">db_backup_db_test</span><span class="p">`</span><span class="n">date</span> <span class="p">+</span><span class="k">%</span><span class="n">Y</span><span class="k">%</span><span class="n">m</span><span class="k">%</span><span class="n">d_</span><span class="k">%</span><span class="n">H</span><span class="k">%</span><span class="n">M</span><span class="k">%</span><span class="n">S</span><span class="p">`.</span><span class="n">sql</span>
+</code></pre></div><p>Enviar al servidor de ovh:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">celiagm</span><span class="nv">@debian</span><span class="err">:</span><span class="p">~$</span> <span class="n">scp</span> <span class="n">db_backup_db_test20201127_130410</span><span class="p">.</span><span class="n">sql</span> <span class="n">debian</span><span class="nv">@kiara</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">debian</span>
+<span class="n">db_backup_db_test20201127_130410</span><span class="p">.</span><span class="n">sql</span>                       <span class="n">100</span><span class="p">%</span>   <span class="n">11MB</span>  <span class="n">20</span><span class="p">.</span><span class="n">3MB</span><span class="p">/</span><span class="n">s</span>   <span class="n">00</span><span class="err">:</span><span class="n">00</span>  
+</code></pre></div><ul>
+<li>Pasamos el sitio web celia-drupal al servidor de ovh</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@debian</span><span class="n">-cms</span><span class="err">:</span><span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="c"># scp celia-drupal.zip celiagm@192.168.100.11:/home/celiagm</span>
+
+<span class="n">celiagm</span><span class="nv">@debian</span><span class="err">:</span><span class="p">~$</span> <span class="n">scp</span> <span class="n">celia-drupal</span><span class="p">.</span><span class="n">zip</span> <span class="n">debian</span><span class="nv">@kiara</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">debian</span>
+
+</code></pre></div><ul>
+<li>Lo descomprimimos en el lugar adecuado, copiamos el contenido de nuestro sitio web a</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@kiara</span><span class="err">:</span><span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="c"># unzip celia-drupal.zip </span>
+<span class="n">root</span><span class="nv">@kiara</span><span class="err">:</span><span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">celia-drupal</span><span class="c"># cp -r * ../portal.iesgn05.es/</span>
+</code></pre></div><ul>
+<li>Restauramos la base de datos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@kiara</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">debian</span><span class="c"># mysql -u user_drupal --password=pass_drupal bd_drupal &lt; db_backup_db_test20201127_130410.sql</span>
+</code></pre></div><ul>
+<li>Entramos como user_drupal y comprobamos que se ha restaurado correctamente</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">MariaDB</span> <span class="p">[(</span><span class="n">none</span><span class="p">)]&gt;</span> <span class="n">use</span> <span class="n">bd_drupal</span><span class="p">;</span>
+<span class="n">Reading</span> <span class="n">table</span> <span class="n">information</span> <span class="k">for</span> <span class="n">completion</span> <span class="n">of</span> <span class="n">table</span> <span class="n">and</span> <span class="n">column</span> <span class="n">names</span>
+<span class="n">You</span> <span class="n">can</span> <span class="n">turn</span> <span class="n">off</span> <span class="n">this</span> <span class="n">feature</span> <span class="n">to</span> <span class="n">get</span> <span class="n">a</span> <span class="n">quicker</span> <span class="n">startup</span> <span class="n">with</span> <span class="n">-A</span>
+
+<span class="n">Database</span> <span class="n">changed</span>
+<span class="n">MariaDB</span> <span class="no">[bd_drupal]</span><span class="p">&gt;</span> <span class="n">show</span> <span class="n">tables</span><span class="p">;</span>
+<span class="p">+-------------------------------------------------+</span>
+<span class="p">|</span> <span class="n">Tables_in_bd_drupal</span>                             <span class="p">|</span>
+<span class="p">+-------------------------------------------------+</span>
+<span class="p">|</span> <span class="n">batch</span>                                           <span class="p">|</span>
+<span class="p">|</span> <span class="n">block_content</span>                                   <span class="p">|</span>
+<span class="p">|</span> <span class="n">block_content__body</span>                             <span class="p">|</span>
+<span class="p">|</span> <span class="n">block_content__field_clean_blog_header_backgrou</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">block_content__field_clean_blog_header_image</span>    <span class="p">|</span>
+<span class="p">|</span> <span class="n">block_content_field_data</span>                        <span class="p">|</span>
+<span class="p">|</span> <span class="n">block_content_field_revision</span>                    <span class="p">|</span>
+<span class="p">|</span> <span class="n">block_content_r__846f9b8ab9</span>                     <span class="p">|</span>
+<span class="p">|</span> <span class="n">block_content_r__93aa615698</span>                     <span class="p">|</span>
+<span class="p">|</span> <span class="n">block_content_revision</span>                          <span class="p">|</span>
+<span class="p">|</span> <span class="n">block_content_revision__body</span>                    <span class="p">|</span>
+<span class="p">|</span> <span class="n">cache_bootstrap</span>                                 <span class="p">|</span>
+<span class="p">|</span> <span class="n">cache_config</span>                                    <span class="p">|</span>
+<span class="p">|</span> <span class="n">cache_container</span>                                 <span class="p">|</span>
+<span class="p">|</span> <span class="n">cache_data</span>                                      <span class="p">|</span>
+<span class="p">|</span> <span class="n">cache_default</span>                                   <span class="p">|</span>
+<span class="p">|</span> <span class="n">cache_discovery</span>                                 <span class="p">|</span>
+<span class="p">|</span> <span class="n">cache_dynamic_page_cache</span>                        <span class="p">|</span>
+<span class="p">|</span> <span class="n">cache_entity</span>                                    <span class="p">|</span>
+<span class="p">|</span> <span class="n">cache_menu</span>                                      <span class="p">|</span>
+<span class="p">|</span> <span class="n">cache_page</span>                                      <span class="p">|</span>
+<span class="p">|</span> <span class="n">cache_render</span>                                    <span class="p">|</span>
+<span class="p">|</span> <span class="n">cache_toolbar</span>                                   <span class="p">|</span>
+<span class="p">|</span> <span class="n">cachetags</span>                                       <span class="p">|</span>
+<span class="p">|</span> <span class="n">comment</span>                                         <span class="p">|</span>
+<span class="p">|</span> <span class="n">comment__comment_body</span>                           <span class="p">|</span>
+<span class="p">|</span> <span class="n">comment_entity_statistics</span>                       <span class="p">|</span>
+<span class="p">|</span> <span class="n">comment_field_data</span>                              <span class="p">|</span>
+<span class="p">|</span> <span class="n">config</span>                                          <span class="p">|</span>
+<span class="p">|</span> <span class="n">file_managed</span>                                    <span class="p">|</span>
+<span class="p">|</span> <span class="n">file_usage</span>                                      <span class="p">|</span>
+<span class="p">|</span> <span class="n">flood</span>                                           <span class="p">|</span>
+<span class="p">|</span> <span class="nb">history </span>                                        <span class="p">|</span>
+<span class="p">|</span> <span class="n">key_value</span>                                       <span class="p">|</span>
+<span class="p">|</span> <span class="n">key_value_expire</span>                                <span class="p">|</span>
+<span class="p">|</span> <span class="n">locale_file</span>                                     <span class="p">|</span>
+<span class="p">|</span> <span class="n">locales_location</span>                                <span class="p">|</span>
+<span class="p">|</span> <span class="n">locales_source</span>                                  <span class="p">|</span>
+<span class="p">|</span> <span class="n">locales_target</span>                                  <span class="p">|</span>
+<span class="p">|</span> <span class="n">menu_link_content</span>                               <span class="p">|</span>
+<span class="p">|</span> <span class="n">menu_link_content_data</span>                          <span class="p">|</span>
+<span class="p">|</span> <span class="n">menu_link_content_field_revision</span>                <span class="p">|</span>
+<span class="p">|</span> <span class="n">menu_link_content_revision</span>                      <span class="p">|</span>
+<span class="p">|</span> <span class="n">menu_tree</span>                                       <span class="p">|</span>
+<span class="p">|</span> <span class="n">node</span>                                            <span class="p">|</span>
+<span class="p">|</span> <span class="n">node__body</span>                                      <span class="p">|</span>
+<span class="p">|</span> <span class="n">node__comment</span>                                   <span class="p">|</span>
+<span class="p">|</span> <span class="n">node__field_image</span>                               <span class="p">|</span>
+<span class="p">|</span> <span class="n">node__field_tags</span>                                <span class="p">|</span>
+<span class="p">|</span> <span class="n">node_access</span>                                     <span class="p">|</span>
+<span class="p">|</span> <span class="n">node_field_data</span>                                 <span class="p">|</span>
+<span class="p">|</span> <span class="n">node_field_revision</span>                             <span class="p">|</span>
+<span class="p">|</span> <span class="n">node_revision</span>                                   <span class="p">|</span>
+<span class="p">|</span> <span class="n">node_revision__body</span>                             <span class="p">|</span>
+<span class="p">|</span> <span class="n">node_revision__comment</span>                          <span class="p">|</span>
+<span class="p">|</span> <span class="n">node_revision__field_image</span>                      <span class="p">|</span>
+<span class="p">|</span> <span class="n">node_revision__field_tags</span>                       <span class="p">|</span>
+<span class="p">|</span> <span class="n">path_alias</span>                                      <span class="p">|</span>
+<span class="p">|</span> <span class="n">path_alias_revision</span>                             <span class="p">|</span>
+<span class="p">|</span> <span class="n">queue</span>                                           <span class="p">|</span>
+<span class="p">|</span> <span class="n">router</span>                                          <span class="p">|</span>
+<span class="p">|</span> <span class="n">search_dataset</span>                                  <span class="p">|</span>
+<span class="p">|</span> <span class="n">search_index</span>                                    <span class="p">|</span>
+<span class="p">|</span> <span class="n">search_total</span>                                    <span class="p">|</span>
+<span class="p">|</span> <span class="n">semaphore</span>                                       <span class="p">|</span>
+<span class="p">|</span> <span class="n">sequences</span>                                       <span class="p">|</span>
+<span class="p">|</span> <span class="n">sessions</span>                                        <span class="p">|</span>
+<span class="p">|</span> <span class="n">shortcut</span>                                        <span class="p">|</span>
+<span class="p">|</span> <span class="n">shortcut_field_data</span>                             <span class="p">|</span>
+<span class="p">|</span> <span class="n">shortcut_set_users</span>                              <span class="p">|</span>
+<span class="p">|</span> <span class="n">taxonomy_index</span>                                  <span class="p">|</span>
+<span class="p">|</span> <span class="n">taxonomy_term__parent</span>                           <span class="p">|</span>
+<span class="p">|</span> <span class="n">taxonomy_term_data</span>                              <span class="p">|</span>
+<span class="p">|</span> <span class="n">taxonomy_term_field_data</span>                        <span class="p">|</span>
+<span class="p">|</span> <span class="n">taxonomy_term_field_revision</span>                    <span class="p">|</span>
+<span class="p">|</span> <span class="n">taxonomy_term_revision</span>                          <span class="p">|</span>
+<span class="p">|</span> <span class="n">taxonomy_term_revision__parent</span>                  <span class="p">|</span>
+<span class="p">|</span> <span class="n">user__roles</span>                                     <span class="p">|</span>
+<span class="p">|</span> <span class="n">user__user_picture</span>                              <span class="p">|</span>
+<span class="p">|</span> <span class="n">users</span>                                           <span class="p">|</span>
+<span class="p">|</span> <span class="n">users_data</span>                                      <span class="p">|</span>
+<span class="p">|</span> <span class="n">users_field_data</span>                                <span class="p">|</span>
+<span class="p">|</span> <span class="n">votingapi_result</span>                                <span class="p">|</span>
+<span class="p">|</span> <span class="n">votingapi_vote</span>                                  <span class="p">|</span>
+<span class="p">|</span> <span class="n">watchdog</span>                                        <span class="p">|</span>
+<span class="p">+-------------------------------------------------+</span>
+<span class="n">85</span> <span class="n">rows</span> <span class="k">in</span> <span class="nb">set </span><span class="p">(</span><span class="n">0</span><span class="p">.</span><span class="n">001</span> <span class="n">sec</span><span class="p">)</span>
+
+</code></pre></div><ul>
+<li>Tenemos que modificar un fichero de configuración que es settings.php que se encuentra en nuestro virtualhosting del servidor. Nos vamos al final del fichero y vemos la configuración de las bases de datos que vamos a modificar, actualmente tiene este aspecto que apuntaba a nuestra anterior base de datos que hemos eliminado.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">nano</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">/</span><span class="n">drupal</span><span class="p">-</span><span class="n">9</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">7</span><span class="p">/</span><span class="n">sites</span><span class="p">/</span><span class="k">default</span><span class="p">/</span><span class="n">settings</span><span class="p">.</span><span class="n">php</span> 
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$databases</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="p">=</span> <span class="n">array</span> <span class="p">(</span>
+  <span class="s1">&#39;database&#39;</span> <span class="p">=&gt;</span> <span class="s1">&#39;bd_drupal&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;username&#39;</span> <span class="p">=&gt;</span> <span class="s1">&#39;user_drupal&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;password&#39;</span> <span class="p">=&gt;</span> <span class="s1">&#39;pass_drupal&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;prefix&#39;</span> <span class="p">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;host&#39;</span> <span class="p">=&gt;</span> <span class="s1">&#39;bd.iesgn05.es&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;port&#39;</span> <span class="p">=&gt;</span> <span class="s1">&#39;3306&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;namespace&#39;</span> <span class="p">=&gt;</span> <span class="s1">&#39;Drupal\\Core\\Database\\Driver\\mysql&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;driver&#39;</span> <span class="p">=&gt;</span> <span class="s1">&#39;mysql&#39;</span><span class="p">,</span>
+<span class="p">);</span>
+
+</code></pre></div><ul>
+<li>Nos aseguramos que tenemos instalado php y los módulos necesarios</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">apt-get</span> <span class="n">install</span> <span class="n">php</span> <span class="n">php-mysql</span> <span class="n">php-xml</span>
+</code></pre></div><ul>
+<li>Reiniciamos el servicio de mariadb y nginx</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">systemctl</span> <span class="n">restart</span> <span class="n">mariadb</span>
+<span class="n">systemctl</span> <span class="n">restart</span> <span class="n">nginx</span>
+</code></pre></div><h3 id="5-asegurate-que-las-url-limpias-de-drupal-siguen-funcionando-en-nginx">5. Asegurate que las URL limpias de drupal siguen funcionando en nginx.</h3>
+<p>Siguiendo esta <a href="http://www.kreanto.com/es/blog/configurando-las-url-limpias-drupal-un-servidor-web-nginx">guía</a>:</p>
+<p>Añadimos el sistema de url limipas en Drupal.</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># Default server configuration</span>
+<span class="c">#</span>
+<span class="n">server</span> <span class="p">{</span>
+        <span class="n">listen</span> <span class="n">80</span><span class="p">;</span>
+        <span class="n">listen</span> <span class="p">[::]</span><span class="err">:</span><span class="n">80</span><span class="p">;</span>
+
+        <span class="n">root</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">;</span>
+
+        <span class="c"># Add index.php to the list if you are using PHP</span>
+
+        <span class="n">index</span> <span class="n">index</span><span class="p">.</span><span class="n">html</span> <span class="n">index</span><span class="p">.</span><span class="n">htm</span> <span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="p">;</span>
+        <span class="n">server_name</span> <span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">;</span>
+
+        <span class="n">location</span> <span class="p">/</span> <span class="p">{</span>
+                <span class="n">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri</span><span class="p">/</span> <span class="p">=</span><span class="n">404</span> <span class="nv">@rewrite</span><span class="p">;</span>
+        <span class="p">}</span>
+
+
+        <span class="n">location</span> <span class="p">~\.</span><span class="n">php</span><span class="p">$</span> <span class="p">{</span>
+               <span class="n">include</span> <span class="n">snippets</span><span class="p">/</span><span class="n">fastcgi-php</span><span class="p">.</span><span class="n">conf</span><span class="p">;</span>
+               <span class="c"># With php-fpm (or other unix sockets):</span>
+               <span class="n">fastcgi_pass</span> <span class="n">unix</span><span class="err">:</span><span class="p">/</span><span class="n">run</span><span class="p">/</span><span class="n">php</span><span class="p">/</span><span class="n">php7</span><span class="p">.</span><span class="n">3-fpm</span><span class="p">.</span><span class="n">sock</span><span class="p">;</span>
+               <span class="c"># With php-cgi (or other tcp sockets):</span>
+               <span class="c">#fastcgi_pass 127.0.0.1:9000;</span>
+        <span class="p">}</span>
+
+
+         <span class="n">location</span> <span class="nv">@rewrite</span> <span class="p">{</span>
+
+         <span class="c"># Some modules enforce no slash (/) at the end of the URL</span>
+         <span class="c"># Else this rewrite block wouldnt be needed (GlobalRedirect)</span>
+
+         <span class="n">rewrite</span> <span class="p">^/(.*)$</span> <span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="k">?</span><span class="n">q</span><span class="p">=</span><span class="nv">$1</span><span class="p">;</span>
+
+         <span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre></div><p>Comprobamos el funcionamiento</p>
+<p><img src="/images/ovh_php/funcionamiento1.png" alt="funcionamiento1.png"></p>
+<h3 id="6-la-aplicación-debe-estar-disponible-en-la-url-portaliesgnxxes-sin-ningún-directorio">6. La aplicación debe estar disponible en la URL: portal.iesgnXX.es (Sin ningún directorio).</h3>
+<p>Copiamos el contenido al directorio de nuestro virtualhost</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@kiara</span><span class="err">:</span><span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="c"># cp -r /home/debian/drupal-9.0.7/ .</span>
+<span class="n">root</span><span class="nv">@kiara</span><span class="err">:</span><span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="c"># rm index.html </span>
+<span class="n">root</span><span class="nv">@kiara</span><span class="err">:</span><span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="c"># ls -a</span>
+<span class="p">.</span>	       <span class="n">composer</span><span class="p">.</span><span class="n">lock</span>  <span class="n">drupal</span><span class="p">-</span><span class="n">9</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">7</span>    <span class="n">example</span><span class="p">.</span><span class="n">gitignore</span>  <span class="n">index</span><span class="p">.</span><span class="n">php</span>    <span class="n">profiles</span>	  <span class="n">themes</span>
+<span class="p">..</span>	       <span class="n">core</span>	      <span class="p">.</span><span class="n">editorconfig</span>   <span class="p">.</span><span class="n">gitattributes</span>	 <span class="n">INSTALL</span><span class="p">.</span><span class="n">txt</span>  <span class="n">README</span><span class="p">.</span><span class="n">txt</span>  <span class="n">update</span><span class="p">.</span><span class="n">php</span>
+<span class="n">autoload</span><span class="p">.</span><span class="n">php</span>   <span class="p">.</span><span class="n">csslintrc</span>     <span class="p">.</span><span class="n">eslintignore</span>   <span class="p">.</span><span class="n">htaccess</span>		 <span class="n">LICENSE</span><span class="p">.</span><span class="n">txt</span>  <span class="n">robots</span><span class="p">.</span><span class="n">txt</span>  <span class="n">vendor</span>
+<span class="n">composer</span><span class="p">.</span><span class="n">json</span>  <span class="n">drupal</span>	      <span class="p">.</span><span class="n">eslintrc</span><span class="p">.</span><span class="n">json</span>  <span class="p">.</span><span class="n">ht</span><span class="p">.</span><span class="n">router</span><span class="p">.</span><span class="n">php</span>	 <span class="n">modules</span>      <span class="n">sites</span>	  <span class="n">web</span><span class="p">.</span><span class="n">config</span>
+
+<span class="n">root</span><span class="nv">@kiara</span><span class="err">:</span><span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">portal</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="c"># systemctl restart nginx</span>
+
+</code></pre></div><p>Comprobamos que funciona</p>
+<ul>
+<li>
+<p><img src="/images/ovh_php/funcionamiento2.png" alt="funcionamiento2.png"></p>
+</li>
+<li>
+<p><img src="/images/ovh_php/func3.png" alt="func3.png"></p>
+</li>
+</ul>
+<h2 id="instalación--migración-de-la-aplicación-nextcloud">Instalación / migración de la aplicación Nextcloud</h2>
+<h3 id="1-instala-la-aplicación-web-nextcloud-en-tu-entorno-de-desarrollo">1. Instala la aplicación web Nextcloud en tu entorno de desarrollo.</h3>
+<ul>
+<li>Descargamos <a href="https://download.nextcloud.com/server/releases/nextcloud-20.0.2.zip">Nextcloud</a> para servidores. Lo podemos descargar y pasar al sevidor o directamente descargar con wget copiando el enlace.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">wget </span><span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">download</span><span class="p">.</span><span class="n">nextcloud</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">server</span><span class="p">/</span><span class="n">releases</span><span class="p">/</span><span class="n">nextcloud</span><span class="p">-</span><span class="n">20</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">zip</span>
+</code></pre></div><ul>
+<li>Vamos a crear un virtualhosting para nextcloud, para ello creamos el directorio del documentroot:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">mkdir</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">nextcloud</span>
+<span class="nb">mv </span><span class="n">nextcloud</span><span class="p">-</span><span class="n">20</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">zip</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">nextcloud</span><span class="p">/</span>
+<span class="n">unzip</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">nextcloud</span><span class="p">-</span><span class="n">20</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">zip</span> 
+<span class="n">chown</span> <span class="n">-R</span> <span class="n">www-data</span><span class="err">:</span><span class="n">www-data</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">nextcloud</span><span class="p">/</span>
+</code></pre></div><ul>
+<li>Creamos la base de datos necesaria para nextcloud y el usuario que la va administrar, le damos los privilegios</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@debian</span><span class="n">-cms</span><span class="err">:</span><span class="p">~</span><span class="c"># mysql -u root -p</span>
+<span class="n">Enter</span> <span class="n">password</span><span class="err">:</span> 
+<span class="n">Welcome</span> <span class="n">to</span> <span class="n">the</span> <span class="n">MariaDB</span> <span class="n">monitor</span><span class="p">.</span>  <span class="n">Commands</span> <span class="k">end</span> <span class="n">with</span> <span class="p">;</span> <span class="n">or</span> <span class="p">\</span><span class="n">g</span><span class="p">.</span>
+<span class="n">Your</span> <span class="n">MariaDB</span> <span class="n">connection</span> <span class="n">id</span> <span class="n">is</span> <span class="n">36</span>
+<span class="n">Server</span> <span class="n">version</span><span class="err">:</span> <span class="n">10</span><span class="p">.</span><span class="n">3</span><span class="p">.</span><span class="n">25-MariaDB</span><span class="p">-</span><span class="n">0</span><span class="p">+</span><span class="n">deb10u1</span> <span class="n">Debian</span> <span class="n">10</span>
+
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="n">2000</span><span class="p">,</span> <span class="n">2018</span><span class="p">,</span> <span class="n">Oracle</span><span class="p">,</span> <span class="n">MariaDB</span> <span class="n">Corporation</span> <span class="n">Ab</span> <span class="n">and</span> <span class="n">others</span><span class="p">.</span>
+
+<span class="nb">Type </span><span class="s1">&#39;help;&#39;</span> <span class="n">or</span> <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> <span class="n">help</span><span class="p">.</span> <span class="nb">Type </span><span class="s1">&#39;\c&#39;</span> <span class="n">to</span> <span class="nb">clear </span><span class="n">the</span> <span class="n">current</span> <span class="n">input</span> <span class="n">statement</span><span class="p">.</span>
+
+<span class="n">MariaDB</span> <span class="p">[(</span><span class="n">none</span><span class="p">)]&gt;</span> <span class="n">create</span> <span class="n">database</span> <span class="n">nextcloud</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="n">1</span> <span class="n">row</span> <span class="n">affected</span> <span class="p">(</span><span class="n">0</span><span class="p">.</span><span class="n">002</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MariaDB</span> <span class="p">[(</span><span class="n">none</span><span class="p">)]&gt;</span> <span class="n">create</span> <span class="n">user</span> <span class="s1">&#39;user_next&#39;</span><span class="p">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="n">0</span> <span class="n">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="n">0</span><span class="p">.</span><span class="n">005</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MariaDB</span> <span class="p">[(</span><span class="n">none</span><span class="p">)]&gt;</span> <span class="n">grant</span> <span class="n">all</span> <span class="n">privileges</span> <span class="n">on</span> <span class="n">nextcloud</span><span class="p">.*</span> <span class="n">to</span> <span class="s1">&#39;user_next&#39;</span><span class="p">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">identified</span> <span class="n">by</span> <span class="s1">&#39;pass_next&#39;</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="n">0</span> <span class="n">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="n">0</span><span class="p">.</span><span class="n">003</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MariaDB</span> <span class="p">[(</span><span class="n">none</span><span class="p">)]&gt;</span> <span class="n">flush</span> <span class="n">privileges</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="n">0</span> <span class="n">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="n">0</span><span class="p">.</span><span class="n">002</span> <span class="n">sec</span><span class="p">)</span>
+
+
+</code></pre></div><ul>
+<li>Ahora creamos el virtualhosting para nextcloud</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">cp </span><span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">apache2</span><span class="p">/</span><span class="n">sites-available</span><span class="p">/</span><span class="n">celia-drupal</span><span class="p">.</span><span class="n">conf</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">apache2</span><span class="p">/</span><span class="n">sites-available</span><span class="p">/</span><span class="n">nextcloud</span><span class="p">.</span><span class="n">conf</span>
+<span class="n">nano</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">apache2</span><span class="p">/</span><span class="n">sites-available</span><span class="p">/</span><span class="n">nextcloud</span><span class="p">.</span><span class="n">conf</span>
+
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">&lt;</span><span class="n">VirtualHost</span> <span class="p">*</span><span class="err">:</span><span class="n">80</span><span class="p">&gt;</span>
+        <span class="n">ServerName</span> <span class="n">www</span><span class="p">.</span><span class="n">celia</span><span class="p">.</span><span class="n">nextcloud</span><span class="p">.</span><span class="n">org</span>
+        <span class="n">ServerAdmin</span> <span class="n">webmaster</span><span class="nv">@localhost</span>
+        <span class="n">DocumentRoot</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">nextcloud</span>
+        <span class="n">ErrorLog</span> <span class="p">${</span><span class="n">APACHE_LOG_DIR</span><span class="p">}/</span><span class="n">error</span><span class="p">.</span><span class="n">log</span>
+        <span class="n">CustomLog</span> <span class="p">${</span><span class="n">APACHE_LOG_DIR</span><span class="p">}/</span><span class="n">access</span><span class="p">.</span><span class="n">log</span> <span class="n">combined</span>
+<span class="p">&lt;/</span><span class="n">VirtualHost</span><span class="p">&gt;</span>
+
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">a2ensite</span> <span class="n">nexcloud</span><span class="p">.</span><span class="n">conf</span>
+<span class="n">systemctl</span> <span class="n">restart</span> <span class="n">apache2</span>
+<span class="n">systemctl</span> <span class="n">restart</span> <span class="n">mariadb</span>
+</code></pre></div><ul>
+<li>Nos salen ciertos errores porque necesitamos instalar varios módulos</li>
+</ul>
+<p><img src="/images/ovh_php/error1.png" alt="error1.png"></p>
+<ul>
+<li>Los instalamos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">apt-get</span> <span class="n">install</span> <span class="n">php-zip</span> <span class="n">php-curl</span> <span class="n">php-intl</span> <span class="n">php-imagick</span> <span class="n">php-xml</span>
+</code></pre></div><ul>
+<li>Comprobamos que funciona</li>
+</ul>
+<p><img src="/images/ovh_php/inst_next.png" alt="inst_next.png"></p>
+<h3 id="instalación-de-nextcloud">Instalación de NextCloud</h3>
+<p>Nos pide que pongamos un usuario y una contraseña. Ademas vamos a indicar el nombre de la base de datos, el nombre del usuario y contraseña que administra la base de datos y el host, en este caso sera localhost.</p>
+<p><img src="/images/ovh_php/datos.png" alt="datos.png"></p>
+<p>Y le damos a &lsquo;Finish Setup&rsquo;, así comenzará la instalación</p>
+<p><img src="/images/ovh_php/apps.png" alt="apps.png"></p>
+<p>Comprobamos que ya tenemos nextcloud operativo</p>
+<p><img src="/images/ovh_php/funcionamiento10.png" alt="funcionamiento10.png"></p>
+<h3 id="2-realiza-la-migración-al-servidor-en-producción-para-que-la-aplicación-sea-accesible-en-la-url-wwwiesgnxxescloud">2. Realiza la migración al servidor en producción, para que la aplicación sea accesible en la URL: <a href="http://www.iesgnXX.es/cloud">www.iesgnXX.es/cloud</a></h3>
+<ul>
+<li>Hacemos una copia de la base de datos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">mysqldump</span> <span class="n">-v</span> <span class="p">-</span><span class="n">-opt</span> <span class="p">-</span><span class="n">-events</span> <span class="p">-</span><span class="n">-routines</span> <span class="p">-</span><span class="n">-triggers</span> <span class="p">-</span><span class="n">-default-character-set</span><span class="p">=</span><span class="n">utf8</span> <span class="n">-u</span> <span class="n">user_next</span> <span class="n">-p</span> <span class="n">nextcloud</span> <span class="p">&gt;</span> <span class="n">db_backup_nextcloud</span><span class="p">`</span><span class="n">date</span> <span class="p">+</span><span class="k">%</span><span class="n">Y</span><span class="k">%</span><span class="n">m</span><span class="k">%</span><span class="n">d_</span><span class="k">%</span><span class="n">H</span><span class="k">%</span><span class="n">M</span><span class="k">%</span><span class="n">S</span><span class="p">`.</span><span class="n">sql</span>
+</code></pre></div><ul>
+<li>Comprimimos el directorio &lsquo;nextcloud&rsquo;</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">zip</span> <span class="n">-r</span> <span class="n">nextcloud</span> <span class="n">nextcloud</span>
+</code></pre></div><ul>
+<li>Los enviamos a nuestro servidor en producción por scp</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@debian</span><span class="n">-cms</span><span class="err">:</span><span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="c"># scp nextcloud.zip debian@kiara.iesgn05.es:/home/debian</span>
+<span class="n">The</span> <span class="n">authenticity</span> <span class="n">of</span> <span class="n">host</span> <span class="s1">&#39;kiara.iesgn05.es (146.59.196.84)&#39;</span> <span class="n">can</span><span class="s1">&#39;t be established.
+</span><span class="s1">ECDSA key fingerprint is SHA256:/9MCxCfHcwtoje2tVFGYmtJ1kWZj5fqlDbRBYzOXzJg.
+</span><span class="s1">Are you sure you want to continue connecting (yes/no)? yes
+</span><span class="s1">Warning: Permanently added &#39;</span><span class="n">kiara</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">,</span><span class="n">146</span><span class="p">.</span><span class="n">59</span><span class="p">.</span><span class="n">196</span><span class="p">.</span><span class="n">84</span><span class="s1">&#39; (ECDSA) to the list of known hosts.
+</span><span class="s1">debian@kiara.iesgn05.es&#39;</span><span class="n">s</span> <span class="n">password</span><span class="err">:</span> 
+<span class="n">nextcloud</span><span class="p">.</span><span class="n">zip</span>                                                          <span class="n">100</span><span class="p">%</span>  <span class="n">199MB</span>  <span class="n">28</span><span class="p">.</span><span class="n">4MB</span><span class="p">/</span><span class="n">s</span>   <span class="n">00</span><span class="err">:</span><span class="n">07</span>    
+<span class="n">root</span><span class="nv">@debian</span><span class="n">-cms</span><span class="err">:</span><span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="c"># cd </span>
+<span class="n">root</span><span class="nv">@debian</span><span class="n">-cms</span><span class="err">:</span><span class="p">~</span><span class="c"># ls</span>
+<span class="n">db_backup_nextcloud20201128_143440</span><span class="p">.</span><span class="n">sql</span>	<span class="n">drupal</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
+<span class="n">root</span><span class="nv">@debian</span><span class="n">-cms</span><span class="err">:</span><span class="p">~</span><span class="c"># scp db_backup_nextcloud20201128_143440.sql debian@kiara.iesgn05.es:/home/debian</span>
+<span class="n">debian</span><span class="nv">@kiara</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">password</span><span class="err">:</span> 
+<span class="n">db_backup_nextcloud20201128_143440</span><span class="p">.</span><span class="n">sql</span>    
+</code></pre></div><ul>
+<li>Creamos la base de datos y el usuario en nuestro servidor en producción</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@kiara</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">debian</span><span class="c"># mysql -u root -p</span>
+<span class="n">Enter</span> <span class="n">password</span><span class="err">:</span> 
+<span class="n">Welcome</span> <span class="n">to</span> <span class="n">the</span> <span class="n">MariaDB</span> <span class="n">monitor</span><span class="p">.</span>  <span class="n">Commands</span> <span class="k">end</span> <span class="n">with</span> <span class="p">;</span> <span class="n">or</span> <span class="p">\</span><span class="n">g</span><span class="p">.</span>
+<span class="n">Your</span> <span class="n">MariaDB</span> <span class="n">connection</span> <span class="n">id</span> <span class="n">is</span> <span class="n">1403</span>
+<span class="n">Server</span> <span class="n">version</span><span class="err">:</span> <span class="n">10</span><span class="p">.</span><span class="n">3</span><span class="p">.</span><span class="n">25-MariaDB</span><span class="p">-</span><span class="n">0</span><span class="p">+</span><span class="n">deb10u1</span> <span class="n">Debian</span> <span class="n">10</span>
+
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="n">2000</span><span class="p">,</span> <span class="n">2018</span><span class="p">,</span> <span class="n">Oracle</span><span class="p">,</span> <span class="n">MariaDB</span> <span class="n">Corporation</span> <span class="n">Ab</span> <span class="n">and</span> <span class="n">others</span><span class="p">.</span>
+
+<span class="nb">Type </span><span class="s1">&#39;help;&#39;</span> <span class="n">or</span> <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> <span class="n">help</span><span class="p">.</span> <span class="nb">Type </span><span class="s1">&#39;\c&#39;</span> <span class="n">to</span> <span class="nb">clear </span><span class="n">the</span> <span class="n">current</span> <span class="n">input</span> <span class="n">statement</span><span class="p">.</span>
+
+<span class="n">MariaDB</span> <span class="p">[(</span><span class="n">none</span><span class="p">)]&gt;</span> <span class="n">create</span> <span class="n">database</span> <span class="n">nextcloud</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="n">1</span> <span class="n">row</span> <span class="n">affected</span> <span class="p">(</span><span class="n">0</span><span class="p">.</span><span class="n">000</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MariaDB</span> <span class="p">[(</span><span class="n">none</span><span class="p">)]&gt;</span> <span class="n">create</span> <span class="n">user</span> <span class="s1">&#39;user_next&#39;</span><span class="p">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="n">0</span> <span class="n">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="n">0</span><span class="p">.</span><span class="n">000</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MariaDB</span> <span class="p">[(</span><span class="n">none</span><span class="p">)]&gt;</span> <span class="n">grant</span> <span class="n">all</span> <span class="n">privileges</span> <span class="n">on</span> <span class="n">nextcloud</span><span class="p">.*</span> <span class="n">to</span> <span class="s1">&#39;user_next&#39;</span><span class="p">@</span><span class="s1">&#39;%&#39;</span> <span class="n">identified</span> <span class="n">by</span> <span class="s1">&#39;pass_next&#39;</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="n">0</span> <span class="n">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="n">0</span><span class="p">.</span><span class="n">001</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MariaDB</span> <span class="p">[(</span><span class="n">none</span><span class="p">)]&gt;</span> <span class="n">flush</span> <span class="n">privileges</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="n">0</span> <span class="n">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="n">0</span><span class="p">.</span><span class="n">000</span> <span class="n">sec</span><span class="p">)</span>
+
+</code></pre></div><ul>
+<li>Restauramos la base de datos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">mysql</span> <span class="n">-u</span> <span class="n">user_next</span> <span class="p">-</span><span class="n">-password</span><span class="p">=</span><span class="n">pass_next</span> <span class="n">nextcloud</span> <span class="p">&lt;</span> <span class="n">db_backup_nextcloud20201128_143440</span><span class="p">.</span><span class="n">sql</span> 
+</code></pre></div><ul>
+<li>Descomprimimos el directorio en /var/www/iesgn05/cloud</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">mv </span><span class="n">nextcloud</span><span class="p">.</span><span class="n">zip</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span>
+<span class="n">unzip</span> <span class="n">nextcloud</span><span class="p">.</span><span class="n">zip</span> 
+<span class="n">chown</span> <span class="n">-R</span> <span class="n">www-data</span><span class="err">:</span><span class="n">www-data</span> <span class="n">cloud</span>
+</code></pre></div><ul>
+<li>Configuramos nuestro virtualhost iesgn05 para que al acceder a <a href="http://www.iesgn05.es/cloud">www.iesgn05.es/cloud</a> nos muestre el servicio</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># Default server configuration</span>
+<span class="c">#</span>
+<span class="n">server</span> <span class="p">{</span>
+        <span class="n">listen</span> <span class="n">80</span><span class="p">;</span>
+        <span class="n">listen</span> <span class="p">[::]</span><span class="err">:</span><span class="n">80</span><span class="p">;</span>
+
+        <span class="n">server_name</span> <span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">;</span>
+
+        <span class="n">root</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">iesgn05</span><span class="p">;</span>
+
+
+        <span class="c"># Add index.php to the list if you are using PHP</span>
+        <span class="n">index</span> <span class="n">index</span><span class="p">.</span><span class="n">html</span> <span class="n">index</span><span class="p">.</span><span class="n">htm</span> <span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="p">;</span>
+
+        <span class="n">location</span> <span class="p">=/</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">301</span> <span class="nv">$scheme</span><span class="err">:</span><span class="p">//</span><span class="n">www</span><span class="p">.</span><span class="n">iesgn05</span><span class="p">.</span><span class="n">es</span><span class="p">/</span><span class="n">principal</span><span class="p">;</span>
+
+                <span class="n">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri</span><span class="p">/</span> <span class="p">=</span><span class="n">404</span><span class="p">;</span>
+        <span class="p">}</span>
+
+
+
+
+        <span class="n">location</span> <span class="nv">@rewrite</span> <span class="p">{</span>
+                <span class="c"># Some modules enforce no slash (/) at the end of the URL</span>
+                <span class="c"># Else this rewrite block wouldnt be needed (GlobalRedirect)</span>
+
+                <span class="n">rewrite</span> <span class="p">^/(.*)$</span> <span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="k">?</span><span class="n">q</span><span class="p">=</span><span class="nv">$1</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c"># pass PHP scripts to FastCGI server</span>
+        <span class="n">location</span> <span class="p">~</span> <span class="p">\.</span><span class="n">php</span><span class="p">$</span> <span class="p">{</span>
+                <span class="n">include</span> <span class="n">snippets</span><span class="p">/</span><span class="n">fastcgi-php</span><span class="p">.</span><span class="n">conf</span><span class="p">;</span>
+
+                <span class="c"># With php-fpm (or other unix sockets):</span>
+                <span class="n">fastcgi_pass</span> <span class="n">unix</span><span class="err">:</span><span class="p">/</span><span class="n">run</span><span class="p">/</span><span class="n">php</span><span class="p">/</span><span class="n">php7</span><span class="p">.</span><span class="n">3-fpm</span><span class="p">.</span><span class="n">sock</span><span class="p">;</span>
+                <span class="c"># With php-cgi (or other tcp sockets):</span>
+                <span class="c">#fastcgi_pass 127.0.0.1:9000;</span>
+        <span class="p">}</span>
+
+<span class="n">location</span> <span class="p">=</span> <span class="p">/</span><span class="n">robots</span><span class="p">.</span><span class="n">txt</span> <span class="p">{</span>
+                <span class="n">allow</span> <span class="n">all</span><span class="p">;</span>
+                <span class="n">log_not_found</span> <span class="n">off</span><span class="p">;</span>
+                <span class="n">access_log</span> <span class="n">off</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">location</span> <span class="p">/.</span><span class="n">well-known</span> <span class="p">{</span>
+                <span class="n">rewrite</span> <span class="p">^/\.</span><span class="n">well-known</span><span class="p">/</span><span class="n">host-meta</span><span class="p">\.</span><span class="n">json</span>  <span class="p">/</span><span class="n">cloud</span><span class="p">/</span><span class="n">public</span><span class="p">.</span><span class="n">php</span><span class="k">?</span><span class="n">service</span><span class="p">=</span><span class="n">host-meta-json</span>    <span class="n">last</span><span class="p">;</span>
+                <span class="n">rewrite</span> <span class="p">^/\.</span><span class="n">well-known</span><span class="p">/</span><span class="n">host-meta</span>        <span class="p">/</span><span class="n">cloud</span><span class="p">/</span><span class="n">public</span><span class="p">.</span><span class="n">php</span><span class="k">?</span><span class="n">service</span><span class="p">=</span><span class="n">host-meta</span>         <span class="n">last</span><span class="p">;</span>
+                <span class="n">rewrite</span> <span class="p">^/\.</span><span class="n">well-known</span><span class="p">/</span><span class="n">webfinger</span>        <span class="p">/</span><span class="n">cloud</span><span class="p">/</span><span class="n">public</span><span class="p">.</span><span class="n">php</span><span class="k">?</span><span class="n">service</span><span class="p">=</span><span class="n">webfinger</span>         <span class="n">last</span><span class="p">;</span>
+                <span class="n">rewrite</span> <span class="p">^/\.</span><span class="n">well-known</span><span class="p">/</span><span class="n">nodeinfo</span>         <span class="p">/</span><span class="n">cloud</span><span class="p">/</span><span class="n">public</span><span class="p">.</span><span class="n">php</span><span class="k">?</span><span class="n">service</span><span class="p">=</span><span class="n">nodeinfo</span>          <span class="n">last</span><span class="p">;</span>
+
+                <span class="n">location</span> <span class="p">=</span> <span class="p">/.</span><span class="n">well-known</span><span class="p">/</span><span class="n">carddav</span>   <span class="p">{</span> <span class="k">return</span> <span class="n">301</span> <span class="p">/</span><span class="n">cloud</span><span class="p">/</span><span class="n">remote</span><span class="p">.</span><span class="n">php</span><span class="p">/</span><span class="n">dav</span><span class="p">/;</span> <span class="p">}</span>
+                <span class="n">location</span> <span class="p">=</span> <span class="p">/.</span><span class="n">well-known</span><span class="p">/</span><span class="n">caldav</span>    <span class="p">{</span> <span class="k">return</span> <span class="n">301</span> <span class="p">/</span><span class="n">cloud</span><span class="p">/</span><span class="n">remote</span><span class="p">.</span><span class="n">php</span><span class="p">/</span><span class="n">dav</span><span class="p">/;</span> <span class="p">}</span>
+
+                <span class="n">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri</span><span class="p">/</span> <span class="p">=</span><span class="n">404</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">location</span> <span class="p">^~</span> <span class="p">/</span><span class="n">cloud</span> <span class="p">{</span>
+                <span class="n">client_max_body_size</span> <span class="n">512M</span><span class="p">;</span>
+                <span class="n">fastcgi_buffers</span> <span class="n">64</span> <span class="n">4K</span><span class="p">;</span>
+
+                <span class="n">gzip</span> <span class="n">on</span><span class="p">;</span>
+                <span class="n">gzip_vary</span> <span class="n">on</span><span class="p">;</span>
+                <span class="n">gzip_comp_level</span> <span class="n">4</span><span class="p">;</span>
+                <span class="n">gzip_min_length</span> <span class="n">256</span><span class="p">;</span>
+                <span class="n">gzip_proxied</span> <span class="n">expired</span> <span class="n">no-cache</span> <span class="n">no-store</span> <span class="n">private</span> <span class="n">no_last_modified</span> <span class="n">no_etag</span> <span class="n">auth</span><span class="p">;</span>
+                <span class="n">gzip_types</span> <span class="n">application</span><span class="p">/</span><span class="n">atom</span><span class="p">+</span><span class="n">xml</span> <span class="n">application</span><span class="p">/</span><span class="n">javascript</span> <span class="n">application</span><span class="p">/</span><span class="n">json</span> <span class="n">application</span><span class="p">/</span><span class="n">ld</span><span class="p">+</span><span class="n">json</span> <span class="n">application</span><span class="p">/</span><span class="n">manifest</span><span class="p">+</span><span class="n">json</span> <span class="n">application</span><span class="p">/</span><span class="n">rss</span><span class="p">+</span><span class="n">xml</span> <span class="n">application</span><span class="p">/</span><span class="n">vnd</span><span class="p">.</span><span class="n">geo</span><span class="p">+</span><span class="n">json</span> <span class="n">application</span><span class="p">/</span><span class="n">vnd</span><span class="p">.</span><span class="n">ms-fontobject</span> <span class="n">a</span><span class="p">$</span>
+
+                <span class="n">add_header</span> <span class="n">Referrer-Policy</span>                      <span class="s2">&#34;no-referrer&#34;</span>   <span class="n">always</span><span class="p">;</span>
+                <span class="n">add_header</span> <span class="n">X-Content-Type-Options</span>               <span class="s2">&#34;nosniff&#34;</span>       <span class="n">always</span><span class="p">;</span>
+                <span class="n">add_header</span> <span class="n">X-Download-Options</span>                   <span class="s2">&#34;noopen&#34;</span>        <span class="n">always</span><span class="p">;</span>
+                <span class="n">add_header</span> <span class="n">X-Frame-Options</span>                      <span class="s2">&#34;SAMEORIGIN&#34;</span>    <span class="n">always</span><span class="p">;</span>
+                <span class="n">add_header</span> <span class="n">X-Permitted-Cross-Domain-Policies</span>    <span class="s2">&#34;none&#34;</span>          <span class="n">always</span><span class="p">;</span>
+                <span class="n">add_header</span> <span class="n">X-Robots-Tag</span>                         <span class="s2">&#34;none&#34;</span>          <span class="n">always</span><span class="p">;</span>
+                <span class="n">add_header</span> <span class="n">X-XSS-Protection</span>                     <span class="s2">&#34;1; mode=block&#34;</span> <span class="n">always</span><span class="p">;</span>
+
+                <span class="n">fastcgi_hide_header</span> <span class="n">X-Powered-By</span><span class="p">;</span>
+                <span class="n">index</span> <span class="n">index</span><span class="p">.</span><span class="n">php</span> <span class="n">index</span><span class="p">.</span><span class="n">html</span> <span class="p">/</span><span class="n">cloud</span><span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="nv">$request_uri</span><span class="p">;</span>
+
+                <span class="n">expires</span> <span class="n">1m</span><span class="p">;</span>
+
+        <span class="n">location</span> <span class="p">=</span> <span class="p">/</span><span class="n">cloud</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span> <span class="nv">$http_user_agent</span> <span class="p">~</span> <span class="p">^</span><span class="n">DavClnt</span> <span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">302</span> <span class="p">/</span><span class="n">cloud</span><span class="p">/</span><span class="n">remote</span><span class="p">.</span><span class="n">php</span><span class="p">/</span><span class="n">webdav</span><span class="p">/</span><span class="nv">$is_args$args</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">location</span> <span class="p">~</span> <span class="p">^/</span><span class="n">cloud</span><span class="p">/(?</span><span class="err">:</span><span class="n">build</span><span class="p">|</span><span class="n">tests</span><span class="p">|</span><span class="n">config</span><span class="p">|</span><span class="n">lib</span><span class="p">|</span><span class="n">3rdparty</span><span class="p">|</span><span class="n">templates</span><span class="p">|</span><span class="n">data</span><span class="p">)(?</span><span class="err">:</span><span class="p">$|/)</span>    <span class="p">{</span> <span class="k">return</span> <span class="n">404</span><span class="p">;</span> <span class="p">}</span>
+        <span class="n">location</span> <span class="p">~</span> <span class="p">^/</span><span class="n">cloud</span><span class="p">/(?</span><span class="err">:</span><span class="p">\.|</span><span class="n">autotest</span><span class="p">|</span><span class="n">occ</span><span class="p">|</span><span class="n">issue</span><span class="p">|</span><span class="n">indie</span><span class="p">|</span><span class="n">db_</span><span class="p">|</span><span class="n">console</span><span class="p">)</span>                <span class="p">{</span> <span class="k">return</span> <span class="n">404</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="n">location</span> <span class="p">~</span> <span class="p">\.</span><span class="n">php</span><span class="p">(?</span><span class="err">:</span><span class="p">$|/)</span> <span class="p">{</span>
+            <span class="n">fastcgi_split_path_info</span> <span class="p">^(.+?\.</span><span class="n">php</span><span class="p">)(/.*)$;</span>
+            <span class="nb">set </span><span class="nv">$path_info</span> <span class="nv">$fastcgi_path_info</span><span class="p">;</span>
+
+            <span class="n">try_files</span> <span class="nv">$fastcgi_script_name</span> <span class="p">=</span><span class="n">404</span><span class="p">;</span>
+
+            <span class="n">include</span> <span class="n">fastcgi_params</span><span class="p">;</span>
+            <span class="n">fastcgi_param</span> <span class="n">SCRIPT_FILENAME</span> <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+            <span class="n">fastcgi_param</span> <span class="n">PATH_INFO</span> <span class="nv">$path_info</span><span class="p">;</span>
+
+            <span class="n">fastcgi_param</span> <span class="n">modHeadersAvailable</span> <span class="n">true</span><span class="p">;</span>
+            <span class="n">fastcgi_param</span> <span class="n">front_controller_active</span> <span class="n">true</span><span class="p">;</span>
+            <span class="n">fastcgi_pass</span> <span class="n">unix</span><span class="err">:</span><span class="p">/</span><span class="n">run</span><span class="p">/</span><span class="n">php</span><span class="p">/</span><span class="n">php7</span><span class="p">.</span><span class="n">3-fpm</span><span class="p">.</span><span class="n">sock</span><span class="p">;</span>
+
+            <span class="n">fastcgi_intercept_errors</span> <span class="n">on</span><span class="p">;</span>
+            <span class="n">fastcgi_request_buffering</span> <span class="n">off</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">location</span> <span class="p">~</span> <span class="p">\.(?</span><span class="err">:</span><span class="n">css</span><span class="p">|</span><span class="n">js</span><span class="p">|</span><span class="n">svg</span><span class="p">|</span><span class="n">gif</span><span class="p">)$</span> <span class="p">{</span>
+            <span class="n">try_files</span> <span class="nv">$uri</span> <span class="p">/</span><span class="n">cloud</span><span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="nv">$request_uri</span><span class="p">;</span>
+            <span class="n">expires</span> <span class="n">6M</span><span class="p">;</span>
+            <span class="n">access_log</span> <span class="n">off</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">location</span> <span class="p">~</span> <span class="p">\.</span><span class="n">woff2</span><span class="p">?$</span> <span class="p">{</span>
+            <span class="n">try_files</span> <span class="nv">$uri</span> <span class="p">/</span><span class="n">cloud</span><span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="nv">$request_uri</span><span class="p">;</span>
+            <span class="n">expires</span> <span class="n">7d</span><span class="p">;</span>
+            <span class="n">access_log</span> <span class="n">off</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">location</span> <span class="p">/</span><span class="n">cloud</span> <span class="p">{</span>
+            <span class="n">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri</span><span class="p">/</span> <span class="p">/</span><span class="n">cloud</span><span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="nv">$request_uri</span><span class="p">;</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="p">}</span>
+
+</code></pre></div><p>Comprobamos que funciona</p>
+<ul>
+<li>
+<p><img src="/images/ovh_php/next7.png" alt="next7.png"></p>
+</li>
+<li>
+<p><img src="/images/ovh_php/next8.png" alt="next8.png"></p>
+</li>
+</ul>
+<h3 id="3-instala-en-un-ordenador-el-cliente-de-nextcloud-y-realiza-la-configuración-adecuada-para-acceder-a-tu-nube">3. Instala en un ordenador el cliente de nextcloud y realiza la configuración adecuada para acceder a &ldquo;tu nube&rdquo;.</h3>
+<p>Instalar paquete</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">$</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">nextcloud-desktop</span>
+</code></pre></div><p>Ejecutamos el software, en este caso como hemos elegido nuestra máquina fisica hemos escogido el entorno gráfico</p>
+<ul>
+<li><img src="/images/ovh_php/cliente1.png" alt="cliente1.png"></li>
+</ul>
+<p>Ponemos la dirección del servidor. Nos mostraŕa un mensaje de advertencia porque no es un sitio seguro y le damos a continuar.</p>
+<p>Nos pide el usuario y la contraseña, le pasamos las credenciales y continuamos.</p>
+<p>Nos pide configurar las opciones de la carpeta local. Si desea sincronizar carpetas. Y elegir que carpeta vamos a elegir en para la subida y bajada de datos</p>
+<ul>
+<li><img src="/images/ovh_php/cliente3.png" alt="cliente3.png"></li>
+</ul>
+<p>Vemos que se sincroniza correctamente</p>
+<ul>
+<li><img src="/images/ovh_php/cliente4.png" alt="cliente4.png"></li>
+</ul>
+<p>Podemos comprobar que se ha sincronizado correctamente.</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">celiagm</span><span class="nv">@debian</span><span class="err">:</span><span class="p">~/</span><span class="n">Nextcloud</span><span class="p">$</span> <span class="nb">ls
+</span><span class="nb"></span> <span class="n">Documents</span>               <span class="n">Nextcloud</span><span class="p">.</span><span class="n">png</span>                   <span class="n">Talk</span>
+<span class="s1">&#39;Nextcloud intro.mp4&#39;</span>    <span class="n">Photos</span>
+<span class="s1">&#39;Nextcloud Manual.pdf&#39;</span>  <span class="s1">&#39;Reasons to use Nextcloud.pdf&#39;</span>
+
+</code></pre></div><p>Vamos a probar el funcionamiento:</p>
+<p>Creamos un fichero de texto en la carpeta Nextcloud</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">touch</span> <span class="n">fichero</span><span class="p">.</span><span class="n">txt</span>
+</code></pre></div><p>Vamos a la dirección de nuestro cloud en el navegador y comprobamos que se ha subido correctamente</p>
+<ul>
+<li>
+<p><img src="/images/ovh_php/fichero.png" alt="fichero.png"></p>
+</li>
+<li>
+<p><img src="/images/ovh_php/fichero1.png" alt="fichero1.png"></p>
+</li>
+</ul>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/nextcloud/">nextcloud</a><a class="tag" href="/tags/nginx/">nginx</a><a class="tag" href="/tags/php/">php</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

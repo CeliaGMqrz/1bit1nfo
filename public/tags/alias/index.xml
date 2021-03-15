@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>alias on 1bit1nfo</title>
+    <link>https://1bit1nfo.netlify.app/tags/alias/</link>
+    <description>Recent content in alias on 1bit1nfo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 22 Jan 2021 12:48:10 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/alias/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Servidor de Correos. Postfix (II). Alias y Redirecciones.</title>
+      <link>https://1bit1nfo.netlify.app/post/servidor_correo2/</link>
+      <pubDate>Fri, 22 Jan 2021 12:48:10 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/post/servidor_correo2/</guid>
+      <description>1. Uso de cron para notificar a root de una tarea Vamos a comprobar como los procesos del servidor pueden mandar correos para informar sobre su estado.</description>
+    </item>
+    
+  </channel>
+</rss>

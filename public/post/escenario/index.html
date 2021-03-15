@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Instalación y configuración inicial de los servidores </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/escenario/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Instalación y configuración inicial de los servidores"/>
+<meta name="twitter:description" content="En esta tarea se va a crear el escenario de trabajo que se va a usar durante todo el curso, que va a constar inicialmente de 3 instancias con nombres relacionados con el libro &ldquo;Don Quijote de la Mancha&rdquo;."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Instalación y configuración inicial de los servidores</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Wed, Nov 18, 2020 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">10-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>En esta tarea se va a crear el escenario de trabajo que se va a usar durante todo el curso, que va a constar inicialmente de 3 instancias con nombres relacionados con el libro &ldquo;Don Quijote de la Mancha&rdquo;.</p>
+<p>Pasos a realizar:</p>
+<h2 id="1-creación-de-la-red-interna">1. Creación de la red interna:</h2>
+<ul>
+<li>Nombre red interna de <!-- raw HTML omitted --></li>
+<li>10.0.1.0/24</li>
+</ul>
+<h2 id="2-creación-de-las-instancias">2. Creación de las instancias</h2>
+<ul>
+<li>
+<p><strong>Dulcinea</strong>:</p>
+<ul>
+<li><strong>Debian Buster</strong> sobre volumen de 10GB con sabor m1.mini</li>
+<li>Accesible directamente a través de la red externa y con una IP flotante</li>
+<li>Conectada a la red interna, de la que será la puerta de enlace</li>
+</ul>
+</li>
+<li>
+<p><strong>Sancho</strong>:</p>
+<ul>
+<li><strong>Ubuntu 20.04</strong> sobre volumen de 10GB con sabor m1.mini</li>
+<li>Conectada a la red interna</li>
+<li>Accesible indirectamente a través de dulcinea</li>
+</ul>
+</li>
+<li>
+<p><strong>Quijote</strong>:</p>
+<ul>
+<li><strong>CentOS 7</strong> sobre volumen de 10GB con sabor m1.mini</li>
+<li>Conectada a la red interna</li>
+<li>Accesible indirectamente a través de dulcinea</li>
+</ul>
+</li>
+</ul>
+<p>Escenario gráfico:</p>
+<p><img src="/images/escenario/escenario.png" alt="escenario.png"></p>
+<h2 id="3-configuración-de-nat-en-dulcinea">3. Configuración de NAT en Dulcinea</h2>
+<h3 id="30-deshabilitar-la-seguidad-de-puertos">3.0. Deshabilitar la seguidad de puertos</h3>
+<p>Guía para: <a href="https://unbitdeinformacioncadadia.netlify.app/posts/2020/11/instalar-openstackclient-y-deshabilitar-la-seguridad-de-puertos/">Instalar Openstackclient y deshabilitar la seguridad de puertos</a></p>
+<h3 id="31-activar-el-bit-de-fordward">3.1. Activar el bit de fordward</h3>
+<p>Para que nuestra máquina actúe como router tenemos que activar el <strong>bit de fordward.</strong> Podemos hacerlo temporal o permanente. En este caso lo haremos permanente. Para ello editamos el fichero <em>/etc/sysctl.conf</em> , buscamos la línea ‘<strong>net.ipv4.ip_fordward=1</strong>' y la descomentamos.</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">nano</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">sysctl</span><span class="p">.</span><span class="n">conf</span> 
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># Uncomment the next line to enable packet forwarding for IPv4</span>
+<span class="n">net</span><span class="p">.</span><span class="n">ipv4</span><span class="p">.</span><span class="n">ip_forward</span><span class="p">=</span><span class="n">1</span>
+</code></pre></div><h3 id="32-configurar-las-interfaces-de-red">3.2. Configurar las interfaces de red</h3>
+<p>En segundo lugar vamos a configurar el fichero <em>/etc/network/interfaces</em> agregando dos reglas de <strong>‘iptable’</strong> para que nuestros clientes puedan acceder desde una interfaz a otra obteniendo acceso a internet. Añadiremos las siguientes líneas:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">nano</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">network</span><span class="p">/</span><span class="n">interfaces</span>
+</code></pre></div><h4 id="reglas-de-iptable">Reglas de iptable</h4>
+<p>Las añadimos de forma permanente en el fichero interfaces, de forma que:</p>
+<ul>
+<li>
+<p>-A POSTROUTING (Añade una regla a la cadena POSTROUTING)</p>
+</li>
+<li>
+<p>-s ‘dirección’ : Se aplica a los paquetes que vengan de origen de la dirección especificada. En nuestro caso hemos añadido las direccion ip de nuestro cliente</p>
+</li>
+<li>
+<p>-o eth0: Se aplica a los paquetes que salgan por eth0 (la que sale al exterior)</p>
+</li>
+<li>
+<p>-j MASQUERADE: Cambia la dirección de origen (eth1) por la dirección de salida (eth0)</p>
+</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># This file describes the network interfaces available on your system</span>
+<span class="c"># and how to activate them. For more information, see interfaces(5).</span>
+
+<span class="c"># The loopback network interface</span>
+<span class="n">auto</span> <span class="n">lo</span>
+<span class="n">iface</span> <span class="n">lo</span> <span class="n">inet</span> <span class="n">loopback</span>
+
+<span class="c"># The normal eth0 (red externa)</span>
+<span class="n">auto</span> <span class="n">eth0</span>
+<span class="n">iface</span> <span class="n">eth0</span> <span class="n">inet</span> <span class="n">dhcp</span>
+<span class="c">#       post-up ip route del default dev $IFACE || true</span>
+
+<span class="c"># Reglas de iptable</span>
+<span class="n">up</span> <span class="n">iptables</span> <span class="n">-t</span> <span class="n">nat</span> <span class="n">-A</span> <span class="n">POSTROUTING</span> <span class="n">-s</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">24</span> <span class="n">-o</span> <span class="n">eth0</span> <span class="n">-j</span> <span class="n">MASQUERADE</span>
+<span class="n">down</span> <span class="n">iptables</span> <span class="n">-t</span> <span class="n">nat</span> <span class="n">-D</span> <span class="n">POSTROUTING</span> <span class="n">-s</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">24</span> <span class="n">-o</span> <span class="n">eth0</span> <span class="n">-j</span> <span class="n">MASQUERADE</span>
+
+<span class="c"># Additional interfaces, just in case we&#39;re using</span>
+<span class="c"># multiple networks</span>
+
+<span class="c">#Red interna</span>
+<span class="n">auto</span> <span class="n">eth1</span>
+<span class="n">iface</span> <span class="n">eth1</span> <span class="n">inet</span> <span class="n">static</span>
+        <span class="n">address</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">6</span>
+        <span class="n">netmask</span> <span class="n">255</span><span class="p">.</span><span class="n">255</span><span class="p">.</span><span class="n">255</span><span class="p">.</span><span class="n">0</span>
+
+<span class="c"># Set this one last, so that cloud-init or user can</span>
+<span class="c"># override defaults.</span>
+<span class="n">source</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">network</span><span class="p">/</span><span class="n">interfaces</span><span class="p">.</span><span class="n">d</span><span class="p">/*</span>
+
+
+</code></pre></div><p>Comprobamos que las reglas de iptable estan funcionando</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">sudo</span> <span class="n">iptables</span> <span class="n">-t</span> <span class="n">nat</span> <span class="n">-L</span> <span class="n">-nv</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">debian</span><span class="nv">@dulcinea</span><span class="err">:</span><span class="p">~$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="n">-t</span> <span class="n">nat</span> <span class="n">-L</span> <span class="n">-nv</span>
+<span class="n">Chain</span> <span class="n">PREROUTING</span> <span class="p">(</span><span class="n">policy</span> <span class="n">ACCEPT</span> <span class="n">0</span> <span class="n">packets</span><span class="p">,</span> <span class="n">0</span> <span class="n">bytes</span><span class="p">)</span>
+ <span class="n">pkts</span> <span class="n">bytes</span> <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="k">in</span>     <span class="n">out</span>     <span class="n">source</span>               <span class="n">destination</span>         
+
+<span class="n">Chain</span> <span class="n">INPUT</span> <span class="p">(</span><span class="n">policy</span> <span class="n">ACCEPT</span> <span class="n">0</span> <span class="n">packets</span><span class="p">,</span> <span class="n">0</span> <span class="n">bytes</span><span class="p">)</span>
+ <span class="n">pkts</span> <span class="n">bytes</span> <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="k">in</span>     <span class="n">out</span>     <span class="n">source</span>               <span class="n">destination</span>         
+
+<span class="n">Chain</span> <span class="n">POSTROUTING</span> <span class="p">(</span><span class="n">policy</span> <span class="n">ACCEPT</span> <span class="n">0</span> <span class="n">packets</span><span class="p">,</span> <span class="n">0</span> <span class="n">bytes</span><span class="p">)</span>
+ <span class="n">pkts</span> <span class="n">bytes</span> <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="k">in</span>     <span class="n">out</span>     <span class="n">source</span>               <span class="n">destination</span>         
+    <span class="n">7</span>   <span class="n">588</span> <span class="n">MASQUERADE</span>  <span class="n">all</span>  <span class="p">--</span>  <span class="p">*</span>      <span class="n">eth0</span>    <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">24</span>          <span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">0</span>           
+
+<span class="n">Chain</span> <span class="n">OUTPUT</span> <span class="p">(</span><span class="n">policy</span> <span class="n">ACCEPT</span> <span class="n">0</span> <span class="n">packets</span><span class="p">,</span> <span class="n">0</span> <span class="n">bytes</span><span class="p">)</span>
+ <span class="n">pkts</span> <span class="n">bytes</span> <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="k">in</span>     <span class="n">out</span>     <span class="n">source</span>               <span class="n">destination</span>    
+</code></pre></div><h2 id="4-definición-de-contraseña-en-todas-las-instancias">4. Definición de contraseña en todas las instancias</h2>
+<ul>
+<li>Accedemos a Sancho y a Quijote por ssh desde Ducinea.</li>
+<li>Le cambiamos la contraseña a todas las instancias.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">passwd</span> <span class="n">root</span>
+<span class="n">passwd</span> <span class="n">nombre_de_usuario</span> <span class="p">({</span><span class="n">debian</span><span class="p">},{</span><span class="n">ubuntu</span><span class="p">},{</span><span class="n">sancho</span><span class="p">})</span>
+</code></pre></div><h2 id="5-modificación-de-las-instancias-sancho-y-quijote-para-que-usen-direccionamiento-estático-y-dulcinea-como-puerta-de-enlace">5. Modificación de las instancias sancho y quijote para que usen direccionamiento estático y dulcinea como puerta de enlace</h2>
+<h3 id="configuración-sancho-ubuntu">Configuración Sancho (Ubuntu)</h3>
+<p>Editamos el fichero de configuración de interfaces</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">nano</span> <span class="n">-c</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">netplan</span><span class="p">/</span><span class="n">50-cloud-init</span><span class="p">.</span><span class="n">yaml</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># This file is generated from information provided by the datasource.  Changes</span>
+<span class="c"># to it will not persist across an instance reboot.  To disable cloud-init&#39;s</span>
+<span class="c"># network configuration capabilities, write a file</span>
+<span class="c"># /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:</span>
+<span class="c"># network: {config: disabled}</span>
+<span class="n">network</span><span class="err">:</span>
+    <span class="n">version</span><span class="err">:</span> <span class="n">2</span>
+    <span class="n">ethernets</span><span class="err">:</span>
+        <span class="n">ens3</span><span class="err">:</span>
+             <span class="n">addresses</span><span class="err">:</span> <span class="p">[</span><span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">11</span><span class="p">/</span><span class="n">24</span><span class="p">]</span>
+             <span class="n">gateway4</span><span class="err">:</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">6</span>
+<span class="c">#             dhcp4: false</span>
+<span class="c">#             match:</span>
+<span class="c">#                macaddress: fa:16:3e💿4d:70</span>
+<span class="c">#             mtu: 8950</span>
+<span class="c">#             set-name: ens3  </span>
+
+</code></pre></div><p>Aplicamos los cambios</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">netplan</span> <span class="n">apply</span>
+</code></pre></div><p>Comprobamos que la* puerta de enlace* apunte a Dulcinea</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@sancho</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">ubuntu</span><span class="c"># ip r</span>
+<span class="k">default</span> <span class="n">via</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">6</span> <span class="n">dev</span> <span class="n">ens3</span> 
+<span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">24</span> <span class="n">dev</span> <span class="n">ens3</span> <span class="n">proto</span> <span class="n">kernel</span> <span class="n">scope</span> <span class="n">link</span> <span class="n">src</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">11</span> 
+<span class="n">169</span><span class="p">.</span><span class="n">254</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">254</span> <span class="n">via</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">2</span> <span class="n">dev</span> <span class="n">ens3</span> 
+</code></pre></div><p>Comprobamos que tenemos <em>acceso al exterior</em></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@sancho</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">ubuntu</span><span class="c"># ping 172.22.0.1</span>
+<span class="n">PING</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span> <span class="p">(</span><span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">)</span> <span class="n">56</span><span class="p">(</span><span class="n">84</span><span class="p">)</span> <span class="n">bytes</span> <span class="n">of</span> <span class="n">data</span><span class="p">.</span>
+<span class="n">64</span> <span class="n">bytes</span> <span class="n">from</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="err">:</span> <span class="n">icmp_seq</span><span class="p">=</span><span class="n">1</span> <span class="n">ttl</span><span class="p">=</span><span class="n">62</span> <span class="n">time</span><span class="p">=</span><span class="n">1</span><span class="p">.</span><span class="n">47</span> <span class="n">ms</span>
+<span class="n">64</span> <span class="n">bytes</span> <span class="n">from</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="err">:</span> <span class="n">icmp_seq</span><span class="p">=</span><span class="n">2</span> <span class="n">ttl</span><span class="p">=</span><span class="n">62</span> <span class="n">time</span><span class="p">=</span><span class="n">1</span><span class="p">.</span><span class="n">87</span> <span class="n">ms</span>
+<span class="p">^</span><span class="n">C</span>
+<span class="p">---</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span> <span class="n">ping</span> <span class="n">statistics</span> <span class="p">---</span>
+<span class="n">2</span> <span class="n">packets</span> <span class="n">transmitted</span><span class="p">,</span> <span class="n">2</span> <span class="n">received</span><span class="p">,</span> <span class="n">0</span><span class="p">%</span> <span class="n">packet</span> <span class="n">loss</span><span class="p">,</span> <span class="n">time</span> <span class="n">1002ms</span>
+<span class="n">rtt</span> <span class="n">min</span><span class="p">/</span><span class="n">avg</span><span class="p">/</span><span class="n">max</span><span class="p">/</span><span class="n">mdev</span> <span class="p">=</span> <span class="n">1</span><span class="p">.</span><span class="n">467</span><span class="p">/</span><span class="n">1</span><span class="p">.</span><span class="n">670</span><span class="p">/</span><span class="n">1</span><span class="p">.</span><span class="n">874</span><span class="p">/</span><span class="n">0</span><span class="p">.</span><span class="n">203</span> <span class="n">ms</span>
+
+</code></pre></div><h3 id="configuración-quijote-centos">Configuración Quijote (CentOS)</h3>
+<p>Buscamos el fichero de configuración de interfaces</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">centos</span><span class="nv">@quijote</span> <span class="p">~]$</span> <span class="nb">ls </span><span class="n">-l</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">sysconfig</span><span class="p">/</span><span class="n">network-scripts</span><span class="p">/</span><span class="n">ifcfg</span><span class="p">-*</span>
+<span class="n">-rw-r</span><span class="p">-</span><span class="n">-r</span><span class="p">--.</span> <span class="n">1</span> <span class="n">root</span> <span class="n">root</span> <span class="n">168</span> <span class="n">Nov</span> <span class="n">18</span> <span class="n">16</span><span class="err">:</span><span class="n">58</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">sysconfig</span><span class="p">/</span><span class="n">network-scripts</span><span class="p">/</span><span class="n">ifcfg-eth0</span>
+<span class="n">-rw-r</span><span class="p">-</span><span class="n">-r</span><span class="p">--.</span> <span class="n">1</span> <span class="n">root</span> <span class="n">root</span> <span class="n">254</span> <span class="n">Aug</span> <span class="n">19</span>  <span class="n">2019</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">sysconfig</span><span class="p">/</span><span class="n">network-scripts</span><span class="p">/</span><span class="n">ifcfg-lo</span>
+
+</code></pre></div><p>Editamos el fichero:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">vi</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">sysconfig</span><span class="p">/</span><span class="n">network-scripts</span><span class="p">/</span><span class="n">ifcfg-eth0</span> 
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># Created by cloud-init on instance boot automatically, do not edit.</span>
+<span class="c">#</span>
+<span class="n">BOOTPROTO</span><span class="p">=</span><span class="s2">&#34;static&#34;</span>
+<span class="n">IPADDR</span><span class="p">=</span><span class="s2">&#34;10.0.1.13&#34;</span>
+<span class="n">GATEWAY</span><span class="p">=</span><span class="s2">&#34;10.0.1.6&#34;</span>
+<span class="n">NETMASK</span><span class="p">=</span><span class="s2">&#34;255.255.255.0&#34;</span>
+<span class="n">DEVICE</span><span class="p">=</span><span class="n">eth0</span>
+<span class="n">HWADDR</span><span class="p">=</span><span class="n">fa</span><span class="err">:</span><span class="n">16</span><span class="err">:</span><span class="n">3e</span><span class="err">:</span><span class="n">f7</span><span class="err">:</span><span class="n">be</span><span class="err">:</span><span class="n">35</span>
+<span class="n">ONBOOT</span><span class="p">=</span><span class="n">yes</span>
+<span class="n">STARTMODE</span><span class="p">=</span><span class="n">auto</span>
+<span class="n">TYPE</span><span class="p">=</span><span class="n">Ethernet</span>
+<span class="n">USERCTL</span><span class="p">=</span><span class="n">no</span>
+
+</code></pre></div><p>Desactivamos el cloud-init</p>
+<p>Para ello creamos un fichero en /etc/cloud</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">nano</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">cloud</span><span class="p">/</span><span class="n">cloud-init</span><span class="p">.</span><span class="n">disabled</span>
+</code></pre></div><p>Le añadimos lo siguiente</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">cloud-init</span><span class="p">=</span><span class="n">disabled</span>
+</code></pre></div><p>Reiniamos el servicio</p>
+<p>Reiniciamos la máquina</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">systemctl</span> <span class="n">restart</span> <span class="n">network</span><span class="p">.</span><span class="n">service</span>
+</code></pre></div><p>Comprobamos la <strong>puerta de enlace</strong>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">root</span><span class="nv">@quijote</span> <span class="n">centos</span><span class="p">]</span><span class="c"># ip r</span>
+<span class="k">default</span> <span class="n">via</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">6</span> <span class="n">dev</span> <span class="n">eth0</span> 
+<span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">8</span> <span class="n">dev</span> <span class="n">eth0</span> <span class="n">proto</span> <span class="n">kernel</span> <span class="n">scope</span> <span class="n">link</span> <span class="n">src</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">13</span> 
+
+</code></pre></div><p>Comprobamos el <strong>acceso al exterior</strong>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">root</span><span class="nv">@quijote</span> <span class="n">centos</span><span class="p">]</span><span class="c"># ping 172.22.0.1</span>
+<span class="n">PING</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span> <span class="p">(</span><span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">)</span> <span class="n">56</span><span class="p">(</span><span class="n">84</span><span class="p">)</span> <span class="n">bytes</span> <span class="n">of</span> <span class="n">data</span><span class="p">.</span>
+<span class="n">64</span> <span class="n">bytes</span> <span class="n">from</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="err">:</span> <span class="n">icmp_seq</span><span class="p">=</span><span class="n">1</span> <span class="n">ttl</span><span class="p">=</span><span class="n">62</span> <span class="n">time</span><span class="p">=</span><span class="n">1</span><span class="p">.</span><span class="n">36</span> <span class="n">ms</span>
+<span class="n">64</span> <span class="n">bytes</span> <span class="n">from</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="err">:</span> <span class="n">icmp_seq</span><span class="p">=</span><span class="n">2</span> <span class="n">ttl</span><span class="p">=</span><span class="n">62</span> <span class="n">time</span><span class="p">=</span><span class="n">1</span><span class="p">.</span><span class="n">50</span> <span class="n">ms</span>
+<span class="p">^</span><span class="n">C</span>
+<span class="p">---</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span> <span class="n">ping</span> <span class="n">statistics</span> <span class="p">---</span>
+<span class="n">2</span> <span class="n">packets</span> <span class="n">transmitted</span><span class="p">,</span> <span class="n">2</span> <span class="n">received</span><span class="p">,</span> <span class="n">0</span><span class="p">%</span> <span class="n">packet</span> <span class="n">loss</span><span class="p">,</span> <span class="n">time</span> <span class="n">1001ms</span>
+<span class="n">rtt</span> <span class="n">min</span><span class="p">/</span><span class="n">avg</span><span class="p">/</span><span class="n">max</span><span class="p">/</span><span class="n">mdev</span> <span class="p">=</span> <span class="n">1</span><span class="p">.</span><span class="n">364</span><span class="p">/</span><span class="n">1</span><span class="p">.</span><span class="n">432</span><span class="p">/</span><span class="n">1</span><span class="p">.</span><span class="n">500</span><span class="p">/</span><span class="n">0</span><span class="p">.</span><span class="n">068</span> <span class="n">ms</span>
+
+</code></pre></div><h2 id="6-modificación-de-la-subred-de-la-red-interna-deshabilitando-el-servidor-dhcp">6. Modificación de la subred de la red interna, deshabilitando el servidor DHCP</h2>
+<p>Vamos a la pataforma del cloud, en Networks &raquo; (Seleccionamos la interfaz interna) celia.garcia &raquo; Subnets &raquo; Edit Subnet &raquo; Next &raquo; (Deshabilitamos el DCHP) Enable DCHP</p>
+<p><img src="/images/escenario/disable_dhcp.jpeg" alt="disable_dhcp.jpeg"></p>
+<p>Una vez deshabilitado vamos a <strong>Sancho</strong>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">ip</span> <span class="n">a</span> <span class="nb">del </span><span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">11</span><span class="p">/</span><span class="n">24</span> <span class="n">dev</span> <span class="n">ens3</span>
+</code></pre></div><p>Intentamos hacer una petición al DCHP</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dhclient</span> <span class="n">ens3</span>
+</code></pre></div><p>No obtenemos respuesta por lo que está correctamente deshabilitado.</p>
+<p>Ahora vamos a reiniciar el servicio de red</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">netplan</span> <span class="n">apply</span>
+</code></pre></div><p>Comprobamos que tenemos de nuevo nuestra configuración estática:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@sancho</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">ubuntu</span><span class="c"># ip a</span>
+<span class="n">1</span><span class="err">:</span> <span class="n">lo</span><span class="err">:</span> <span class="p">&lt;</span><span class="n">LOOPBACK</span><span class="p">,</span><span class="n">UP</span><span class="p">,</span><span class="n">LOWER_UP</span><span class="p">&gt;</span> <span class="n">mtu</span> <span class="n">65536</span> <span class="n">qdisc</span> <span class="n">noqueue</span> <span class="n">state</span> <span class="n">UNKNOWN</span> <span class="nb">group </span><span class="k">default</span> <span class="n">qlen</span> <span class="n">1000</span>
+    <span class="n">link</span><span class="p">/</span><span class="n">loopback</span> <span class="n">00</span><span class="err">:</span><span class="n">00</span><span class="err">:</span><span class="n">00</span><span class="err">:</span><span class="n">00</span><span class="err">:</span><span class="n">00</span><span class="err">:</span><span class="n">00</span> <span class="n">brd</span> <span class="n">00</span><span class="err">:</span><span class="n">00</span><span class="err">:</span><span class="n">00</span><span class="err">:</span><span class="n">00</span><span class="err">:</span><span class="n">00</span><span class="err">:</span><span class="n">00</span>
+    <span class="n">inet</span> <span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">/</span><span class="n">8</span> <span class="n">scope</span> <span class="n">host</span> <span class="n">lo</span>
+       <span class="n">valid_lft</span> <span class="n">forever</span> <span class="n">preferred_lft</span> <span class="n">forever</span>
+    <span class="n">inet6</span> <span class="p">::</span><span class="n">1</span><span class="p">/</span><span class="n">128</span> <span class="n">scope</span> <span class="n">host</span> 
+       <span class="n">valid_lft</span> <span class="n">forever</span> <span class="n">preferred_lft</span> <span class="n">forever</span>
+<span class="n">3</span><span class="err">:</span> <span class="n">ens3</span><span class="err">:</span> <span class="p">&lt;</span><span class="n">BROADCAST</span><span class="p">,</span><span class="n">MULTICAST</span><span class="p">,</span><span class="n">UP</span><span class="p">,</span><span class="n">LOWER_UP</span><span class="p">&gt;</span> <span class="n">mtu</span> <span class="n">8950</span> <span class="n">qdisc</span> <span class="n">fq_codel</span> <span class="n">state</span> <span class="n">UP</span> <span class="nb">group </span><span class="k">default</span> <span class="n">qlen</span> <span class="n">1000</span>
+    <span class="n">link</span><span class="p">/</span><span class="n">ether</span> <span class="n">fa</span><span class="err">:</span><span class="n">16</span><span class="err">:</span><span class="n">3e</span><span class="err">:</span><span class="n">f2</span><span class="err">:</span><span class="n">65</span><span class="err">:</span><span class="n">68</span> <span class="n">brd</span> <span class="n">ff</span><span class="err">:</span><span class="n">ff</span><span class="err">:</span><span class="n">ff</span><span class="err">:</span><span class="n">ff</span><span class="err">:</span><span class="n">ff</span><span class="err">:</span><span class="n">ff</span>
+    <span class="n">inet</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">11</span><span class="p">/</span><span class="n">24</span> <span class="n">brd</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">255</span> <span class="n">scope</span> <span class="n">global</span> <span class="n">ens3</span>
+       <span class="n">valid_lft</span> <span class="n">forever</span> <span class="n">preferred_lft</span> <span class="n">forever</span>
+    <span class="n">inet6</span> <span class="n">fe80</span><span class="p">::</span><span class="n">f816</span><span class="err">:</span><span class="n">3eff</span><span class="err">:</span><span class="n">fef2</span><span class="err">:</span><span class="n">6568</span><span class="p">/</span><span class="n">64</span> <span class="n">scope</span> <span class="n">link</span> 
+       <span class="n">valid_lft</span> <span class="n">forever</span> <span class="n">preferred_lft</span> <span class="n">forever</span>
+
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@sancho</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">ubuntu</span><span class="c"># ip r</span>
+<span class="k">default</span> <span class="n">via</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">6</span> <span class="n">dev</span> <span class="n">ens3</span> <span class="n">proto</span> <span class="n">static</span> 
+<span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">24</span> <span class="n">dev</span> <span class="n">ens3</span> <span class="n">proto</span> <span class="n">kernel</span> <span class="n">scope</span> <span class="n">link</span> <span class="n">src</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">11</span> 
+
+</code></pre></div><p>Hacemos el mismo procedimiento con <strong>Quijote</strong></p>
+<p>Comprobamos que no tenemos respuesta por DHCP ya que lo hemos deshabilitado</p>
+<p>Comprobamos que al reiniciar nuestro servicio de red configurado estaticamente tenemos acceso al exterior</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">root</span><span class="nv">@quijote</span> <span class="n">centos</span><span class="p">]</span><span class="c"># ping 172.22.0.1</span>
+<span class="n">PING</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span> <span class="p">(</span><span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">)</span> <span class="n">56</span><span class="p">(</span><span class="n">84</span><span class="p">)</span> <span class="n">bytes</span> <span class="n">of</span> <span class="n">data</span><span class="p">.</span>
+<span class="n">64</span> <span class="n">bytes</span> <span class="n">from</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="err">:</span> <span class="n">icmp_seq</span><span class="p">=</span><span class="n">1</span> <span class="n">ttl</span><span class="p">=</span><span class="n">62</span> <span class="n">time</span><span class="p">=</span><span class="n">1</span><span class="p">.</span><span class="n">44</span> <span class="n">ms</span>
+<span class="n">64</span> <span class="n">bytes</span> <span class="n">from</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="err">:</span> <span class="n">icmp_seq</span><span class="p">=</span><span class="n">2</span> <span class="n">ttl</span><span class="p">=</span><span class="n">62</span> <span class="n">time</span><span class="p">=</span><span class="n">1</span><span class="p">.</span><span class="n">99</span> <span class="n">ms</span>
+<span class="p">^</span><span class="n">C</span>
+<span class="p">---</span> <span class="n">172</span><span class="p">.</span><span class="n">22</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span> <span class="n">ping</span> <span class="n">statistics</span> <span class="p">---</span>
+<span class="n">2</span> <span class="n">packets</span> <span class="n">transmitted</span><span class="p">,</span> <span class="n">2</span> <span class="n">received</span><span class="p">,</span> <span class="n">0</span><span class="p">%</span> <span class="n">packet</span> <span class="n">loss</span><span class="p">,</span> <span class="n">time</span> <span class="n">1001ms</span>
+<span class="n">rtt</span> <span class="n">min</span><span class="p">/</span><span class="n">avg</span><span class="p">/</span><span class="n">max</span><span class="p">/</span><span class="n">mdev</span> <span class="p">=</span> <span class="n">1</span><span class="p">.</span><span class="n">440</span><span class="p">/</span><span class="n">1</span><span class="p">.</span><span class="n">718</span><span class="p">/</span><span class="n">1</span><span class="p">.</span><span class="n">996</span><span class="p">/</span><span class="n">0</span><span class="p">.</span><span class="n">278</span> <span class="n">ms</span>
+
+</code></pre></div><h2 id="7-utilización-de-ssh-agent-para-acceder-a-las-instancias">7. Utilización de ssh-agent para acceder a las instancias</h2>
+<h4 id="70-conceptos-previos">7.0. Conceptos previos</h4>
+<p>El <strong>agente ssh</strong>, es un programa auxiliar que realiza un seguimiento de las claves de identidad del usuario y sus contraseñas. Permite usar las claves para iniciar sesión en otros servidores sin que el usuario escriba una contraseña o frase de contraseña. Esto implementa una forma de inicio de sesión único.</p>
+<h4 id="71-iniciar-ssh-agent">7.1. Iniciar ssh-agent</h4>
+<p>Normalmente no se inicia automáticamente al inciar el servidor por lo que tenemos que ejecutarlo manualmente</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">ssh-agent</span>
+</code></pre></div><p>Salida:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">SSH_AUTH_SOCK</span><span class="p">=/</span><span class="n">tmp</span><span class="p">/</span><span class="n">ssh-wMUFa5ft1Ae2</span><span class="p">/</span><span class="n">agent</span><span class="p">.</span><span class="n">13399</span><span class="p">;</span> <span class="n">export</span> <span class="n">SSH_AUTH_SOCK</span><span class="p">;</span>
+<span class="n">SSH_AGENT_PID</span><span class="p">=</span><span class="n">13400</span><span class="p">;</span> <span class="n">export</span> <span class="n">SSH_AGENT_PID</span><span class="p">;</span>
+<span class="nb">echo </span><span class="n">Agent</span> <span class="n">pid</span> <span class="n">13400</span><span class="p">;</span>
+</code></pre></div><p>Verificamos el valor de la variable que esté configurada</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">debian</span><span class="nv">@dulcinea</span><span class="err">:</span><span class="p">~$</span> <span class="nb">echo </span><span class="nv">$SSH_AUTH_SOCK</span>
+<span class="p">/</span><span class="n">tmp</span><span class="p">/</span><span class="n">ssh-P9bFFkcDoMSo</span><span class="p">/</span><span class="n">agent</span><span class="p">.</span><span class="n">13396</span>
+</code></pre></div><h4 id="72-agregar-las-claves-y-comprobar-funcionamiento">7.2. Agregar las claves y comprobar funcionamiento</h4>
+<p>Agregamos las claves que tenemos en el fichero .ssh, si no le indicamos ruta agregará todas las que se encuentren dentro de .ssh</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">ssh-add</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">debian</span><span class="nv">@dulcinea</span><span class="err">:</span><span class="p">~$</span> <span class="n">ssh-add</span>
+<span class="n">Identity</span> <span class="n">added</span><span class="err">:</span> <span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">debian</span><span class="p">/.</span><span class="n">ssh</span><span class="p">/</span><span class="n">id_rsa</span> <span class="p">(</span><span class="n">celiagm</span><span class="nv">@debian</span><span class="p">)</span>
+</code></pre></div><p>Otras opciones de utilidad</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># Listar las claves privadas</span>
+<span class="n">ssh-add</span> <span class="n">-l</span>
+<span class="c"># Listar las claves públicas</span>
+<span class="n">ssh-add</span> <span class="n">-L</span>
+<span class="c"># Eliminar las claves utilizadas por el agente</span>
+<span class="n">ssh-add</span> <span class="n">-D</span>
+</code></pre></div><p>Ahora ya podemos entrar directamente a Sancho y a Quijote sin especificar la clave</p>
+<p><strong>SANCHO:</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">debian</span><span class="nv">@dulcinea</span><span class="err">:</span><span class="p">~$</span> <span class="n">ssh</span> <span class="n">ubuntu</span><span class="nv">@10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">11</span>
+<span class="n">Welcome</span> <span class="n">to</span> <span class="n">Ubuntu</span> <span class="n">20</span><span class="p">.</span><span class="n">04</span><span class="p">.</span><span class="n">1</span> <span class="n">LTS</span> <span class="p">(</span><span class="n">GNU</span><span class="p">/</span><span class="n">Linux</span> <span class="n">5</span><span class="p">.</span><span class="n">4</span><span class="p">.</span><span class="n">0</span><span class="p">-</span><span class="n">48-generic</span> <span class="n">x86_64</span><span class="p">)</span>
+
+ <span class="p">*</span> <span class="n">Documentation</span><span class="err">:</span>  <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">help</span><span class="p">.</span><span class="n">ubuntu</span><span class="p">.</span><span class="n">com</span>
+ <span class="p">*</span> <span class="n">Management</span><span class="err">:</span>     <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">landscape</span><span class="p">.</span><span class="n">canonical</span><span class="p">.</span><span class="n">com</span>
+ <span class="p">*</span> <span class="n">Support</span><span class="err">:</span>        <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">ubuntu</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">advantage</span>
+
+  <span class="n">System</span> <span class="n">information</span> <span class="n">as</span> <span class="n">of</span> <span class="n">Mon</span> <span class="n">Nov</span> <span class="n">23</span> <span class="n">19</span><span class="err">:</span><span class="n">45</span><span class="err">:</span><span class="n">13</span> <span class="n">UTC</span> <span class="n">2020</span>
+
+  <span class="n">System</span> <span class="n">load</span><span class="err">:</span>  <span class="n">0</span><span class="p">.</span><span class="n">01</span>              <span class="n">Processes</span><span class="err">:</span>             <span class="n">103</span>
+  <span class="n">Usage</span> <span class="n">of</span> <span class="p">/</span><span class="err">:</span>   <span class="n">13</span><span class="p">.</span><span class="n">1</span><span class="p">%</span> <span class="n">of</span> <span class="n">9</span><span class="p">.</span><span class="n">52GB</span>   <span class="n">Users</span> <span class="n">logged</span> <span class="k">in</span><span class="err">:</span>       <span class="n">2</span>
+  <span class="n">Memory</span> <span class="n">usage</span><span class="err">:</span> <span class="n">40</span><span class="p">%</span>               <span class="n">IPv4</span> <span class="n">address</span> <span class="k">for</span> <span class="n">ens3</span><span class="err">:</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">11</span>
+  <span class="n">Swap</span> <span class="n">usage</span><span class="err">:</span>   <span class="n">0</span><span class="p">%</span>
+
+
+<span class="n">1</span> <span class="n">update</span> <span class="n">can</span> <span class="n">be</span> <span class="n">installed</span> <span class="n">immediately</span><span class="p">.</span>
+<span class="n">0</span> <span class="n">of</span> <span class="n">these</span> <span class="n">updates</span> <span class="n">are</span> <span class="n">security</span> <span class="n">updates</span><span class="p">.</span>
+<span class="n">To</span> <span class="n">see</span> <span class="n">these</span> <span class="n">additional</span> <span class="n">updates</span> <span class="n">run</span><span class="err">:</span> <span class="n">apt</span> <span class="n">list</span> <span class="p">-</span><span class="n">-upgradable</span>
+
+
+<span class="n">The</span> <span class="n">list</span> <span class="n">of</span> <span class="n">available</span> <span class="n">updates</span> <span class="n">is</span> <span class="n">more</span> <span class="n">than</span> <span class="n">a</span> <span class="n">week</span> <span class="n">old</span><span class="p">.</span>
+<span class="n">To</span> <span class="n">check</span> <span class="k">for</span> <span class="n">new</span> <span class="n">updates</span> <span class="n">run</span><span class="err">:</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+<span class="n">Failed</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">changelogs</span><span class="p">.</span><span class="n">ubuntu</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">meta-release-lts</span><span class="p">.</span> <span class="n">Check</span> <span class="n">your</span> <span class="n">Internet</span> <span class="n">connection</span> <span class="n">or</span> <span class="n">proxy</span> <span class="n">settings</span>
+
+
+<span class="n">Last</span> <span class="n">login</span><span class="err">:</span> <span class="n">Mon</span> <span class="n">Nov</span> <span class="n">23</span> <span class="n">15</span><span class="err">:</span><span class="n">59</span><span class="err">:</span><span class="n">15</span> <span class="n">2020</span> <span class="n">from</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">6</span>
+<span class="n">ubuntu</span><span class="nv">@sancho</span><span class="err">:</span><span class="p">~$</span> 
+
+</code></pre></div><p><strong>CENTOS:</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">debian</span><span class="nv">@dulcinea</span><span class="err">:</span><span class="p">~$</span> <span class="n">ssh</span> <span class="n">centos</span><span class="nv">@10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">13</span>
+<span class="n">Last</span> <span class="n">login</span><span class="err">:</span> <span class="n">Mon</span> <span class="n">Nov</span> <span class="n">23</span> <span class="n">15</span><span class="err">:</span><span class="n">59</span><span class="err">:</span><span class="n">55</span> <span class="n">2020</span> <span class="n">from</span> <span class="n">host</span><span class="p">-</span><span class="n">10</span><span class="p">-</span><span class="n">0</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">6</span><span class="p">.</span><span class="n">openstacklocal</span>
+<span class="p">[</span><span class="n">centos</span><span class="nv">@quijote</span> <span class="p">~]$</span> 
+
+</code></pre></div><h2 id="8-creación-del-usuario-profesor-en-todas-las-instancias-usuario-que-puede-utilizar-sudo-sin-contraseña">8. Creación del usuario profesor en todas las instancias. Usuario que puede utilizar sudo sin contraseña.</h2>
+<ul>
+<li>Dulcinea</li>
+</ul>
+<p>Creamos el usuario profesor y lo añadimos al grupo sudo:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">adduser</span> <span class="n">profesor</span>
+<span class="n">adduser</span> <span class="n">profesor</span> <span class="n">sudo</span>
+
+</code></pre></div><p>Editamos el fichero &lsquo;sudoers&rsquo; e indicamos que el usuario no precise de contraseña al usar sudo</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">nano</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">sudoers</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">profesor</span> <span class="n">ALL</span><span class="p">=(</span><span class="n">ALL</span><span class="p">)</span> <span class="n">NOPASSWD</span><span class="err">:</span><span class="n">ALL</span>
+</code></pre></div><ul>
+<li>Sancho (Ponemos la misma configuración en <em>sudoers</em>)</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">useradd</span> <span class="n">profesor</span>
+<span class="n">usermod</span> <span class="n">profesor</span> <span class="n">-g</span> <span class="n">sudo</span>
+<span class="n">passwd</span> <span class="n">profesor</span>
+<span class="n">nano</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">sudoers</span>
+</code></pre></div><ul>
+<li>Quijote</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">adduser</span> <span class="n">profesor</span>
+<span class="n">passwd</span> <span class="n">profesor</span>
+<span class="n">usermod</span> <span class="n">-aG</span> <span class="n">wheel</span> <span class="n">profesor</span>
+</code></pre></div><h2 id="9-copia-de-las-claves-públicas-de-todos-los-profesores-en-las-instancias-para-que-puedan-acceder-con-el-usuario-profesor">9. Copia de las claves públicas de todos los profesores en las instancias para que puedan acceder con el usuario profesor</h2>
+<p>Para ello he copiado las claves públicas al fichero authorized_keys del usuario profesor.</p>
+<h2 id="10-realiza-una-actualización-completa-de-todos-los-servidores">10. Realiza una actualización completa de todos los servidores</h2>
+<p><strong>Dulcinea(Debian 10)</strong></p>
+<p>Repositorios de Dulcinea</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">deb</span> <span class="n">http</span><span class="err">:</span><span class="p">//</span><span class="n">deb</span><span class="p">.</span><span class="n">debian</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">debian</span><span class="p">/</span> <span class="n">buster</span> <span class="n">main</span>
+<span class="c">#deb-src http://deb.debian.org/debian/ buster main</span>
+<span class="n">deb</span> <span class="n">http</span><span class="err">:</span><span class="p">//</span><span class="n">deb</span><span class="p">.</span><span class="n">debian</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">debian</span><span class="p">/</span> <span class="n">buster-updates</span> <span class="n">main</span>
+<span class="c">#deb-src http://deb.debian.org/debian/ buster-updates main</span>
+<span class="n">deb</span> <span class="n">http</span><span class="err">:</span><span class="p">//</span><span class="n">security</span><span class="p">.</span><span class="n">debian</span><span class="p">.</span><span class="n">org</span><span class="p">/</span> <span class="n">buster</span><span class="p">/</span><span class="n">updates</span> <span class="n">main</span>
+<span class="c">#deb-src http://security.debian.org/debian-security buster/updates main</span>
+
+</code></pre></div><p>Actualizamos</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">apt</span> <span class="n">update</span>
+<span class="n">apt</span> <span class="n">list</span> <span class="p">-</span><span class="n">-upgradable</span>
+<span class="n">apt</span> <span class="n">upgrade</span>
+</code></pre></div><p><strong>Sancho (Ubuntu 20)</strong></p>
+<p>Debemos asegurarnos que tenemos resolución de nombres</p>
+<p>Fichero /etc/resolv</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">nameserver</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">202</span><span class="p">.</span><span class="n">2</span>
+</code></pre></div><p>Actualizamos</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">apt</span> <span class="n">update</span>
+<span class="n">apt</span> <span class="n">upgrade</span>
+</code></pre></div><p><strong>Quijote (Centos7)</strong></p>
+<p>Los repositorios de centos se ubican en :</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">centos</span><span class="nv">@quijote</span> <span class="p">~]$</span> <span class="nb">ls </span><span class="n">-l</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">yum</span><span class="p">.</span><span class="n">repos</span><span class="p">.</span><span class="n">d</span><span class="p">/</span>
+<span class="n">total</span> <span class="n">36</span>
+<span class="n">-rw-r</span><span class="p">-</span><span class="n">-r</span><span class="p">--.</span> <span class="n">1</span> <span class="n">root</span> <span class="n">root</span> <span class="n">1664</span> <span class="n">Apr</span>  <span class="n">7</span>  <span class="n">2020</span> <span class="n">CentOS-Base</span><span class="p">.</span><span class="n">repo</span>
+<span class="n">-rw-r</span><span class="p">-</span><span class="n">-r</span><span class="p">--.</span> <span class="n">1</span> <span class="n">root</span> <span class="n">root</span> <span class="n">1309</span> <span class="n">Apr</span>  <span class="n">7</span>  <span class="n">2020</span> <span class="n">CentOS-CR</span><span class="p">.</span><span class="n">repo</span>
+<span class="n">-rw-r</span><span class="p">-</span><span class="n">-r</span><span class="p">--.</span> <span class="n">1</span> <span class="n">root</span> <span class="n">root</span>  <span class="n">649</span> <span class="n">Apr</span>  <span class="n">7</span>  <span class="n">2020</span> <span class="n">CentOS-Debuginfo</span><span class="p">.</span><span class="n">repo</span>
+<span class="n">-rw-r</span><span class="p">-</span><span class="n">-r</span><span class="p">--.</span> <span class="n">1</span> <span class="n">root</span> <span class="n">root</span>  <span class="n">314</span> <span class="n">Apr</span>  <span class="n">7</span>  <span class="n">2020</span> <span class="n">CentOS-fasttrack</span><span class="p">.</span><span class="n">repo</span>
+<span class="n">-rw-r</span><span class="p">-</span><span class="n">-r</span><span class="p">--.</span> <span class="n">1</span> <span class="n">root</span> <span class="n">root</span>  <span class="n">630</span> <span class="n">Apr</span>  <span class="n">7</span>  <span class="n">2020</span> <span class="n">CentOS-Media</span><span class="p">.</span><span class="n">repo</span>
+<span class="n">-rw-r</span><span class="p">-</span><span class="n">-r</span><span class="p">--.</span> <span class="n">1</span> <span class="n">root</span> <span class="n">root</span> <span class="n">1331</span> <span class="n">Apr</span>  <span class="n">7</span>  <span class="n">2020</span> <span class="n">CentOS-Sources</span><span class="p">.</span><span class="n">repo</span>
+<span class="n">-rw-r</span><span class="p">-</span><span class="n">-r</span><span class="p">--.</span> <span class="n">1</span> <span class="n">root</span> <span class="n">root</span> <span class="n">7577</span> <span class="n">Apr</span>  <span class="n">7</span>  <span class="n">2020</span> <span class="n">CentOS-Vault</span><span class="p">.</span><span class="n">repo</span>
+<span class="n">-rw-r</span><span class="p">-</span><span class="n">-r</span><span class="p">--.</span> <span class="n">1</span> <span class="n">root</span> <span class="n">root</span>  <span class="n">616</span> <span class="n">Apr</span>  <span class="n">7</span>  <span class="n">2020</span> <span class="n">CentOS-x86_64-kernel</span><span class="p">.</span><span class="n">repo</span>
+
+</code></pre></div><p>Actualizamos</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">yum</span> <span class="n">update</span>
+</code></pre></div><h2 id="12-hasta-que-no-esté-configurado-el-servidor-dns-incluye-resolución-estática-en-las-tres-instancias-tanto-usando-nombre-completo-como-hostname">12. Hasta que no esté configurado el servidor DNS, incluye resolución estática en las tres instancias tanto usando nombre completo como hostname</h2>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">nano</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">hosts</span>
+</code></pre></div><p><strong>Dulcinea</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">1</span> <span class="n">dulcinea</span><span class="p">.</span><span class="n">celia</span><span class="p">.</span><span class="n">gonzalonazareno</span><span class="p">.</span><span class="n">org</span> <span class="n">dulcinea</span>
+<span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span> <span class="n">localhost</span>
+<span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">13</span> <span class="n">quijote</span><span class="p">.</span><span class="n">celia</span><span class="p">.</span><span class="n">gonzalonazareno</span><span class="p">.</span><span class="n">org</span> <span class="n">quijote</span>
+<span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">11</span> <span class="n">sancho</span><span class="p">.</span><span class="n">celia</span><span class="p">.</span><span class="n">gonzalonazareno</span><span class="p">.</span><span class="n">org</span> <span class="n">sancho</span>
+<span class="c"># The following lines are desirable for IPv6 capable hosts</span>
+<span class="p">::</span><span class="n">1</span> <span class="n">ip6-localhost</span> <span class="n">ip6-loopback</span>
+<span class="n">fe00</span><span class="p">::</span><span class="n">0</span> <span class="n">ip6-localnet</span>
+<span class="n">ff00</span><span class="p">::</span><span class="n">0</span> <span class="n">ip6-mcastprefix</span>
+<span class="n">ff02</span><span class="p">::</span><span class="n">1</span> <span class="n">ip6-allnodes</span>
+<span class="n">ff02</span><span class="p">::</span><span class="n">2</span> <span class="n">ip6-allrouters</span>
+<span class="n">ff02</span><span class="p">::</span><span class="n">3</span> <span class="n">ip6-allhosts</span>
+
+</code></pre></div><p><strong>Sancho</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span> <span class="n">localhost</span>
+<span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">1</span> <span class="n">sancho</span><span class="p">.</span><span class="n">celia</span><span class="p">.</span><span class="n">gonzalonazareno</span><span class="p">.</span><span class="n">org</span> <span class="n">sancho</span>
+<span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">6</span> <span class="n">dulcinea</span><span class="p">.</span><span class="n">celia</span><span class="p">.</span><span class="n">gonzalonazareno</span><span class="p">.</span><span class="n">org</span> <span class="n">dulcinea</span>
+<span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">13</span> <span class="n">quijote</span><span class="p">.</span><span class="n">celia</span><span class="p">.</span><span class="n">gonzalonazareno</span><span class="p">.</span><span class="n">org</span> <span class="n">quijote</span>
+<span class="c"># The following lines are desirable for IPv6 capable hosts</span>
+<span class="p">::</span><span class="n">1</span> <span class="n">ip6-localhost</span> <span class="n">ip6-loopback</span>
+<span class="n">fe00</span><span class="p">::</span><span class="n">0</span> <span class="n">ip6-localnet</span>
+<span class="n">ff00</span><span class="p">::</span><span class="n">0</span> <span class="n">ip6-mcastprefix</span>
+<span class="n">ff02</span><span class="p">::</span><span class="n">1</span> <span class="n">ip6-allnodes</span>
+<span class="n">ff02</span><span class="p">::</span><span class="n">2</span> <span class="n">ip6-allrouters</span>
+<span class="n">ff02</span><span class="p">::</span><span class="n">3</span> <span class="n">ip6-allhosts</span>
+
+</code></pre></div><p><strong>Quijote</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span>   <span class="n">localhost</span> <span class="n">localhost</span><span class="p">.</span><span class="n">localdomain</span> <span class="n">localhost4</span> <span class="n">localhost4</span><span class="p">.</span><span class="n">localdomain4</span>
+<span class="p">::</span><span class="n">1</span>         <span class="n">localhost</span> <span class="n">localhost</span><span class="p">.</span><span class="n">localdomain</span> <span class="n">localhost6</span> <span class="n">localhost6</span><span class="p">.</span><span class="n">localdomain6</span>
+<span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span>   <span class="n">quijote</span><span class="p">.</span><span class="n">celia</span><span class="p">.</span><span class="n">gonzalonazareno</span><span class="p">.</span><span class="n">org</span> <span class="n">quijote</span>
+<span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">6</span>    <span class="n">dulcinea</span><span class="p">.</span><span class="n">celia</span><span class="p">.</span><span class="n">gonzalonazareno</span><span class="p">.</span><span class="n">org</span> <span class="n">dulcinea</span>
+<span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">11</span>   <span class="n">sancho</span><span class="p">.</span><span class="n">celia</span><span class="p">.</span><span class="n">gonzalonazareno</span><span class="p">.</span><span class="n">org</span> <span class="n">sancho</span>
+</code></pre></div><h2 id="13-asegúrate-que-el-servidor-tiene-sincronizado-su-reloj-utilizando-un-servidor-ntp-externo">13. Asegúrate que el servidor tiene sincronizado su reloj utilizando un servidor NTP externo</h2>
+<p><strong>Dulcinea</strong></p>
+<p>Listamos las zonas</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">timedatectl</span> <span class="n">list-timezones</span>
+</code></pre></div><p>Cambiamos la zona</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">timedatectl</span> <span class="nb">set-timezone</span> <span class="n">Europe</span><span class="p">/</span><span class="n">Madrid</span>
+</code></pre></div><p>Comprobamos la hora</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@dulcinea</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">debian</span><span class="c"># date</span>
+<span class="n">Tue</span> <span class="n">24</span> <span class="n">Nov</span> <span class="n">2020</span> <span class="n">01</span><span class="err">:</span><span class="n">42</span><span class="err">:</span><span class="n">16</span> <span class="n">PM</span> <span class="n">CET</span>
+</code></pre></div><p>Se sigue el mismo procedimiento con Sancho y Quijote.</p>
+<p><strong>Sancho</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@sancho</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">ubuntu</span><span class="c"># timedatectl set-timezone Europe/Madrid</span>
+<span class="n">root</span><span class="nv">@sancho</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">ubuntu</span><span class="c"># date</span>
+<span class="n">Tue</span> <span class="n">Nov</span> <span class="n">24</span> <span class="n">13</span><span class="err">:</span><span class="n">46</span><span class="err">:</span><span class="n">08</span> <span class="n">CET</span> <span class="n">2020</span>
+</code></pre></div><p><strong>Quijote</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">root</span><span class="nv">@quijote</span> <span class="n">centos</span><span class="p">]</span><span class="c"># timedatectl set-timezone Europe/Madrid</span>
+<span class="p">[</span><span class="n">root</span><span class="nv">@quijote</span> <span class="n">centos</span><span class="p">]</span><span class="c"># date</span>
+<span class="n">Tue</span> <span class="n">Nov</span> <span class="n">24</span> <span class="n">13</span><span class="err">:</span><span class="n">46</span><span class="err">:</span><span class="n">49</span> <span class="n">CET</span> <span class="n">2020</span>
+</code></pre></div><p>-&gt; Continua el proyecto en:
+<a href="https://unbitdeinformacioncadadia.netlify.app/posts/2020/11/actualizacion-de-centos7-a-centos8/">Actualización de Centos7 a Centos8</a></p>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/servidores/">servidores</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

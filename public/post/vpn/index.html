@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | VPN con OpenVPN y certificados x509 </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/vpn/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="VPN con OpenVPN y certificados x509"/>
+<meta name="twitter:description" content="Conceptos ¿Qué es una VPN?
+Se trata de una Red privada virtual."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>VPN con OpenVPN y certificados x509</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Wed, Feb 24, 2021 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">12-minute read</span>
+                    </div>
+                
+            </div>
+
+            <h2 id="conceptos">Conceptos</h2>
+<p><strong>¿Qué es una VPN?</strong></p>
+<p>Se trata de una <strong>Red privada virtual.</strong> Es una tecnología de red de ordenadores que perminte una extensión segura de la red de área local sobre una red pública o no controlada como Internet. Permite que el ordenador en la red envíe y reciba datos sobre redes compartidas o públicas como si fuera una red privada.</p>
+<p>El modelo de <strong>VPN de acceso remoto</strong> es el modelo más usado actualmente. Los usuarios se conectan con la empresa desde sitios remotos (oficinas, domicilios..), utilizando internet como vínculo de acceso. Se hace de forma segura ya que son autentificados y además el nivel de acceso es muy similar al que tendrían si estuviesen en la red local de la empresa.</p>
+<h2 id="1-vpn-de-acceso-remoto-con-openvpn-y-certificados-x509">1. VPN de Acceso Remoto con OpenVPN y Certificados x509.</h2>
+<p><img src="/images/vpn/vpn.png" alt="vpn.png"></p>
+<p><strong>Descripción de la tarea 1 en cuestión:</strong></p>
+<p>Vamos a configurar una conexión <strong>VPN</strong> de acceso remoto entre dos equipos:</p>
+<ul>
+<li>
+<p>Uno de los equipos (el que actuará como servidor), estará conectado a dos redes.</p>
+</li>
+<li>
+<p>Para la autenticación de los estremos se usarán obligatoriamente certificados digitales, que se generarán utilizando OpenSSL y se almacenarán en  el directorio /etc/openvpn, junto a los parámetros Diffie-Helman y el certificado de propia Autoridad de certificación.</p>
+</li>
+<li>
+<p>Se utilizarán direcciones de red 10.99.99.0/24 para las direcciones virtuales de la VPN. La dirección 10.99.99.1 se asignará al servidor VPN.</p>
+</li>
+<li>
+<p>Los ficheros de configuración del servidor y del cliente se crearán en el directorio /etc/openvpn de cada máquina, y se llamarán servidor.conf y cliente.conf respectivamente. La configuración establecida debe cumplir los siguientes aspectos:</p>
+<ul>
+<li>El demonio openvpn se manejará con systemctl.</li>
+<li>Se debe configurar para que la comunicación esté comprimida.</li>
+<li>La asignación de direcciones IP será dinámica.</li>
+<li>Existirá un fichero de log en el equipo.</li>
+<li>Se mandarán a los clientes las rutas necesarias.</li>
+</ul>
+</li>
+<li>
+<p>Tras el establecimiento de la VPN, la máquina cliente debe ser capaz de acceder a una máquina que esté en la otra red a la que está conectado el servidor.</p>
+</li>
+<li>
+<p>Instala el complemento de VPN en networkmanager y configura el cliente de forma gráfica desde este complemento.</p>
+</li>
+</ul>
+<h2 id="12-crear-el-entorno-de-trabajo">1.2. Crear el entorno de trabajo</h2>
+<p>En este caso vamos a usar una receta para ansible.</p>
+<p>Necesitaremos dos equipos, un sevidor y una máquina local. El servidor estará conectado a dos redes. Y otro equipo cliente que usaremos para acceder a la máquina LAN O local.</p>
+<p>Utilizaremos la siguiente <a href="https://fp.josedomingo.org/seguridadgs/u04/escenario_vpn.yaml">receta heat</a> que cargaremos en openstack. Por lo que las ips variarán.</p>
+<blockquote>
+<p>En openstack cargamos la receta de forma que vamos a &lsquo;Orchestration&rsquo; &gt; Stacks &gt; Launch Stack &gt; Cargamos la url y lo lanzamos.</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Servidor</strong> tiene las direcciones:</p>
+<ul>
+<li><strong>10.0.0.15/24</strong></li>
+<li><strong>192.168.100.2/24</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>LAN</strong> tiene la direccion <strong>192.168.100.10/24</strong></p>
+</li>
+<li>
+<p>También usaremos otra máquina en este caso mi maquina &lsquo;ansible&rsquo; para usarla de <strong>cliente</strong>, la cual tiene la direccion <strong>10.0.0.8/24</strong></p>
+</li>
+<li>
+<p>Se utilizarán direcciones de red <strong>10.99.99.0/24</strong> para las direcciones virtuales de la VPN. La dirección <strong>10.99.99.1</strong> se asignará al servidor VPN.</p>
+</li>
+</ul>
+<p>Objetivo:</p>
+<p>Desde el cliente vpn (maquina ansible) vamos a crear una conexion vpn al servidor y de esa forma podremos acceder a la máquina LAN.</p>
+<h2 id="13-instalar-openvpn-en-las-máquinas-cliente-y-servidor">1.3. Instalar OpenVPN en las máquinas cliente y servidor.</h2>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt-get install openvpn
+</code></pre></div><h2 id="14-generación-de-claves-y-certificados-con-easyrsa">1.4. Generación de claves y certificados con EasyRSA.</h2>
+<p>Podríamos montar una entidad certificadora y crear nuestros certificados autofirmados pero en este caso vamos a usar una herramienta muy útil y eficaz para ello.</p>
+<p>Se trata de Easy RSA. Automatiza la creación de certificados digitale y claves RSA. También nos permite generar módulos Diffie-Hellman, necesarios para ejecutar un Servidor OpenVPN.</p>
+<p>Esta herramienta viene ya incluida cuando descargamos openvpn.</p>
+<p>Vamos a crear:</p>
+<ul>
+<li>Una clave privada y un certificado x509 para la autoridad certificante que firma (CA)</li>
+<li>Una clave privada y un certificado x509 firmado para el servidor.</li>
+<li>Una clave privada y un certificado x509 firmado para cada cliente.</li>
+<li>Un grupo Diffie-Hellman para el servidor.</li>
+</ul>
+<blockquote>
+<p>La generación de los certificados requiere que especifiquemos información de propiedad (ORG, CN, País, provincia, email, etc). Una forma de establecer esta información y evitar que nos la pida con cada certificado creado, es copiar el archivo vars.example como vars, y luego editar algunas líneas:</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@vpn-server:/usr/share/easy-rsa# cp vars.example vars
+root@vpn-server:/usr/share/easy-rsa# nano vars
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">set_var EASYRSA_REQ_COUNTRY     <span class="s2">&#34;ES&#34;</span>
+set_var EASYRSA_REQ_PROVINCE    <span class="s2">&#34;Sevilla&#34;</span>
+set_var EASYRSA_REQ_CITY        <span class="s2">&#34;Los Palacios&#34;</span>
+set_var EASYRSA_REQ_ORG <span class="s2">&#34;iesgn&#34;</span>
+set_var EASYRSA_REQ_EMAIL       <span class="s2">&#34;cgarmai95@gmail.com&#34;</span>
+set_var EASYRSA_REQ_OU          <span class="s2">&#34;iesgn&#34;</span>
+
+</code></pre></div><h3 id="iniciando-el-entorno-easyrsa-pki">Iniciando el entorno EasyRSA PKI</h3>
+<p>Iniciaremos el entorno de PKI (Public key infraestructure) de EasyRSA. Es necesario cargarlo en memoria para trabajar.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@vpn-server:/usr/share/easy-rsa# ./easyrsa init-pki
+
+Note: using Easy-RSA configuration from: ./vars
+
+init-pki complete<span class="p">;</span> you may now create a CA or requests.
+Your newly created PKI dir is: /usr/share/easy-rsa/pki
+
+</code></pre></div><p>Se ha creado el subdirectorio pki, donde después iremos creando las claves y certificados pertinentes.</p>
+<h2 id="generación-de-los-parámetros-diffie-hellman">Generación de los parámetros Diffie-Hellman</h2>
+<p><strong>Se trata de un protocolo de establecimiento de claves entre partes que no han tenido contacto previo utilizando un canal inseguro y de manera anónima. Se emplea generalmente como medio para acordar claves simétricas que serán empleadas para el cifrado de una sesión.</strong></p>
+<p>Para crearlo ejecutamos el siguiente comando</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@vpn-server:/usr/share/easy-rsa# ./easyrsa gen-dh
+
+Note: using Easy-RSA configuration from: ./vars
+
+Using SSL: openssl OpenSSL 1.1.1d  <span class="m">10</span> Sep <span class="m">2019</span>
+Generating DH parameters, <span class="m">2048</span> bit long safe prime, generator <span class="m">2</span>
+This is going to take a long <span class="nb">time</span>
+....
+..........................................................................................................................................+...........................................................................................................+...................................................................+............................................................................++*++*++*++*
+
+....
+
+DH parameters of size <span class="m">2048</span> created at /usr/share/easy-rsa/pki/dh.pem
+
+</code></pre></div><p>Nos dice que ha creado la clave dh.pem en el directorio pki.</p>
+<h3 id="generar-clave-rsa-y-certificado-de-la-ca">Generar clave RSA y Certificado de la CA</h3>
+<p>En el mismo directorio vamos a generar la clave rsa y el certificado de la CA.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">./easyrsa build-ca nopass
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@vpn-server:/usr/share/easy-rsa# ./easyrsa build-ca nopass
+
+Note: using Easy-RSA configuration from: ./vars
+
+Using SSL: openssl OpenSSL 1.1.1d  <span class="m">10</span> Sep <span class="m">2019</span>
+Generating RSA private key, <span class="m">2048</span> bit long modulus <span class="o">(</span><span class="m">2</span> primes<span class="o">)</span>
+............+++++
+...........+++++
+e is <span class="m">65537</span> <span class="o">(</span>0x010001<span class="o">)</span>
+Can<span class="s1">&#39;t load /usr/share/easy-rsa/pki/.rnd into RNG
+</span><span class="s1">140063001072768:error:2406F079:random number generator:RAND_load_file:Cannot open file:../crypto/rand/randfile.c:98:Filename=/usr/share/easy-rsa/pki/.rnd
+</span><span class="s1">You are about to be asked to enter information that will be incorporated
+</span><span class="s1">into your certificate request.
+</span><span class="s1">What you are about to enter is what is called a Distinguished Name or a DN.
+</span><span class="s1">There are quite a few fields but you can leave some blank
+</span><span class="s1">For some fields there will be a default value,
+</span><span class="s1">If you enter &#39;</span>.<span class="err">&#39;</span>, the field will be left blank.
+-----
+Common Name <span class="o">(</span>eg: your user, host, or server name<span class="o">)</span> <span class="o">[</span>Easy-RSA CA<span class="o">]</span>:celia
+
+CA creation <span class="nb">complete</span> and you may now import and sign cert requests.
+Your new CA certificate file <span class="k">for</span> publishing is at:
+/usr/share/easy-rsa/pki/ca.crt
+
+</code></pre></div><h3 id="crear-la-clave-rsa-y-el-certificado-del-servidor">Crear la clave RSA y el certificado del servidor</h3>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@vpn-server:/usr/share/easy-rsa# ./easyrsa gen-req servidor nopass
+
+Note: using Easy-RSA configuration from: ./vars
+
+Using SSL: openssl OpenSSL 1.1.1d  <span class="m">10</span> Sep <span class="m">2019</span>
+Generating a RSA private key
+................+++++
+...................................................+++++
+writing new private key to <span class="s1">&#39;/usr/share/easy-rsa/pki/private/servidor.key.e5ZxePwSG3&#39;</span>
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter <span class="s1">&#39;.&#39;</span>, the field will be left blank.
+-----
+Common Name <span class="o">(</span>eg: your user, host, or server name<span class="o">)</span> <span class="o">[</span>servidor<span class="o">]</span>:
+
+Keypair and certificate request completed. Your files are:
+req: /usr/share/easy-rsa/pki/reqs/servidor.req
+key: /usr/share/easy-rsa/pki/private/servidor.key
+
+</code></pre></div><p>Se han generado dos ficheros el &lsquo;servidor.req&rsquo; y el &lsquo;servidor.key&rsquo;. La key es la clave privada del servidor y el req es la petición de firma.</p>
+<p>Ahora vamos a firmar digitalmente el certificado del servidor por la CA</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@vpn-server:/usr/share/easy-rsa# ./easyrsa sign-req server servidor
+
+Note: using Easy-RSA configuration from: ./vars
+
+Using SSL: openssl OpenSSL 1.1.1d  <span class="m">10</span> Sep <span class="m">2019</span>
+
+
+You are about to sign the following certificate.
+Please check over the details shown below <span class="k">for</span> accuracy. Note that this request
+has not been cryptographically verified. Please be sure it came from a trusted
+<span class="nb">source</span> or that you have verified the request checksum with the sender.
+
+Request subject, to be signed as a server certificate <span class="k">for</span> <span class="m">1080</span> days:
+
+<span class="nv">subject</span><span class="o">=</span>
+    <span class="nv">commonName</span>                <span class="o">=</span> servidor
+
+
+Type the word <span class="s1">&#39;yes&#39;</span> to <span class="k">continue</span>, or any other input to abort.
+  Confirm request details: yes
+Using configuration from /usr/share/easy-rsa/pki/safessl-easyrsa.cnf
+Check that the request matches the signature
+Signature ok
+The Subject<span class="s1">&#39;s Distinguished Name is as follows
+</span><span class="s1">commonName            :ASN.1 12:&#39;</span>servidor<span class="err">&#39;</span>
+Certificate is to be certified <span class="k">until</span> Feb  <span class="m">9</span> 08:56:17 <span class="m">2024</span> GMT <span class="o">(</span><span class="m">1080</span> days<span class="o">)</span>
+
+Write out database with <span class="m">1</span> new entries
+Data Base Updated
+
+Certificate created at: /usr/share/easy-rsa/pki/issued/servidor.crt
+
+</code></pre></div><p>Como podemos ver se ha creado el certificado del servidor firmado por la CA.</p>
+<h2 id="crear-la-clave-rsa-y-el-certificado-del-cliente">Crear la clave RSA y el certificado del cliente.</h2>
+<p>Se generará la lcave RSA y el certificado digital x509 desde la misma máquina.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@vpn-server:/usr/share/easy-rsa# ./easyrsa gen-req cliente nopass
+
+Note: using Easy-RSA configuration from: ./vars
+
+Using SSL: openssl OpenSSL 1.1.1d  <span class="m">10</span> Sep <span class="m">2019</span>
+Generating a RSA private key
+..................................................................................................+++++
+.........+++++
+writing new private key to <span class="s1">&#39;/usr/share/easy-rsa/pki/private/cliente.key.NyQ0SCChVN&#39;</span>
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter <span class="s1">&#39;.&#39;</span>, the field will be left blank.
+-----
+Common Name <span class="o">(</span>eg: your user, host, or server name<span class="o">)</span> <span class="o">[</span>cliente<span class="o">]</span>:
+
+Keypair and certificate request completed. Your files are:
+req: /usr/share/easy-rsa/pki/reqs/cliente.req
+key: /usr/share/easy-rsa/pki/private/cliente.key
+
+</code></pre></div><p>Firmamos el certificado del cliente con la CA</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@vpn-server:/usr/share/easy-rsa# ./easyrsa sign-req client cliente
+
+Note: using Easy-RSA configuration from: ./vars
+
+Using SSL: openssl OpenSSL 1.1.1d  <span class="m">10</span> Sep <span class="m">2019</span>
+
+
+You are about to sign the following certificate.
+Please check over the details shown below <span class="k">for</span> accuracy. Note that this request
+has not been cryptographically verified. Please be sure it came from a trusted
+<span class="nb">source</span> or that you have verified the request checksum with the sender.
+
+Request subject, to be signed as a client certificate <span class="k">for</span> <span class="m">1080</span> days:
+
+<span class="nv">subject</span><span class="o">=</span>
+    <span class="nv">commonName</span>                <span class="o">=</span> cliente
+
+
+Type the word <span class="s1">&#39;yes&#39;</span> to <span class="k">continue</span>, or any other input to abort.
+  Confirm request details: yes
+Using configuration from /usr/share/easy-rsa/pki/safessl-easyrsa.cnf
+Check that the request matches the signature
+Signature ok
+The Subject<span class="s1">&#39;s Distinguished Name is as follows
+</span><span class="s1">commonName            :ASN.1 12:&#39;</span>cliente<span class="err">&#39;</span>
+Certificate is to be certified <span class="k">until</span> Feb  <span class="m">9</span> 09:00:04 <span class="m">2024</span> GMT <span class="o">(</span><span class="m">1080</span> days<span class="o">)</span>
+
+Write out database with <span class="m">1</span> new entries
+Data Base Updated
+
+Certificate created at: /usr/share/easy-rsa/pki/issued/cliente.crt
+
+</code></pre></div><p>Ya esta generado el certificado firmado para el cliente.</p>
+<h3 id="generar-la-clave-tls">Generar la clave TLS.</h3>
+<p>Esto es opcional pero recomendable para que la conexíon sea más segura y estemos protegidos ante un ataque.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">openvpn --genkey --secret ta.key
+</code></pre></div><p>Ahora podemos pasar todos los ficheros necesarios que hemos creado desde el servidor al cliente.</p>
+<p>Teniendo en cuenta esto:</p>
+<ul>
+<li>pki/dh.pem (para el servidor)</li>
+<li>pki/ca.crt (para el servidor y clientes)</li>
+<li>pki/private/ca.key (para firmar en la CA machine)</li>
+<li>pki/private/servidor.key (para el servidor)</li>
+<li>pki/issued/servidor.crt (para el servidor)</li>
+<li>pki/private/cliente.key (para el cliente)</li>
+<li>pki/issued/cliente.crt (para el cliente)</li>
+<li>ta.key (para el servidor y clientes)</li>
+</ul>
+<h3 id="15-servidor-openvpn-claves-necesarias">1.5. Servidor openVPN. Claves necesarias</h3>
+<p>El servidor de OpenVPN necesita el certificado de la CA, certificado y clave del servidor, y el archivo de Diffie-Hellman:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo mkdir /etc/openvpn/keys
+sudo cp /usr/share/easy-rsa/pki/dh.pem /etc/openvpn/keys
+sudo cp /usr/share/easy-rsa/pki/ca.crt /etc/openvpn/keys
+sudo cp /usr/share/easy-rsa/pki/private/servidor.key /etc/openvpn/keys
+sudo cp /usr/share/easy-rsa/pki/issued/servidor.crt /etc/openvpn/keys
+sudo cp /usr/share/easy-rsa/ta.key /etc/openvpn/keys
+</code></pre></div><ul>
+<li>Movemos los ficheros pasados previamente con scp a nuestro cliente, al dirtorio nuevo.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@ansible:~$ ls
+ca.crt  cliente.crt  cliente.key  ta.key
+debian@ansible:~$ sudo mkdir /etc/openvpn/keys
+debian@ansible:~$ sudo mv cliente.key /etc/openvpn/keys/
+debian@ansible:~$ sudo mv cliente.crt /etc/openvpn/keys/
+debian@ansible:~$ sudo mv ca.crt /etc/openvpn/keys/
+debian@ansible:~$ sudo mv ta.key /etc/openvpn/keys/
+</code></pre></div><h2 id="2-configuración-del-servidor-openvpn">2. Configuración del servidor openvpn</h2>
+<p>Previamente hemos activado el bit de forwarding</p>
+<p><code>nano /etc/sysctl.conf</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
+</code></pre></div><p>Tambien hemos descomentado la siguiente linea del fichero:</p>
+<p><code>sudo nano /etc/default/openvpn </code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">AUTOSTART</span><span class="o">=</span><span class="s2">&#34;all&#34;</span>
+</code></pre></div><p>Para configurar el servidor , creamos un archivo de configuración dentro del directorio openvpn</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo nano /etc/openvpn/servidor.conf
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Use a dynamic TUN device</span>
+dev tun
+<span class="c1"># Use tcp for communicatting with client</span>
+proto tcp
+<span class="c1"># Virtual ip</span>
+server 10.99.99.0 255.255.255.0
+<span class="c1"># Local subnets</span>
+push <span class="s2">&#34;route 192.168.100.0 255.255.255.0&#34;</span>
+<span class="c1"># Enable TLS and assume server role</span>
+tls-server
+<span class="c1"># Diffie-Hellman</span>
+dh /etc/openvpn/keys/dh.pem
+<span class="c1"># Certificado de la CA</span>
+ca /etc/openvpn/keys/ca.crt
+<span class="c1"># Certificado local</span>
+cert /etc/openvpn/keys/servidor.crt
+<span class="c1"># Clave privada      </span>
+key /etc/openvpn/keys/servidor.key
+<span class="c1"># Use fast LZO compression</span>
+comp-lzo
+<span class="c1"># Ping remote every 10sg and restart after 60sg passed without sign of file from remote.</span>
+keepalive <span class="m">10</span> <span class="m">60</span>
+<span class="c1"># Set output verbosity to normal usage range</span>
+verb <span class="m">3</span>
+
+</code></pre></div><ul>
+<li>Reiniciamos el servicio con la nueva configuración</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@vpn-server:/etc/openvpn/keys# /etc/init.d/openvpn restart
+<span class="o">[</span> ok <span class="o">]</span> Restarting openvpn <span class="o">(</span>via systemctl<span class="o">)</span>: openvpn.service.
+
+root@vpn-server:/etc/openvpn/keys# systemctl status openvpn
+● openvpn.service - OpenVPN service
+   Loaded: loaded <span class="o">(</span>/lib/systemd/system/openvpn.service<span class="p">;</span> enabled<span class="p">;</span> vendor preset: enabled<span class="o">)</span>
+   Active: active <span class="o">(</span>exited<span class="o">)</span> since Thu 2021-02-25 10:34:54 UTC<span class="p">;</span> 13s ago
+  Process: <span class="m">2715</span> <span class="nv">ExecStart</span><span class="o">=</span>/bin/true <span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited, <span class="nv">status</span><span class="o">=</span>0/SUCCESS<span class="o">)</span>
+ Main PID: <span class="m">2715</span> <span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited, <span class="nv">status</span><span class="o">=</span>0/SUCCESS<span class="o">)</span>
+
+Feb <span class="m">25</span> 10:34:54 vpn-server systemd<span class="o">[</span>1<span class="o">]</span>: Starting OpenVPN service...
+Feb <span class="m">25</span> 10:34:54 vpn-server systemd<span class="o">[</span>1<span class="o">]</span>: Started OpenVPN service.
+</code></pre></div><ul>
+<li>Comprobamos que se ha levantado la nueva interfaz virtual &lsquo;tun0&rsquo;</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@vpn-server:~$ ip a show <span class="s1">&#39;tun0&#39;</span>
+4: tun0: &lt;POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UNKNOWN group default qlen <span class="m">100</span>
+    link/none 
+    inet 10.99.99.1 peer 10.99.99.2/32 scope global tun0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::1fb1:bb63:f185:5d3d/64 scope link stable-privacy 
+       valid_lft forever preferred_lft forever
+</code></pre></div><h2 id="3configuración-del-cliente">3.Configuración del cliente</h2>
+<p><code>nano  /etc/openvpn/cliente.conf </code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Use a dynamic TUN device</span>
+dev tun
+
+<span class="c1"># Connect to server</span>
+remote 10.0.0.15
+
+<span class="c1"># Set virtual point-to-point IP addresses</span>
+ifconfig 10.99.99.0 255.255.255.0
+pull
+
+<span class="c1"># Use TCP for communicating with server</span>
+proto tcp-client
+
+<span class="c1"># Enable TLS and assume client role during TLS handshake</span>
+tls-client
+
+<span class="c1"># Certificado de la CA</span>
+ca /etc/openvpn/keys/ca.crt
+
+<span class="c1"># Certificado del cliente</span>
+cert /etc/openvpn/keys/cliente.crt
+
+<span class="c1"># Clave privada del cliente</span>
+key /etc/openvpn/keys/cliente.key
+
+<span class="c1"># Use fast LZO compression</span>
+comp-lzo
+
+<span class="c1"># Ping remote every 10sg and restart after 60sg passed without sign of life from remote</span>
+keepalive <span class="m">10</span> <span class="m">60</span>
+
+<span class="c1"># Set output verbosity to normal usage range </span>
+verb <span class="m">3</span>
+
+<span class="c1"># Output logging messages to openvpn.log file</span>
+log /var/log/openvpn.log
+
+</code></pre></div><ul>
+<li>Reiniciamos el servicio</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@ansible:~$ sudo /etc/init.d/openvpn restart
+<span class="o">[</span> ok <span class="o">]</span> Restarting openvpn <span class="o">(</span>via systemctl<span class="o">)</span>: openvpn.service.
+</code></pre></div><p>En mi caso he tenido que reiniciar el sistema</p>
+<ul>
+<li>Vemos el tun0</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@ansible:~$ ip a show tun0
+298: tun0: &lt;POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UNKNOWN group default qlen <span class="m">100</span>
+    link/none 
+    inet 10.99.99.6 peer 10.99.99.5/32 scope global tun0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::b15:c77b:ed11:e4ed/64 scope link stable-privacy 
+       valid_lft forever preferred_lft forever
+
+debian@ansible:~$ ip r
+default via 10.0.0.1 dev eth0 
+10.0.0.0/24 dev eth0 proto kernel scope link src 10.0.0.8 
+10.99.99.1 via 10.99.99.5 dev tun0 
+10.99.99.5 dev tun0 proto kernel scope link src 10.99.99.6 
+169.254.169.254 via 10.0.0.1 dev eth0 
+192.168.100.0/24 via 10.99.99.5 dev tun0 
+
+</code></pre></div><h2 id="funcionamiento-acceso-desde-el-cliente-a-la-lan">Funcionamiento. Acceso desde el cliente a la LAN.</h2>
+<p>Direccionamiento del cliente:</p>
+<p><img src="/images/vpn/captura2.png" alt="captura2.png"></p>
+<p>Funcionamiento
+<img src="/images/vpn/captura1.png" alt="captura1.png"></p>
+<ul>
+<li>Comprobamos que podemos acceder al servidor y la red local lan.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@ansible:~$ ping 192.168.100.2
+PING 192.168.100.2 <span class="o">(</span>192.168.100.2<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+<span class="m">64</span> bytes from 192.168.100.2: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>1.11 ms
+<span class="m">64</span> bytes from 192.168.100.2: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>1.08 ms
+<span class="m">64</span> bytes from 192.168.100.2: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.880 ms
+<span class="m">64</span> bytes from 192.168.100.2: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">4</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>1.27 ms
+^C
+--- 192.168.100.2 ping statistics ---
+<span class="m">4</span> packets transmitted, <span class="m">4</span> received, 0% packet loss, <span class="nb">time</span> 22ms
+rtt min/avg/max/mdev <span class="o">=</span> 0.880/1.083/1.269/0.142 ms
+
+debian@ansible:~$ ping 192.168.100.10
+PING 192.168.100.10 <span class="o">(</span>192.168.100.10<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+<span class="m">64</span> bytes from 192.168.100.10: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">63</span> <span class="nv">time</span><span class="o">=</span>2.91 ms
+<span class="m">64</span> bytes from 192.168.100.10: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">63</span> <span class="nv">time</span><span class="o">=</span>2.16 ms
+<span class="m">64</span> bytes from 192.168.100.10: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">63</span> <span class="nv">time</span><span class="o">=</span>1.71 ms
+^C
+--- 192.168.100.10 ping statistics ---
+<span class="m">3</span> packets transmitted, <span class="m">3</span> received, 0% packet loss, <span class="nb">time</span> 5ms
+rtt min/avg/max/mdev <span class="o">=</span> 1.710/2.259/2.905/0.495 ms
+
+</code></pre></div></div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/vpn/">vpn</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

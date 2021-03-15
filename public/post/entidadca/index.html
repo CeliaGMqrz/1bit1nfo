@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Crear Autoridad Certificadora y Certificado autofirmado </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/entidadca/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Crear Autoridad Certificadora y Certificado autofirmado"/>
+<meta name="twitter:description" content="HTTPS / SSL Tarea 1: Certificado autofirmado PARTE 1 OBJETIVO:"/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Crear Autoridad Certificadora y Certificado autofirmado</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Thu, Nov 19, 2020 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">10-minute read</span>
+                    </div>
+                
+            </div>
+
+            <h1 id="https--ssl">HTTPS / SSL</h1>
+<h2 id="tarea-1-certificado-autofirmado">Tarea 1: Certificado autofirmado</h2>
+<h2 id="parte-1">PARTE 1</h2>
+<p><strong>OBJETIVO:</strong></p>
+<p>Crear su autoridad certificadora (generar el certificado digital de la CA). Mostrar el fichero de configuración de la AC.</p>
+<p>Conocimientos previos:</p>
+<p><strong>OpenSSL</strong> permite con una serie de comandos crear una autoridad de certificación o CA en la que los servidores y clientes internos confien. Las funciones de la CA incluyen crear certificados a partir de las solicitudes de los certificados para los servidores y también la revocación y renovación de certificados.</p>
+<p>Para usar el protocolo HTTPS en un servidor web es necesario al menos generar un certificado autofirmado que incluya el dominio del sitio web. Ese certificado proporciona comunicaciones seguras entre el servidor y el cliente pero los clientes no lo consideran de confianza de modo que han de omitir la validación del certificado, un entorno de desarrollo o pruebas es suficiente pero en un escenario de producción para añadir más seguridad donde hay varios servidores que además requieren y validan también el certificado del cliente es necesario utilizar certificados generados por una entidad en la que se confíe, esta es la autoridad de certificación.</p>
+<p>La autoridad de certificación o CA es una entidad en la que se confía, si una CA ha firmado digitalmente un certificado esta asegura que el certificado pertenece a quien dice pertenecer. Las funciones de una CA son firmar los certificados que se le envían, de revocar los certificados cuando han sido comprometidos o de renovarlos cuando su validez expira.</p>
+<h4 id="crear-el-directorio-donde-vamos-a-alojar-los-ficheros-de-la-ca-y-le-damos-los-permisos-necesarios">Crear el directorio donde vamos a alojar los ficheros de la CA y le damos los permisos necesarios</h4>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">DIR_CA</span><span class="p">=</span><span class="s2">&#34;/root/ca&#34;</span>
+<span class="n">mkdir</span> <span class="p">/</span><span class="n">root</span><span class="p">/</span><span class="n">ca</span>
+<span class="nb">cd </span><span class="p">/</span><span class="n">root</span><span class="p">/</span><span class="n">ca</span>
+<span class="n">mkdir</span> <span class="n">certs</span> <span class="n">csr</span> <span class="n">crl</span> <span class="n">newcerts</span> <span class="n">private</span>
+<span class="n">chmod</span> <span class="n">700</span> <span class="n">private</span>
+<span class="n">touch</span> <span class="n">index</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">touch</span> <span class="n">index</span><span class="p">.</span><span class="n">txt</span><span class="p">.</span><span class="n">attr</span>
+<span class="nb">echo </span><span class="n">1000</span> <span class="p">&gt;</span> <span class="n">serial</span>
+</code></pre></div><h4 id="crear-las-variables-de-entorno-que-definiran-nuestra-ca-para-el-fichero-de-configuración">Crear las variables de entorno que definiran nuestra CA para el fichero de configuración</h4>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">countryName_default</span><span class="p">=</span><span class="s2">&#34;ES&#34;</span>
+<span class="n">stateOrProvinceName_default</span><span class="p">=</span><span class="s2">&#34;Sevilla&#34;</span>
+<span class="n">localityName_default</span><span class="p">=</span><span class="s2">&#34;Los Palacios&#34;</span>
+<span class="n">organizationName_default</span><span class="p">=</span><span class="s2">&#34;Celia&#34;</span>
+<span class="n">organizationalUnitName_default</span><span class="p">=</span><span class="s2">&#34;cgm&#34;</span>
+<span class="n">emailAddress_default</span><span class="p">=</span><span class="s2">&#34;cgarmai95@gmail.com&#34;</span>
+</code></pre></div><h4 id="creamos-el-fichero-de-configuración">Creamos el fichero de configuración</h4>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">DIR_CA</span><span class="p">=</span><span class="s2">&#34;./&#34;</span>
+<span class="nb">cat </span><span class="p">&lt;&lt;</span><span class="n">EOF</span><span class="p">&gt;</span><span class="nv">$DIR_CA</span><span class="p">/</span><span class="n">openssl</span><span class="p">.</span><span class="n">conf</span>
+<span class="p">[</span> <span class="n">ca</span> <span class="p">]</span>
+<span class="c"># man ca</span>
+<span class="n">default_ca</span> <span class="p">=</span> <span class="n">CA_default</span>
+
+<span class="p">[</span> <span class="n">CA_default</span> <span class="p">]</span>
+<span class="c"># Directory and file locations.</span>
+<span class="nb">dir </span>              <span class="p">=</span> <span class="p">${</span><span class="n">DIR_CA</span><span class="p">}</span>
+<span class="n">certs</span>             <span class="p">=</span> <span class="p">${</span><span class="n">DIR_CA</span><span class="p">}</span><span class="n">certs</span>
+<span class="n">crl_dir</span>           <span class="p">=</span> <span class="p">${</span><span class="n">DIR_CA</span><span class="p">}</span><span class="n">crl</span>
+<span class="n">new_certs_dir</span>     <span class="p">=</span> <span class="p">${</span><span class="n">DIR_CA</span><span class="p">}</span><span class="n">newcerts</span>
+<span class="n">database</span>          <span class="p">=</span> <span class="p">${</span><span class="n">DIR_CA</span><span class="p">}</span><span class="n">index</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">serial</span>            <span class="p">=</span> <span class="p">${</span><span class="n">DIR_CA</span><span class="p">}</span><span class="n">serial</span>
+<span class="n">RANDFILE</span>          <span class="p">=</span> <span class="p">${</span><span class="n">DIR_CA</span><span class="p">}</span><span class="n">private</span><span class="p">/.</span><span class="n">rand</span>
+
+<span class="c"># The root key and root certificate.</span>
+<span class="n">private_key</span>       <span class="p">=</span> <span class="p">${</span><span class="n">DIR_CA</span><span class="p">}</span><span class="n">private</span><span class="p">/</span><span class="n">ca</span><span class="p">.</span><span class="n">key</span><span class="p">.</span><span class="n">pem</span>
+<span class="n">certificate</span>       <span class="p">=</span> <span class="p">${</span><span class="n">DIR_CA</span><span class="p">}</span><span class="n">certs</span><span class="p">/</span><span class="n">ca</span><span class="p">.</span><span class="n">cert</span><span class="p">.</span><span class="n">pem</span>
+
+<span class="c"># For certificate revocation lists.</span>
+<span class="n">crlnumber</span>         <span class="p">=</span> <span class="p">${</span><span class="n">DIR_CA</span><span class="p">}</span><span class="n">crlnumber</span>
+<span class="n">crl</span>               <span class="p">=</span> <span class="p">${</span><span class="n">DIR_CA</span><span class="p">}</span><span class="n">crl</span><span class="p">/</span><span class="n">ca</span><span class="p">.</span><span class="n">crl</span><span class="p">.</span><span class="n">pem</span>
+<span class="n">crl_extensions</span>    <span class="p">=</span> <span class="n">crl_ext</span>
+<span class="n">default_crl_days</span>  <span class="p">=</span> <span class="n">30</span>
+
+<span class="c"># SHA-1 is deprecated, so use SHA-2 instead.</span>
+<span class="n">default_md</span>        <span class="p">=</span> <span class="n">sha256</span>
+
+<span class="n">name_opt</span>          <span class="p">=</span> <span class="n">ca_default</span>
+<span class="n">cert_opt</span>          <span class="p">=</span> <span class="n">ca_default</span>
+<span class="n">default_days</span>      <span class="p">=</span> <span class="n">375</span>
+<span class="n">preserve</span>          <span class="p">=</span> <span class="n">no</span>
+<span class="n">policy</span>            <span class="p">=</span> <span class="n">policy_strict</span>
+
+<span class="p">[</span> <span class="n">policy_strict</span> <span class="p">]</span>
+<span class="c"># The root CA should only sign intermediate certificates that match.</span>
+<span class="c"># See the POLICY FORMAT section of man ca.</span>
+<span class="n">countryName</span>             <span class="p">=</span> <span class="n">match</span>
+<span class="n">stateOrProvinceName</span>     <span class="p">=</span> <span class="n">match</span>
+<span class="n">organizationName</span>        <span class="p">=</span> <span class="n">match</span>
+<span class="n">organizationalUnitName</span>  <span class="p">=</span> <span class="n">optional</span>
+<span class="n">commonName</span>              <span class="p">=</span> <span class="n">supplied</span>
+<span class="n">emailAddress</span>            <span class="p">=</span> <span class="n">optional</span>
+
+<span class="p">[</span> <span class="n">policy_loose</span> <span class="p">]</span>
+<span class="c"># Allow the intermediate CA to sign a more diverse range of certificates.</span>
+<span class="c"># See the POLICY FORMAT section of the ca man page.</span>
+<span class="n">countryName</span>             <span class="p">=</span> <span class="n">optional</span>
+<span class="n">stateOrProvinceName</span>     <span class="p">=</span> <span class="n">optional</span>
+<span class="n">localityName</span>            <span class="p">=</span> <span class="n">optional</span>
+<span class="n">organizationName</span>        <span class="p">=</span> <span class="n">optional</span>
+<span class="n">organizationalUnitName</span>  <span class="p">=</span> <span class="n">optional</span>
+<span class="n">commonName</span>              <span class="p">=</span> <span class="n">supplied</span>
+<span class="n">emailAddress</span>            <span class="p">=</span> <span class="n">optional</span>
+
+<span class="p">[</span> <span class="n">req</span> <span class="p">]</span>
+<span class="c"># Options for the req tool (man req).</span>
+<span class="n">default_bits</span>        <span class="p">=</span> <span class="n">2048</span>
+<span class="n">distinguished_name</span>  <span class="p">=</span> <span class="n">req_distinguished_name</span>
+<span class="n">string_mask</span>         <span class="p">=</span> <span class="n">utf8only</span>
+<span class="c"># SHA-1 is deprecated, so use SHA-2 instead.</span>
+<span class="n">default_md</span>          <span class="p">=</span> <span class="n">sha256</span>
+<span class="c"># Extension to add when the -x509 option is used.</span>
+<span class="n">x509_extensions</span>     <span class="p">=</span> <span class="n">v3_ca</span>
+<span class="c"># Extension for SANs</span>
+<span class="n">req_extensions</span>      <span class="p">=</span> <span class="n">v3_req</span>
+
+<span class="p">[</span> <span class="n">v3_req</span> <span class="p">]</span>
+<span class="c"># Extensions to add to a certificate request</span>
+<span class="c"># Before invoke openssl use: export SAN=DNS:value1,DNS:value2</span>
+<span class="n">basicConstraints</span> <span class="p">=</span> <span class="n">CA</span><span class="err">:</span><span class="n">FALSE</span>
+<span class="n">keyUsage</span> <span class="p">=</span> <span class="n">nonRepudiation</span><span class="p">,</span> <span class="n">digitalSignature</span><span class="p">,</span> <span class="n">keyEncipherment</span>
+<span class="n">xxxsubjectAltNamexxx</span> <span class="p">=</span>
+
+<span class="p">[</span> <span class="n">req_distinguished_name</span> <span class="p">]</span>
+<span class="c"># See &lt;https://en.wikipedia.org/wiki/Certificate_signing_request&gt;.</span>
+<span class="n">countryName</span>                     <span class="p">=</span> <span class="n">Country</span> <span class="n">Name</span> <span class="p">(</span><span class="n">2</span> <span class="n">letter</span> <span class="n">code</span><span class="p">)</span>
+<span class="n">stateOrProvinceName</span>             <span class="p">=</span> <span class="n">State</span> <span class="n">or</span> <span class="n">Province</span> <span class="n">Name</span>
+<span class="n">localityName</span>                    <span class="p">=</span> <span class="n">Locality</span> <span class="n">Name</span>
+<span class="n">0</span><span class="p">.</span><span class="n">organizationName</span>              <span class="p">=</span> <span class="n">Organization</span> <span class="n">Name</span>
+<span class="n">organizationalUnitName</span>          <span class="p">=</span> <span class="n">Organizational</span> <span class="n">Unit</span> <span class="n">Name</span>
+<span class="n">commonName</span>                      <span class="p">=</span> <span class="n">Common</span> <span class="n">Name</span>
+<span class="n">emailAddress</span>                    <span class="p">=</span> <span class="n">Email</span> <span class="n">Address</span>
+
+<span class="c"># Optionally, specify some defaults.</span>
+<span class="n">countryName_default</span>             <span class="p">=</span> <span class="nv">$countryName_default</span>
+<span class="n">stateOrProvinceName_default</span>     <span class="p">=</span> <span class="nv">$stateOrProvinceName_default</span>
+<span class="n">localityName_default</span>            <span class="p">=</span> <span class="nv">$localityName_default</span>
+<span class="n">0</span><span class="p">.</span><span class="n">organizationName_default</span>      <span class="p">=</span> <span class="nv">$organizationName_default</span>
+<span class="n">organizationalUnitName_default</span>  <span class="p">=</span> <span class="nv">$organizationalUnitName_default</span>
+<span class="n">emailAddress_default</span>            <span class="p">=</span> <span class="nv">$emailAddress_default</span>
+
+<span class="p">[</span> <span class="n">v3_ca</span> <span class="p">]</span>
+<span class="c"># Extensions for a typical CA (man x509v3_config).</span>
+<span class="n">subjectKeyIdentifier</span> <span class="p">=</span> <span class="n">hash</span>
+<span class="n">authorityKeyIdentifier</span> <span class="p">=</span> <span class="n">keyid</span><span class="err">:</span><span class="n">always</span><span class="p">,</span><span class="n">issuer</span>
+<span class="n">basicConstraints</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">CA</span><span class="err">:</span><span class="n">true</span>
+<span class="n">keyUsage</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">digitalSignature</span><span class="p">,</span> <span class="n">cRLSign</span><span class="p">,</span> <span class="n">keyCertSign</span>
+
+<span class="p">[</span> <span class="n">v3_intermediate_ca</span> <span class="p">]</span>
+<span class="c"># Extensions for a typical intermediate CA (man x509v3_config).</span>
+<span class="n">subjectKeyIdentifier</span> <span class="p">=</span> <span class="n">hash</span>
+<span class="n">authorityKeyIdentifier</span> <span class="p">=</span> <span class="n">keyid</span><span class="err">:</span><span class="n">always</span><span class="p">,</span><span class="n">issuer</span>
+<span class="n">basicConstraints</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">CA</span><span class="err">:</span><span class="n">true</span><span class="p">,</span> <span class="n">pathlen</span><span class="err">:</span><span class="n">0</span>
+<span class="n">keyUsage</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">digitalSignature</span><span class="p">,</span> <span class="n">cRLSign</span><span class="p">,</span> <span class="n">keyCertSign</span>
+
+<span class="p">[</span> <span class="n">usr_cert</span> <span class="p">]</span>
+<span class="c"># Extensions for client certificates (man x509v3_config).</span>
+<span class="n">basicConstraints</span> <span class="p">=</span> <span class="n">CA</span><span class="err">:</span><span class="n">FALSE</span>
+<span class="n">nsCertType</span> <span class="p">=</span> <span class="n">client</span><span class="p">,</span> <span class="n">email</span>
+<span class="n">nsComment</span> <span class="p">=</span> <span class="s2">&#34;OpenSSL Generated Client Certificate&#34;</span>
+<span class="n">subjectKeyIdentifier</span> <span class="p">=</span> <span class="n">hash</span>
+<span class="n">authorityKeyIdentifier</span> <span class="p">=</span> <span class="n">keyid</span><span class="p">,</span><span class="n">issuer</span>
+<span class="n">keyUsage</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">nonRepudiation</span><span class="p">,</span> <span class="n">digitalSignature</span><span class="p">,</span> <span class="n">keyEncipherment</span>
+<span class="n">extendedKeyUsage</span> <span class="p">=</span> <span class="n">clientAuth</span><span class="p">,</span> <span class="n">emailProtection</span>
+
+<span class="p">[</span> <span class="n">server_cert</span> <span class="p">]</span>
+<span class="c"># Extensions for server certificates (man x509v3_config).</span>
+<span class="n">basicConstraints</span> <span class="p">=</span> <span class="n">CA</span><span class="err">:</span><span class="n">FALSE</span>
+<span class="n">nsCertType</span> <span class="p">=</span> <span class="n">server</span>
+<span class="n">nsComment</span> <span class="p">=</span> <span class="s2">&#34;OpenSSL Generated Server Certificate&#34;</span>
+<span class="n">subjectKeyIdentifier</span> <span class="p">=</span> <span class="n">hash</span>
+<span class="n">authorityKeyIdentifier</span> <span class="p">=</span> <span class="n">keyid</span><span class="p">,</span><span class="n">issuer</span><span class="err">:</span><span class="n">always</span>
+<span class="n">keyUsage</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">digitalSignature</span><span class="p">,</span> <span class="n">keyEncipherment</span>
+<span class="n">extendedKeyUsage</span> <span class="p">=</span> <span class="n">serverAuth</span>
+
+<span class="p">[</span> <span class="n">crl_ext</span> <span class="p">]</span>
+<span class="c"># Extension for CRLs (man x509v3_config).</span>
+<span class="n">authorityKeyIdentifier</span><span class="p">=</span><span class="n">keyid</span><span class="err">:</span><span class="n">always</span>
+
+<span class="p">[</span> <span class="n">ocsp</span> <span class="p">]</span>
+<span class="c"># Extension for OCSP signing certificates (man ocsp).</span>
+<span class="n">basicConstraints</span> <span class="p">=</span> <span class="n">CA</span><span class="err">:</span><span class="n">FALSE</span>
+<span class="n">subjectKeyIdentifier</span> <span class="p">=</span> <span class="n">hash</span>
+<span class="n">authorityKeyIdentifier</span> <span class="p">=</span> <span class="n">keyid</span><span class="p">,</span><span class="n">issuer</span>
+<span class="n">keyUsage</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">digitalSignature</span>
+<span class="n">extendedKeyUsage</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">OCSPSigning</span>
+<span class="n">EOF</span>
+<span class="n">sed</span> <span class="n">-i</span> <span class="s1">&#39;s|xxxsubjectAltNamexxx =|subjectAltName = ${ENV::SAN}|g&#39;</span> <span class="n">openssl</span><span class="p">.</span><span class="n">conf</span>
+</code></pre></div><h4 id="creamos-la-clave-y-certificado-de-la-autoridad-de-certificación">Creamos la clave y certificado de la autoridad de certificación</h4>
+<p>Crear clave:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">openssl</span> <span class="n">genrsa</span> <span class="n">-aes256</span> <span class="n">-out</span> <span class="n">private</span><span class="p">/</span><span class="n">ca</span><span class="p">.</span><span class="n">key</span><span class="p">.</span><span class="n">pem</span> <span class="n">4096</span>
+<span class="n">chmod</span> <span class="n">400</span> <span class="n">private</span><span class="p">/</span><span class="n">ca</span><span class="p">.</span><span class="n">key</span><span class="p">.</span><span class="n">pem</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">URL</span><span class="p">=</span><span class="n">celiagarcia</span><span class="p">.</span><span class="n">iesgn</span><span class="p">.</span><span class="n">org</span>
+<span class="n">export</span> <span class="n">SAN</span><span class="p">=</span><span class="n">DNS</span><span class="err">:</span><span class="nv">$URL</span>
+</code></pre></div><p>Crear certificado</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">openssl</span> <span class="n">req</span> <span class="n">-config</span> <span class="n">openssl</span><span class="p">.</span><span class="n">conf</span> <span class="n">-key</span> <span class="n">private</span><span class="p">/</span><span class="n">ca</span><span class="p">.</span><span class="n">key</span><span class="p">.</span><span class="n">pem</span> <span class="n">-new</span> <span class="n">-x509</span> <span class="n">-days</span> <span class="n">7300</span> <span class="n">-sha256</span> <span class="n">-extensions</span> <span class="n">v3_ca</span> <span class="n">-out</span> <span class="n">certs</span><span class="p">/</span><span class="n">ca</span><span class="p">.</span><span class="n">cert</span><span class="p">.</span><span class="n">pem</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@debian</span><span class="n">-https</span><span class="err">:</span><span class="p">~/</span><span class="n">ca</span><span class="c"># openssl req -config openssl.conf -key private/ca.key.pem -new -x509 -days 7300 -sha256 -extensions v3_ca -out certs/ca.cert.pem</span>
+<span class="n">Enter</span> <span class="n">pass</span> <span class="n">phrase</span> <span class="k">for</span> <span class="n">private</span><span class="p">/</span><span class="n">ca</span><span class="p">.</span><span class="n">key</span><span class="p">.</span><span class="n">pem</span><span class="err">:</span>
+<span class="n">You</span> <span class="n">are</span> <span class="n">about</span> <span class="n">to</span> <span class="n">be</span> <span class="n">asked</span> <span class="n">to</span> <span class="n">enter</span> <span class="n">information</span> <span class="n">that</span> <span class="n">will</span> <span class="n">be</span> <span class="n">incorporated</span>
+<span class="n">into</span> <span class="n">your</span> <span class="n">certificate</span> <span class="n">request</span><span class="p">.</span>
+<span class="n">What</span> <span class="n">you</span> <span class="n">are</span> <span class="n">about</span> <span class="n">to</span> <span class="n">enter</span> <span class="n">is</span> <span class="n">what</span> <span class="n">is</span> <span class="n">called</span> <span class="n">a</span> <span class="n">Distinguished</span> <span class="n">Name</span> <span class="n">or</span> <span class="n">a</span> <span class="n">DN</span><span class="p">.</span>
+<span class="n">There</span> <span class="n">are</span> <span class="n">quite</span> <span class="n">a</span> <span class="n">few</span> <span class="n">fields</span> <span class="n">but</span> <span class="n">you</span> <span class="n">can</span> <span class="n">leave</span> <span class="n">some</span> <span class="n">blank</span>
+<span class="k">For</span> <span class="n">some</span> <span class="n">fields</span> <span class="n">there</span> <span class="n">will</span> <span class="n">be</span> <span class="n">a</span> <span class="k">default</span> <span class="n">value</span><span class="p">,</span>
+<span class="k">If</span> <span class="n">you</span> <span class="n">enter</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">the</span> <span class="n">field</span> <span class="n">will</span> <span class="n">be</span> <span class="n">left</span> <span class="n">blank</span><span class="p">.</span>
+<span class="p">-----</span>
+<span class="n">Country</span> <span class="n">Name</span> <span class="p">(</span><span class="n">2</span> <span class="n">letter</span> <span class="n">code</span><span class="p">)</span> <span class="no">[ES]</span><span class="err">:</span>
+<span class="n">State</span> <span class="n">or</span> <span class="n">Province</span> <span class="n">Name</span> <span class="no">[Sevilla]</span><span class="err">:</span>
+<span class="n">Locality</span> <span class="n">Name</span> <span class="no">[Los Palacios]</span><span class="err">:</span>
+<span class="n">Organization</span> <span class="n">Name</span> <span class="no">[Celia]</span><span class="err">:</span>
+<span class="n">Organizational</span> <span class="n">Unit</span> <span class="n">Name</span> <span class="no">[cgm]</span><span class="err">:</span>
+<span class="n">Common</span> <span class="n">Name</span> <span class="p">[]</span><span class="err">:</span>
+<span class="n">Email</span> <span class="n">Address</span> <span class="p">[</span><span class="n">cgarmai95</span><span class="nv">@gmail</span><span class="p">.</span><span class="n">com</span><span class="p">]</span><span class="err">:</span>
+
+</code></pre></div><p>Le damos los permisos necesarios.</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">chmod</span> <span class="n">444</span> <span class="n">certs</span><span class="p">/</span><span class="n">ca</span><span class="p">.</span><span class="n">cert</span><span class="p">.</span><span class="n">pem</span>
+</code></pre></div><h3 id="estructura-de-directorios">Estructura de directorios</h3>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@debian</span><span class="n">-https</span><span class="err">:</span><span class="p">~/</span><span class="n">ca</span><span class="c"># tree</span>
+<span class="p">.</span>
+<span class="err">├──</span> <span class="n">certs</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">ca</span><span class="p">.</span><span class="n">cert</span><span class="p">.</span><span class="n">pem</span>
+<span class="err">├──</span> <span class="n">crl</span>
+<span class="err">├──</span> <span class="n">csr</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">celia</span><span class="p">.</span><span class="n">iesgn</span><span class="p">.</span><span class="n">org</span><span class="p">.</span><span class="n">csr</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">jonathan</span><span class="p">.</span><span class="n">iesgn</span><span class="p">.</span><span class="n">org</span><span class="p">.</span><span class="n">csr</span>
+<span class="err">├──</span> <span class="n">index</span><span class="p">.</span><span class="n">txt</span>
+<span class="err">├──</span> <span class="n">index</span><span class="p">.</span><span class="n">txt</span><span class="p">.</span><span class="n">attr</span>
+<span class="err">├──</span> <span class="n">newcerts</span>
+<span class="err">├──</span> <span class="n">openssl</span><span class="p">.</span><span class="n">conf</span>
+<span class="err">├──</span> <span class="n">private</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">ca</span><span class="p">.</span><span class="n">key</span><span class="p">.</span><span class="n">pem</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">celia</span><span class="p">.</span><span class="n">iesgn</span><span class="p">.</span><span class="n">org</span><span class="p">.</span><span class="n">key</span><span class="p">.</span><span class="n">pem</span>
+<span class="err">└──</span> <span class="n">serial</span>
+
+</code></pre></div><h3 id="fichero-de-configuración-opensslconf">Fichero de configuración (openssl.conf)</h3>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span> <span class="n">ca</span> <span class="p">]</span>
+<span class="c"># man ca</span>
+<span class="n">default_ca</span> <span class="p">=</span> <span class="n">CA_default</span>
+
+<span class="p">[</span> <span class="n">CA_default</span> <span class="p">]</span>
+<span class="c"># Directory and file locations.</span>
+<span class="nb">dir </span>              <span class="p">=</span> <span class="p">./</span>
+<span class="n">certs</span>             <span class="p">=</span> <span class="p">./</span><span class="n">certs</span>
+<span class="n">crl_dir</span>           <span class="p">=</span> <span class="p">./</span><span class="n">crl</span>
+<span class="n">new_certs_dir</span>     <span class="p">=</span> <span class="p">./</span><span class="n">newcerts</span>
+<span class="n">database</span>          <span class="p">=</span> <span class="p">./</span><span class="n">index</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">serial</span>            <span class="p">=</span> <span class="p">./</span><span class="n">serial</span>
+<span class="n">RANDFILE</span>          <span class="p">=</span> <span class="p">./</span><span class="n">private</span><span class="p">/.</span><span class="n">rand</span>
+
+<span class="c"># The root key and root certificate.</span>
+<span class="n">private_key</span>       <span class="p">=</span> <span class="p">./</span><span class="n">private</span><span class="p">/</span><span class="n">ca</span><span class="p">.</span><span class="n">key</span><span class="p">.</span><span class="n">pem</span>
+<span class="n">certificate</span>       <span class="p">=</span> <span class="p">./</span><span class="n">certs</span><span class="p">/</span><span class="n">ca</span><span class="p">.</span><span class="n">cert</span><span class="p">.</span><span class="n">pem</span>
+
+<span class="c"># For certificate revocation lists.</span>
+<span class="n">crlnumber</span>         <span class="p">=</span> <span class="p">./</span><span class="n">crlnumber</span>
+<span class="n">crl</span>               <span class="p">=</span> <span class="p">./</span><span class="n">crl</span><span class="p">/</span><span class="n">ca</span><span class="p">.</span><span class="n">crl</span><span class="p">.</span><span class="n">pem</span>
+<span class="n">crl_extensions</span>    <span class="p">=</span> <span class="n">crl_ext</span>
+<span class="n">default_crl_days</span>  <span class="p">=</span> <span class="n">30</span>
+
+<span class="c"># SHA-1 is deprecated, so use SHA-2 instead.</span>
+<span class="n">default_md</span>        <span class="p">=</span> <span class="n">sha256</span>
+
+<span class="n">name_opt</span>          <span class="p">=</span> <span class="n">ca_default</span>
+<span class="n">cert_opt</span>          <span class="p">=</span> <span class="n">ca_default</span>
+<span class="n">default_days</span>      <span class="p">=</span> <span class="n">375</span>
+<span class="n">preserve</span>          <span class="p">=</span> <span class="n">no</span>
+<span class="n">policy</span>            <span class="p">=</span> <span class="n">policy_strict</span>
+
+<span class="p">[</span> <span class="n">policy_strict</span> <span class="p">]</span>
+<span class="c"># The root CA should only sign intermediate certificates that match.</span>
+<span class="c"># See the POLICY FORMAT section of man ca.</span>
+<span class="n">countryName</span>             <span class="p">=</span> <span class="n">match</span>
+<span class="n">stateOrProvinceName</span>     <span class="p">=</span> <span class="n">match</span>
+<span class="n">organizationName</span>        <span class="p">=</span> <span class="n">match</span>
+<span class="n">organizationalUnitName</span>  <span class="p">=</span> <span class="n">optional</span>
+<span class="n">commonName</span>              <span class="p">=</span> <span class="n">supplied</span>
+<span class="n">emailAddress</span>            <span class="p">=</span> <span class="n">optional</span>
+
+<span class="p">[</span> <span class="n">policy_loose</span> <span class="p">]</span>
+<span class="c"># Allow the intermediate CA to sign a more diverse range of certificates.</span>
+<span class="c"># See the POLICY FORMAT section of the ca man page.</span>
+<span class="n">countryName</span>             <span class="p">=</span> <span class="n">optional</span>
+<span class="n">stateOrProvinceName</span>     <span class="p">=</span> <span class="n">optional</span>
+<span class="n">localityName</span>            <span class="p">=</span> <span class="n">optional</span>
+<span class="n">organizationName</span>        <span class="p">=</span> <span class="n">optional</span>
+<span class="n">organizationalUnitName</span>  <span class="p">=</span> <span class="n">optional</span>
+<span class="n">commonName</span>              <span class="p">=</span> <span class="n">supplied</span>
+<span class="n">emailAddress</span>            <span class="p">=</span> <span class="n">optional</span>
+
+<span class="p">[</span> <span class="n">req</span> <span class="p">]</span>
+<span class="c"># Options for the req tool (man req).</span>
+<span class="n">default_bits</span>        <span class="p">=</span> <span class="n">2048</span>
+<span class="n">distinguished_name</span>  <span class="p">=</span> <span class="n">req_distinguished_name</span>
+<span class="n">string_mask</span>         <span class="p">=</span> <span class="n">utf8only</span>
+<span class="c"># SHA-1 is deprecated, so use SHA-2 instead.</span>
+<span class="n">default_md</span>          <span class="p">=</span> <span class="n">sha256</span>
+<span class="c"># Extension to add when the -x509 option is used.</span>
+<span class="n">x509_extensions</span>     <span class="p">=</span> <span class="n">v3_ca</span>
+<span class="c"># Extension for SANs</span>
+<span class="n">req_extensions</span>      <span class="p">=</span> <span class="n">v3_req</span>
+
+<span class="p">[</span> <span class="n">v3_req</span> <span class="p">]</span>
+<span class="c"># Extensions to add to a certificate request</span>
+<span class="c"># Before invoke openssl use: export SAN=DNS:value1,DNS:value2</span>
+<span class="n">basicConstraints</span> <span class="p">=</span> <span class="n">CA</span><span class="err">:</span><span class="n">FALSE</span>
+<span class="n">keyUsage</span> <span class="p">=</span> <span class="n">nonRepudiation</span><span class="p">,</span> <span class="n">digitalSignature</span><span class="p">,</span> <span class="n">keyEncipherment</span>
+<span class="n">subjectAltName</span> <span class="p">=</span> <span class="p">${</span><span class="n">ENV</span><span class="p">::</span><span class="n">SAN</span><span class="p">}</span>
+
+<span class="p">[</span> <span class="n">req_distinguished_name</span> <span class="p">]</span>
+<span class="c"># See &lt;https://en.wikipedia.org/wiki/Certificate_signing_request&gt;.</span>
+<span class="n">countryName</span>                     <span class="p">=</span> <span class="n">Country</span> <span class="n">Name</span> <span class="p">(</span><span class="n">2</span> <span class="n">letter</span> <span class="n">code</span><span class="p">)</span>
+<span class="n">stateOrProvinceName</span>             <span class="p">=</span> <span class="n">State</span> <span class="n">or</span> <span class="n">Province</span> <span class="n">Name</span>
+<span class="n">localityName</span>                    <span class="p">=</span> <span class="n">Locality</span> <span class="n">Name</span>
+<span class="n">0</span><span class="p">.</span><span class="n">organizationName</span>              <span class="p">=</span> <span class="n">Organization</span> <span class="n">Name</span>
+<span class="n">organizationalUnitName</span>          <span class="p">=</span> <span class="n">Organizational</span> <span class="n">Unit</span> <span class="n">Name</span>
+<span class="n">commonName</span>                      <span class="p">=</span> <span class="n">Common</span> <span class="n">Name</span>
+<span class="n">emailAddress</span>                    <span class="p">=</span> <span class="n">Email</span> <span class="n">Address</span>
+
+<span class="c"># Optionally, specify some defaults.</span>
+<span class="n">countryName_default</span>             <span class="p">=</span> <span class="n">ES</span>
+<span class="n">stateOrProvinceName_default</span>     <span class="p">=</span> <span class="n">Sevilla</span>
+<span class="n">localityName_default</span>            <span class="p">=</span> <span class="n">Los</span> <span class="n">Palacios</span>
+<span class="n">0</span><span class="p">.</span><span class="n">organizationName_default</span>      <span class="p">=</span> <span class="n">Celia</span>
+<span class="n">organizationalUnitName_default</span>  <span class="p">=</span> <span class="n">cgm</span>
+<span class="n">emailAddress_default</span>            <span class="p">=</span> <span class="n">cgarmai95</span><span class="nv">@gmail</span><span class="p">.</span><span class="n">com</span>
+
+<span class="p">[</span> <span class="n">v3_ca</span> <span class="p">]</span>
+<span class="c"># Extensions for a typical CA (man x509v3_config).</span>
+<span class="n">subjectKeyIdentifier</span> <span class="p">=</span> <span class="n">hash</span>
+<span class="n">authorityKeyIdentifier</span> <span class="p">=</span> <span class="n">keyid</span><span class="err">:</span><span class="n">always</span><span class="p">,</span><span class="n">issuer</span>
+<span class="n">basicConstraints</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">CA</span><span class="err">:</span><span class="n">true</span>
+<span class="n">keyUsage</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">digitalSignature</span><span class="p">,</span> <span class="n">cRLSign</span><span class="p">,</span> <span class="n">keyCertSign</span>
+
+<span class="p">[</span> <span class="n">v3_intermediate_ca</span> <span class="p">]</span>
+<span class="c"># Extensions for a typical intermediate CA (man x509v3_config).</span>
+<span class="n">subjectKeyIdentifier</span> <span class="p">=</span> <span class="n">hash</span>
+<span class="n">authorityKeyIdentifier</span> <span class="p">=</span> <span class="n">keyid</span><span class="err">:</span><span class="n">always</span><span class="p">,</span><span class="n">issuer</span>
+<span class="n">basicConstraints</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">CA</span><span class="err">:</span><span class="n">true</span><span class="p">,</span> <span class="n">pathlen</span><span class="err">:</span><span class="n">0</span>
+<span class="n">keyUsage</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">digitalSignature</span><span class="p">,</span> <span class="n">cRLSign</span><span class="p">,</span> <span class="n">keyCertSign</span>
+
+<span class="p">[</span> <span class="n">usr_cert</span> <span class="p">]</span>
+<span class="c"># Extensions for client certificates (man x509v3_config).</span>
+<span class="n">basicConstraints</span> <span class="p">=</span> <span class="n">CA</span><span class="err">:</span><span class="n">FALSE</span>
+<span class="n">nsCertType</span> <span class="p">=</span> <span class="n">client</span><span class="p">,</span> <span class="n">email</span>
+<span class="n">nsComment</span> <span class="p">=</span> <span class="s2">&#34;OpenSSL Generated Client Certificate&#34;</span>
+<span class="n">subjectKeyIdentifier</span> <span class="p">=</span> <span class="n">hash</span>
+<span class="n">authorityKeyIdentifier</span> <span class="p">=</span> <span class="n">keyid</span><span class="p">,</span><span class="n">issuer</span>
+<span class="n">keyUsage</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">nonRepudiation</span><span class="p">,</span> <span class="n">digitalSignature</span><span class="p">,</span> <span class="n">keyEncipherment</span>
+<span class="n">extendedKeyUsage</span> <span class="p">=</span> <span class="n">clientAuth</span><span class="p">,</span> <span class="n">emailProtection</span>
+
+<span class="p">[</span> <span class="n">server_cert</span> <span class="p">]</span>
+<span class="c"># Extensions for server certificates (man x509v3_config).</span>
+<span class="n">basicConstraints</span> <span class="p">=</span> <span class="n">CA</span><span class="err">:</span><span class="n">FALSE</span>
+<span class="n">nsCertType</span> <span class="p">=</span> <span class="n">server</span>
+<span class="n">nsComment</span> <span class="p">=</span> <span class="s2">&#34;OpenSSL Generated Server Certificate&#34;</span>
+<span class="n">subjectKeyIdentifier</span> <span class="p">=</span> <span class="n">hash</span>
+<span class="n">authorityKeyIdentifier</span> <span class="p">=</span> <span class="n">keyid</span><span class="p">,</span><span class="n">issuer</span><span class="err">:</span><span class="n">always</span>
+<span class="n">keyUsage</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">digitalSignature</span><span class="p">,</span> <span class="n">keyEncipherment</span>
+<span class="n">extendedKeyUsage</span> <span class="p">=</span> <span class="n">serverAuth</span>
+
+<span class="p">[</span> <span class="n">crl_ext</span> <span class="p">]</span>
+<span class="c"># Extension for CRLs (man x509v3_config).</span>
+<span class="n">authorityKeyIdentifier</span><span class="p">=</span><span class="n">keyid</span><span class="err">:</span><span class="n">always</span>
+
+<span class="p">[</span> <span class="n">ocsp</span> <span class="p">]</span>
+<span class="c"># Extension for OCSP signing certificates (man ocsp).</span>
+<span class="n">basicConstraints</span> <span class="p">=</span> <span class="n">CA</span><span class="err">:</span><span class="n">FALSE</span>
+<span class="n">subjectKeyIdentifier</span> <span class="p">=</span> <span class="n">hash</span>
+<span class="n">authorityKeyIdentifier</span> <span class="p">=</span> <span class="n">keyid</span><span class="p">,</span><span class="n">issuer</span>
+<span class="n">keyUsage</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">digitalSignature</span>
+<span class="n">extendedKeyUsage</span> <span class="p">=</span> <span class="n">critical</span><span class="p">,</span> <span class="n">OCSPSigning</span>
+
+</code></pre></div><hr>
+<h3 id="firmar-certificado">Firmar certificado</h3>
+<p><strong>Debe recibir el fichero CSR (Solicitud de Firmar un Certificado) de su compañero, debe firmarlo y enviar el certificado generado a su compañero.</strong></p>
+<ul>
+<li>Una vez recibido el csr del compañero tenemos que firmarlo y devolverle el certificado generado firmado por la autoridad certificadora que hemos creado anteriormente.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@debian</span><span class="n">-https</span><span class="err">:</span><span class="p">~/</span><span class="n">ca</span><span class="c"># openssl ca -config ./openssl.conf -extensions v3_req -days 3650 -notext -md sha256 -in ./csr/jonathan.iesgn.org.csr -out ./certs/joni.firmado.csr.pem</span>
+<span class="n">Using</span> <span class="n">configuration</span> <span class="n">from</span> <span class="p">./</span><span class="n">openssl</span><span class="p">.</span><span class="n">conf</span>
+<span class="n">Enter</span> <span class="n">pass</span> <span class="n">phrase</span> <span class="k">for</span> <span class="p">./</span><span class="n">private</span><span class="p">/</span><span class="n">ca</span><span class="p">.</span><span class="n">key</span><span class="p">.</span><span class="n">pem</span><span class="err">:</span>
+<span class="n">Check</span> <span class="n">that</span> <span class="n">the</span> <span class="n">request</span> <span class="n">matches</span> <span class="n">the</span> <span class="n">signature</span>
+<span class="n">Signature</span> <span class="n">ok</span>
+<span class="n">Certificate</span> <span class="n">Details</span><span class="err">:</span>
+        <span class="n">Serial</span> <span class="n">Number</span><span class="err">:</span> <span class="n">4096</span> <span class="p">(</span><span class="n">0x1000</span><span class="p">)</span>
+        <span class="n">Validity</span>
+            <span class="n">Not</span> <span class="n">Before</span><span class="err">:</span> <span class="n">Nov</span> <span class="n">19</span> <span class="n">16</span><span class="err">:</span><span class="n">38</span><span class="err">:</span><span class="n">06</span> <span class="n">2020</span> <span class="n">GMT</span>
+            <span class="n">Not</span> <span class="n">After</span> <span class="err">:</span> <span class="n">Nov</span> <span class="n">17</span> <span class="n">16</span><span class="err">:</span><span class="n">38</span><span class="err">:</span><span class="n">06</span> <span class="n">2030</span> <span class="n">GMT</span>
+        <span class="n">Subject</span><span class="err">:</span>
+            <span class="n">countryName</span>               <span class="p">=</span> <span class="n">ES</span>
+            <span class="n">stateOrProvinceName</span>       <span class="p">=</span> <span class="n">Sevilla</span>
+            <span class="n">organizationName</span>          <span class="p">=</span> <span class="n">Celia</span>
+            <span class="n">commonName</span>                <span class="p">=</span> <span class="n">jonathan</span><span class="p">.</span><span class="n">iesgn</span><span class="p">.</span><span class="n">org</span>
+            <span class="n">emailAddress</span>              <span class="p">=</span> <span class="n">jonathanmarquezj</span><span class="nv">@gmail</span><span class="p">.</span><span class="n">com</span>
+        <span class="n">X509v3</span> <span class="n">extensions</span><span class="err">:</span>
+            <span class="n">X509v3</span> <span class="n">Basic</span> <span class="n">Constraints</span><span class="err">:</span> 
+                <span class="n">CA</span><span class="err">:</span><span class="n">FALSE</span>
+            <span class="n">X509v3</span> <span class="n">Key</span> <span class="n">Usage</span><span class="err">:</span> 
+                <span class="n">Digital</span> <span class="n">Signature</span><span class="p">,</span> <span class="n">Non</span> <span class="n">Repudiation</span><span class="p">,</span> <span class="n">Key</span> <span class="n">Encipherment</span>
+            <span class="n">X509v3</span> <span class="n">Subject</span> <span class="n">Alternative</span> <span class="n">Name</span><span class="err">:</span> 
+                <span class="n">DNS</span><span class="err">:</span><span class="n">celiagarcia</span><span class="p">.</span><span class="n">iesgn</span><span class="p">.</span><span class="n">org</span>
+<span class="n">Certificate</span> <span class="n">is</span> <span class="n">to</span> <span class="n">be</span> <span class="n">certified</span> <span class="k">until</span> <span class="n">Nov</span> <span class="n">17</span> <span class="n">16</span><span class="err">:</span><span class="n">38</span><span class="err">:</span><span class="n">06</span> <span class="n">2030</span> <span class="n">GMT</span> <span class="p">(</span><span class="n">3650</span> <span class="n">days</span><span class="p">)</span>
+<span class="n">Sign</span> <span class="n">the</span> <span class="n">certificate</span><span class="p">?</span> <span class="p">[</span><span class="n">y</span><span class="p">/</span><span class="n">n</span><span class="p">]</span><span class="err">:</span><span class="n">y</span>
+
+
+<span class="n">1</span> <span class="n">out</span> <span class="n">of</span> <span class="n">1</span> <span class="n">certificate</span> <span class="n">requests</span> <span class="n">certified</span><span class="p">,</span> <span class="n">commit</span><span class="p">?</span> <span class="p">[</span><span class="n">y</span><span class="p">/</span><span class="n">n</span><span class="p">]</span><span class="n">y</span>
+<span class="nb">Write </span><span class="n">out</span> <span class="n">database</span> <span class="n">with</span> <span class="n">1</span> <span class="n">new</span> <span class="n">entries</span>
+<span class="n">Data</span> <span class="n">Base</span> <span class="n">Updated</span>
+
+</code></pre></div><p>Y el fichero generado se lo enviamos al compañero: <strong>joni.firmado.csr.pem</strong></p>
+<p><strong>¿Qué otra información debes aportar a tu compañero para que éste configure de forma adecuada su servidor web con el certificado generado?</strong></p>
+<p>Debemos aportar los datos requeridos que son:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">countryName_default</span>
+<span class="n">stateOrProvinceName_default</span>
+<span class="n">organizationName_default</span>
+</code></pre></div><p>Estos están configurados en el fichero openssl.conf con &lsquo;<strong>match</strong>&rsquo;</p>
+<hr>
+<h2 id="parte-2">PARTE 2</h2>
+<h3 id="el-alumno-que-hace-de-administrador-del-servidor-web-debe-entrepregar-una-documentación-que-describa-los-siguientes-puntos">El alumno que hace de administrador del servidor web, debe entre<!-- raw HTML omitted -->gar una documentación que describa los siguientes puntos:</h3>
+<p>Estos puntos que vienen a continuación los hemos realizado con la creación de la autoridad certificadora:</p>
+<ul>
+<li>
+<p>Crea una clave privada RSA de 4096 bits para identificar el servidor</p>
+</li>
+<li>
+<p>Utiliza la clave anterior para generar un CSR, considerando que deseas acceder al servidor con el FQDN (tunombre.iesgn.org).</p>
+</li>
+<li>
+<p>Envía la solicitud de firma a la entidad certificadora (su compañero).</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Recibe como respuesta un certificado X.509 para el servidor firmado y el certificado de la autoridad certificadora.</strong></li>
+</ul>
+<p>Recibimos el certificado firmado por la autoridad certificadora</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@debian</span><span class="n">-https</span><span class="err">:</span><span class="p">~/</span><span class="n">ca</span><span class="p">/</span><span class="n">csr</span><span class="c"># ls</span>
+<span class="n">celia</span><span class="p">.</span><span class="n">iesgn</span><span class="p">.</span><span class="n">org</span><span class="p">.</span><span class="n">csr</span>  <span class="n">celia</span><span class="p">.</span><span class="n">iesgn</span><span class="p">.</span><span class="n">org</span><span class="p">.</span><span class="n">csr</span><span class="p">.</span><span class="n">pem</span>  <span class="n">jonathan</span><span class="p">.</span><span class="n">iesgn</span><span class="p">.</span><span class="n">org</span><span class="p">.</span><span class="n">csr</span>
+</code></pre></div><ul>
+<li><strong>Configura tu servidor web con https en el puerto 443, haciendo que las peticiones http se redireccionen a https (forzar https).</strong></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">&lt;</span><span class="n">VirtualHost</span> <span class="p">*</span><span class="err">:</span><span class="n">443</span><span class="p">&gt;</span>
+        <span class="n">ServerName</span> <span class="n">celiagarcia</span><span class="p">.</span><span class="n">iesgn</span><span class="p">.</span><span class="n">org</span>
+        <span class="n">ServerAdmin</span> <span class="n">webmaster</span><span class="nv">@localhost</span>
+        <span class="n">DocumentRoot</span> <span class="p">/</span><span class="n">var</span><span class="p">/</span><span class="n">www</span><span class="p">/</span><span class="n">celia</span>
+
+        <span class="n">ErrorLog</span> <span class="p">${</span><span class="n">APACHE_LOG_DIR</span><span class="p">}/</span><span class="n">error</span><span class="p">.</span><span class="n">log</span>
+        <span class="n">CustomLog</span> <span class="p">${</span><span class="n">APACHE_LOG_DIR</span><span class="p">}/</span><span class="n">access</span><span class="p">.</span><span class="n">log</span> <span class="n">combined</span>
+
+        <span class="n">SSLEngine</span> <span class="n">on</span>
+        <span class="n">SSLCertificateFile</span> <span class="p">/</span><span class="n">root</span><span class="p">/</span><span class="n">ca</span><span class="p">/</span><span class="n">csr</span><span class="p">/</span><span class="n">celia</span><span class="p">.</span><span class="n">iesgn</span><span class="p">.</span><span class="n">org</span><span class="p">.</span><span class="n">csr</span><span class="p">.</span><span class="n">pem</span>
+        <span class="n">SSLCertificateKeyFile</span> <span class="p">/</span><span class="n">root</span><span class="p">/</span><span class="n">ca</span><span class="p">/</span><span class="n">private</span><span class="p">/</span><span class="n">celia</span><span class="p">.</span><span class="n">iesgn</span><span class="p">.</span><span class="n">org</span><span class="p">.</span><span class="n">key</span><span class="p">.</span><span class="n">pem</span>
+
+        <span class="p">&lt;</span><span class="n">FilesMatch</span> <span class="s2">&#34;\.(php|py)$&#34;</span><span class="p">&gt;</span>
+                <span class="n">SSLOptions</span> <span class="p">+</span><span class="n">StdEnvVars</span>
+        <span class="p">&lt;/</span><span class="n">FilesMatch</span><span class="p">&gt;</span>
+
+        <span class="n">BrowserMatch</span> <span class="s2">&#34;MSIE [2-6]&#34;</span> <span class="p">\</span>
+                <span class="n">nokeepalive</span> <span class="n">ssl-unclean-shutdown</span> <span class="p">\</span>
+                <span class="n">downgrade</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0</span> <span class="n">force-response</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0</span>
+        <span class="n">BrowserMatch</span> <span class="s2">&#34;MSIE [17-9]&#34;</span> <span class="n">ssl-unclean-shutdown</span>
+<span class="p">&lt;/</span><span class="n">VirtualHost</span><span class="p">&gt;</span>
+
+</code></pre></div><p>Hay que habilitar el <strong>modulo de ssl</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">a2enmod</span> <span class="n">ssl</span>
+</code></pre></div><p>Reiniciamos el servidor</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">systemctl</span> <span class="n">restart</span> <span class="n">apache2</span>
+</code></pre></div><p>Vamos a nuestro navegador y accedemos a <a href="https://celiagarcia.iesgn.org">https://celiagarcia.iesgn.org</a></p>
+<p>Comprobamos que podemos acceder, nos notificará que no es una conexión segura ya que no se conoce la entidad certificadora pero añadimos una excepción. Y vemos el certificado en el que aparece la firma de la entidad certificadora de nuestro compañero.</p>
+<ul>
+<li><img src="/images/ca/https1.png" alt="https1.png"></li>
+<li><img src="/images/ca/https2.png" alt="https2.png"></li>
+<li><img src="/images/ca/https3.png" alt="https3.png"></li>
+</ul>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/crear-autoridad-certificadora/">crear autoridad certificadora</a><a class="tag" href="/tags/autoridad-certificadora/">autoridad certificadora</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

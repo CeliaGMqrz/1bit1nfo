@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | VPN con OpenVPN y certificados x509 (II) </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/site-to-site/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="VPN con OpenVPN y certificados x509 (II)"/>
+<meta name="twitter:description" content="Escenario:
+Tenemos dos servidores, dos maquinas conectadas a las redes locales diferentes y un cliente."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>VPN con OpenVPN y certificados x509 (II)</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Wed, Feb 24, 2021 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">2-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>Escenario:</p>
+<p>Tenemos dos servidores, dos maquinas conectadas a las redes locales diferentes y un cliente. Los servidores están conectados a dos redes la exterior en común y una interna compartida con su respectivo cliente de forma que tenemos el siguiente direccionamiento:</p>
+<ul>
+<li>
+<p>Servidor 1: vpn_server</p>
+<ul>
+<li>Red común 172.22.201.64</li>
+<li>Red 10.0.0.8</li>
+<li>Red1 192.168.100.2</li>
+</ul>
+</li>
+<li>
+<p>Maquina de la red local 1: lan</p>
+<ul>
+<li>Red1 192.168.100.10</li>
+</ul>
+</li>
+<li>
+<p>Servidor 2: vpn_server2</p>
+<ul>
+<li>Red común 172.22.201.33</li>
+<li>Red 10.0.0.13</li>
+<li>Red2 192.168.200.8</li>
+</ul>
+</li>
+<li>
+<p>Maquina de la red local 1: lan2</p>
+<ul>
+<li>Red2 192.168.200.4</li>
+</ul>
+</li>
+</ul>
+<p>Objetivo:</p>
+<p>Tras el establecimiento de la VPN, una máquina de cada red detrás de cada servidor VPN debe ser capaz de acceder a una máquina del otro extremo.</p>
+<p>Cabe decir que tenemos instalado en las 4 máquinas el paquete openvpn.</p>
+<p>Configuración</p>
+<p>Servidor 2 (rol de servidor)</p>
+<p><code>sudo nano /etc/openvpn/servidor.conf </code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Use a dynamic TUN device</span>
+dev tun
+<span class="c1"># Virtual ip</span>
+ifconfig 10.99.99.1 10.99.99.2
+<span class="c1"># Local subnet</span>
+route 192.168.100.0 255.255.255.0
+<span class="c1"># Enable TLS and assume server role</span>
+tls-server
+<span class="c1"># Diffie-Hellman</span>
+dh /etc/openvpn/keys/dh.pem
+<span class="c1"># Certificado de la CA</span>
+ca /etc/openvpn/keys/ca.crt
+<span class="c1"># Certificado local</span>
+cert /etc/openvpn/keys/servidor.crt
+<span class="c1"># Clave privada </span>
+key /etc/openvpn/keys/servidor.key
+<span class="c1"># Use fast LZO compression</span>
+comp-lzo
+<span class="c1"># Ping remote every 10sg and restart after 60sg passed without sign of file from remote.</span>
+keepalive <span class="m">10</span> <span class="m">60</span>
+<span class="c1"># Set output verbosity to normal usage range</span>
+verb <span class="m">3</span>
+log /var/log/office1.log
+
+</code></pre></div><ul>
+<li>Vemos que se ha creado el tunel</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">13: tun0: &lt;POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UNKNOWN group default qlen <span class="m">100</span>
+    link/none 
+    inet 10.99.99.1 peer 10.99.99.2/32 scope global tun0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::e63:da50:7b73:26f6/64 scope link stable-privacy 
+       valid_lft forever preferred_lft forever
+</code></pre></div><ul>
+<li>Ahora le pasamos los certificados y claves al cliente de sergio</li>
+</ul>
+<p>Servidor 1 (rol de cliente)</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#### Fichero de sit-to-site vpn ####</span>
+<span class="c1">#Dispositivo de túnel</span>
+dev tun
+
+<span class="c1">#IP del servidor</span>
+remote 172.22.201.33
+
+<span class="c1">#Encaminamiento</span>
+ifconfig 10.99.99.2 10.99.99.1
+
+<span class="c1"># Subred remota</span>
+route 192.168.200.0 255.255.255.0
+
+<span class="c1">#Rol de cliente</span>
+tls-client
+
+<span class="c1">#Certificado de la CA</span>
+ca /etc/openvpn/ca_celia.crt
+
+<span class="c1">#Certificado cliente</span>
+cert /etc/openvpn/cliente_celia.crt
+
+<span class="c1">#Clave privada cliente</span>
+key /etc/openvpn/cliente_celia.key
+
+<span class="c1">#Activar la compresión LZO</span>
+comp-lzo
+
+<span class="c1">#Detectar caídas de la conexión</span>
+keepalive <span class="m">10</span> <span class="m">60</span>
+
+<span class="c1">#Nivel de la información</span>
+verb <span class="m">3</span>
+
+log /var/log/vpn.log
+
+</code></pre></div><p>Funcionamiento:</p>
+<p>Podemos comprobar que tenemos comunicación de extremo a extremo. Del cliente 1 al cliente 2 y a ambos servidores estandos en redes locales distintas.</p>
+<p><img src="/images/vpn/vpn1.jpeg" alt="vpn1.jpeg"></p>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/vpn/">vpn</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

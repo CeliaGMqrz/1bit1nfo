@@ -6,49 +6,679 @@
     <description>Recent content in Tags on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 13 Mar 2021 21:47:41 +0000</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Mar 2021 12:53:56 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>demo</title>
-      <link>https://1bit1nfo.netlify.app/tags/demo/</link>
-      <pubDate>Sat, 13 Mar 2021 21:47:41 +0000</pubDate>
+      <title>untagged</title>
+      <link>https://1bit1nfo.netlify.app/tags/untagged/</link>
+      <pubDate>Mon, 08 Mar 2021 12:53:56 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/tags/demo/</guid>
+      <guid>https://1bit1nfo.netlify.app/tags/untagged/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>shortcode</title>
-      <link>https://1bit1nfo.netlify.app/tags/shortcode/</link>
-      <pubDate>Sat, 13 Mar 2021 21:47:41 +0000</pubDate>
+      <title>guacamole</title>
+      <link>https://1bit1nfo.netlify.app/tags/guacamole/</link>
+      <pubDate>Sun, 07 Mar 2021 21:11:44 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/tags/shortcode/</guid>
+      <guid>https://1bit1nfo.netlify.app/tags/guacamole/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>css</title>
-      <link>https://1bit1nfo.netlify.app/tags/css/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <title>java</title>
+      <link>https://1bit1nfo.netlify.app/tags/java/</link>
+      <pubDate>Sun, 07 Mar 2021 21:11:44 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/tags/css/</guid>
+      <guid>https://1bit1nfo.netlify.app/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>html</title>
-      <link>https://1bit1nfo.netlify.app/tags/html/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <title>vpn</title>
+      <link>https://1bit1nfo.netlify.app/tags/vpn/</link>
+      <pubDate>Wed, 24 Feb 2021 08:27:54 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/tags/html/</guid>
+      <guid>https://1bit1nfo.netlify.app/tags/vpn/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>markdown</title>
-      <link>https://1bit1nfo.netlify.app/tags/markdown/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <title>apache</title>
+      <link>https://1bit1nfo.netlify.app/tags/apache/</link>
+      <pubDate>Tue, 16 Feb 2021 17:15:21 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/tags/markdown/</guid>
+      <guid>https://1bit1nfo.netlify.app/tags/apache/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nginx</title>
+      <link>https://1bit1nfo.netlify.app/tags/nginx/</link>
+      <pubDate>Tue, 16 Feb 2021 17:15:21 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rendimiento</title>
+      <link>https://1bit1nfo.netlify.app/tags/rendimiento/</link>
+      <pubDate>Tue, 16 Feb 2021 17:15:21 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/rendimiento/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>varnish</title>
+      <link>https://1bit1nfo.netlify.app/tags/varnish/</link>
+      <pubDate>Tue, 16 Feb 2021 17:15:21 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/varnish/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cortafuegos</title>
+      <link>https://1bit1nfo.netlify.app/tags/cortafuegos/</link>
+      <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/cortafuegos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dovecot</title>
+      <link>https://1bit1nfo.netlify.app/tags/dovecot/</link>
+      <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/dovecot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IMAP</title>
+      <link>https://1bit1nfo.netlify.app/tags/imap/</link>
+      <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/imap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iptables</title>
+      <link>https://1bit1nfo.netlify.app/tags/iptables/</link>
+      <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/iptables/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mariadb</title>
+      <link>https://1bit1nfo.netlify.app/tags/mariadb/</link>
+      <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/mariadb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>roundcube</title>
+      <link>https://1bit1nfo.netlify.app/tags/roundcube/</link>
+      <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/roundcube/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>servidor de correos</title>
+      <link>https://1bit1nfo.netlify.app/tags/servidor-de-correos/</link>
+      <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/servidor-de-correos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>webmail</title>
+      <link>https://1bit1nfo.netlify.app/tags/webmail/</link>
+      <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/webmail/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ldaps</title>
+      <link>https://1bit1nfo.netlify.app/tags/ldaps/</link>
+      <pubDate>Mon, 25 Jan 2021 09:27:32 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/ldaps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>alias</title>
+      <link>https://1bit1nfo.netlify.app/tags/alias/</link>
+      <pubDate>Fri, 22 Jan 2021 12:48:10 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/alias/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>escenario</title>
+      <link>https://1bit1nfo.netlify.app/tags/escenario/</link>
+      <pubDate>Fri, 22 Jan 2021 12:48:10 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/escenario/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mailx</title>
+      <link>https://1bit1nfo.netlify.app/tags/mailx/</link>
+      <pubDate>Fri, 22 Jan 2021 12:48:10 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/mailx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openstack</title>
+      <link>https://1bit1nfo.netlify.app/tags/openstack/</link>
+      <pubDate>Fri, 22 Jan 2021 12:48:10 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/openstack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>postfix</title>
+      <link>https://1bit1nfo.netlify.app/tags/postfix/</link>
+      <pubDate>Fri, 22 Jan 2021 12:48:10 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/postfix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redirecciones</title>
+      <link>https://1bit1nfo.netlify.app/tags/redirecciones/</link>
+      <pubDate>Fri, 22 Jan 2021 12:48:10 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/redirecciones/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>servidor correos</title>
+      <link>https://1bit1nfo.netlify.app/tags/servidor-correos/</link>
+      <pubDate>Fri, 22 Jan 2021 12:48:10 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/servidor-correos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spf</title>
+      <link>https://1bit1nfo.netlify.app/tags/spf/</link>
+      <pubDate>Fri, 22 Jan 2021 12:48:10 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/spf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cms</title>
+      <link>https://1bit1nfo.netlify.app/tags/cms/</link>
+      <pubDate>Thu, 21 Jan 2021 13:04:33 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/cms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>djando</title>
+      <link>https://1bit1nfo.netlify.app/tags/djando/</link>
+      <pubDate>Thu, 21 Jan 2021 13:04:33 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/djando/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>django</title>
+      <link>https://1bit1nfo.netlify.app/tags/django/</link>
+      <pubDate>Thu, 21 Jan 2021 13:04:33 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/django/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mezzanine</title>
+      <link>https://1bit1nfo.netlify.app/tags/mezzanine/</link>
+      <pubDate>Thu, 21 Jan 2021 13:04:33 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/mezzanine/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://1bit1nfo.netlify.app/tags/python/</link>
+      <pubDate>Thu, 21 Jan 2021 13:04:33 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wagtail</title>
+      <link>https://1bit1nfo.netlify.app/tags/wagtail/</link>
+      <pubDate>Thu, 21 Jan 2021 13:04:33 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/wagtail/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>centos8</title>
+      <link>https://1bit1nfo.netlify.app/tags/centos8/</link>
+      <pubDate>Thu, 21 Jan 2021 10:11:23 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/centos8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>https</title>
+      <link>https://1bit1nfo.netlify.app/tags/https/</link>
+      <pubDate>Thu, 21 Jan 2021 10:11:23 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/https/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ansible</title>
+      <link>https://1bit1nfo.netlify.app/tags/ansible/</link>
+      <pubDate>Wed, 20 Jan 2021 17:15:21 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/ansible/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ubuntu</title>
+      <link>https://1bit1nfo.netlify.app/tags/ubuntu/</link>
+      <pubDate>Wed, 13 Jan 2021 14:51:48 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>httpd</title>
+      <link>https://1bit1nfo.netlify.app/tags/httpd/</link>
+      <pubDate>Wed, 13 Jan 2021 11:36:08 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/httpd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bind9</title>
+      <link>https://1bit1nfo.netlify.app/tags/bind9/</link>
+      <pubDate>Tue, 12 Jan 2021 19:49:10 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/bind9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dns</title>
+      <link>https://1bit1nfo.netlify.app/tags/dns/</link>
+      <pubDate>Tue, 12 Jan 2021 19:49:10 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/dns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vmware</title>
+      <link>https://1bit1nfo.netlify.app/tags/vmware/</link>
+      <pubDate>Tue, 22 Dec 2020 13:53:35 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/vmware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ldap</title>
+      <link>https://1bit1nfo.netlify.app/tags/ldap/</link>
+      <pubDate>Mon, 14 Dec 2020 20:18:59 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/ldap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux 8</title>
+      <link>https://1bit1nfo.netlify.app/tags/linux-8/</link>
+      <pubDate>Tue, 08 Dec 2020 15:28:36 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/linux-8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>oracle database 19c</title>
+      <link>https://1bit1nfo.netlify.app/tags/oracle-database-19c/</link>
+      <pubDate>Tue, 08 Dec 2020 15:28:36 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/oracle-database-19c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DMZ</title>
+      <link>https://1bit1nfo.netlify.app/tags/dmz/</link>
+      <pubDate>Sat, 05 Dec 2020 13:21:43 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/dmz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NAT</title>
+      <link>https://1bit1nfo.netlify.app/tags/nat/</link>
+      <pubDate>Sat, 05 Dec 2020 13:21:43 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/nat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>centos7</title>
+      <link>https://1bit1nfo.netlify.app/tags/centos7/</link>
+      <pubDate>Mon, 30 Nov 2020 20:59:38 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/centos7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>upgrade centos</title>
+      <link>https://1bit1nfo.netlify.app/tags/upgrade-centos/</link>
+      <pubDate>Mon, 30 Nov 2020 20:59:38 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/upgrade-centos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cerbot</title>
+      <link>https://1bit1nfo.netlify.app/tags/cerbot/</link>
+      <pubDate>Sun, 29 Nov 2020 21:09:40 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/cerbot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Let’s Encrypt</title>
+      <link>https://1bit1nfo.netlify.app/tags/lets-encrypt/</link>
+      <pubDate>Sun, 29 Nov 2020 21:09:40 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/lets-encrypt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nextcloud</title>
+      <link>https://1bit1nfo.netlify.app/tags/nextcloud/</link>
+      <pubDate>Sat, 28 Nov 2020 20:44:54 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/nextcloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>php</title>
+      <link>https://1bit1nfo.netlify.app/tags/php/</link>
+      <pubDate>Sat, 28 Nov 2020 20:44:54 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openstackclient</title>
+      <link>https://1bit1nfo.netlify.app/tags/openstackclient/</link>
+      <pubDate>Thu, 19 Nov 2020 19:31:53 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/openstackclient/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>autoridad certificadora</title>
+      <link>https://1bit1nfo.netlify.app/tags/autoridad-certificadora/</link>
+      <pubDate>Thu, 19 Nov 2020 18:51:45 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/autoridad-certificadora/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>crear autoridad certificadora</title>
+      <link>https://1bit1nfo.netlify.app/tags/crear-autoridad-certificadora/</link>
+      <pubDate>Thu, 19 Nov 2020 18:51:45 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/crear-autoridad-certificadora/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>servidores</title>
+      <link>https://1bit1nfo.netlify.app/tags/servidores/</link>
+      <pubDate>Wed, 18 Nov 2020 18:22:12 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/servidores/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kernel linux</title>
+      <link>https://1bit1nfo.netlify.app/tags/kernel-linux/</link>
+      <pubDate>Sun, 15 Nov 2020 20:07:29 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/kernel-linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>entorno lamp</title>
+      <link>https://1bit1nfo.netlify.app/tags/entorno-lamp/</link>
+      <pubDate>Wed, 11 Nov 2020 19:21:43 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/entorno-lamp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>instalar lamp</title>
+      <link>https://1bit1nfo.netlify.app/tags/instalar-lamp/</link>
+      <pubDate>Wed, 11 Nov 2020 19:21:43 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/instalar-lamp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lamp</title>
+      <link>https://1bit1nfo.netlify.app/tags/lamp/</link>
+      <pubDate>Wed, 11 Nov 2020 19:21:43 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/lamp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://1bit1nfo.netlify.app/tags/linux/</link>
+      <pubDate>Wed, 11 Nov 2020 19:21:43 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>https://1bit1nfo.netlify.app/tags/mysql/</link>
+      <pubDate>Wed, 11 Nov 2020 19:21:43 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>servidor nginx</title>
+      <link>https://1bit1nfo.netlify.app/tags/servidor-nginx/</link>
+      <pubDate>Wed, 11 Nov 2020 17:51:13 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/servidor-nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>virtualhosting</title>
+      <link>https://1bit1nfo.netlify.app/tags/virtualhosting/</link>
+      <pubDate>Wed, 11 Nov 2020 17:51:13 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/virtualhosting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>c</title>
+      <link>https://1bit1nfo.netlify.app/tags/c/</link>
+      <pubDate>Sat, 31 Oct 2020 18:13:42 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>compilar</title>
+      <link>https://1bit1nfo.netlify.app/tags/compilar/</link>
+      <pubDate>Sat, 31 Oct 2020 18:13:42 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/compilar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>compilar c</title>
+      <link>https://1bit1nfo.netlify.app/tags/compilar-c/</link>
+      <pubDate>Sat, 31 Oct 2020 18:13:42 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/compilar-c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>compilar lynx</title>
+      <link>https://1bit1nfo.netlify.app/tags/compilar-lynx/</link>
+      <pubDate>Sat, 31 Oct 2020 18:13:42 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/compilar-lynx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lynx</title>
+      <link>https://1bit1nfo.netlify.app/tags/lynx/</link>
+      <pubDate>Sat, 31 Oct 2020 18:13:42 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/lynx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cifrado asimétrico</title>
+      <link>https://1bit1nfo.netlify.app/tags/cifrado-asim%C3%A9trico/</link>
+      <pubDate>Sat, 24 Oct 2020 14:45:15 +0200</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/cifrado-asim%C3%A9trico/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gpg</title>
+      <link>https://1bit1nfo.netlify.app/tags/gpg/</link>
+      <pubDate>Sat, 24 Oct 2020 14:45:15 +0200</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/gpg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openssl</title>
+      <link>https://1bit1nfo.netlify.app/tags/openssl/</link>
+      <pubDate>Sat, 24 Oct 2020 14:45:15 +0200</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/openssl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>debian10</title>
+      <link>https://1bit1nfo.netlify.app/tags/debian10/</link>
+      <pubDate>Thu, 15 Oct 2020 22:22:11 +0200</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/debian10/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>instalacion visualcode</title>
+      <link>https://1bit1nfo.netlify.app/tags/instalacion-visualcode/</link>
+      <pubDate>Thu, 15 Oct 2020 22:22:11 +0200</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/instalacion-visualcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>visualcode</title>
+      <link>https://1bit1nfo.netlify.app/tags/visualcode/</link>
+      <pubDate>Thu, 15 Oct 2020 22:22:11 +0200</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/visualcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>instalar virtualbox</title>
+      <link>https://1bit1nfo.netlify.app/tags/instalar-virtualbox/</link>
+      <pubDate>Thu, 15 Oct 2020 15:50:23 +0200</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/instalar-virtualbox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Virtualbox</title>
+      <link>https://1bit1nfo.netlify.app/tags/virtualbox/</link>
+      <pubDate>Thu, 15 Oct 2020 15:50:23 +0200</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/tags/virtualbox/</guid>
       <description></description>
     </item>
     
@@ -67,24 +697,6 @@
       <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://1bit1nfo.netlify.app/tags/shortcodes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>text</title>
-      <link>https://1bit1nfo.netlify.app/tags/text/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://1bit1nfo.netlify.app/tags/text/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>emoji</title>
-      <link>https://1bit1nfo.netlify.app/tags/emoji/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://1bit1nfo.netlify.app/tags/emoji/</guid>
       <description></description>
     </item>
     

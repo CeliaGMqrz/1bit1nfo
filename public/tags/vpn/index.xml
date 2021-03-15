@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vpn on 1bit1nfo</title>
+    <link>https://1bit1nfo.netlify.app/tags/vpn/</link>
+    <description>Recent content in vpn on 1bit1nfo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 24 Feb 2021 08:27:54 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/vpn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VPN con OpenVPN y certificados x509</title>
+      <link>https://1bit1nfo.netlify.app/post/vpn/</link>
+      <pubDate>Wed, 24 Feb 2021 08:27:54 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/post/vpn/</guid>
+      <description>Conceptos ¿Qué es una VPN?
+Se trata de una Red privada virtual.</description>
+    </item>
+    
+    <item>
+      <title>VPN con OpenVPN y certificados x509 (II)</title>
+      <link>https://1bit1nfo.netlify.app/post/site-to-site/</link>
+      <pubDate>Wed, 24 Feb 2021 08:27:54 +0100</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/post/site-to-site/</guid>
+      <description>Escenario:
+Tenemos dos servidores, dos maquinas conectadas a las redes locales diferentes y un cliente.</description>
+    </item>
+    
+  </channel>
+</rss>

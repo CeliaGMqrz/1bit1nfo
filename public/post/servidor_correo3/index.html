@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Servidor de Correos. Postfix (III). </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/servidor_correo3/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Servidor de Correos. Postfix (III)."/>
+<meta name="twitter:description" content="Gestión de correos desde un cliente Tarea 8: Configurar postfix con Maildir Descripción:"/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Servidor de Correos. Postfix (III).</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Mon, Jan 25, 2021 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">13-minute read</span>
+                    </div>
+                
+            </div>
+
+            <h2 id="gestión-de-correos-desde-un-cliente">Gestión de correos desde un cliente</h2>
+<h3 id="tarea-8-configurar-postfix-con-maildir">Tarea 8: Configurar postfix con Maildir</h3>
+<p><strong>Descripción:</strong></p>
+<p>Configura el buzón de los usuarios de tipo Maildir. Envía un correo a tu usuario y comprueba que el correo se ha guardado en el buzón <strong>Maildir</strong> del usuario del sistema correspondiente. Recuerda que ese tipo de buzón no se puede leer con la utilidad mail.</p>
+<p><strong>Configuración:</strong></p>
+<ul>
+<li>Para hacer esta tarea vamos a indicar a postfix en su configuración dónde se van a guardar los nuevos correos.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">nano /etc/postfix/main.cf
+</code></pre></div><ul>
+<li>Añadimos la siguiente línea</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">home_mailbox</span> <span class="o">=</span> Maildir/
+</code></pre></div><ul>
+<li>Reiniciamos el servicio</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo systemctl restart postfix
+</code></pre></div><ul>
+<li>Ahora vamos a probar si se ha configurado correctamente para ello vamos a instalar el siguiente paquete</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt-get install mailutils
+</code></pre></div><ul>
+<li>Una vez instalado vamos a enviar un correo desde la cuenta de debian, comprobaremos que utilizando mail ya no aparece si no que se almacena en el directorio Maildir</li>
+</ul>
+<p>Enviamos un correo de prueba a debian</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@kiara:~$ <span class="nb">echo</span> <span class="s2">&#34;prueba&#34;</span><span class="p">|</span> mail -s <span class="s2">&#34;email de prueba&#34;</span> debian
+</code></pre></div><p>Comprobamos que con la utilidad mail ya no podemos visualizarlo.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@kiara:~$ mail
+No mail <span class="k">for</span> debian
+debian@kiara:~$ mailq
+Mail queue is empty
+</code></pre></div><p>Comprobamos que el correo de prueba o los correos de prueba que hemos enviado se han incluido dentro del directorio /Maildir.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@kiara:~$ ls Maildir/
+cur                  dovecot.list.index.log  dovecot-uidvalidity           subscriptions
+dovecot.index.cache  dovecot.mailbox.log     dovecot-uidvalidity.601e9f0c  tmp
+dovecot.index.log    dovecot-uidlist         new
+
+debian@kiara:~$ ls Maildir/new/
+1612893822.V801I61e44M2366.kiara  1612893826.V801I61e43M8243.kiara
+
+debian@kiara:~$ cat Maildir/new/161289382
+1612893822.V801I61e44M2366.kiara  1612893826.V801I61e43M8243.kiara
+
+debian@kiara:~$ cat Maildir/new/1612893826.V801I61e43M8243.kiara
+Return-Path: &lt;debian@iesgn05.es&gt;
+X-Original-To: debian
+Delivered-To: debian@iesgn05.es
+Received: by kiara.iesgn05.es <span class="o">(</span>Postfix, from userid 1000<span class="o">)</span>
+	id 0135161E45<span class="p">;</span> Tue,  <span class="m">9</span> Feb <span class="m">2021</span> 18:03:46 +0000 <span class="o">(</span>UTC<span class="o">)</span>
+To: debian@iesgn05.es
+Subject: email de prueba
+MIME-Version: 1.0
+Content-Type: text/plain<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span><span class="s2">&#34;UTF-8&#34;</span>
+Content-Transfer-Encoding: 8bit
+Message-Id: &lt;20210209180346.0135161E45@kiara.iesgn05.es&gt;
+Date: Tue,  <span class="m">9</span> Feb <span class="m">2021</span> 18:03:46 +0000 <span class="o">(</span>UTC<span class="o">)</span>
+From: Debian &lt;debian@iesgn05.es&gt;
+</code></pre></div><p>Esto mismo lo podemos hacer con el usuario root y sería el mismo procedimiento.</p>
+<h3 id="tarea-9-instalación-de-dovecot-protocolo-imap">Tarea 9: Instalación de dovecot. Protocolo IMAP.</h3>
+<p><strong>Descripción:</strong>
+Instala configura dovecot para ofrecer el protocolo IMAP. Configura dovecot de manera adecuada para ofrecer autentificación y cifrado</p>
+<h4 id="911-conceptos">9.11. Conceptos:</h4>
+<ul>
+<li>
+<p><strong>Dovecot</strong>: es un servidor de IMAP Y POP3 de código abierto para sistemas Linux. Puede trabajar con mbox y Maildir.</p>
+</li>
+<li>
+<p><strong>IMAP</strong>: Es un protocolo de acceso a mensajes de Internet, que permite el acceso a mensajes almacenados en un servidor de internet. A través de IMAP se puede tener acceso al correo electrónico teniendo acceso a la red. Se ejecuta en los puertos 143 y 993 (SSL).</p>
+</li>
+</ul>
+<p>Es importante saber que utiliza la <strong>sincronización</strong> para garantizar que se guarde una copia de los mensajes en los diferentes directorios inicados en el servidor y así quedarán ordenados los correos.</p>
+<ul>
+<li><strong>Pop</strong>: Protocolo de oficina de correo. También es usado para la obtencion de mensajes de correo electrónico almacenados en un servidor remoto. Ya no se utliza normalmente.</li>
+</ul>
+<blockquote>
+<p><strong>Diferencias entre IMAP y POP</strong>: La diferencia principal entre estos dos protocolos es que IMAP almacena los mensajes en el servidor de correo y sus copias en los directorios de forma ordenada mientras que POP3 los descarga y almacena de forma local sólo en la bandeja de entrada.</p>
+</blockquote>
+<p><strong>Tipos de buzones</strong></p>
+<p>Hasta ahora hemos utilizado el buzon <strong>mbox</strong> a través del protocolo POP3, pero ahora vamos a utlizar el buzón <strong>Maildir</strong>, en el que los mensajes se guardan en un directorio llamado Maildir, imprescindible para el protocolo que vamos a usar <strong>IMAP</strong>.</p>
+<blockquote>
+<p>La configuracion de <strong>maildir</strong> la hemos realizado en la tarea anterior.</p>
+</blockquote>
+<h4 id="92-instalación-de-dovecot">9.2. Instalación de dovecot</h4>
+<ul>
+<li>Instalamos los paquetes pertintentes que vamos a usar para dovecot.</li>
+</ul>
+<blockquote>
+<p>No es necesario descargar <em>dovecot-pop3d</em> porque en esta práctica solo vamos a usar IMAP, pero puede ser interesante descargarlo para probar su funcionamiento.</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt install dovecot-imapd dovecot-pop3d dovecot-core
+</code></pre></div><h4 id="93-cifrado">9.3. Cifrado</h4>
+<p>Ahora vamos a crear los certificados con LET&rsquo;S ENCRYPT. Para que sean de confianza.
+Los usaremos despues para configurar SSL.</p>
+<h5 id="crear-certificados-con-lets-encrypt">Crear certificados con Let&rsquo;s Encrypt</h5>
+<ul>
+<li>Instalamos cerbot</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">nano /etc/apt/sources.list
+<span class="c1"># Agregamos:</span>
+deb http://ftp.debian.org/debian buster-backports main
+<span class="c1"># Actualizamos:</span>
+apt-get update
+<span class="c1"># Instalamos:</span>
+apt install certbot -t buster-backports
+</code></pre></div><ul>
+<li>Es importante que paremos el servicio de apache o nginx si están en funcionamiento</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@kiara:~$ sudo systemctl stop nginx
+</code></pre></div><p>Ejecutamos el proceso para crear los certificados para mail.iesgn05.es</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@kiara:~$ sudo certbot certonly --standalone -d mail.iesgn05.es
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator standalone, Installer None
+Obtaining a new certificate
+Performing the following challenges:
+http-01 challenge <span class="k">for</span> mail.iesgn05.es
+Waiting <span class="k">for</span> verification...
+Cleaning up challenges
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/mail.iesgn05.es/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/mail.iesgn05.es/privkey.pem
+   Your cert will expire on 2021-05-07. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot
+   again. To non-interactively renew *all* of your certificates, run
+   <span class="s2">&#34;certbot renew&#34;</span>
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let<span class="err">&#39;</span>s Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+</code></pre></div><h4 id="94-configuración-de-postfix-y-dovecot">9.4. Configuración de postfix y dovecot</h4>
+<ul>
+<li>Adoptaremos la siguiente configuración en postfix</li>
+</ul>
+<p><code>sudo nano /etc/postfix/main.cf</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># See /usr/share/postfix/main.cf.dist for a commented, more complete version</span>
+<span class="c1"># Debian specific:  Specifying a file name will cause the first</span>
+<span class="c1"># line of that file to be used as the name.  The Debian default</span>
+<span class="c1"># is /etc/mailname.</span>
+<span class="c1">#myorigin = /etc/mailname</span>
+
+<span class="nv">smtpd_banner</span> <span class="o">=</span> <span class="nv">$myhostname</span> ESMTP <span class="nv">$mail_name</span> <span class="o">(</span>Debian/GNU<span class="o">)</span>
+<span class="nv">biff</span> <span class="o">=</span> no
+
+<span class="c1"># appending .domain is the MUA&#39;s job.</span>
+<span class="nv">append_dot_mydomain</span> <span class="o">=</span> no
+
+<span class="c1"># Uncomment the next line to generate &#34;delayed mail&#34; warnings</span>
+<span class="c1">#delay_warning_time = 4h</span>
+
+<span class="nv">readme_directory</span> <span class="o">=</span> no
+
+<span class="c1"># See http://www.postfix.org/COMPATIBILITY_README.html -- default to 2 on</span>
+<span class="c1"># fresh installs.</span>
+<span class="nv">compatibility_level</span> <span class="o">=</span> <span class="m">2</span>
+
+<span class="c1"># TLS parameters</span>
+<span class="nv">smtpd_tls_cert_file</span><span class="o">=</span>/etc/ssl/certs/ssl-cert-snakeoil.pem
+<span class="nv">smtpd_tls_key_file</span><span class="o">=</span>/etc/ssl/private/ssl-cert-snakeoil.key
+<span class="nv">smtpd_use_tls</span><span class="o">=</span>yes
+<span class="nv">smtpd_tls_session_cache_database</span> <span class="o">=</span> btree:<span class="si">${</span><span class="nv">data_directory</span><span class="si">}</span>/smtpd_scache
+<span class="nv">smtp_tls_session_cache_database</span> <span class="o">=</span> btree:<span class="si">${</span><span class="nv">data_directory</span><span class="si">}</span>/smtp_scache
+
+<span class="c1"># See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for</span>
+<span class="c1"># information on enabling SSL in the smtp client.</span>
+
+<span class="nv">smtpd_relay_restrictions</span> <span class="o">=</span> permit_mynetworks permit_sasl_authenticated defer_unauth_destination
+<span class="nv">myhostname</span> <span class="o">=</span> kiara.iesgn05.es
+<span class="nv">alias_maps</span> <span class="o">=</span> hash:/etc/aliases
+<span class="nv">alias_database</span> <span class="o">=</span> hash:/etc/aliases
+<span class="nv">myorigin</span> <span class="o">=</span> /etc/mailname
+<span class="nv">mydestination</span> <span class="o">=</span> <span class="nv">$myhostname</span>, iesgn05.es, kiara.iesgn05.es, localhost.iesgn05.es, localhost
+<span class="nv">relayhost</span> <span class="o">=</span>
+<span class="nv">mynetworks</span> <span class="o">=</span> 127.0.0.0/8 <span class="o">[</span>::ffff:127.0.0.0<span class="o">]</span>/104 <span class="o">[</span>::1<span class="o">]</span>/128
+<span class="nv">mailbox_size_limit</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">recipient_delimiter</span> <span class="o">=</span> +
+<span class="nv">inet_interfaces</span> <span class="o">=</span> all
+<span class="nv">inet_protocols</span> <span class="o">=</span> all
+
+<span class="c1"># Con esta línea alojaremos los correos en /Maildir/</span>
+<span class="nv">home_mailbox</span> <span class="o">=</span> Maildir/
+
+<span class="c1"># SMTP-Auth settings</span>
+<span class="c1"># Esta es la configuración adoptada para dovecot</span>
+<span class="nv">smtpd_sasl_type</span> <span class="o">=</span> dovecot
+<span class="nv">smtpd_sasl_path</span> <span class="o">=</span> private/auth
+<span class="nv">smtpd_sasl_auth_enable</span> <span class="o">=</span> yes
+<span class="nv">smtpd_sasl_security_options</span> <span class="o">=</span> noanonymous
+<span class="nv">smtpd_sasl_local_domain</span> <span class="o">=</span> <span class="nv">$myhostname</span>
+<span class="nv">smtpd_recipient_restrictions</span> <span class="o">=</span> permit_mynetworks,permit_auth_destination,permit_sasl_authenticated,reject
+</code></pre></div><ul>
+<li>Editamos el fichero de configuración de los permisos de acceso para postfix</li>
+</ul>
+<p><code>nano /etc/dovecot/conf.d/10-auth.conf</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Disable LOGIN command and all other plaintext authentications unless</span>
+<span class="c1"># SSL/TLS is used (LOGINDISABLED capability). Note that if the remote IP</span>
+<span class="c1"># matches the local IP (ie. you&#39;re connecting from the same computer), the</span>
+<span class="c1"># connection is considered secure and plaintext authentication is allowed.</span>
+<span class="c1"># See also ssl=required setting.</span>
+<span class="nv">disable_plaintext_auth</span> <span class="o">=</span> no
+
+. . .
+
+<span class="c1"># En este fichero nos aseguramos que se encuentra esta configuracion</span>
+<span class="nv">auth_mechanisms</span> <span class="o">=</span> plain
+</code></pre></div><p><strong>¡¡ATENCIÓN!!</strong></p>
+<p>En la primera linea si la descomentamos e indicamos un &lsquo;no&rsquo; , tenemos que ser conscientes de que la seguridad de nuestro servidor está en juego. Se recomienda dejarlo en &lsquo;yes&rsquo; para que los usuarios se autentifiquen sólo a través de conexiones seguras con SSL/TLS. <strong>Utilizar IMAP sin SSL/TLS se considera imprudente.</strong>
+En este caso le indicaremos que no, ya que, tendremos la configuracion tipo SSL como &lsquo;yes&rsquo;.</p>
+<ul>
+<li>Cambiamos la configuracion del siguiente fichero de la siguiente manera, estamos modificando la ruta de donde se guardan los correos al directorio personal en la raiz donde se encuentra Maildir.</li>
+</ul>
+<p><code>sudo nano /etc/dovecot/conf.d/10-mail.conf</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#mail_location = mbox:~/mail:INBOX=/var/mail/%u</span>
+<span class="nv">mail_location</span> <span class="o">=</span> maildir:~/Maildir
+
+. . .
+
+<span class="c1"># Group to enable temporarily for privileged operations. Currently this is</span>
+<span class="c1"># used only with INBOX when either its initial creation or dotlocking fails.</span>
+<span class="c1"># Typically this is set to &#34;mail&#34; to give access to /var/mail.</span>
+<span class="nv">mail_privileged_group</span> <span class="o">=</span> mail
+<span class="nv">mail_access_groups</span> <span class="o">=</span> mail
+
+</code></pre></div><ul>
+<li>
+<p>Tendremos que crear también un CNAME en la zona dns que apunte a imap, y asegurarnos que el puerto 143 y el 993 estén abiertos.</p>
+</li>
+<li>
+<p>Miramos si los puertos están abiertos</p>
+</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@kiara:~$ sudo netstat -putona <span class="p">|</span> grep <span class="s1">&#39;143&#39;</span>
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:143             0.0.0.0:*               LISTEN      313/dovecot          off <span class="o">(</span>0.00/0/0<span class="o">)</span>
+tcp6       <span class="m">0</span>      <span class="m">0</span> :::143                  :::*                    LISTEN      313/dovecot          off <span class="o">(</span>0.00/0/0<span class="o">)</span>
+
+
+debian@kiara:~$ sudo netstat -putona <span class="p">|</span> grep <span class="s1">&#39;993&#39;</span>
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:993             0.0.0.0:*               LISTEN      1096/dovecot         off <span class="o">(</span>0.00/0/0<span class="o">)</span>
+tcp6       <span class="m">0</span>      <span class="m">0</span> :::993                  :::*                    LISTEN      1096/dovecot         off <span class="o">(</span>0.00/0/0<span class="o">)</span>
+
+</code></pre></div><ul>
+<li>Creamos el CNAME en la zona DNS</li>
+</ul>
+<p><img src="/images/ovh_correo/imap.png" alt="imap.png"></p>
+<ul>
+<li>Habilitamos la opción &lsquo;protocols&rsquo; estableciendo como valor imap</li>
+</ul>
+<p><code>sudo nano /etc/dovecot/dovecot.conf</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Añadir la siguiente linea</span>
+<span class="nv">protocols</span> <span class="o">=</span> imap
+<span class="c1"># Buscar y descomentar la siguiete línea</span>
+<span class="nv">listen</span> <span class="o">=</span> *, ::
+</code></pre></div><ul>
+<li>Comprobamos que está habilitada la configuación para ssl, pero en este caso hemos reemplazado los antiguos certificados por los que hemos creado con <strong>letsencrypt</strong>. Estos certificados los hemos copiado al directorio <strong>/ect/dovecot/private</strong></li>
+</ul>
+<p><code>sudo nano /etc/dovecot/conf.d/10-ssl.conf</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">## SSL settings</span>
+
+<span class="c1"># SSL/TLS support: yes, no, required. &lt;doc/wiki/SSL.txt&gt;</span>
+<span class="nv">ssl</span> <span class="o">=</span> yes
+
+<span class="c1"># PEM encoded X.509 SSL/TLS certificate and private key. They&#39;re opened before</span>
+<span class="c1"># dropping root privileges, so keep the key file unreadable by anyone but</span>
+<span class="c1"># root. Included doc/mkcert.sh can be used to easily generate self-signed</span>
+<span class="c1"># certificate, just make sure to update the domains in dovecot-openssl.cnf</span>
+
+<span class="c1">#ssl_cert = &lt;/etc/dovecot/private/dovecot.pem</span>
+<span class="c1">#ssl_key = &lt;/etc/dovecot/private/dovecot.key</span>
+
+<span class="nv">ssl_cert</span> <span class="o">=</span> &lt;/etc/dovecot/private/fullchain.pem
+<span class="nv">ssl_key</span> <span class="o">=</span> &lt;/etc/dovecot/private/privkey.pem
+
+</code></pre></div><ul>
+<li>Comprobamos nuestra configuracion de <strong>postfix</strong></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@kiara:~$ sudo postconf -n
+<span class="nv">alias_database</span> <span class="o">=</span> hash:/etc/aliases
+<span class="nv">alias_maps</span> <span class="o">=</span> hash:/etc/aliases
+<span class="nv">append_dot_mydomain</span> <span class="o">=</span> no
+<span class="nv">biff</span> <span class="o">=</span> no
+<span class="nv">compatibility_level</span> <span class="o">=</span> <span class="m">2</span>
+<span class="nv">home_mailbox</span> <span class="o">=</span> Maildir/
+<span class="nv">inet_interfaces</span> <span class="o">=</span> all
+<span class="nv">inet_protocols</span> <span class="o">=</span> all
+<span class="nv">mailbox_size_limit</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">mydestination</span> <span class="o">=</span> <span class="nv">$myhostname</span>, iesgn05.es, kiara.iesgn05.es, localhost.iesgn05.es, localhost
+<span class="nv">myhostname</span> <span class="o">=</span> kiara.iesgn05.es
+<span class="nv">mynetworks</span> <span class="o">=</span> 127.0.0.0/8 <span class="o">[</span>::ffff:127.0.0.0<span class="o">]</span>/104 <span class="o">[</span>::1<span class="o">]</span>/128
+<span class="nv">myorigin</span> <span class="o">=</span> /etc/mailname
+<span class="nv">readme_directory</span> <span class="o">=</span> no
+<span class="nv">recipient_delimiter</span> <span class="o">=</span> +
+<span class="nv">relayhost</span> <span class="o">=</span>
+<span class="nv">smtp_tls_session_cache_database</span> <span class="o">=</span> btree:<span class="si">${</span><span class="nv">data_directory</span><span class="si">}</span>/smtp_scache
+<span class="nv">smtpd_banner</span> <span class="o">=</span> <span class="nv">$myhostname</span> ESMTP <span class="nv">$mail_name</span> <span class="o">(</span>Debian/GNU<span class="o">)</span>
+<span class="nv">smtpd_recipient_restrictions</span> <span class="o">=</span> permit_mynetworks,permit_auth_destination,permit_sasl_authenticated,reject
+<span class="nv">smtpd_relay_restrictions</span> <span class="o">=</span> permit_mynetworks permit_sasl_authenticated defer_unauth_destination
+<span class="nv">smtpd_sasl_auth_enable</span> <span class="o">=</span> yes
+<span class="nv">smtpd_sasl_local_domain</span> <span class="o">=</span> <span class="nv">$myhostname</span>
+<span class="nv">smtpd_sasl_path</span> <span class="o">=</span> private/auth
+<span class="nv">smtpd_sasl_security_options</span> <span class="o">=</span> noanonymous
+<span class="nv">smtpd_sasl_type</span> <span class="o">=</span> dovecot
+<span class="nv">smtpd_tls_cert_file</span> <span class="o">=</span> /etc/ssl/certs/ssl-cert-snakeoil.pem
+<span class="nv">smtpd_tls_key_file</span> <span class="o">=</span> /etc/ssl/private/ssl-cert-snakeoil.key
+<span class="nv">smtpd_tls_session_cache_database</span> <span class="o">=</span> btree:<span class="si">${</span><span class="nv">data_directory</span><span class="si">}</span>/smtpd_scache
+</code></pre></div><ul>
+<li>Reiniciamos los servicios</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo systemctl restart postfix
+sudo systemctl restart dovecot
+</code></pre></div><ul>
+<li>Comprobamos los puertos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@kiara:~$ sudo netstat -tlpn
+Active Internet connections <span class="o">(</span>only servers<span class="o">)</span>
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:993             0.0.0.0:*               LISTEN      20901/dovecot
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:3306            0.0.0.0:*               LISTEN      658/mysqld
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:143             0.0.0.0:*               LISTEN      20901/dovecot
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:22              0.0.0.0:*               LISTEN      568/sshd
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:25              0.0.0.0:*               LISTEN      20572/master
+tcp6       <span class="m">0</span>      <span class="m">0</span> :::993                  :::*                    LISTEN      20901/dovecot
+tcp6       <span class="m">0</span>      <span class="m">0</span> :::143                  :::*                    LISTEN      20901/dovecot
+tcp6       <span class="m">0</span>      <span class="m">0</span> :::22                   :::*                    LISTEN      568/sshd
+tcp6       <span class="m">0</span>      <span class="m">0</span> :::25                   :::*                    LISTEN      20572/master
+</code></pre></div><h4 id="95-cuenta-de-correo-en-evolution">9.5. Cuenta de correo en Evolution</h4>
+<ul>
+<li>Ahora vamos a ir a Evolution desde nuestra máquina anfitriona. Y seguiremos los siguientes pasos:</li>
+</ul>
+<blockquote>
+<p>Archivo &gt; Nuevo &gt; Cuenta de correo</p>
+</blockquote>
+<p>Indicamos la dirección de correo que en este caso es <strong><a href="mailto:debian@iesgn05.es">debian@iesgn05.es</a></strong> y el nombre que le vayamos a poner a la cuenta para identificarla.</p>
+<p><img src="/images/ovh_correo/f1.png" alt="f1.png"></p>
+<p>Una vez verificada la direccion del servidor nos mostrará el protocolo que ofrece, en este caso solo estamos ofreciendo IMAP por lo que se nos pondrá por defecto.</p>
+<p>Añadiremos el servidor donde ofrecemos imap, en este caso es <strong>imap.iesgn05.es</strong> que es el CNAME que agregamos previamente a nuestro DNS. Indicaremos el puerto 993 ya que, es el puerto seguro por donde va cifrada la conexión, con el método de cifrado TLS como habiamos configurado en los ficheros anteriormente.</p>
+<p>La autentificación será por contraseña, en este caso es la contraseña de nuestro usuario debian.</p>
+<p><img src="/images/ovh_correo/f2.png" alt="f2.png"></p>
+<p>Dejaremos por defecto las opciones de recepción</p>
+<p><img src="/images/ovh_correo/f3.png" alt="f3.png"></p>
+<p>En este apartado veremos que se usará SMTP para la conexión al servidor. Indicaremos  en este caso es <strong>smtp.iesgn05.es</strong> y el puerto 465. (Esto aún no funcionará porque no hemos habilitado el SMPTPS)</p>
+<p><img src="/images/ovh_correo/SMTP.png" alt="SMTP.png"></p>
+<p>Aquí nos mostrará un resumen de nuestra configuración</p>
+<p><img src="/images/ovh_correo/ev5.png" alt="ev5.png"></p>
+<p>Si previamente en la configuración no hemos cambiado los certificados nos pasará lo siguiente:</p>
+<hr>
+<p>Le daremos a Siguiente y nos preguntará por el certificado que hemos proporcionado, como no esta firmado por una autoridad certificadora conocida nos preguntará si queremos aceptarla. En este caso como sabemos que es nuestra le damos a Aceptar permanentemente.</p>
+<p><img src="/images/ovh_correo/confianza.png" alt="confianza.png"></p>
+<hr>
+<p>Pero en este caso no nos lo ha preguntado porque confía en nuestro certificado expedido por Let&rsquo;s Encrypt.</p>
+<p>Ahora podemos comprobar que se ha sincronizado por el protocolo IMAP nuestra cuenta de correo en Evolution, en la siguiente imagen podemos ver todos los correos de prueba que hemos recibido y se encuentran en la bandeja de entrada:</p>
+<p><img src="/images/ovh_correo/finalconcertificado.png" alt="finalconcertificado.png"></p>
+<h3 id="prueba-de-funcionamiento">Prueba de funcionamiento</h3>
+<p>Vamos a enviar un correo desde Gmail a <a href="mailto:debian@iesgn05.es">debian@iesgn05.es</a> y comprobamos que llega a la bandeja de entrada:</p>
+<p><img src="/images/ovh_correo/prueba1.png" alt="prueba1.png"></p>
+<p><img src="/images/ovh_correo/prueba2.png" alt="prueba2.png"></p>
+<p>Podemos ver el log de la prueba que hemos realizado</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@kiara:~$ sudo tail -f  /var/log/mail.log
+Feb  <span class="m">9</span> 20:10:34 kiara dovecot: imap-login: Login: <span class="nv">user</span><span class="o">=</span>&lt;debian&gt;, <span class="nv">method</span><span class="o">=</span>PLAIN, <span class="nv">rip</span><span class="o">=</span>46.234.128.74, <span class="nv">lip</span><span class="o">=</span>146.59.196.84, <span class="nv">mpid</span><span class="o">=</span>22103, TLS, <span class="nv">session</span><span class="o">=</span>&lt;ieAV4ey6Phgu6oBK&gt;
+Feb  <span class="m">9</span> 20:10:36 kiara postfix/smtpd<span class="o">[</span>22106<span class="o">]</span>: warning: database /etc/aliases.db is older than <span class="nb">source</span> file /etc/aliases
+Feb  <span class="m">9</span> 20:10:36 kiara postfix/smtpd<span class="o">[</span>22106<span class="o">]</span>: connect from mail-oo1-f41.google.com<span class="o">[</span>209.85.161.41<span class="o">]</span>
+Feb  <span class="m">9</span> 20:10:36 kiara postfix/smtpd<span class="o">[</span>22106<span class="o">]</span>: DFE3E620CB: <span class="nv">client</span><span class="o">=</span>mail-oo1-f41.google.com<span class="o">[</span>209.85.161.41<span class="o">]</span>
+Feb  <span class="m">9</span> 20:10:36 kiara postfix/cleanup<span class="o">[</span>22115<span class="o">]</span>: DFE3E620CB: message-id<span class="o">=</span>&lt;CA+p9fxpwk2ggF9rrYUC77m6Dm1cViAuqz7vz5+W8hAAV<span class="o">==</span>KQWw@mail.gmail.com&gt;
+Feb  <span class="m">9</span> 20:10:36 kiara postfix/qmgr<span class="o">[</span>20575<span class="o">]</span>: DFE3E620CB: <span class="nv">from</span><span class="o">=</span>&lt;cgarmai95@gmail.com&gt;, <span class="nv">size</span><span class="o">=</span>2927, <span class="nv">nrcpt</span><span class="o">=</span><span class="m">1</span> <span class="o">(</span>queue active<span class="o">)</span>
+Feb  <span class="m">9</span> 20:10:36 kiara postfix/local<span class="o">[</span>22116<span class="o">]</span>: warning: database /etc/aliases.db is older than <span class="nb">source</span> file /etc/aliases
+Feb  <span class="m">9</span> 20:10:36 kiara postfix/local<span class="o">[</span>22116<span class="o">]</span>: DFE3E620CB: <span class="nv">to</span><span class="o">=</span>&lt;debian@iesgn05.es&gt;, <span class="nv">relay</span><span class="o">=</span>local, <span class="nv">delay</span><span class="o">=</span>0.02, <span class="nv">delays</span><span class="o">=</span>0.01/0.01/0/0, <span class="nv">dsn</span><span class="o">=</span>2.0.0, <span class="nv">status</span><span class="o">=</span>sent <span class="o">(</span>delivered to maildir<span class="o">)</span>
+Feb  <span class="m">9</span> 20:10:36 kiara postfix/qmgr<span class="o">[</span>20575<span class="o">]</span>: DFE3E620CB: removed
+Feb  <span class="m">9</span> 20:10:37 kiara postfix/smtpd<span class="o">[</span>22106<span class="o">]</span>: disconnect from mail-oo1-f41.google.com<span class="o">[</span>209.85.161.41<span class="o">]</span> <span class="nv">ehlo</span><span class="o">=</span><span class="m">2</span> <span class="nv">starttls</span><span class="o">=</span><span class="m">1</span> <span class="nv">mail</span><span class="o">=</span><span class="m">1</span> <span class="nv">rcpt</span><span class="o">=</span><span class="m">1</span> <span class="nv">bdat</span><span class="o">=</span><span class="m">1</span> <span class="nv">quit</span><span class="o">=</span><span class="m">1</span> <span class="nv">commands</span><span class="o">=</span><span class="m">7</span>
+
+
+</code></pre></div><h3 id="tarea-11-mandar-correos-desde-un-cliente-remoto">Tarea 11: Mandar correos desde un cliente remoto.</h3>
+<p><strong>Descripción:</strong></p>
+<p>Configura de manera adecuada postfix para que podamos mandar un correo desde un cliente remoto. La conexión entre cliente y servidor debe estar autentificada con SASL usando dovecor y además debe estar cifrada. Para cifrar esta comunicación puedes usar dos opciones:</p>
+<ul>
+<li>ESMTP + STARTTLS: Usando el puerto 567/tcp enviamos de forma segura el correo al servidor.</li>
+<li>SMTPS: Utiliza un puerto no estándar (465) para SMTPS (Simple Mail Transfer Protocol Secure). No es una extensión de smtp. Es muy parecido a HTTPS.</li>
+</ul>
+<p>Elige una de las opciones anterior para realizar el cifrado. Y muestra la configuración de un cliente de correo (evolution, thunderbird, …) y muestra como puedes enviar los correos.</p>
+<h4 id="111-smtps-configuración">11.1. SMTPS. Configuración</h4>
+<p>Previamente hemos agregado un CNAME indicando smtp.iesgn05.es para kiara.iesgn05.es en la zona DNS.</p>
+<p>Ahora vamos a intentar mandar un correo desde el servidor a gmail.</p>
+<p>Creamos el certificado con LetsEncrypt para smtp, previamente hemos creado un CNAME con SMTP para kiara.iesgn05.es</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo certbot certonly --standalone -d smtp.iesgn05.es
+</code></pre></div><ul>
+<li>Para usar SMTPS hay que descomentar las siguientes lineas</li>
+</ul>
+<p><code>sudo nano /etc/postfix/master.cf</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">smtp      inet  n       -       y       -       -       smtpd
+smtps     inet  n       -       y       -       -       smtpd
+  -o <span class="nv">syslog_name</span><span class="o">=</span>postfix/smtps
+  -o <span class="nv">smtpd_tls_wrappermode</span><span class="o">=</span>yes
+  -o <span class="nv">smtpd_sasl_auth_enable</span><span class="o">=</span>yes
+  -o <span class="nv">smtpd_client_restrictions</span><span class="o">=</span><span class="nv">$mua_client_restrictions</span>
+  -o <span class="nv">milter_macro_daemon_name</span><span class="o">=</span>ORIGINATING
+</code></pre></div><ul>
+<li>Editamos el fichero de configuracion de postfix, cambiamos la configuracion indicando los nuevos certificados. Añadiremos la siguiente configuración de forma que activamos TLS para que nuestros correos sean seguros y reconozcan los certificados.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@kiara:~$ sudo nano /etc/postfix/main.cf
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">...
+<span class="c1"># TLS parameters</span>
+
+<span class="nv">smtpd_use_tls</span><span class="o">=</span>yes
+<span class="nv">smtpd_tls_key_file</span> <span class="o">=</span> /etc/letsencrypt/live/smtp.iesgn05.es/privkey.pem
+<span class="nv">smtpd_tls_cert_file</span> <span class="o">=</span> /etc/letsencrypt/live/smtp.iesgn05.es/fullchain.pem
+<span class="nv">smtpd_tls_session_cache_database</span> <span class="o">=</span> btree:<span class="si">${</span><span class="nv">data_directory</span><span class="si">}</span>/smtpd_scache
+<span class="nv">smtp_tls_session_cache_database</span> <span class="o">=</span> btree:<span class="si">${</span><span class="nv">data_directory</span><span class="si">}</span>/smtp_scache
+
+<span class="nv">smtp_tls_security_level</span> <span class="o">=</span> may
+<span class="nv">smtpd_tls_security_level</span> <span class="o">=</span> may
+<span class="nv">smtp_tls_note_starttls_offer</span> <span class="o">=</span> yes
+<span class="nv">smtpd_tls_loglevel</span> <span class="o">=</span> <span class="m">1</span>
+<span class="nv">smtpd_tls_received_header</span> <span class="o">=</span> yes
+...
+</code></pre></div><ul>
+<li>Reiniciamos los servicios</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@kiara:~$ sudo systemctl restart postfix
+debian@kiara:~$ sudo systemctl restart dovecot
+</code></pre></div><ul>
+<li>Comprobamos los puertos. Vemos que se ha abierto el puerto 465 de SMTPS</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">debian@kiara:~/Maildir/new$ sudo netstat -tlnp
+Active Internet connections <span class="o">(</span>only servers<span class="o">)</span>
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:993             0.0.0.0:*               LISTEN      32704/dovecot       
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:3306            0.0.0.0:*               LISTEN      658/mysqld          
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:143             0.0.0.0:*               LISTEN      32704/dovecot       
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:465             0.0.0.0:*               LISTEN      1157/master         
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:22              0.0.0.0:*               LISTEN      568/sshd            
+tcp        <span class="m">0</span>      <span class="m">0</span> 0.0.0.0:25              0.0.0.0:*               LISTEN      1157/master         
+tcp6       <span class="m">0</span>      <span class="m">0</span> :::993                  :::*                    LISTEN      32704/dovecot       
+tcp6       <span class="m">0</span>      <span class="m">0</span> :::143                  :::*                    LISTEN      32704/dovecot       
+tcp6       <span class="m">0</span>      <span class="m">0</span> :::465                  :::*                    LISTEN      1157/master         
+tcp6       <span class="m">0</span>      <span class="m">0</span> :::22                   :::*                    LISTEN      568/sshd            
+tcp6       <span class="m">0</span>      <span class="m">0</span> :::25                   :::*                    LISTEN      1157/master      
+</code></pre></div><h4 id="funcionamiento">Funcionamiento</h4>
+<ul>
+<li>En Evolution cambiamos la configuracion de smtp de la siguiente forma</li>
+</ul>
+<p><img src="/images/ovh_correo/SMTP.png" alt="SMTP.png"></p>
+<ul>
+<li>Probamos enviar algun correo al nuestro personal</li>
+</ul>
+<p><img src="/images/ovh_correo/pruebae.png" alt="pruebae.png"></p>
+<ul>
+<li>Vemos que lo hemos recibido en gmail correctamente y conoce el certificado ya que está expedido por la autoridad de LetsEncrypt</li>
+</ul>
+<p><img src="/images/ovh_correo/recibido.png" alt="recibido.png"></p>
+<p><img src="/images/ovh_correo/recibido2.jpeg" alt="recibido2.jpeg"></p>
+<ul>
+<li>Lo contestamos y comprobamos que recibe y envía correctamente correos</li>
+</ul>
+<p><img src="/images/ovh_correo/recibidook.png" alt="recibidook.png"></p>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/servidor-de-correos/">servidor de correos</a><a class="tag" href="/tags/dovecot/">dovecot</a><a class="tag" href="/tags/imap/">IMAP</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

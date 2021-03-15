@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Servidor Nginx </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/nginx/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Servidor Nginx"/>
+<meta name="twitter:description" content="Servidor Web Nginxx NGINX es un servidor web open source de alta performance que ofrece el contenido estático de un sitio web de forma rápida y fácil de configurar."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Servidor Nginx</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Wed, Nov 11, 2020 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">12-minute read</span>
+                    </div>
+                
+            </div>
+
+            <h1 id="servidor-web-nginxx">Servidor Web Nginxx</h1>
+<p><img src="/images/nginx/image.jpg" alt="image.jpg"></p>
+<p><strong>NGINX</strong> es un servidor web open source de alta performance que ofrece el contenido estático de un sitio web de forma rápida y fácil de configurar. Ofrece recursos de equilibrio de carga, proxy inverso y streaming, además de gestionar miles de conexiones simultáneas. El resultado de sus aportes es una mayor velocidad y escalabilidad.</p>
+<p>Además de otras tareas, los servidores web son los encargados de la entrega de aplicaciones web, respondiendo a peticiones HTTPS realizadas por usuarios, normalmente desde un navegador web.</p>
+<p>El funcionamiento base de Nginx es similar al de otros servidores web, en el que un usuario realiza una petición a través del navegador al servidor, y este le envía la información solicitada al navegador.</p>
+<p>Lo que hace diferente a Nginx es su arquitectura a la hora de manejar procesos, ya que otros servidores web como Apache crean un hilo por cada solicitud.</p>
+<p>-&gt; <a href="https://rockcontent.com/es/blog/nginx/">Más informacion</a></p>
+<h2 id="instalación-de-nginx">Instalación de Nginx</h2>
+<ul>
+<li>Para instalar Nginx vamos a usar el repositorio de Debian, así que lo primero será actualizar la información de paquetes.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo su
+apt update
+apt upgrade
+</code></pre></div><ul>
+<li>Instalamos el paquete nginx</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apt install nginx
+</code></pre></div><ul>
+<li>Modificar el html y visualizar el sitio</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@servidor-nginx:/var/www/html# nano index.html 
+</code></pre></div><p><img src="/images/nginx/pruebahtml.png" alt="pruebahtml.png"></p>
+<p><a href="https://github.com/CeliaGMqrz/servidor_Nginx/blob/main/t2_virtualhosting.md">Tarea 2: Crear virtualhosting</a></p>
+<h2 id="virtual-hosting">Virtual Hosting</h2>
+<p>Tarea 2 (2 punto)(Obligatorio): Configura la resolución estática en los clientes y muestra el acceso a cada una de las páginas.</p>
+<hr>
+<p>Queremos que nuestro servidor web ofrezca dos sitios web, teniendo en cuenta lo siguiente:</p>
+<ol>
+<li>
+<p>Cada sitio web tendrá nombres distintos.</p>
+</li>
+<li>
+<p>Cada sitio web compartirán la misma dirección IP y el mismo puerto (80).</p>
+</li>
+</ol>
+<p>Los dos sitios web tendrán las siguientes características:</p>
+<ul>
+<li>
+<p>El nombre de dominio del primero será <strong><a href="http://www.iesgn.org">www.iesgn.org</a></strong>, su directorio base será <strong>/srv/www/iesgn</strong> y contendrá una página llamada index.html, donde sólo se verá una bienvenida a la página del Instituto Gonzalo Nazareno.</p>
+</li>
+<li>
+<p>En el segundo sitio vamos a crear una página donde se pondrán noticias por parte de los departamento, el nombre de este sitio será <strong>departamentos.iesgn.org</strong>, y su directorio base será <strong>/srv/www/departamentos</strong>. En este sitio sólo tendremos una página inicial index.html, dando la bienvenida a la página de los departamentos del instituto.</p>
+</li>
+</ul>
+<hr>
+<h2 id="crear-los-virtual-hosting">Crear los virtual hosting</h2>
+<p>Crear el virtualhosting <strong>iesgn</strong> y el de <strong>departamentos</strong>. Para ello copiamos el archivo <em>default</em> que se encuentra en el fichero <em>/etc/nginx/sites-available</em> y le ponemos el nombre de cada virtualhost.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@servidor-nginx:/etc/nginx/sites-available# cp default iesgn
+root@servidor-nginx:/etc/nginx/sites-available# ls
+default  iesgn
+root@servidor-nginx:/etc/nginx/sites-available# cp default departamentos
+root@servidor-nginx:/etc/nginx/sites-available# ls
+default  departamentos	iesgn
+
+</code></pre></div><p>Deberemos de modificar los ficheros de forma que, eliminamos el &lsquo;default_server&rsquo; para que no haya conflictos con el fichero &lsquo;default&rsquo; que viene por defecto. Cambiamos la ruta de directorios indicando /srv/www/directorio. Cambiamos el &lsquo;server_name&rsquo; indicando el nombre con el que vamos a acceder a nuestro sitio web.</p>
+<h2 id="iesgn"><strong>IESGN</strong></h2>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">nano /etc/nginx/sites-available/iesgn 
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Default server configuration</span>
+<span class="c1">#</span>
+server <span class="o">{</span>
+        listen 80<span class="p">;</span>
+
+        root /srv/www/iesgn<span class="p">;</span>
+
+        <span class="c1"># Add index.php to the list if you are using PHP</span>
+        index index.html index.htm index.nginx-debian.html<span class="p">;</span>
+
+        server_name www.iesgn.org<span class="p">;</span>
+
+        location / <span class="o">{</span>
+                <span class="c1"># First attempt to serve request as file, then</span>
+                <span class="c1"># as directory, then fall back to displaying a 404.</span>
+                try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ <span class="o">=</span>404<span class="p">;</span>
+        <span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div><h2 id="departamentos"><strong>DEPARTAMENTOS</strong></h2>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">nano /etc/nginx/sites-available/departamentos 
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Default server configuration</span>
+
+server <span class="o">{</span>
+        listen 80<span class="p">;</span>
+
+        root /srv/www/departamentos<span class="p">;</span>
+
+        <span class="c1"># Add index.php to the list if you are using PHP</span>
+        index index.html index.htm index.nginx-debian.html<span class="p">;</span>
+
+        server_name departamentos.iesgn.org<span class="p">;</span>
+
+        location / <span class="o">{</span>
+                <span class="c1"># First attempt to serve request as file, then</span>
+                <span class="c1"># as directory, then fall back to displaying a 404.</span>
+                try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ <span class="o">=</span>404<span class="p">;</span>
+        <span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div><p>Creamos los enlaces simbólicos para la carpeta &lsquo;sites-enabled&rsquo; y así activar nuestros virtualhosting, en apache utilizabamos una herramienta pero aquí hay que hacerlo manual.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">ln -s /etc/nginx/sites-available/iesgn /etc/nginx/sites-enabled/iesgn
+ln -s /etc/nginx/sites-available/departamentos /etc/nginx/sites-enabled/departamentos
+
+</code></pre></div><p>Comprobamos que está bien configurado con <strong>nginx -t</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@servidor-nginx:/etc/nginx/sites-available# nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf <span class="nb">test</span> is successful
+
+</code></pre></div><p>Crear los <strong>directorios</strong> correspondientes, no es necesario dar permisos ya que con Nginx usa los permisos de superusuario &lsquo;root&rsquo;. Hemos creado la siguiente estructura tal y como se pide en el ejercicio:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@servidor-nginx:/srv# tree
+.
+└── www
+    ├── departamentos
+    │   └── index.html
+    └── iesgn
+        └── index.html
+
+<span class="m">3</span> directories, <span class="m">2</span> files
+
+
+</code></pre></div><h4 id="configurar-el-cliente-máquina-anfitriona">Configurar el cliente (máquina anfitriona)</h4>
+<p>Configuramos nuestro fichero /etc/hosts añadiendo estas líneas</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">172.22.200.152 www.iesgn.org
+172.22.200.152 departamentos.iesgn.org
+
+</code></pre></div><p>Reiniciamos el servicio</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">systemctl restart nginx
+</code></pre></div><p>Comprobamos que podemos acceder a ellas</p>
+<p><strong><a href="http://www.iesgn.org">www.iesgn.org</a></strong></p>
+<p><img src="/images/nginx/iesgn.png" alt="iesgn.png"></p>
+<p><strong>departamentos.iesgn.org</strong></p>
+<p><img src="/images/nginx/departamentos.png" alt="departamentos.png"></p>
+<h1 id="mapeo-de-url">Mapeo de URL</h1>
+<p>Cambia la configuración del sitio web <a href="http://www.iesgn.org">www.iesgn.org</a> para que se comporte de la siguiente forma:</p>
+<ul>
+<li><strong>Tarea 3 (1 punto)(Obligatorio): Cuando se entre a la dirección <a href="http://www.iesgn.org">www.iesgn.org</a> se redireccionará automáticamente a <a href="http://www.iesgn.org/principal,">www.iesgn.org/principal,</a> donde se mostrará el mensaje de bienvenida. En el directorio principal no se permite ver la lista de los ficheros, no se permite que se siga los enlaces simbólicos y no se permite negociación de contenido. Muestra al profesor el funcionamiento.</strong></li>
+</ul>
+<p>Para redireccionar <em><a href="http://www.iesgn.org">www.iesgn.org</a></em> a <em><a href="http://www.iesgn.org/principal">www.iesgn.org/principal</a></em> necesitamos editar el fichero de configuracion de <em>iesgn</em></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">
+<span class="c1"># Default server configuration</span>
+<span class="c1">#</span>
+server <span class="o">{</span>
+        listen 80<span class="p">;</span>
+
+        root /srv/www/iesgn<span class="p">;</span>
+
+        <span class="c1"># Add index.php to the list if you are using PHP</span>
+        index index.html index.htm index.nginx-debian.html<span class="p">;</span>
+
+        server_name www.iesgn.org<span class="p">;</span>
+
+        <span class="nv">location</span> <span class="o">=</span> / <span class="o">{</span>
+                <span class="k">return</span> <span class="m">301</span> <span class="nv">$scheme</span>://www.iesgn.org/principal<span class="p">;</span>
+                <span class="c1"># First attempt to serve request as file, then</span>
+                <span class="c1"># as directory, then fall back to displaying a 404.</span>
+                try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ <span class="o">=</span>404<span class="p">;</span>   
+        <span class="o">}</span>
+
+        location /principal/ <span class="o">{</span>
+                <span class="c1"># No se permite ver la lista de ficheros</span>
+                autoindex off<span class="p">;</span>
+                <span class="c1"># No se permite el seguimiento de enlaces simbólicos</span>
+                disable_symlinks off<span class="p">;</span>
+                <span class="c1"># No se permite la negociación de contenido</span>
+                try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ index.html<span class="p">;</span>
+        <span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div><p>No nos olvidemos de crear el directorio <em>principal</em> y mover el <em>index.html</em> a su interior.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">mkdir /srv/www/iesgn/principal
+mv /srv/www/iesgn/index.html /srv/www/iesgn/principal/
+</code></pre></div><hr>
+<ul>
+<li><strong>Tarea 4 (1 punto)(Obligatorio): Si accedes a la página <a href="http://www.iesgn.org/principal/documentos">www.iesgn.org/principal/documentos</a> se visualizarán los documentos que hay en /srv/doc. Por lo tanto se permitirá el listado de fichero y el seguimiento de enlaces simbólicos siempre que sean a ficheros o directorios cuyo dueño sea el usuario. Muestra al profesor el funcionamiento.</strong></li>
+</ul>
+<p>Creamos los directorios <em>/srv/doc</em> y <em>/srv/www/iesgn/principal/documentos</em></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">mkdir /srv/doc
+mkdir /srv/www/iesgn/principal/documentos
+</code></pre></div><p>Dentro de <em>/srv/doc</em> creamos los ficheros de prueba y le ponemos los permisos y propietarios adecuados para cada uno, de forma que uno sea de <strong>root</strong> y el otro sea del usuario <strong>debian</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@servidor-nginx:/srv/doc# ls -l
+total <span class="m">8</span>
+-rw-r--r-- <span class="m">1</span> root   root   <span class="m">32</span> Nov <span class="m">10</span> 13:04 ficheroderoot.txt
+-rw-r--r-- <span class="m">1</span> debian debian <span class="m">38</span> Nov <span class="m">10</span> 13:07 ficherodeusuario.txt
+
+</code></pre></div><p>Creamos el enlace simbólico del contendio que hay en doc hacia la carpeta documentos</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@servidor-nginx:~# ln -svf /srv/doc /srv/www/iesgn/principal/documentos
+<span class="s1">&#39;/srv/www/iesgn/principal/documentos/doc&#39;</span> -&gt; <span class="s1">&#39;/srv/doc&#39;</span>
+
+</code></pre></div><p><strong>Fichero de configuración</strong></p>
+<p>Usamos &lsquo;<em>alias</em>&rsquo; para poder mostrar los documentos de la ruta <em>/srv/doc</em>, activamos el listado de ficheros, el seguimiento de enlaces simbólicos y le ponemos la opción <em>if_not_owner</em> para que deniegue el acceso a un archivo si no es el propietario</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Default server configuration</span>
+<span class="c1">#</span>
+server <span class="o">{</span>
+        listen 80<span class="p">;</span>
+
+        root /srv/www/iesgn<span class="p">;</span>
+
+        <span class="c1"># Add index.php to the list if you are using PHP</span>
+        index index.html index.htm index.nginx-debian.html<span class="p">;</span>
+
+        server_name www.iesgn.org<span class="p">;</span>
+
+        <span class="nv">location</span> <span class="o">=</span> / <span class="o">{</span>
+                <span class="k">return</span> <span class="m">301</span> <span class="nv">$scheme</span>://www.iesgn.org/principal<span class="p">;</span>
+                <span class="c1"># First attempt to serve request as file, then</span>
+                <span class="c1"># as directory, then fall back to displaying a 404.</span>
+                try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ <span class="o">=</span>404<span class="p">;</span>
+        <span class="o">}</span>
+
+        location /principal <span class="o">{</span>
+                <span class="c1"># No se permite ver la lista de ficheros</span>
+                autoindex off<span class="p">;</span>
+                <span class="c1"># No se permite el seguimiento de enlaces simbólicos</span>
+                disable_symlinks off<span class="p">;</span>
+                <span class="c1"># No se permite la negociación de contenido</span>
+                try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ index.html<span class="p">;</span>
+        <span class="o">}</span>
+
+        location /principal/documentos <span class="o">{</span>
+
+                <span class="c1">#alias</span>
+                <span class="nb">alias</span> /srv/doc<span class="p">;</span>
+                <span class="c1"># Permitir listado de ficheros</span>
+                autoindex on<span class="p">;</span>
+                <span class="c1"># Permitir el seguimiento de enlaces simbólicos solo al propietario</span>
+                disable_symlinks if_not_owner<span class="p">;</span>
+        <span class="o">}</span>
+
+<span class="o">}</span>
+
+
+</code></pre></div><hr>
+<p><img src="/images/nginx/documentos.png" alt="documentos.png"></p>
+<hr>
+<hr>
+<ul>
+<li><strong>Tarea 5 (1 punto): En todo el host virtual se debe redefinir los mensajes de error de objeto no encontrado y no permitido. Para el ello se crearan dos ficheros html dentro del directorio error. Entrega las modificaciones necesarias en la configuración y una comprobación del buen funcionamiento.</strong></li>
+</ul>
+<p>Creamos los dos ficheros html dentro de un directorio <em>error</em> en nuestro virtualhosting. Y modificamos el fichero de nuestro virtualhosting</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@servidor-nginx:/etc/nginx# tree /srv/www/iesgn/error/
+/srv/www/iesgn/error/
+├── 403.html
+└── 404.html
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Default server configuration</span>
+<span class="c1">#</span>
+server <span class="o">{</span>
+        listen 80<span class="p">;</span>
+
+        <span class="c1">#set $root_path /var/www/iesgn;</span>
+        <span class="c1">#root $root_path;</span>
+        root /srv/www/iesgn<span class="p">;</span>
+
+        <span class="c1"># Add index.php to the list if you are using PHP</span>
+        index index.html index.htm index.nginx-debian.html<span class="p">;</span>
+
+        server_name www.iesgn.org<span class="p">;</span>
+        error_page <span class="nv">404</span> <span class="o">=</span> /error/404.html<span class="p">;</span>
+        error_page <span class="nv">403</span> <span class="o">=</span> /error/403.html<span class="p">;</span>
+        <span class="nv">location</span> <span class="o">=</span> / <span class="o">{</span>
+                <span class="k">return</span> <span class="m">301</span> <span class="nv">$scheme</span>://www.iesgn.org/principal<span class="p">;</span>
+                <span class="c1"># First attempt to serve request as file, then</span>
+                <span class="c1"># as directory, then fall back to displaying a 404.</span>
+                <span class="c1">#try_files $uri $uri/ =404;</span>
+
+        <span class="o">}</span>
+
+        location /principal <span class="o">{</span>
+                <span class="c1"># No se permite ver la lista de ficheros</span>
+                autoindex off<span class="p">;</span>
+                <span class="c1"># No se permite el seguimiento de enlaces simbólicos</span>
+                disable_symlinks off<span class="p">;</span>
+                <span class="c1"># No se permite la negociación de contenido</span>
+                try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ index.html<span class="p">;</span>
+        <span class="o">}</span>
+
+        location /principal/documentos <span class="o">{</span>
+
+                <span class="c1">#alias</span>
+                <span class="nb">alias</span> /srv/doc<span class="p">;</span>
+                <span class="c1"># Permitir listado de ficheros</span>
+                autoindex on<span class="p">;</span>
+                <span class="c1"># Permitir el seguimiento de enlaces simbólicos solo al propietario</span>
+                disable_symlinks if_not_owner<span class="p">;</span>
+
+        <span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div><p>Reiniciamos el servicio.</p>
+<p>Provocamos un error en la url y vemos el <strong>error 404</strong>.</p>
+<p><img src="/images/nginx/404.png" alt="404.png"></p>
+<p>Cambiamos el &lsquo;autoindex on&rsquo; por &lsquo;<strong>autoindex off</strong>&rsquo; para denegar los permisos de visibilidad de ficheros y comprobamos que nos muestra la pagina de <strong>error 403</strong> que hemos creado.</p>
+<p><img src="/images/nginx/403.png" alt="403.png"></p>
+<h2 id="autentificación-autorización-y-control-de-acceso">Autentificación, Autorización y Control de Acceso</h2>
+<ul>
+<li><strong>Tarea 6 (1 punto)(Obligatorio): Añade al escenario otra máquina conectada por una red interna al servidor. A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública. A la URL departamentos.iesgn.org/internet, sin embargo, sólo se debe tener acceso desde la anfitriona por la red pública, y no desde la red local.</strong></li>
+</ul>
+<ol>
+<li>Creamos la máquina (cliente) , cuya ip flotante es: <strong>172.22.200.148</strong></li>
+</ol>
+<p><img src="/images/nginx/instancias.png" alt="instancias.png"></p>
+<ol start="3">
+<li>Creamos los directorios internet e intranet con un index.html</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">mkdir /srv/www/departamentos/intranet
+mkdir /srv/www/departamentos/internet
+cp /srv/www/iesgn/principal/index.html /srv/www/departamentos/intranet/
+cp /srv/www/iesgn/principal/index.html /srv/www/departamentos/internet/
+nano /srv/www/departamentos/internet/index.html 
+nano /srv/www/departamentos/intranet/index.html 
+</code></pre></div><ol start="2">
+<li>Configuramos el servidor en nuestro virtualhost departamentos y el <em>/etc/hosts</em> en el cliente</li>
+</ol>
+<p>En el <strong>sevidor</strong>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">nano /etc/nginx/sites-available/departamentos 
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Default server configuration</span>
+
+server <span class="o">{</span>
+        listen 80<span class="p">;</span>
+
+        root /srv/www/departamentos<span class="p">;</span>
+
+        <span class="c1"># Add index.php to the list if you are using PHP</span>
+        index index.html index.htm index.nginx-debian.html<span class="p">;</span>
+
+        server_name departamentos.iesgn.org<span class="p">;</span>
+
+        location / <span class="o">{</span>
+                <span class="c1"># First attempt to serve request as file, then</span>
+                <span class="c1"># as directory, then fall back to displaying a 404.</span>
+                try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ <span class="o">=</span>404<span class="p">;</span>
+        <span class="o">}</span>
+
+        location /intranet <span class="o">{</span>
+                allow 10.0.0.6/24<span class="p">;</span>
+                deny all<span class="p">;</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div><p>En el <strong>cliente</strong>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">nano /etc/hosts
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Your system has configured &#39;manage_etc_hosts&#39; as True.</span>
+<span class="c1"># As a result, if you wish for changes to this file to persist</span>
+<span class="c1"># then you will need to either</span>
+<span class="c1"># a.) make changes to the master file in /etc/cloud/templates/hosts.debian.tmpl</span>
+<span class="c1"># b.) change or remove the value of &#39;manage_etc_hosts&#39; in</span>
+<span class="c1">#     /etc/cloud/cloud.cfg or cloud-config from user-data</span>
+<span class="c1">#</span>
+127.0.1.1 cliente-nginx.novalocal cliente-nginx
+127.0.0.1 localhost
+
+10.0.0.5 departamentos.iesgn.org
+<span class="c1"># The following lines are desirable for IPv6 capable hosts</span>
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+</code></pre></div><ol start="3">
+<li>Comprobamos que no podemos acceder desde el exterior (con nuestra máquina física) a la <strong>intranet</strong></li>
+</ol>
+<p><img src="/images/nginx/intranet_exterior.png" alt="intranet_exterior.png"></p>
+<ol start="4">
+<li>Comrprobamos que sí podemos acceder desde la red local (máquina cliente) a la <strong>intranet</strong>.</li>
+</ol>
+<p><img src="/images/nginx/intranet_interior.png" alt="intranet_interior.png"></p>
+<ol start="5">
+<li>Configuramos el servidor y el cliente para que desde la red local no se pueda acceder a <strong>internet</strong> pero sí desde el exterior.</li>
+</ol>
+<p>Desde el <strong>servidor</strong>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Default server configuration</span>
+
+server <span class="o">{</span>
+        listen 80<span class="p">;</span>
+
+        root /srv/www/departamentos<span class="p">;</span>
+
+        <span class="c1"># Add index.php to the list if you are using PHP</span>
+        index index.html index.htm index.nginx-debian.html<span class="p">;</span>
+
+        server_name departamentos.iesgn.org<span class="p">;</span>
+
+        location / <span class="o">{</span>
+                <span class="c1"># First attempt to serve request as file, then</span>
+                <span class="c1"># as directory, then fall back to displaying a 404.</span>
+                try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ <span class="o">=</span>404<span class="p">;</span>
+        <span class="o">}</span>
+
+        location /intranet <span class="o">{</span>
+                allow 10.0.0.6/24<span class="p">;</span>
+                deny all<span class="p">;</span>
+        <span class="o">}</span>
+
+        location /internet <span class="o">{</span>
+                allow 172.23.0.0/16<span class="p">;</span>
+                deny all<span class="p">;</span>
+        <span class="o">}</span>
+
+<span class="o">}</span>
+
+
+</code></pre></div><p>Desde el <strong>cliente</strong>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Your system has configured &#39;manage_etc_hosts&#39; as True.</span>
+<span class="c1"># As a result, if you wish for changes to this file to persist</span>
+<span class="c1"># then you will need to either</span>
+<span class="c1"># a.) make changes to the master file in /etc/cloud/templates/hosts.debian.tmpl</span>
+<span class="c1"># b.) change or remove the value of &#39;manage_etc_hosts&#39; in</span>
+<span class="c1">#     /etc/cloud/cloud.cfg or cloud-config from user-data</span>
+<span class="c1">#</span>
+127.0.1.1 cliente-nginx.novalocal cliente-nginx
+127.0.0.1 localhost
+
+10.0.0.5 departamentos.iesgn.org
+<span class="c1"># The following lines are desirable for IPv6 capable hosts</span>
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+</code></pre></div><ol start="6">
+<li>Comprobamos que podemos acceder desde el exterior con la red pública a &lsquo;internet&rsquo; pero no desde el interior por la red local.</li>
+</ol>
+<ul>
+<li>Red pública:</li>
+</ul>
+<p><img src="/images/nginx/internet_publica.png" alt="internet_publica.png"></p>
+<ul>
+<li>Red local:</li>
+</ul>
+<p><img src="/images/nginx/internet_cliente.png" alt="internet_cliente.png"></p>
+<ul>
+<li><strong>Tarea 7 (1 punto): Autentificación básica. Limita el acceso a la URL departamentos.iesgn.org/secreto. Comprueba las cabeceras de los mensajes HTTP que se intercambian entre el servidor y el cliente.</strong></li>
+</ul>
+<p>Creamos el direcotorio secreto en departamentos y le añadimos un index.html</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@servidor-nginx:/home/debian# mkdir /srv/www/departamentos/secreto
+root@servidor-nginx:/home/debian# <span class="nb">cd</span> /srv/www/departamentos/
+root@servidor-nginx:/srv/www/departamentos# ls
+index.html  internet  intranet	secreto
+root@servidor-nginx:/srv/www/departamentos# cp index.html secreto/
+root@servidor-nginx:/srv/www/departamentos# <span class="nb">cd</span> secreto/
+root@servidor-nginx:/srv/www/departamentos/secreto# ls
+index.html
+root@servidor-nginx:/srv/www/departamentos/secreto# nano index.html 
+
+</code></pre></div><p>Creamos el fichero .htpasswd con el paquete <strong>apache2-utils</strong> en el directorio /srv</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">htpasswd -cb .htpasswd servidor servidor1
+</code></pre></div><p>Configuramos nuestro fichero de configuracion de &lsquo;departamentos&rsquo; y le añadimos la opción de autentificación básica. Apuntamos al fichero /srv/.htpasswd donde tenemos el usuario (servidor) y la contraseña (servidor1) que hemos configurado previamente.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Default server configuration</span>
+
+server <span class="o">{</span>
+        listen 80<span class="p">;</span>
+
+        root /srv/www/departamentos<span class="p">;</span>
+
+        <span class="c1"># Add index.php to the list if you are using PHP</span>
+        index index.html index.htm index.nginx-debian.html<span class="p">;</span>
+
+        server_name departamentos.iesgn.org<span class="p">;</span>
+
+        location / <span class="o">{</span>
+                <span class="c1"># First attempt to serve request as file, then</span>
+                <span class="c1"># as directory, then fall back to displaying a 404.</span>
+                try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ <span class="o">=</span>404<span class="p">;</span>
+        <span class="o">}</span>
+
+        location /intranet <span class="o">{</span>
+                allow 10.0.0.6/24<span class="p">;</span>
+                deny all<span class="p">;</span>
+        <span class="o">}</span>
+
+        location /internet <span class="o">{</span>
+                allow 172.23.0.0/16<span class="p">;</span>
+                deny all<span class="p">;</span>
+        <span class="o">}</span>
+
+        location /secreto <span class="o">{</span>
+                auth_basic <span class="s2">&#34;Zona de control&#34;</span><span class="p">;</span>
+                auth_basic_user_file /srv/.htpasswd<span class="p">;</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div><p>Ahora comprobamos que desde nuestra máquina física nos pide usuario y contraseña</p>
+<p><img src="/images/nginx/secreto1.png" alt="secreto1.png"></p>
+<p><img src="/images/nginx/secreto2.png" alt="secreto2.png"></p>
+<p>Vemos las cabeceras http con el comando <strong>curl</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~/github/servidor_Nginx$ curl -I departamentos.iesgn.org/secreto
+HTTP/1.1 <span class="m">401</span> Unauthorized
+Server: nginx/1.14.2
+Date: Wed, <span class="m">11</span> Nov <span class="m">2020</span> 13:24:34 GMT
+Content-Type: text/html
+Content-Length: <span class="m">195</span>
+Connection: keep-alive
+WWW-Authenticate: Basic <span class="nv">realm</span><span class="o">=</span><span class="s2">&#34;Zona de control&#34;</span>
+
+</code></pre></div><p>Vemos las cabeceras http con el comando <strong>wget</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~/github/servidor_Nginx$ wget -S departamentos.iesgn.org/secreto
+--2020-11-11 14:26:09--  http://departamentos.iesgn.org/secreto
+Resolviendo departamentos.iesgn.org <span class="o">(</span>departamentos.iesgn.org<span class="o">)</span>... 172.22.200.152
+Conectando con departamentos.iesgn.org <span class="o">(</span>departamentos.iesgn.org<span class="o">)[</span>172.22.200.152<span class="o">]</span>:80... conectado.
+Petición HTTP enviada, esperando respuesta... 
+  HTTP/1.1 <span class="m">401</span> Unauthorized
+  Server: nginx/1.14.2
+  Date: Wed, <span class="m">11</span> Nov <span class="m">2020</span> 13:26:09 GMT
+  Content-Type: text/html
+  Content-Length: <span class="m">195</span>
+  Connection: keep-alive
+  WWW-Authenticate: Basic <span class="nv">realm</span><span class="o">=</span><span class="s2">&#34;Zona de control&#34;</span>
+
+La autentificación usuario/contraseña falló.
+
+</code></pre></div><ul>
+<li><strong>Tarea 8 (2 punto): Vamos a combinar el control de acceso (tarea 6) y la autentificación (tarea 7), y vamos a configurar el virtual host para que se comporte de la siguiente manera: el acceso a la URL departamentos.iesgn.org/secreto se hace forma directa desde la intranet, desde la red pública te pide la autentificación. Muestra el resultado al profesor.</strong></li>
+</ul>
+<p>Para ello debemos modificar el fichero de configuración de departaentos en el servidor:</p>
+<p>Añadimos estas dos líneas:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">
+                satisfy any<span class="p">;</span>
+                allow 10.0.0.0/24<span class="p">;</span>
+
+</code></pre></div><p>De forma que con la directiva <strong>safisfy any</strong> se concede el acceso si un cliente cumple al menos una condición. Es decir se le permite el acceso al cliente y al resto de máquinas que estén conectadas a la red interna, pero se le pide autentificación al resto.</p>
+<p>Quedaría tal que así:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">
+<span class="c1"># Default server configuration</span>
+
+server <span class="o">{</span>
+        listen 80<span class="p">;</span>
+
+        root /srv/www/departamentos<span class="p">;</span>
+
+        <span class="c1"># Add index.php to the list if you are using PHP</span>
+        index index.html index.htm index.nginx-debian.html<span class="p">;</span>
+
+        server_name departamentos.iesgn.org<span class="p">;</span>
+
+        location / <span class="o">{</span>
+                <span class="c1"># First attempt to serve request as file, then</span>
+                <span class="c1"># as directory, then fall back to displaying a 404.</span>
+                try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ <span class="o">=</span>404<span class="p">;</span>
+        <span class="o">}</span>
+
+        location /intranet <span class="o">{</span>
+                allow 10.0.0.6/24<span class="p">;</span>
+                deny all<span class="p">;</span>
+        <span class="o">}</span>
+
+        location /internet <span class="o">{</span>
+                allow 172.23.0.0/16<span class="p">;</span>
+                deny all<span class="p">;</span>
+        <span class="o">}</span>
+
+        location /secreto <span class="o">{</span>
+                satisfy any<span class="p">;</span>
+                allow 10.0.0.0/24<span class="p">;</span>
+                auth_basic <span class="s2">&#34;Zona de control&#34;</span><span class="p">;</span>
+                auth_basic_user_file /srv/.htpasswd<span class="p">;</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div><p>Vemos que que desde fuera nos pide autentificación.</p>
+<p>Para que se pueda probar la autentificacion el usuario es <strong>servidor</strong> y la contraseña es <strong>servidor1</strong>.</p>
+<p><img src="/images/nginx/secreto3.png" alt="secreto3.png"></p>
+<p><img src="/images/nginx/secreto4.png" alt="secreto4.png"></p>
+<p>Aquí vemos que desde fuera nos pide la autentifición y desde la intranet nos deja entrar sin autentificación.</p>
+<p><img src="/images/nginx/secreto5.png" alt="secreto5.png"></p>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/nginx/">nginx</a><a class="tag" href="/tags/virtualhosting/">virtualhosting</a><a class="tag" href="/tags/servidor-nginx/">servidor nginx</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

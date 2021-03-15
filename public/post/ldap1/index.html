@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Instalación y configuración inicial de OpenLDAP </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/ldap1/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Instalación y configuración inicial de OpenLDAP"/>
+<meta name="twitter:description" content="Descripción:
+Realiza la instalación y configuración básica de OpenLDAP en frestón utilizando como base el nombre DNS asignado."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Instalación y configuración inicial de OpenLDAP</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Mon, Dec 14, 2020 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">4-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>Descripción:</p>
+<p>Realiza la instalación y configuración básica de OpenLDAP en frestón utilizando como base el nombre DNS asignado.</p>
+<p>Crea dos unidades organizativas, una para personas y otra para grupos.</p>
+<hr>
+<h2 id="1-conceptos-previos">1. Conceptos previos</h2>
+<p><strong>LDAP</strong> corresponde a <strong>Lightweight Directory Access Protocol</strong>, que significa protocolo ligero de acceso a directorios. Es decir, se trata de un protocolo que permite acceder a través de la red a información guardada en directorios en un sevidor. Utiliza un sistema de base de datos no relacional siendo así más rápido.</p>
+<p>Utiliza un sistema jerárquico, o en forma de árbol haciendo uso de directorios. Aquí se guarda información variada de personas y objetos.</p>
+<h2 id="2-instalación-y-configuración-de-ldap">2. Instalación y configuración de LDAP</h2>
+<p>Antes de instalar ldap nos vamos a asegurar que nuestro sistema está en condiciones y reúne los requisitos para su instalación.</p>
+<ul>
+<li>El sistema debe de tener bien configurada la hora</li>
+<li>La máquina debe de estar actualizada</li>
+<li>El nombre de la máquina está configurada correctamente tanto el simple como el completo, ejecutando, <strong>hostname</strong> y <strong>hostname -f</strong> comprobamos esto</li>
+</ul>
+<p>En mi caso:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@freston</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">debian</span><span class="c"># hostname</span>
+<span class="n">freston</span>
+<span class="n">root</span><span class="nv">@freston</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">debian</span><span class="c"># hostname -f</span>
+<span class="n">freston</span><span class="p">.</span><span class="n">celia</span><span class="p">.</span><span class="n">gonzalonazareno</span><span class="p">.</span><span class="n">org</span>
+</code></pre></div><p>Vamos a instalar LDAP sobre Debian Buster, utilizaremos la paquetería de Debian para instalarlo de la siguiente forma</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">sudo</span> <span class="n">apt-get</span> <span class="n">install</span> <span class="n">sldap</span>
+</code></pre></div><p>Además vamos a utilizar unas herramientas muy útiles para utilizar nuestro sistema de directorios</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">sudo</span> <span class="n">apt-get</span> <span class="n">install</span> <span class="n">ldap-utils</span>
+</code></pre></div><p>Una vez instalado el software y las herramientas vamos a reconfigurar nuestro sistema de directorios para determinar nuestro nombre y configurar una contraseña para el adminsitrador</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dpkg-reconfigure</span> <span class="n">-plow</span> <span class="n">slapd</span>
+</code></pre></div><p>Nos mostrará varias ventanas en varios pasos, tendremos que:</p>
+<ol>
+<li>Indicar nuestro nombre de dominio DNS, en mi caso sera <strong>freston.celia.gonzalonzareno.org</strong></li>
+<li>Indicar el nombre de la organización en mi caso será <strong>IES Gonzalo Nazareno</strong>.</li>
+<li>Indicar la contraseña que usaremos de administrador.</li>
+<li>Nos preguntará si queremos cambiar el motor de base de datos que vamos a usar en mi caso lo he dejado por defecto <strong>MDB</strong>.</li>
+<li>Nos preguntará si queremos que la base de datos se elimine cuando purguemos ldap, le diremos que sí.</li>
+<li>Nos preguntará si queremos dejar el antiguo directorio que viene por defecto y lo dejamos en sí.</li>
+</ol>
+<h2 id="3-crear-unidades-organizativas">3. Crear unidades organizativas</h2>
+<p>Para crear las unidades organizativas vamos a usar un fichero con extensión <strong>ldif</strong> que es un estándar con configuraciones de LDAP. Ahí vamos a agregar el contenido de los nuevos registros que vamos a añadir.</p>
+<p>Vamos a crear las <strong>unidades organizativas</strong> de esta forma:</p>
+<p><strong>personas</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@freston</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">debian</span><span class="c"># nano personas.ldif </span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dn</span><span class="err">:</span> <span class="n">ou</span><span class="p">=</span><span class="n">People</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">freston</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">celia</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">gonzalonazareno</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">org</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">top</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">organizationalUnit</span>
+<span class="n">ou</span><span class="err">:</span> <span class="n">People</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell">
+<span class="n">root</span><span class="nv">@freston</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">debian</span><span class="c"># ldapadd -x -D &#39;cn=admin,dc=freston,dc=celia,dc=gonzalonazareno,dc=org&#39; -W -f personas.ldif </span>
+<span class="n">Enter</span> <span class="n">LDAP</span> <span class="n">Password</span><span class="err">:</span> 
+<span class="n">adding</span> <span class="n">new</span> <span class="n">entry</span> <span class="s2">&#34;ou=People,dc=freston,dc=celia,dc=gonzalonazareno,dc=org&#34;</span>
+</code></pre></div><p><strong>grupos</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@freston</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">debian</span><span class="c"># nano grupos.ldif</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dn</span><span class="err">:</span> <span class="n">ou</span><span class="p">=</span><span class="n">Group</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">freston</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">celia</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">gonzalonazareno</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">org</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">top</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">organizationalUnit</span>
+<span class="n">ou</span><span class="err">:</span> <span class="nb">Group
+</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@freston</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">debian</span><span class="c"># ldapadd -x -D &#39;cn=admin,dc=freston,dc=celia,dc=gonzalonazareno,dc=org&#39; -W -f grupos.ldif </span>
+<span class="n">Enter</span> <span class="n">LDAP</span> <span class="n">Password</span><span class="err">:</span> 
+<span class="n">adding</span> <span class="n">new</span> <span class="n">entry</span> <span class="s2">&#34;ou=Group,dc=freston,dc=celia,dc=gonzalonazareno,dc=org&#34;</span>
+</code></pre></div><p>Vemos que se han creado correctamente &ldquo;en bruto&rdquo; usando el comando:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">slapcat</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dn</span><span class="err">:</span> <span class="n">ou</span><span class="p">=</span><span class="n">People</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">freston</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">celia</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">gonzalonazareno</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">org</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">top</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">organizationalUnit</span>
+<span class="n">ou</span><span class="err">:</span> <span class="n">People</span>
+<span class="n">structuralObjectClass</span><span class="err">:</span> <span class="n">organizationalUnit</span>
+<span class="n">entryUUID</span><span class="err">:</span> <span class="n">edfb19f6-d276</span><span class="p">-</span><span class="n">103a</span><span class="p">-</span><span class="n">8e15</span><span class="p">-</span><span class="n">9befe2d527e2</span>
+<span class="n">creatorsName</span><span class="err">:</span> <span class="n">cn</span><span class="p">=</span><span class="n">admin</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">freston</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">celia</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">gonzalonazareno</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">org</span>
+<span class="n">createTimestamp</span><span class="err">:</span> <span class="n">20201214164116Z</span>
+<span class="n">entryCSN</span><span class="err">:</span> <span class="n">20201214164116</span><span class="p">.</span><span class="n">484795Z</span><span class="c">#000000#000#000000</span>
+<span class="n">modifiersName</span><span class="err">:</span> <span class="n">cn</span><span class="p">=</span><span class="n">admin</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">freston</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">celia</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">gonzalonazareno</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">org</span>
+<span class="n">modifyTimestamp</span><span class="err">:</span> <span class="n">20201214164116Z</span>
+
+<span class="n">dn</span><span class="err">:</span> <span class="n">ou</span><span class="p">=</span><span class="n">Group</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">freston</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">celia</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">gonzalonazareno</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">org</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">top</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">organizationalUnit</span>
+<span class="n">ou</span><span class="err">:</span> <span class="nb">Group
+</span><span class="nb"></span><span class="n">structuralObjectClass</span><span class="err">:</span> <span class="n">organizationalUnit</span>
+<span class="n">entryUUID</span><span class="err">:</span> <span class="n">381306fc-d277</span><span class="p">-</span><span class="n">103a</span><span class="p">-</span><span class="n">8e16</span><span class="p">-</span><span class="n">9befe2d527e2</span>
+<span class="n">creatorsName</span><span class="err">:</span> <span class="n">cn</span><span class="p">=</span><span class="n">admin</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">freston</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">celia</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">gonzalonazareno</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">org</span>
+<span class="n">createTimestamp</span><span class="err">:</span> <span class="n">20201214164320Z</span>
+<span class="n">entryCSN</span><span class="err">:</span> <span class="n">20201214164320</span><span class="p">.</span><span class="n">793017Z</span><span class="c">#000000#000#000000</span>
+<span class="n">modifiersName</span><span class="err">:</span> <span class="n">cn</span><span class="p">=</span><span class="n">admin</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">freston</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">celia</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">gonzalonazareno</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">org</span>
+<span class="n">modifyTimestamp</span><span class="err">:</span> <span class="n">20201214164320Z</span>
+
+</code></pre></div><p>Interactuando, con el comando:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">ldapsearch</span> <span class="n">-x</span> <span class="n">-D</span> <span class="s2">&#34;cn=admin,dc=freston,dc=celia,dc=gonzalonazareno,dc=org&#34;</span> <span class="n">-b</span> <span class="n">dc</span><span class="p">=</span><span class="n">freston</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">celia</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">gonzalonazareno</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">org</span> <span class="n">-W</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">root</span><span class="nv">@freston</span><span class="err">:</span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">debian</span><span class="c"># ldapsearch -x -D &#34;cn=admin,dc=freston,dc=celia,dc=gonzalonazareno,dc=org&#34; -b dc=freston,dc=celia,dc=gonzalonazareno,dc=org -W</span>
+<span class="n">Enter</span> <span class="n">LDAP</span> <span class="n">Password</span><span class="err">:</span> 
+<span class="c"># extended LDIF</span>
+<span class="c">#</span>
+<span class="c"># LDAPv3</span>
+<span class="c"># base &lt;dc=freston,dc=celia,dc=gonzalonazareno,dc=org&gt; with scope subtree</span>
+<span class="c"># filter: (objectclass=*)</span>
+<span class="c"># requesting: ALL</span>
+<span class="c">#</span>
+
+<span class="c"># freston.celia.gonzalonazareno.org</span>
+<span class="n">dn</span><span class="err">:</span> <span class="n">dc</span><span class="p">=</span><span class="n">freston</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">celia</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">gonzalonazareno</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">org</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">top</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">dcObject</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">organization</span>
+<span class="n">o:</span> <span class="n">IES</span> <span class="n">Gonzalo</span> <span class="n">Nazareno</span>
+<span class="n">dc</span><span class="err">:</span> <span class="n">freston</span>
+
+<span class="c"># admin, freston.celia.gonzalonazareno.org</span>
+<span class="n">dn</span><span class="err">:</span> <span class="n">cn</span><span class="p">=</span><span class="n">admin</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">freston</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">celia</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">gonzalonazareno</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">org</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">simpleSecurityObject</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">organizationalRole</span>
+<span class="n">cn</span><span class="err">:</span> <span class="n">admin</span>
+<span class="n">description</span><span class="err">:</span> <span class="n">LDAP</span> <span class="n">administrator</span>
+<span class="n">userPassword</span><span class="p">::</span> <span class="n">e1NTSEF9WVFtTTJSbVZxby80S1pPQ2VnanQxK2RUUUdjM2YwZ0U</span><span class="p">=</span>
+
+<span class="c"># People, freston.celia.gonzalonazareno.org</span>
+<span class="n">dn</span><span class="err">:</span> <span class="n">ou</span><span class="p">=</span><span class="n">People</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">freston</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">celia</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">gonzalonazareno</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">org</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">top</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">organizationalUnit</span>
+<span class="n">ou</span><span class="err">:</span> <span class="n">People</span>
+
+<span class="c"># Group, freston.celia.gonzalonazareno.org</span>
+<span class="n">dn</span><span class="err">:</span> <span class="n">ou</span><span class="p">=</span><span class="n">Group</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">freston</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">celia</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">gonzalonazareno</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">org</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">top</span>
+<span class="n">objectClass</span><span class="err">:</span> <span class="n">organizationalUnit</span>
+<span class="n">ou</span><span class="err">:</span> <span class="nb">Group
+</span><span class="nb"></span>
+<span class="c"># search result</span>
+<span class="n">search</span><span class="err">:</span> <span class="n">2</span>
+<span class="n">result</span><span class="err">:</span> <span class="n">0</span> <span class="n">Success</span>
+
+<span class="c"># numResponses: 5</span>
+<span class="c"># numEntries: 4</span>
+
+</code></pre></div><h2 id="4-configuración-básica">4. Configuración básica</h2>
+<p>Podemos configurar ldap de forma que no tengamos que pasar el parámetro base, lo indicamos en el siguiente fichero de esta forma:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">nano</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">ldap</span><span class="p">/</span><span class="n">ldap</span><span class="p">.</span><span class="n">conf</span> 
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c">#</span>
+<span class="c"># LDAP Defaults</span>
+<span class="c">#</span>
+
+<span class="c"># See ldap.conf(5) for details</span>
+<span class="c"># This file should be world readable but not world writable.</span>
+
+<span class="n">BASE</span>    <span class="n">dc</span><span class="p">=</span><span class="n">freston</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">celia</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">gonzalonazareno</span><span class="p">,</span><span class="n">dc</span><span class="p">=</span><span class="n">org</span>
+<span class="n">URI</span>     <span class="n">ldap</span><span class="err">:</span><span class="p">//</span><span class="n">localhost</span>
+<span class="c">#URI    ldap://ldap.example.com ldap://ldap-master.example.com:666</span>
+
+<span class="c">#SIZELIMIT      12</span>
+<span class="c">#TIMELIMIT      15</span>
+<span class="c">#DEREF          never</span>
+
+<span class="c"># TLS certificates (needed for GnuTLS)</span>
+<span class="n">TLS_CACERT</span>      <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">ssl</span><span class="p">/</span><span class="n">certs</span><span class="p">/</span><span class="n">ca-certificates</span><span class="p">.</span><span class="n">crt</span>
+
+
+
+</code></pre></div></div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/ldap/">ldap</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

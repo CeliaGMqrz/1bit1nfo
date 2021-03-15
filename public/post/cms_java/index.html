@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Despliegue CMS en Java </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/cms_java/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Despliegue CMS en Java"/>
+<meta name="twitter:description" content="En esta entrada vamos a tratar de desplegar una aplicación CMS escrito en Java."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Despliegue CMS en Java</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Sun, Mar 7, 2021 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">5-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>En esta entrada vamos a tratar de desplegar una aplicación CMS escrito en Java. Para ello usaremos &lsquo;Guacamole&rsquo;.</p>
+<h2 id="entorno-de-trabajo-escenario">Entorno de trabajo. Escenario.</h2>
+<ul>
+<li>Vamos a usar una máquina virtual con Vagrant y Virtualbox.</li>
+<li>Sistema operativo: Debian Buster.</li>
+<li>Necesitaremos usuario con privilegios root y la paquetería actualizada.</li>
+</ul>
+<p>Una vez tengamos el entorno de trabajo nos aseguraremos que tenemos el sistema actualizado.</p>
+<h2 id="guacamole-como-concepto-tomcat">Guacamole como concepto. Tomcat.</h2>
+<p><strong>Apache Guacamole</strong> es una herramienta <strong>libre</strong> y Open-Source que nos permite conectarnos remotamente a un servidor mediante el navegador web <strong>sin necesidad de usar un cliente</strong>.</p>
+<p>No es una aplicación web autónoma ya que precisa de más componentes y elementos. Se trata de una aplicación web simple y mínima. Un componente esencial que vamos a usar con ella es <strong>Tomcat</strong>.</p>
+<p><strong>Tomcat</strong> es una especie de contenedor de ServLets que nos permite ejecutar herramientas desarrolladas con Java Server Page (JSP).</p>
+<h2 id="descargar-el-paquete-de-guacamole-desde-las-fuentes">Descargar el paquete de Guacamole desde las fuentes</h2>
+<ul>
+<li>Instalamos las dependencias</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt install build-essential libcairo2-dev libjpeg62-turbo-dev libpng-dev libtool-bin libossp-uuid-dev libvncserver-dev freerdp2-dev libssh2-1-dev libtelnet-dev libwebsockets-dev libpulse-dev libvorbis-dev libwebp-dev libssl-dev libpango1.0-dev libswscale-dev libavcodec-dev libavutil-dev libavformat-dev
+</code></pre></div><ul>
+<li>Descargamos la version estable de guacamole</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">wget http://mirror.cc.columbia.edu/pub/software/apache/guacamole/1.2.0/source/guacamole-server-1.2.0.tar.gz
+</code></pre></div><ul>
+<li>Extraemos el archivo, lo compilamos e instalamos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">tar -xvf guacamole-server-1.2.0.tar.gz
+<span class="nb">cd</span> guacamole-server-1.2.0
+./configure --with-init-dir<span class="o">=</span>/etc/init.d
+make
+make install
+</code></pre></div><ul>
+<li>Actualizamos la memoria caché</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo ldconfig
+</code></pre></div><ul>
+<li>Ahora vamos a cargar systemd para que pueda encontrar el demonio proxy de guacamole, que es &lsquo;guacd&rsquo;. Lo iniciamos y comprobamos su estado.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo systemctl daemon-reload
+sudo systemctl start guacd
+sudo systemctl <span class="nb">enable</span> guacd
+systemctl status guacd
+</code></pre></div><p>Comprobamos el estado del demonio</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@debian-cms:/home/vagrant/guacamole/guacamole-server-1.2.0# systemctl status guacd
+● guacd.service - LSB: Guacamole proxy daemon
+   Loaded: loaded <span class="o">(</span>/etc/init.d/guacd<span class="p">;</span> generated<span class="o">)</span>
+   Active: active <span class="o">(</span>running<span class="o">)</span> since Sun 2021-03-07 20:37:03 GMT<span class="p">;</span> 29s ago
+     Docs: man:systemd-sysv-generator<span class="o">(</span>8<span class="o">)</span>
+    Tasks: <span class="m">1</span> <span class="o">(</span>limit: 544<span class="o">)</span>
+   Memory: 10.6M
+   CGroup: /system.slice/guacd.service
+           └─10976 /usr/local/sbin/guacd -p /var/run/guacd.pid
+
+Mar <span class="m">07</span> 20:37:03 debian-cms systemd<span class="o">[</span>1<span class="o">]</span>: Starting LSB: Guacamole proxy daemon...
+Mar <span class="m">07</span> 20:37:03 debian-cms guacd<span class="o">[</span>10974<span class="o">]</span>: Guacamole proxy daemon <span class="o">(</span>guacd<span class="o">)</span> version 1.2.0 started
+Mar <span class="m">07</span> 20:37:03 debian-cms guacd<span class="o">[</span>10973<span class="o">]</span>: Starting guacd: guacd<span class="o">[</span>10974<span class="o">]</span>: INFO:        Guacamole proxy daemo
+Mar <span class="m">07</span> 20:37:03 debian-cms guacd<span class="o">[</span>10973<span class="o">]</span>: SUCCESS
+Mar <span class="m">07</span> 20:37:03 debian-cms systemd<span class="o">[</span>1<span class="o">]</span>: Started LSB: Guacamole proxy daemon.
+Mar <span class="m">07</span> 20:37:03 debian-cms guacd<span class="o">[</span>10976<span class="o">]</span>: Listening on host 127.0.0.1, port <span class="m">4822</span>
+
+</code></pre></div><ul>
+<li>Comprobamos que esta escuchando en el puerto indicado</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@debian-cms:/home/vagrant/guacamole/guacamole-server-1.2.0# sudo ss -lnpt <span class="p">|</span> grep guacd
+LISTEN    <span class="m">0</span>         <span class="m">5</span>                127.0.0.1:4822             0.0.0.0:*        users:<span class="o">((</span><span class="s2">&#34;guacd&#34;</span>,pid<span class="o">=</span>10976,fd<span class="o">=</span>4<span class="o">))</span>                 
+</code></pre></div><h2 id="instalar-la-aplicacion-web-guacamole-y-tomcat">Instalar la aplicacion web Guacamole y tomcat.</h2>
+<p>Como hemos dicho anteriormente la aplicación web de Guacamole está escrita en Javak por ello necesitamos instalar <strong>tomcat</strong> (contenedor Java Servelt)</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt install tomcat9 tomcat9-admin tomcat9-common tomcat9-user
+</code></pre></div><p>Apache Tomcat escuchará en el puerto 8080</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo ss -lnpt <span class="p">|</span> grep java
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@debian-cms:/home/vagrant/guacamole/guacamole-server-1.2.0# sudo ss -lnpt <span class="p">|</span> grep java
+LISTEN    <span class="m">0</span>         <span class="m">100</span>                      *:8080                   *:*        users:<span class="o">((</span><span class="s2">&#34;java&#34;</span>,pid<span class="o">=</span>12680,fd<span class="o">=</span>37<span class="o">))</span>       
+</code></pre></div><ul>
+<li>Ahora sí descargamos la aplicación web de guacamole</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">wget https://downloads.apache.org/guacamole/1.2.0/binary/guacamole-1.2.0.war
+
+</code></pre></div><ul>
+<li>Trasladamos la aplicación al directorio de tomcat para poder servirla</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo mv guacamole-1.2.0.war /var/lib/tomcat9/webapps/guacamole.war
+</code></pre></div><ul>
+<li>Reinciamos los servicios</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo systemctl restart tomcat9 guacd
+</code></pre></div><p>Vamos a comprobar que desde el navegador ya tenemos disponible la aplicación con Tomcat. Si accedemos a la ip por el puerto 8080</p>
+<p><img src="/images/guacamole/guacamole1.png" alt="guacamole1.png"></p>
+<p>Ademas podemos ver que accediendo a la siguiente dirección:</p>
+<p>http://192.168.100.183:8080/guacamole/#/</p>
+<p>Comprobamos que la aplicación ya está para ser usada.</p>
+<p><img src="/images/guacamole/guacamole2.png" alt="guacamole2.png"></p>
+<blockquote>
+<p>He instalado también un entorno de escritorio ya que no tenia entorno para esta máquina.</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt update
+sudo apt install xfce4 xfce4-goodies
+</code></pre></div><p>Si entramos y tenemos instalado un entorno de escritorio en nuestra maquina podremos verlo a traves del navegador indicando nuestras credenciales</p>
+<p><img src="/images/guacamole/escritorio.png" alt="escritorio.png"></p>
+<p>Podemos ver la carpeta de nuestro usuario por ejemplo.</p>
+<p><img src="/images/guacamole/vagrant.png" alt="vagrant.png"></p>
+<h2 id="configuración-de-guacamole">Configuración de Guacamole</h2>
+<ul>
+<li>Vamos a crear un directorio donde vamos a tener la configuración del mismo</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo mkdir /etc/guacamole
+sudo nano /etc/guacamole/guacamole.properties
+</code></pre></div><ul>
+<li>Añadimos las siguientes lineas</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Nombre de host y puerto del proxy guacamole</span>
+guacd-hostname: localhost
+guacd-port:     <span class="m">4822</span>
+<span class="c1"># Clase de proveedor de autenticación (autentica la combinación de usuario / contraseña, necesaria si se usa la pantalla de inicio de sesión proporcionada)</span>
+auth-provider: net.sourceforge.guacamole.net.basic.BasicFileAuthenticationProvider
+basic-user-mapping: /etc/guacamole/user-mapping.xml
+
+</code></pre></div><p>El módulo de autentificación por defecto lee las credenciales ubicadas en el fichero &lsquo;user-mapping.xml&rsquo; por lo que vamos a generar un hash y la contraseña que queramos</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">echo</span> -n contrasenia <span class="p">|</span> openssl md5
+</code></pre></div><p>Ahora creamos el xml de asignación para usuarios</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo nano /etc/guacamole/user-mapping.xml
+</code></pre></div><p>En este fichero indicaremos el usuario que vayamos a poner, y el hash que nos generó con la contraseña que hemos creado previamente, más adelante crearemos la contraseña para VNC.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">&lt;user-mapping&gt;
+
+    &lt;!-- Per-user authentication and config information --&gt;
+    &lt;authorize
+         <span class="nv">username</span><span class="o">=</span><span class="s2">&#34;vagrant&#34;</span>
+         <span class="nv">password</span><span class="o">=</span><span class="s2">&#34;1060b7b46a3bd36b3a0d66e0127d051&#34;</span>
+         <span class="nv">encoding</span><span class="o">=</span><span class="s2">&#34;md5&#34;</span>&gt;
+
+       &lt;connection <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;default&#34;</span>&gt;
+         &lt;protocol&gt;vnc&lt;/protocol&gt;
+         &lt;param <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;hostname&#34;</span>&gt;localhost&lt;/param&gt;
+         &lt;param <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;port&#34;</span>&gt;5901&lt;/param&gt;
+         &lt;param <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;password&#34;</span>&gt;vnc_password&lt;/param&gt;
+       &lt;/connection&gt;
+    &lt;/authorize&gt;
+
+&lt;/user-mapping&gt;
+</code></pre></div><p>Guardamos y reiniciamos los servicios</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo systemctl restart tomcat9 guacd
+</code></pre></div><ul>
+<li>Instalar un servidor VNC</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt install tigervnc-standalone-server
+</code></pre></div><ul>
+<li>Iniciamos VNC y elegimos una contraseña</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">vncserver
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">vagrant@debian-cms:~/guacamole/guacamole-server-1.3.0$ vncserver
+
+You will require a password to access your desktops.
+
+Password:
+Verify:
+Would you like to enter a view-only password <span class="o">(</span>y/n<span class="o">)</span>? n
+/usr/bin/xauth:  file /home/vagrant/.Xauthority does not exist
+
+New <span class="s1">&#39;debian-cms:2 (vagrant)&#39;</span> desktop at :2 on machine debian-cms
+
+Starting applications specified in /etc/X11/Xvnc-session
+Log file is /home/vagrant/.vnc/debian-cms:2.log
+
+Use xtigervncviewer -SecurityTypes VncAuth -passwd /home/vagrant/.vnc/passwd :2 to connect to the VNC server.
+
+</code></pre></div><p>Ahora editamos el fichero /etc/guacamole/user-mapping.xml y cambiamos la contraseña para VNC y reinciamos los servicios</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo systemctl restart tomcat9 guacd
+</code></pre></div><h2 id="instalación-de-apache2-y-configuración">Instalación de apache2 y configuración</h2>
+<ul>
+<li>Instalamos apache2</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt install apache2
+</code></pre></div><ul>
+<li>Creamos una página web simple</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">nano /etc/apache2/sites-available/000-default.conf
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">&lt;VirtualHost *:80&gt;
+        ServerName www.misitio.org
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html
+        ErrorLog <span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span>/error.log
+        CustomLog <span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span>/access.log combined
+&lt;/VirtualHost&gt;
+</code></pre></div><ul>
+<li>Comprobamos que funciona</li>
+</ul>
+<p><img src="/images/guacamole/guacamole3.png" alt="guacamole3.png"></p>
+<h2 id="proxy-inverso">Proxy inverso</h2>
+<p>Instalamos los módulos necesarios para la conexión entre tomcat y apache2</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt install libapache2-mod-jk
+sudo a2enmod proxy proxy_http
+</code></pre></div><ul>
+<li>En el fichero de configuración del virtualhost añadimos las opciones de proxy</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">&lt;VirtualHost *:80&gt;
+        ServerName www.misitio.org
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html
+        ErrorLog <span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span>/error.log
+        CustomLog <span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span>/access.log combined
+&lt;/VirtualHost&gt;
+
+&lt;Location /guacamole/&gt;
+    Order allow,deny
+    Allow from all
+    ProxyPass http://localhost:8080/guacamole/ <span class="nv">flushpackets</span><span class="o">=</span>on
+    ProxyPassReverse http://localhost:8080/guacamole/
+&lt;/Location&gt;
+
+</code></pre></div><p>Y en el html creamos un enlace para acceder a la aplicación</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">&lt;h1&gt;Hola! Enhorabuena tu sitio funciona!!!&lt;/h1&gt;
+&lt;p&gt;Guacamole-&gt;&lt;/p&gt;&lt;a <span class="nv">href</span><span class="o">=</span>http://www.misitio.org/guacamole/#/&gt; Enlace &lt;/a&gt;
+</code></pre></div><p><img src="/images/guacamole/enlace.png" alt="enlace.png"></p>
+<p>Si accedemos al sitio y accedemos al enlace que hemos dejado para ir a la aplicación vemos que funciona correctamente.</p>
+<p><img src="/images/guacamole/funciona1.png" alt="funciona1.png"></p>
+<p><img src="/images/guacamole/funciona2.png" alt="funciona2.png"></p>
+<p>Fuentes:</p>
+<p><a href="https://www.linuxbabe.com/debian/apache-guacamole-remote-desktop-debian-10-buster">https://www.linuxbabe.com/debian/apache-guacamole-remote-desktop-debian-10-buster</a></p>
+<p><a href="https://openbinary20.com/2018/03/24/apache-guacamole/">https://openbinary20.com/2018/03/24/apache-guacamole/</a></p>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/java/">java</a><a class="tag" href="/tags/guacamole/">guacamole</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

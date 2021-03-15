@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Instalación de aplicación web CMS python </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/mezzanine/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Instalación de aplicación web CMS python"/>
+<meta name="twitter:description" content="Objetivo: En este post vamos a trabajar sobre el entorno de trabajo de openstack nuevamente, el mismo sobre el que tratamos en el blog."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Instalación de aplicación web CMS python</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Thu, Jan 21, 2021 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">13-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p><img src="/images/escenario/django/mz.jpg" alt="mz.jpg"></p>
+<h2 id="objetivo">Objetivo:</h2>
+<p>En este post vamos a trabajar sobre el entorno de trabajo de openstack nuevamente, el mismo sobre el que tratamos en el blog.</p>
+<p>La máquina virtual sobre la que trabajamos es un Centos 8, nuestro llamado Quijote.</p>
+<p>El objetivo es desplegar un CMS python, en este caso mezzanine, basado en django.</p>
+<h2 id="1-instalación-de-mezzanine">1. Instalación de mezzanine.</h2>
+<h3 id="entorno-de-desarrollo-creación-del-entorno-virtual">Entorno de desarrollo: Creación del entorno virtual.</h3>
+<ul>
+<li>Primero tendremos que crear un <a href="https://github.com/CeliaGMqrz/trabajando_python3_venv">entorno virtual</a> en nuestra máquina anfitriona.</li>
+</ul>
+<h3 id="instalación-y-configuracion-de-mezzanine">Instalación y configuracion de Mezzanine</h3>
+<ul>
+<li>Dentro del entorno virtual instalaremos el cms mezzanine</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">pip install mezzanine
+</code></pre></div><ul>
+<li>Creamos el sitio. En su interior podemos ver que se han creado varios ficheros.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">(</span>mezzanine<span class="o">)</span> celiagm@debian:~/venv/mezzanine$ mezzanine-project mezzanine_app
+<span class="o">(</span>mezzanine<span class="o">)</span> celiagm@debian:~/venv/mezzanine$ ls
+bin  include  lib  lib64  mezzanine_app  pyvenv.cfg  share
+</code></pre></div><ul>
+<li>Ahora vamos a crear la base de datos que va a usar la aplicación</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">(</span>mezzanine<span class="o">)</span> celiagm@debian:~/venv/mezzanine/mezzanine_app$ python3 manage.py createdb
+</code></pre></div><ul>
+<li>Además te pedirá las credenciales que vas a usar para administrar el sitio web</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">A site record is required.
+Please enter the domain and optional port in the format <span class="s1">&#39;domain:port&#39;</span>.
+For example <span class="s1">&#39;localhost:8000&#39;</span> or <span class="s1">&#39;www.example.com&#39;</span>. 
+Hit enter to use the default <span class="o">(</span>127.0.0.1:8000<span class="o">)</span>: 
+
+Creating default site record: 127.0.0.1:8000 ...
+
+
+Creating default account ...
+
+Username <span class="o">(</span>leave blank to use <span class="s1">&#39;celiagm&#39;</span><span class="o">)</span>: mezzanine
+Email address: cgarmai95@gmail.com
+Password: 
+Password <span class="o">(</span>again<span class="o">)</span>: 
+Superuser created successfully.
+
+</code></pre></div><ul>
+<li>Una vez acabado vamos a ejecutar la aplicación</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">(</span>mezzanine<span class="o">)</span> celiagm@debian:~/venv/mezzanine/mezzanine_app$ python3 manage.py runserver
+              .....
+          _d^^^^^^^^^b_
+       .d<span class="s1">&#39;&#39;</span>           <span class="sb">``</span>b.
+     .p<span class="s1">&#39;                `q.
+</span><span class="s1">    .d&#39;</span>                   <span class="sb">`</span>b.
+   .d<span class="s1">&#39;                     `b.   * Mezzanine 4.3.1
+</span><span class="s1">   ::                       ::   * Django 1.11.29
+</span><span class="s1">  ::    M E Z Z A N I N E    ::  * Python 3.7.3
+</span><span class="s1">   ::                       ::   * SQLite 3.27.2
+</span><span class="s1">   `p.                     .q&#39;</span>   * Linux 4.19.0-13-amd64
+    <span class="sb">`</span>p.                   .q<span class="s1">&#39;
+</span><span class="s1">     `b.                 .d&#39;</span>
+       <span class="sb">`</span>q..          ..p<span class="s1">&#39;
+</span><span class="s1">          ^q........p^
+</span><span class="s1">              &#39;&#39;&#39;&#39;
+</span><span class="s1">
+</span><span class="s1">Performing system checks...
+</span><span class="s1">
+</span><span class="s1">System check identified no issues (0 silenced).
+</span><span class="s1">February 20, 2021 - 17:20:53
+</span><span class="s1">Django version 1.11.29, using settings &#39;</span>mezzanine_app.settings<span class="err">&#39;</span>
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+
+</code></pre></div><ul>
+<li>Comprobamos en el navegador con la URL http://127.0.0.1:8000/ que podemos acceder al sitio</li>
+</ul>
+<p><img src="/images/escenario/django/mz1.png" alt="mz1.png"></p>
+<ul>
+<li>Entramos en el primer enlace que nos muestran las credenciales para logearnos como administradores del sitio.</li>
+</ul>
+<p><img src="/images/escenario/django/mz2.png" alt="mz2.png"></p>
+<ul>
+<li>Una vez indicadas las credenciales, veremos a continuación el sitio de administración para nuestro CMS.</li>
+</ul>
+<p><img src="/images/escenario/django/mz3.png" alt="mz3.png"></p>
+<ul>
+<li>En el panel izquierdo, Vamos al apartado &lsquo;Settings&rsquo; y ahí bajamos hasta encontrar el despliegue &lsquo;Site&rsquo; que será donde pongamos nuestro nombre para el sitio web, de manera que se mostrará en la página de inicio del sitio.</li>
+</ul>
+<p><img src="/images/escenario/django/mz4.png" alt="mz4.png"></p>
+<ul>
+<li>Podemos comprobar que ya nos muestra nuestro nombre en la página de inicio</li>
+</ul>
+<p><img src="/images/escenario/django/home1.png" alt="home1.png"></p>
+<h2 id="2-personalización-del-sitio-web">2. Personalización del Sitio Web</h2>
+<ul>
+<li>Podemos cargar plantillas de Mezzanine con el siguiente comando</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">(</span>mezzanine<span class="o">)</span> celiagm@debian:~/venv/mezzanine/mezzanine_app$ python manage.py collecttemplates
+
+Copied <span class="m">47</span> templates
+</code></pre></div><ul>
+<li>Vamos a crear un directorio llamado &lsquo;theme&rsquo; para usar usar un tema propio, dentro de la app ejecutamos el siguiente comando</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">python3 manage.py startapp theme
+</code></pre></div><ul>
+<li>
+<p>Copiamos la carpeta &lsquo;templates&rsquo; a theme</p>
+</li>
+<li>
+<p>Veremos el siguiente contenido</p>
+</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">(</span>mezzanine<span class="o">)</span> celiagm@debian:~/venv/mezzanine/mezzanine_app$ ls
+deploy  dev.db  fabfile.py  manage.py  mezzanine_app  requirements.txt  static  theme
+<span class="o">(</span>mezzanine<span class="o">)</span> celiagm@debian:~/venv/mezzanine/mezzanine_app$ <span class="nb">cd</span> theme
+<span class="o">(</span>mezzanine<span class="o">)</span> celiagm@debian:~/venv/mezzanine/mezzanine_app/theme$ ls
+admin.py  __init__.py  models.py    static     tests.py
+apps.py   migrations   __pycache__  templates  views.py
+
+</code></pre></div><ul>
+<li>Dentro de la carpeta theme, creamos unos directorios para nuestros elementos estáticos. Aquí después añadiré una foto de mi avatar para que se muestre en la página principal</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">mkdir templates -p ./static/img
+</code></pre></div><ul>
+<li>Ademas vamos a copiar la base.html  y la página de inicio a nuestro directorio donde vamos a modificarla</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"> cp base.html ../theme/templates/base.html
+ cp index.html ../theme/templates/index.html
+</code></pre></div><ul>
+<li>
+<p>Se pueden modificar a su antojo dependiendo de los conocimientos que se tengan con html5 y css</p>
+</li>
+<li>
+<p>Para que los cambios supongan efecto hay que añadir &lsquo;theme&rsquo; que es nuestro directorio para personalizar el sitio, a installed apps en el fichero &lsquo;settings.py&rsquo; de nuestra app</p>
+</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">...
+
+<span class="c1">################</span>
+<span class="c1"># APPLICATIONS #</span>
+<span class="c1">################</span>
+
+<span class="nv">INSTALLED_APPS</span> <span class="o">=</span> <span class="o">(</span>
+    <span class="s1">&#39;theme&#39;</span>,
+    <span class="s2">&#34;django.contrib.admin&#34;</span>,
+    <span class="s2">&#34;django.contrib.auth&#34;</span>,
+    <span class="s2">&#34;django.contrib.contenttypes&#34;</span>,
+    <span class="s2">&#34;django.contrib.redirects&#34;</span>,
+    <span class="s2">&#34;django.contrib.sessions&#34;</span>,
+    <span class="s2">&#34;django.contrib.sites&#34;</span>,
+    <span class="s2">&#34;django.contrib.sitemaps&#34;</span>,
+    <span class="s2">&#34;django.contrib.staticfiles&#34;</span>,
+    <span class="s2">&#34;mezzanine.boot&#34;</span>,
+    <span class="s2">&#34;mezzanine.conf&#34;</span>,
+    <span class="s2">&#34;mezzanine.core&#34;</span>,
+    <span class="s2">&#34;mezzanine.generic&#34;</span>,
+    <span class="s2">&#34;mezzanine.pages&#34;</span>,
+    <span class="s2">&#34;mezzanine.blog&#34;</span>,
+    <span class="s2">&#34;mezzanine.forms&#34;</span>,
+    <span class="s2">&#34;mezzanine.galleries&#34;</span>,
+    <span class="s2">&#34;mezzanine.twitter&#34;</span>,
+    <span class="c1"># &#34;mezzanine.accounts&#34;,</span>
+<span class="o">)</span>
+
+...
+</code></pre></div><ul>
+<li>En la base.html he añadido un formato para nuestro panel de navegación que tendrá una estética simple, en blanco y negro.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">&lt;style&gt;
+    * <span class="o">{</span>box-sizing: border-box<span class="p">;</span><span class="o">}</span>
+    body <span class="o">{</span>
+        margin: 0<span class="p">;</span>
+        font-family: Arial, Helvetica, sans-serif<span class="p">;</span>
+    <span class="o">}</span>
+    .header <span class="o">{</span>
+        overflow: hidden<span class="p">;</span>
+        background-color: black<span class="p">;</span>
+        padding: 20px 10px<span class="p">;</span>
+    <span class="o">}</span>
+    .header a <span class="o">{</span>
+        float: left<span class="p">;</span> 
+        color: white<span class="p">;</span>
+        text-align: center<span class="p">;</span>
+        padding: 12px<span class="p">;</span>
+        text-decoration: none<span class="p">;</span>
+        font-size: 1rem<span class="p">;</span>
+        line-height: 25px<span class="p">;</span>
+        border-radius: 4px<span class="p">;</span>
+    <span class="o">}</span>
+    .header a.logo <span class="o">{</span>
+        font-size: 1.2rem<span class="p">;</span>
+        font-weight: bold<span class="p">;</span>
+    <span class="o">}</span>
+    .header a:hover <span class="o">{</span>
+        background-color: <span class="c1">#444;</span>
+        color: white<span class="p">;</span>
+    <span class="o">}</span>   
+    .header a.active <span class="o">{</span>
+        background-color: white<span class="p">;</span>
+        color: black<span class="p">;</span>
+    <span class="o">}</span>
+    .right <span class="o">{</span>
+        float: right<span class="p">;</span>
+    <span class="o">}</span>
+    @media screen and <span class="o">(</span>max-width: 500px<span class="p">;</span><span class="o">)</span> <span class="o">{</span>
+        .header a <span class="o">{</span>
+            float: none<span class="p">;</span>
+            display: block<span class="p">;</span>
+            text-align: left<span class="p">;</span>
+        <span class="o">}</span>
+        .right <span class="o">{</span>
+            float: none<span class="p">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+&lt;/style&gt;
+</code></pre></div><ul>
+<li>El index.html tendŕa el siguiente codigo, donde hemos agregado nuestro avatar.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">{</span>% extends <span class="s2">&#34;base.html&#34;</span> %<span class="o">}</span>
+<span class="o">{</span>% load i18n %<span class="o">}</span>
+
+<span class="o">{</span>% block meta_title %<span class="o">}{</span>% trans <span class="s2">&#34;Home&#34;</span> %<span class="o">}{</span>% endblock %<span class="o">}</span>
+<span class="o">{</span>% block title %<span class="o">}</span>Hello!!<span class="o">{</span>% endblock %<span class="o">}</span>
+
+<span class="o">{</span>% block breadcrumb_menu %<span class="o">}</span>
+&lt;h1&gt;Bienvenido a la mi App Mezzanine&lt;/h1&gt;
+&lt;img <span class="nv">src</span><span class="o">=</span><span class="s2">&#34;/static/img/avatar.jpg&#34;</span>
+    <span class="nv">width</span><span class="o">=</span><span class="s2">&#34;300&#34;</span>
+    <span class="nv">height</span><span class="o">=</span><span class="s2">&#34;300&#34;</span>&gt;
+<span class="o">{</span>% endblock %<span class="o">}</span>
+
+<span class="o">{</span>% block main %<span class="o">}</span>
+<span class="o">{</span>% blocktrans %<span class="o">}</span>
+&lt;h2&gt;Lista de enlaces!&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/admin/&#34;</span>&gt;Entrar para administrar el sitio&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+<span class="o">{</span>% endblocktrans %<span class="o">}</span>
+<span class="o">{</span>% endblock %<span class="o">}</span>
+</code></pre></div><ul>
+<li>Si iniciamos la app y entramos al navegador con la url por defecto que adopta nuestro servidor http://127.0.0.1:8000/</li>
+</ul>
+<p><img src="/images/escenario/django/home.png" alt="home.png"></p>
+<h2 id="3-copia-de-seguridad-de-la-base-de-datos-repositorio-git">3. Copia de seguridad de la base de datos. Repositorio git</h2>
+<p>Vamos a guardar los ficheros que componen esta aplicación en un repositorio de git y ademas tambien vamos hacer la copia de seguridad de la base de datos y la subiremos al mismo repositorio.</p>
+<ul>
+<li>Creamos un repositorio vacio en el directorio de mezzanine, añadimos todo el contenido y lo subimos al repositorio que tenemos creado en git.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">git init
+git add *
+git commit -m <span class="s2">&#34;first commit&#34;</span>
+git branch -M main
+git remote add origin https://github.com/CeliaGMqrz/mezzanine_app.git
+git push -u origin main
+
+</code></pre></div><ul>
+<li>Entramos en el directorio mysite y creamos la copia de seguridad de la base de datos, la añadimos al repositorio y la subimos.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">(</span>mezzanine<span class="o">)</span> celiagm@debian:~/venv/mezzanine/mezzanine_app$ python manage.py dumpdata &gt; db_data.json
+<span class="o">(</span>mezzanine<span class="o">)</span> celiagm@debian:~/venv/mezzanine/mezzanine_app$ ls
+db_data.json  deploy  dev.db  fabfile.py  manage.py  mezzanine_app  requirements.txt  static  theme
+<span class="o">(</span>mezzanine<span class="o">)</span> celiagm@debian:~/venv/mezzanine/mezzanine_app$ git add db_data.json 
+<span class="o">(</span>mezzanine<span class="o">)</span> celiagm@debian:~/venv/mezzanine/mezzanine_app$ git commit -am <span class="s2">&#34;añadida db&#34;</span>
+<span class="o">(</span>mezzanine<span class="o">)</span> celiagm@debian:~/venv/mezzanine/mezzanine_app$ git push
+</code></pre></div><h2 id="4-despliegue-de-la-aplicación-servidor-web-y-base-de-datos">4. Despliegue de la aplicación (servidor web y base de datos)</h2>
+<h3 id="41-crear-un-usuario-para-la-base-de-datos">4.1 Crear un usuario para la base de datos</h3>
+<p>En el servidor de base de datos (Sancho), mariadb en Ubuntu, vamos a crear otro usuario para que use la aplicacion de mezzanine en concreto. Además le daremos privilegios para que pueda operar sin problemas con la app.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; CREATE USER <span class="s1">&#39;mezzanine&#39;</span>@<span class="s1">&#39;10.0.2.4&#39;</span> IDENTIFIED BY <span class="s1">&#39;mezzanine&#39;</span><span class="p">;</span>
+Query OK, <span class="m">0</span> rows affected <span class="o">(</span>0.135 sec<span class="o">)</span>
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; GRANT ALL PRIVILEGES ON *.* TO <span class="s1">&#39;mezzanine&#39;</span>@<span class="s1">&#39;10.0.2.4&#39;</span> IDENTIFIED BY <span class="s1">&#39;mezzanine&#39;</span> WITH GRANT OPTION<span class="p">;</span>
+Query OK, <span class="m">0</span> rows affected <span class="o">(</span>0.010 sec<span class="o">)</span>
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; FLUSH PRIVILEGES<span class="p">;</span>
+Query OK, <span class="m">0</span> rows affected <span class="o">(</span>0.034 sec<span class="o">)</span>
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; quit
+Bye
+
+</code></pre></div><p>Nos aseguramos que las bases de datos están accesibles desde todas las máquinas.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo nano /etc/mysql/my.cnf 
+</code></pre></div><p>Buscamos la siguiente linea y comprobamos que esta de la siguiente forma</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">bind-address            <span class="o">=</span> 0.0.0.0
+</code></pre></div><h3 id="42-comprobar-la-conexión-remota-de-quijote-a-sancho">4.2. Comprobar la conexión remota de quijote a sancho</h3>
+<ul>
+<li>Necesitaremos tener instalado un cliente de mariadb en quijote</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo dnf install mariadb
+</code></pre></div><ul>
+<li>Comprobamos la conexión desde el nuevo usuario &lsquo;mezzanine&rsquo;</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">[</span>centos@quijote ~<span class="o">]</span>$ mysql -u mezzanine -p -h bd.celia.gonzalonazareno.org
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with <span class="p">;</span> or <span class="se">\g</span>.
+Your MariaDB connection id is <span class="m">111</span>
+Server version: 10.4.17-MariaDB-1:10.4.17+maria~focal-log mariadb.org binary distribution
+
+Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type <span class="s1">&#39;help;&#39;</span> or <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> help. Type <span class="s1">&#39;\c&#39;</span> to clear the current input statement.
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; quit
+Bye
+
+
+</code></pre></div><h3 id="43-crear-la-base-de-datos-en-sancho">4.3. Crear la base de datos en Sancho</h3>
+<p>Necesitamos crear una nueva base de datos en Sancho para poder importar la copia de seguridad de la base de datos del entorno de desarrollo al de producción.</p>
+<ul>
+<li>Crear la nueva base de datos llamada &lsquo;mezzanine&rsquo;</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; create database mezzanine<span class="p">;</span>
+Query OK, <span class="m">1</span> row affected <span class="o">(</span>0.008 sec<span class="o">)</span>
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; GRANT ALL PRIVILEGES ON <span class="sb">`</span>mezzanine<span class="sb">`</span>.* to <span class="s1">&#39;mezzanine&#39;</span>@<span class="s1">&#39;10.0.2.4&#39;</span><span class="p">;</span>
+Query OK, <span class="m">0</span> rows affected <span class="o">(</span>0.006 sec<span class="o">)</span>
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; FLUSH PRIVILEGES<span class="p">;</span>
+Query OK, <span class="m">0</span> rows affected <span class="o">(</span>0.001 sec<span class="o">)</span>
+</code></pre></div><h3 id="44-crear-entorno-virtual-e-instalar-el-módulo-uwsgi">4.4. Crear entorno virtual e instalar el módulo uwsgi</h3>
+<ul>
+<li>Descargamos el paquete necesario para crear el entorno virtual y git para clonar nuestro repositorio. Además instalaremos el módulo wsgi para poder desplegar la app y el compilador.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo dnf install git
+sudo dnf install python3
+sudo dnf install python3-mod_wsgi
+sudo dnf install gcc python3-devel
+
+</code></pre></div><ul>
+<li>Clonamos el repositorio en nuestro documenroot</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">[</span>centos@quijote www<span class="o">]</span>$ sudo git clone https://github.com/CeliaGMqrz/mezzanine_app.git
+</code></pre></div><ul>
+<li>Creamos el entorno virtual, lo activamos e instalamos los paquetes que están en el fichero requeriments.txt</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">[</span>centos@quijote ~<span class="o">]</span>$ python3 -m venv mezzanine
+<span class="o">[</span>centos@quijote ~<span class="o">]</span>$ <span class="nb">source</span> mezzanine/bin/activate
+<span class="o">(</span>mezzanine<span class="o">)</span> <span class="o">[</span>centos@quijote ~<span class="o">]</span>$ pip install -r /var/www/mezzanine_app/requirements.txt 
+
+</code></pre></div><p>Instalaremos el conector de mysql y uwsgi</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">pip install uwsgi
+pip install mysql-connector-python
+</code></pre></div><h3 id="45-configuración-de-la-base-de-datos">4.5. Configuración de la base de datos</h3>
+<ul>
+<li>Editamos el fichero de configuración de mezzanine</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo nano /var/www/mezzanine_app/mezzanine_app/settings.py 
+</code></pre></div><ul>
+<li>Buscamos la linea donde se define las caracteristicas de la base de datos a ala que se va a conectar y lo reemplazamos segun lo siguiente:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#############</span>
+<span class="c1"># DATABASES #</span>
+<span class="c1">#############</span>
+
+<span class="nv">DATABASES</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="s2">&#34;default&#34;</span>: <span class="o">{</span>
+        <span class="c1"># Add &#34;postgresql_psycopg2&#34;, &#34;mysql&#34;, &#34;sqlite3&#34; or &#34;oracle&#34;.</span>
+        <span class="s2">&#34;ENGINE&#34;</span>: <span class="s2">&#34;django.db.backends.mysql&#34;</span>,
+        <span class="c1"># DB name or path to database file if using sqlite3.</span>
+        <span class="s2">&#34;NAME&#34;</span>: <span class="s2">&#34;mezzanine&#34;</span>,
+        <span class="c1"># Not used with sqlite3.</span>
+        <span class="s2">&#34;USER&#34;</span>: <span class="s2">&#34;mezzanine&#34;</span>,
+        <span class="c1"># Not used with sqlite3.</span>
+        <span class="s2">&#34;PASSWORD&#34;</span>: <span class="s2">&#34;mezzanine&#34;</span>,
+        <span class="c1"># Set to empty string for localhost. Not used with sqlite3.</span>
+        <span class="s2">&#34;HOST&#34;</span>: <span class="s2">&#34;10.0.1.11&#34;</span>,
+        <span class="c1"># Set to empty string for default. Not used with sqlite3.</span>
+        <span class="s2">&#34;PORT&#34;</span>: <span class="s2">&#34;&#34;</span>,
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div><h3 id="46-restaurar-copia-de-seguridad-de-la-base-de-datos">4.6. Restaurar copia de seguridad de la base de datos</h3>
+<p>Previamente hemos hecho una copia de seguridad de la base de datos proveniente de el entorno de desarrollo y lo hemos subido a nuestro git.</p>
+<p>Ahora vamos a cargar los datos de esa copia de seguridad para importarlos en la nueva base de datos de mysql.</p>
+<ul>
+<li>Lo haremos desde el entorno virtual</li>
+</ul>
+<p>!!!! Errores que pueden surgir</p>
+<ol>
+<li>No encuentra la clave secreta</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">    raise ImproperlyConfigured<span class="o">(</span><span class="s2">&#34;The SECRET_KEY setting must not be empty.&#34;</span><span class="o">)</span>
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+</code></pre></div><p>Este error se puede deber por muchas causas, puede que la versión de python que estemos usando en el entorno de desarrollo y en el entorno de producción no sean la misma y crea conflicto. En este caso he descargado la versión correspondiente e instalado para que las dos tengan la misma version en ambos entornos, usando pues la python3.7.3. Además he tenido que compilar el programa ya que la máquina Centos del cloud no deja actualizar paquetes. El motivo por el que no deja actualizar paquetes se debe a que hay que subcribirse y pagar.</p>
+<p>Puede deberse a que una parte del programa no se está ejecutando correctamente y esté haciendo referencia a una clave  que existía en el entorno de desarrollo que ahora no existe en el de producción. Para omitir este problema, que no es solucionarlo de buen manera, podemos comentar las líneas que por defecto se encuentran en el siguiente directorio de nuestro virtualvenv.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo nano /home/centos/mezzanine/lib/python3.7/site-packages/django/conf/__init__.py 
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">       <span class="c1"># if not self.SECRET_KEY:</span>
+       <span class="c1">#     raise ImproperlyConfigured(&#34;The SECRET_KEY setting must not be empty.&#34;)</span>
+
+</code></pre></div><p>Así no nos daría la excepción. Aunque no es la manera adecuada de solucionarlo.</p>
+<ol start="2">
+<li>No encuentra el módulo de mysql</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module: No module named <span class="s1">&#39;MySQLdb&#39;</span>.
+Did you install mysqlclient or MySQL-python?
+</code></pre></div><p>Para solucionarlo lo que hemos hecho es instalar el siguiente paquete y añadir al fichero <strong>init.py</strong>_ de nuestro proyecto lo siguiente</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">(</span>mezzanine<span class="o">)</span> <span class="o">[</span>centos@quijote mezzanine_app<span class="o">]</span>$ pip install pymysql
+Collecting pymysql
+  Using cached PyMySQL-1.0.2-py3-none-any.whl <span class="o">(</span><span class="m">43</span> kB<span class="o">)</span>
+Installing collected packages: pymysql
+Successfully installed pymysql-1.0.2
+
+<span class="o">(</span>mezzanine<span class="o">)</span> <span class="o">[</span>centos@quijote mezzanine_app<span class="o">]</span>$ sudo nano mezzanine_app/__init__.py 
+
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">import pymysql
+pymysql.install_as_MySQLdb<span class="o">()</span>
+</code></pre></div><ul>
+<li>Ahora ya podemos hacer el migrate</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">(</span>mezzanine<span class="o">)</span> <span class="o">[</span>centos@quijote mezzanine_app<span class="o">]</span>$ python3.7 manage.py migrate
+/home/centos/mezzanine/lib/python3.7/site-packages/mezzanine/utils/conf.py:65: UserWarning: You haven<span class="s1">&#39;t defined the ALLOWED_HOSTS settings, which Django requires. Will fall back to the domains configured as sites.
+</span><span class="s1">  warn(&#34;You haven&#39;</span>t defined the ALLOWED_HOSTS settings, which <span class="s2">&#34;
+</span><span class="s2">Operations to perform:
+</span><span class="s2">  Apply all migrations: admin, auth, blog, conf, contenttypes, core, django_comments, forms, galleries, generic, pages, redirects, sessions, sites, twitter
+</span><span class="s2">Running migrations:
+</span><span class="s2">  Applying contenttypes.0001_initial... OK
+</span><span class="s2">  Applying auth.0001_initial... OK
+</span><span class="s2">  Applying admin.0001_initial... OK
+</span><span class="s2">  Applying admin.0002_logentry_remove_auto_add... OK
+</span><span class="s2">  Applying contenttypes.0002_remove_content_type_name... OK
+</span><span class="s2">  Applying auth.0002_alter_permission_name_max_length... OK
+</span><span class="s2">  Applying auth.0003_alter_user_email_max_length... OK
+</span><span class="s2">  Applying auth.0004_alter_user_username_opts... OK
+</span><span class="s2">  Applying auth.0005_alter_user_last_login_null... OK
+</span><span class="s2">  Applying auth.0006_require_contenttypes_0002... OK
+</span><span class="s2">  Applying auth.0007_alter_validators_add_error_messages... OK
+</span><span class="s2">  Applying auth.0008_alter_user_username_max_length... OK
+</span><span class="s2">  Applying sites.0001_initial... OK
+</span><span class="s2">  Applying blog.0001_initial... OK
+</span><span class="s2">  Applying blog.0002_auto_20150527_1555... OK
+</span><span class="s2">  Applying blog.0003_auto_20170411_0504... OK
+</span><span class="s2">  Applying conf.0001_initial... OK
+</span><span class="s2">  Applying core.0001_initial... OK
+</span><span class="s2">  Applying core.0002_auto_20150414_2140... OK
+</span><span class="s2">  Applying django_comments.0001_initial... OK
+</span><span class="s2">  Applying django_comments.0002_update_user_email_field_length... OK
+</span><span class="s2">  Applying django_comments.0003_add_submit_date_index... OK
+</span><span class="s2">  Applying pages.0001_initial... OK
+</span><span class="s2">  Applying forms.0001_initial... OK
+</span><span class="s2">  Applying forms.0002_auto_20141227_0224... OK
+</span><span class="s2">  Applying forms.0003_emailfield... OK
+</span><span class="s2">  Applying forms.0004_auto_20150517_0510... OK
+</span><span class="s2">  Applying forms.0005_auto_20151026_1600... OK
+</span><span class="s2">  Applying forms.0006_auto_20170425_2225... OK
+</span><span class="s2">  Applying galleries.0001_initial... OK
+</span><span class="s2">  Applying galleries.0002_auto_20141227_0224... OK
+</span><span class="s2">  Applying generic.0001_initial... OK
+</span><span class="s2">  Applying generic.0002_auto_20141227_0224... OK
+</span><span class="s2">  Applying generic.0003_auto_20170411_0504... OK
+</span><span class="s2">  Applying pages.0002_auto_20141227_0224... OK
+</span><span class="s2">  Applying pages.0003_auto_20150527_1555... OK
+</span><span class="s2">  Applying pages.0004_auto_20170411_0504... OK
+</span><span class="s2">  Applying redirects.0001_initial... OK
+</span><span class="s2">  Applying sessions.0001_initial... OK
+</span><span class="s2">  Applying sites.0002_alter_domain_unique... OK
+</span><span class="s2">  Applying twitter.0001_initial... OK
+</span><span class="s2">
+</span></code></pre></div><ul>
+<li>Cargamos los datos en la base de datos nueva</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">(</span>mezzanine<span class="o">)</span> <span class="o">[</span>centos@quijote mezzanine_app<span class="o">]</span>$ python3.7 manage.py loaddata db_data.json 
+/home/centos/mezzanine/lib/python3.7/site-packages/mezzanine/utils/conf.py:65: UserWarning: You haven<span class="s1">&#39;t defined the ALLOWED_HOSTS settings, which Django requires. Will fall back to the domains configured as sites.
+</span><span class="s1">  warn(&#34;You haven&#39;</span>t defined the ALLOWED_HOSTS settings, which <span class="s2">&#34;
+</span><span class="s2">Installed 153 object(s) from 1 fixture(s)
+</span><span class="s2">
+</span></code></pre></div><ul>
+<li>Comprobamos, desde Sancho por ejemplo, que estan todas las tablas creadas en la correspondiente base de datos.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">ubuntu@sancho:~$ sudo mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with <span class="p">;</span> or <span class="se">\g</span>.
+Your MariaDB connection id is <span class="m">117</span>
+Server version: 10.4.17-MariaDB-1:10.4.17+maria~focal-log mariadb.org binary distribution
+
+Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type <span class="s1">&#39;help;&#39;</span> or <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> help. Type <span class="s1">&#39;\c&#39;</span> to clear the current input statement.
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; use mezzanine
+Reading table information <span class="k">for</span> completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB <span class="o">[</span>mezzanine<span class="o">]</span>&gt; show tables<span class="p">;</span>
++-----------------------------+
+<span class="p">|</span> Tables_in_mezzanine         <span class="p">|</span>
++-----------------------------+
+<span class="p">|</span> auth_group                  <span class="p">|</span>
+<span class="p">|</span> auth_group_permissions      <span class="p">|</span>
+<span class="p">|</span> auth_permission             <span class="p">|</span>
+<span class="p">|</span> auth_user                   <span class="p">|</span>
+<span class="p">|</span> auth_user_groups            <span class="p">|</span>
+<span class="p">|</span> auth_user_user_permissions  <span class="p">|</span>
+<span class="p">|</span> blog_blogcategory           <span class="p">|</span>
+<span class="p">|</span> blog_blogpost               <span class="p">|</span>
+<span class="p">|</span> blog_blogpost_categories    <span class="p">|</span>
+<span class="p">|</span> blog_blogpost_related_posts <span class="p">|</span>
+<span class="p">|</span> conf_setting                <span class="p">|</span>
+<span class="p">|</span> core_sitepermission         <span class="p">|</span>
+<span class="p">|</span> core_sitepermission_sites   <span class="p">|</span>
+<span class="p">|</span> django_admin_log            <span class="p">|</span>
+<span class="p">|</span> django_comment_flags        <span class="p">|</span>
+<span class="p">|</span> django_comments             <span class="p">|</span>
+<span class="p">|</span> django_content_type         <span class="p">|</span>
+<span class="p">|</span> django_migrations           <span class="p">|</span>
+<span class="p">|</span> django_redirect             <span class="p">|</span>
+<span class="p">|</span> django_session              <span class="p">|</span>
+<span class="p">|</span> django_site                 <span class="p">|</span>
+<span class="p">|</span> forms_field                 <span class="p">|</span>
+<span class="p">|</span> forms_fieldentry            <span class="p">|</span>
+<span class="p">|</span> forms_form                  <span class="p">|</span>
+<span class="p">|</span> forms_formentry             <span class="p">|</span>
+<span class="p">|</span> galleries_gallery           <span class="p">|</span>
+<span class="p">|</span> galleries_galleryimage      <span class="p">|</span>
+<span class="p">|</span> generic_assignedkeyword     <span class="p">|</span>
+<span class="p">|</span> generic_keyword             <span class="p">|</span>
+<span class="p">|</span> generic_rating              <span class="p">|</span>
+<span class="p">|</span> generic_threadedcomment     <span class="p">|</span>
+<span class="p">|</span> pages_link                  <span class="p">|</span>
+<span class="p">|</span> pages_page                  <span class="p">|</span>
+<span class="p">|</span> pages_richtextpage          <span class="p">|</span>
+<span class="p">|</span> twitter_query               <span class="p">|</span>
+<span class="p">|</span> twitter_tweet               <span class="p">|</span>
++---------------------------
+
+</code></pre></div><h2 id="configurar-el-virtualhost">Configurar el virtualhost</h2>
+<p>No me voy a detener en la configuración de virtualhost, la información para crear los virtualhosts se refleja también en mi blog. ;)</p>
+<p>La configuración es la siguiente:</p>
+<p><code>/etc/httpd/sites-available/python.celia.gonzalonazareno.org  </code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">
+&lt;VirtualHost *:80&gt;
+    ServerName python.celia.gonzalonazareno.org
+    Redirect permanent / https://python.celia.gonzalonazareno.org
+    DocumentRoot /var/www/mezzanine_app
+    ErrorLog /var/www/mezzanine_app/log/error.log
+    CustomLog /var/www/mezzanine_app/log/requests.log combined
+
+    &lt;Proxy <span class="s2">&#34;unix:/run/php-fpm/www.sock|fcgi://php-fpm&#34;</span>&gt;
+            ProxySet <span class="nv">disablereuse</span><span class="o">=</span>off
+    &lt;/Proxy&gt;
+
+    &lt;FilesMatch <span class="se">\.</span>php$&gt;
+            SetHandler proxy:fcgi://php-fpm
+    &lt;/FilesMatch&gt;
+&lt;/VirtualHost&gt;
+
+</code></pre></div><p><code>/etc/httpd/sites-available/https.python.celia.gonzalonazareno.org </code></p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">&lt;VirtualHost *:443&gt;
+    ServerName python.celia.gonzalonazareno.org
+    DocumentRoot /var/www/mezzanine_app
+    ErrorLog /var/www/mezzanine_app/log/error.log
+    CustomLog /var/www/mezzanine_app/log/requests.log combined
+
+        &lt;Proxy <span class="s2">&#34;unix:/run/php-fpm/www.sock|fcgi://php-fpm&#34;</span>&gt;
+                ProxySet <span class="nv">disablereuse</span><span class="o">=</span>off
+        &lt;/Proxy&gt;
+
+        &lt;FilesMatch <span class="se">\.</span>php$&gt;
+                SetHandler proxy:fcgi://php-fpm
+        &lt;/FilesMatch&gt;
+
+    Alias /static <span class="s2">&#34;/var/www/mezzanine_app/theme&#34;</span>
+
+    &lt;Directory /var/www/mezzanine_app/theme<span class="s2">&#34;&gt;
+</span><span class="s2">    Require all granted
+</span><span class="s2">    Options FollowSymlinks
+</span><span class="s2">    &lt;/Directory&gt;
+</span><span class="s2">    ProxyPass /static !
+</span><span class="s2">    ProxyPass / http://127.0.0.1:8080/
+</span><span class="s2">
+</span><span class="s2">    SSLEngine on
+</span><span class="s2">    SSLCertificateFile /etc/pki/tls/certs/wc_celia_sign.crt
+</span><span class="s2">    SSLCertificateKeyFile /etc/pki/tls/private/wc_private.key
+</span><span class="s2">
+</span><span class="s2">&lt;/VirtualHost&gt;
+</span></code></pre></div><ul>
+<li>Ahora crearemos un fichero .ini para iniciar el proxy con uwsgi</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">
+<span class="o">[</span>uwsgi<span class="o">]</span>
+<span class="nv">http</span> <span class="o">=</span> :8080
+<span class="nv">chdir</span> <span class="o">=</span> /var/www/mezzanine_app/mezzanine_app
+wsgi-file <span class="o">=</span> /var/www/mezzanine_app/mezzanine_app/wsgi.py
+master
+
+</code></pre></div><ul>
+<li>Iniciamos el proxy</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">(</span>mezzanine<span class="o">)</span> <span class="o">[</span>centos@quijote mezzanine_app<span class="o">]</span>$ uwsgi uwsgi.ini 
+<span class="o">[</span>uWSGI<span class="o">]</span> getting INI configuration from uwsgi.ini
+*** Starting uWSGI 2.0.19.1 <span class="o">(</span>64bit<span class="o">)</span> on <span class="o">[</span>Sun Feb <span class="m">21</span> 18:25:20 2021<span class="o">]</span> ***
+compiled with version: 8.3.1 <span class="m">20191121</span> <span class="o">(</span>Red Hat 8.3.1-5<span class="o">)</span> on <span class="m">21</span> February <span class="m">2021</span> 13:29:33
+os: Linux-4.18.0-240.1.1.el8_3.x86_64 <span class="c1">#1 SMP Thu Nov 19 17:20:08 UTC 2020</span>
+nodename: quijote
+machine: x86_64
+clock source: unix
+detected number of CPU cores: <span class="m">1</span>
+current working directory: /var/www/mezzanine_app
+detected binary path: /home/centos/mezzanine/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir<span class="o">()</span> to /var/www/mezzanine_app
+your processes number limit is <span class="m">1647</span>
+your memory page size is <span class="m">4096</span> bytes
+detected max file descriptor number: <span class="m">1024</span>
+lock engine: pthread robust mutexes
+thunder lock: disabled <span class="o">(</span>you can <span class="nb">enable</span> it with --thunder-lock<span class="o">)</span>
+uWSGI http bound on :8080 fd <span class="m">4</span>
+uwsgi socket <span class="m">0</span> bound to TCP address 127.0.0.1:33589 <span class="o">(</span>port auto-assigned<span class="o">)</span> fd <span class="m">3</span>
+Python version: 3.7.3 <span class="o">(</span>default, Feb <span class="m">21</span> 2021, 14:11:31<span class="o">)</span>  <span class="o">[</span>GCC 8.3.1 <span class="m">20191121</span> <span class="o">(</span>Red Hat 8.3.1-5<span class="o">)]</span>
+*** Python threads support is disabled. You can <span class="nb">enable</span> it with --enable-threads ***
+Python main interpreter initialized at 0x2297e60
+your server socket listen backlog is limited to <span class="m">100</span> connections
+your mercy <span class="k">for</span> graceful operations on workers is <span class="m">60</span> seconds
+mapped <span class="m">145840</span> bytes <span class="o">(</span><span class="m">142</span> KB<span class="o">)</span> <span class="k">for</span> <span class="m">1</span> cores
+*** Operational MODE: single process ***
+WSGI app <span class="m">0</span> <span class="o">(</span><span class="nv">mountpoint</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="o">)</span> ready in <span class="m">3</span> seconds on interpreter 0x2297e60 pid: <span class="m">102191</span> <span class="o">(</span>default app<span class="o">)</span>
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process <span class="o">(</span>pid: 102191<span class="o">)</span>
+spawned uWSGI worker <span class="m">1</span> <span class="o">(</span>pid: 102192, cores: 1<span class="o">)</span>
+spawned uWSGI http <span class="m">1</span> <span class="o">(</span>pid: 102193<span class="o">)</span>
+
+
+</code></pre></div><ul>
+<li>Tenemos que asegurarnos que el DNS está bien configurado en Freston</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">. . . 
+python   IN     CNAME   dulcinea
+. . .
+</code></pre></div><h2 id="funcionamiento-del-sitio-web">Funcionamiento del sitio web</h2>
+<p><img src="/images/escenario/django/funcionamiento.png" alt="funcionamiento.png"></p>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/cms/">cms</a><a class="tag" href="/tags/python/">python</a><a class="tag" href="/tags/django/">django</a><a class="tag" href="/tags/mezzanine/">Mezzanine</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

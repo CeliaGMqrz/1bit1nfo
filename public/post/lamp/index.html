@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Instalación de un entorno LAMP </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/lamp/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Instalación de un entorno LAMP"/>
+<meta name="twitter:description" content="Instalación de un servidor LAMP Crea una instancia de vagrant basado en un box de debian o ubuntu  Primero creamos el fichero Vagrantfile  nano Vagrantfile  Le añadimos estas lineas para configurar nuestra máquina debian  # -*- mode: ruby -*- # vi: set ft=ruby : Vagrant."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Instalación de un entorno LAMP</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Wed, Nov 11, 2020 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">5-minute read</span>
+                    </div>
+                
+            </div>
+
+            <h2 id="instalación-de-un-servidor-lamp">Instalación de un servidor LAMP</h2>
+<h2 id="crea-una-instancia-de-vagrant-basado-en-un-box-de-debian-o-ubuntu">Crea una instancia de vagrant basado en un box de debian o ubuntu</h2>
+<ul>
+<li>Primero creamos el fichero <em>Vagrantfile</em></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">nano Vagrantfile
+</code></pre></div><ul>
+<li>Le añadimos estas lineas para configurar nuestra máquina debian</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># -*- mode: ruby -*-</span>
+<span class="c1"># vi: set ft=ruby :</span>
+
+Vagrant.configure<span class="o">(</span><span class="s2">&#34;2&#34;</span><span class="o">)</span> <span class="k">do</span> <span class="p">|</span>config<span class="p">|</span>
+        config.vm.box <span class="o">=</span> <span class="s2">&#34;debian/buster64&#34;</span>
+        config.vm.hostname <span class="o">=</span> <span class="s2">&#34;debian-cms&#34;</span>
+        config.vm.network :public_network, :bridge<span class="o">=</span>&gt;<span class="s2">&#34;enp5s0&#34;</span>
+end
+
+</code></pre></div><ul>
+<li>Levantamos la máquina</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">vagrant up
+</code></pre></div><ul>
+<li>Cuando esté lista entramos en la máquina por ssh</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">vagrant ssh
+</code></pre></div><ul>
+<li>Una vez dentro le añadimos los repositorios esenciales y actualizamos la máquina</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo su
+nano /etc/apt/sources.list
+</code></pre></div><ul>
+<li>Dejamos la lista de repositorios de esta forma:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">deb http://deb.debian.org/debian buster main
+deb-src http://deb.debian.org/debian buster main
+
+deb http://deb.debian.org/debian-security/ buster/updates main
+deb-src http://deb.debian.org/debian-security/ buster/updates main
+
+deb http://deb.debian.org/debian buster-updates main
+deb-src http://deb.debian.org/debian buster-updates main
+</code></pre></div><ul>
+<li>Actualizamos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apt update
+apt upgrade
+</code></pre></div><h2 id="instala-en-esa-máquina-virtual-toda-una-pila-lamp">Instala en esa máquina virtual toda una pila LAMP</h2>
+<h3 id="qué-es-lamp">¿Qué es LAMP?</h3>
+<p><strong>LAMP</strong> es el acŕonimo usado para describir un sistema de infraestructura de internet que usa las siguientes herramientas:</p>
+<ul>
+<li><strong>Linux</strong>, como sistema operativo. En este caso usaremos la distribución Debian Buster.</li>
+<li><strong>Apache</strong>, que va ser nuestro servidor web.</li>
+<li><strong>MySQL/MariaDB</strong>, que va ser nuestro gestor de base de datos.</li>
+<li><strong>PHP</strong>, como lenguaje de programación.</li>
+</ul>
+<h3 id="instalacion-de-apache-web-server">Instalacion de Apache Web Server</h3>
+<ul>
+<li>Instalamos <strong>apache2</strong></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apt install apache2 apache2-utils
+</code></pre></div><ul>
+<li>Vemos la <strong>version</strong> de apache</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@debian-cms:/home/vagrant# apache2 -v
+Server version: Apache/2.4.38 <span class="o">(</span>Debian<span class="o">)</span>
+Server built:   2020-08-25T20:08:29
+
+</code></pre></div><ul>
+<li>Comprobamos que apache está funcionando correctamente</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@debian-cms:/home/vagrant# systemctl status apache2
+● apache2.service - The Apache HTTP Server
+   Loaded: loaded <span class="o">(</span>/lib/systemd/system/apache2.service<span class="p">;</span> enabled<span class="p">;</span> vendor preset: enabled<span class="o">)</span>
+   Active: active <span class="o">(</span>running<span class="o">)</span> since Sun 2020-11-01 13:38:34 GMT<span class="p">;</span> 9min ago
+     Docs: https://httpd.apache.org/docs/2.4/
+ Main PID: <span class="m">26137</span> <span class="o">(</span>apache2<span class="o">)</span>
+    Tasks: <span class="m">6</span> <span class="o">(</span>limit: 544<span class="o">)</span>
+   Memory: 10.8M
+   CGroup: /system.slice/apache2.service
+           ├─26137 /usr/sbin/apache2 -k start
+           ├─26141 /usr/sbin/apache2 -k start
+           ├─26142 /usr/sbin/apache2 -k start
+           ├─26143 /usr/sbin/apache2 -k start
+           ├─26144 /usr/sbin/apache2 -k start
+           └─26145 /usr/sbin/apache2 -k start
+
+Nov <span class="m">01</span> 13:38:34 debian-cms systemd<span class="o">[</span>1<span class="o">]</span>: Starting The Apache HTTP Server...
+Nov <span class="m">01</span> 13:38:34 debian-cms apachectl<span class="o">[</span>26133<span class="o">]</span>: AH00558: apache2: Could not reliably determine the server<span class="err">&#39;</span>s 
+Nov <span class="m">01</span> 13:38:34 debian-cms systemd<span class="o">[</span>1<span class="o">]</span>: Started The Apache HTTP Server.
+lines 1-18/18 <span class="o">(</span>END<span class="o">)</span>
+
+</code></pre></div><h3 id="instalación-de-mysqlmariadb">Instalación de MYSQL/MariaDB</h3>
+<ul>
+<li>Instalamos nuestro <strong>gestor de base de datos</strong> de la siguiente forma</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apt install mariadb-client mariadb-server
+</code></pre></div><ul>
+<li>Ahora entramos como root a mysql.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@debian-cms:/home/vagrant# mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with <span class="p">;</span> or <span class="se">\g</span>.
+Your MariaDB connection id is <span class="m">49</span>
+Server version: 10.3.25-MariaDB-0+deb10u1 Debian <span class="m">10</span>
+
+Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type <span class="s1">&#39;help;&#39;</span> or <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> help. Type <span class="s1">&#39;\c&#39;</span> to clear the current input statement.
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; 
+
+</code></pre></div><ul>
+<li>Creamos la base de datos, la llamaremos &lsquo;cms&rsquo;.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; create database cms<span class="p">;</span>
+Query OK, <span class="m">1</span> row affected <span class="o">(</span>0.002 sec<span class="o">)</span>
+
+</code></pre></div><ul>
+<li>Creamos un <strong>usuario</strong> y le damos los <strong>privilegios</strong> para usar esa base de datos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; create user <span class="s1">&#39;cgm&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+Query OK, <span class="m">0</span> rows affected <span class="o">(</span>0.005 sec<span class="o">)</span>
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; grant all privileges on cms.* to <span class="s1">&#39;cgm&#39;</span>@<span class="s1">&#39;localhost&#39;</span> identified by <span class="s1">&#39;cgm&#39;</span><span class="p">;</span>
+Query OK, <span class="m">0</span> rows affected <span class="o">(</span>0.002 sec<span class="o">)</span>
+
+</code></pre></div><h3 id="instalación-de-php">Instalación de PHP</h3>
+<ul>
+<li>Instalamos <strong>PHP</strong>, el módulo para conectarnos a la base de datos y el módulo que nos permite conectarnos al sevidor.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apt install php php-mysql libapache2-mod-php php-gd
+</code></pre></div><ul>
+<li>Vemos la <strong>version</strong> de php</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@debian-cms:/home/vagrant# php -v
+PHP 7.3.19-1~deb10u1 <span class="o">(</span>cli<span class="o">)</span> <span class="o">(</span>built: Jul  <span class="m">5</span> <span class="m">2020</span> 06:46:45<span class="o">)</span> <span class="o">(</span> NTS <span class="o">)</span>
+Copyright <span class="o">(</span>c<span class="o">)</span> 1997-2018 The PHP Group
+Zend Engine v3.3.19, Copyright <span class="o">(</span>c<span class="o">)</span> 1998-2018 Zend Technologies
+    with Zend OPcache v7.3.19-1~deb10u1, Copyright <span class="o">(</span>c<span class="o">)</span> 1999-2018, by Zend Technologies
+
+</code></pre></div><p>Con esto ya tendríamos <strong>LAMP</strong> operativo en nuestro sistema.</p>
+<h2 id="funcionamiento">FUNCIONAMIENTO</h2>
+<ul>
+<li>
+<p>Creamos un index.html sencillo dentro de nuestro directorio /var/www/html</p>
+</li>
+<li>
+<p>Vemos que funciona nuestro entorno LAMP</p>
+</li>
+</ul>
+<p>Mariadb en funcionamiento:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@debian-cms:/home/vagrant# systemctl status mariadb
+● mariadb.service - MariaDB 10.3.25 database server
+   Loaded: loaded <span class="o">(</span>/lib/systemd/system/mariadb.service<span class="p">;</span> enabled<span class="p">;</span> vendor preset: enabled<span class="o">)</span>
+   Active: active <span class="o">(</span>running<span class="o">)</span> since Fri 2020-11-06 12:03:53 GMT<span class="p">;</span> 6h ago
+     Docs: man:mysqld<span class="o">(</span>8<span class="o">)</span>
+           https://mariadb.com/kb/en/library/systemd/
+  Process: <span class="m">414</span> <span class="nv">ExecStartPre</span><span class="o">=</span>/usr/bin/install -m <span class="m">755</span> -o mysql -g root -d /var/run/mysqld <span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited, sta
+  Process: <span class="m">425</span> <span class="nv">ExecStartPre</span><span class="o">=</span>/bin/sh -c systemctl unset-environment _WSREP_START_POSITION <span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited, st
+  Process: <span class="m">431</span> <span class="nv">ExecStartPre</span><span class="o">=</span>/bin/sh -c <span class="o">[</span> ! -e /usr/bin/galera_recovery <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">VAR</span><span class="o">=</span> <span class="o">||</span>   <span class="nv">VAR</span><span class="o">=</span><span class="sb">`</span><span class="nb">cd</span> /usr/bin/..
+  Process: <span class="m">515</span> <span class="nv">ExecStartPost</span><span class="o">=</span>/bin/sh -c systemctl unset-environment _WSREP_START_POSITION <span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited, s
+  Process: <span class="m">517</span> <span class="nv">ExecStartPost</span><span class="o">=</span>/etc/mysql/debian-start <span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited, <span class="nv">status</span><span class="o">=</span>0/SUCCESS<span class="o">)</span>
+ Main PID: <span class="m">479</span> <span class="o">(</span>mysqld<span class="o">)</span>
+   Status: <span class="s2">&#34;Taking your SQL requests now...&#34;</span>
+    Tasks: <span class="m">30</span> <span class="o">(</span>limit: 544<span class="o">)</span>
+   Memory: 149.6M
+   CGroup: /system.slice/mariadb.service
+           └─479 /usr/sbin/mysqld
+
+Nov <span class="m">06</span> 12:03:52 debian-cms systemd<span class="o">[</span>1<span class="o">]</span>: Starting MariaDB 10.3.25 database server...
+Nov <span class="m">06</span> 12:03:52 debian-cms mysqld<span class="o">[</span>479<span class="o">]</span>: 2020-11-06 12:03:52 <span class="m">0</span> <span class="o">[</span>Note<span class="o">]</span> /usr/sbin/mysqld <span class="o">(</span>mysqld 10.3.25-Mar
+Nov <span class="m">06</span> 12:03:52 debian-cms mysqld<span class="o">[</span>479<span class="o">]</span>: 2020-11-06 12:03:52 <span class="m">0</span> <span class="o">[</span>Warning<span class="o">]</span> Could not increase number of max_
+Nov <span class="m">06</span> 12:03:53 debian-cms systemd<span class="o">[</span>1<span class="o">]</span>: Started MariaDB 10.3.25 database server.
+Nov <span class="m">06</span> 12:03:53 debian-cms /etc/mysql/debian-start<span class="o">[</span>531<span class="o">]</span>: Checking <span class="k">for</span> insecure root accounts.
+Nov <span class="m">06</span> 12:03:53 debian-cms /etc/mysql/debian-start<span class="o">[</span>535<span class="o">]</span>: Triggering myisam-recover <span class="k">for</span> all MyISAM tables 
+lines 1-23/23 <span class="o">(</span>END<span class="o">)</span>
+
+</code></pre></div><p>Apache en funcionamiento:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@debian-cms:/home/vagrant# systemctl status apache2
+● apache2.service - The Apache HTTP Server
+   Loaded: loaded <span class="o">(</span>/lib/systemd/system/apache2.service<span class="p">;</span> enabled<span class="p">;</span> vendor preset: enabled<span class="o">)</span>
+   Active: active <span class="o">(</span>running<span class="o">)</span> since Fri 2020-11-06 12:03:52 GMT<span class="p">;</span> 6h ago
+     Docs: https://httpd.apache.org/docs/2.4/
+  Process: <span class="m">416</span> <span class="nv">ExecStart</span><span class="o">=</span>/usr/sbin/apachectl start <span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited, <span class="nv">status</span><span class="o">=</span>0/SUCCESS<span class="o">)</span>
+ Main PID: <span class="m">455</span> <span class="o">(</span>apache2<span class="o">)</span>
+    Tasks: <span class="m">9</span> <span class="o">(</span>limit: 544<span class="o">)</span>
+   Memory: 34.6M
+   CGroup: /system.slice/apache2.service
+           ├─455 /usr/sbin/apache2 -k start
+           ├─480 /usr/sbin/apache2 -k start
+           ├─481 /usr/sbin/apache2 -k start
+           ├─482 /usr/sbin/apache2 -k start
+           ├─483 /usr/sbin/apache2 -k start
+           ├─484 /usr/sbin/apache2 -k start
+           ├─588 /usr/sbin/apache2 -k start
+           ├─589 /usr/sbin/apache2 -k start
+           └─590 /usr/sbin/apache2 -k start
+
+Nov <span class="m">06</span> 12:03:52 debian-cms systemd<span class="o">[</span>1<span class="o">]</span>: Starting The Apache HTTP Server...
+Nov <span class="m">06</span> 12:03:52 debian-cms apachectl<span class="o">[</span>416<span class="o">]</span>: AH00558: apache2: Could not reliably determine the server<span class="err">&#39;</span>s fu
+Nov <span class="m">06</span> 12:03:52 debian-cms systemd<span class="o">[</span>1<span class="o">]</span>: Started The Apache HTTP Server.
+lines 1-22/22 <span class="o">(</span>END<span class="o">)</span>
+
+</code></pre></div><p><img src="/images/lamp/index.png" alt="index.png"></p>
+<p>php en funcionamiento:</p>
+<p><img src="/images/lamp/testphp.png" alt="testphp.png"></p>
+<p>-&gt; <a href="https://github.com/CeliaGMqrz/cms_install_debian/blob/main/t2_drupal.md">Instalación de drupal</a></p>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/lamp/">lamp</a><a class="tag" href="/tags/instalar-lamp/">instalar lamp</a><a class="tag" href="/tags/entorno-lamp/">entorno lamp</a><a class="tag" href="/tags/linux/">linux</a><a class="tag" href="/tags/apache/">apache</a><a class="tag" href="/tags/mysql/">mysql</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

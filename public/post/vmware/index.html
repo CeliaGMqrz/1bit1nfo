@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Instalación y configuración básica de VMWare ESXi </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/vmware/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Instalación y configuración básica de VMWare ESXi"/>
+<meta name="twitter:description" content="Descripción de la tarea: Utiliza el servidor físico que se te haya asignado e instala la versión adecuada del sistema de virtualización VMWare ESXi (ten en cuenta que recibe diferentes denominaciones comerciales, pero nos referimos al sistema de virtualización de VMWare que proporciona virtualización de alto rendimiento mediante la técnica de la paravirtualización)."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Instalación y configuración básica de VMWare ESXi</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Tue, Dec 22, 2020 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">4-minute read</span>
+                    </div>
+                
+            </div>
+
+            <h2 id="descripción-de-la-tarea">Descripción de la tarea:</h2>
+<p>Utiliza el servidor físico que se te haya asignado e instala la versión adecuada del sistema de virtualización VMWare ESXi (ten en cuenta que recibe diferentes denominaciones comerciales, pero nos referimos al sistema de virtualización de VMWare que proporciona virtualización de alto rendimiento mediante la técnica de la paravirtualización).</p>
+<p>Realiza la configuración del servicio que permita su gestión remota desde un equipo cliente e instala en tu equipo la aplicación cliente que permita gestionar remotamente el hipervisor.</p>
+<p>Instala una máquina virtual que tenga acceso a Internet. La corrección consistirá en comprobar el funcionamiento de dicha máquina virtual.</p>
+<h2 id="instalación-de-vmware-esxi">Instalación de VMWare ESXi</h2>
+<p>Obtenemos la imagen de VMWare para nuestro servidor:</p>
+<p><a href="/images/vmware/https://www.dell.com/support/home/es-es/drivers/driversdetails?driverid=5yc4t">descargar ISO VMWare ESXi</a></p>
+<p>Grabamos la ISO en un usb y lo introducimos en el servidor.</p>
+<p>Reinciamos y configuramos el servidor para que arranque por el usb, a continuación realizamos la instalación. Es una instalación bastante simple así que pasamos a la configuración. Lo único relevante aquí es tener en cuenta las credenciales que nos va a pedir para su administración.</p>
+<p>Nota: Es importante tener activado en la BIOS la opción de Virtualización, sin este requisito no se podrá instalar y nos surgirá el siguiente error.</p>
+<p><img src="/images/vmware/requisito.jpeg" alt="requisito.jpeg"></p>
+<p>Nos pedirá la confirmación para instalar sobre el disco</p>
+<p><img src="/images/vmware/confirm.jpeg" alt="confirm.jpeg"></p>
+<p>Vemos que se ha instalado correctamente</p>
+<p><img src="/images/vmware/complete.jpg" alt="complete.jpg"></p>
+<h2 id="configuración-de-vmware-desde-el-servidor">Configuración de VMWare desde el Servidor</h2>
+<p>Para configurar MVWare nos pedirá las credenciales que facilitamos en la instalación</p>
+<p><img src="/images/vmware/credenciales.jpeg" alt="credenciales.jpeg"></p>
+<p>Le indicaremos una dirección IP estática, la cual será 172.22.221.68, anteriormente tenia la 172.22.221.63. Le hemos añadido 5 más para que podamos conectarnos a la máquina.</p>
+<p><img src="/images/vmware/estatica.jpg" alt="estatica.jpg"></p>
+<p>De forma que quedaría así</p>
+<p><img src="/images/vmware/estatica1.jpg" alt="estatica1.jpg"></p>
+<p>Nos aseguramos que está habilitado el ssh</p>
+<p><img src="/images/vmware/ssh.jpg" alt="ssh.jpg"></p>
+<p>Ahora reiniciamos el servidor, arrancando desde el disco duro donde se ha instalado el software y tendríamos lista la instalación para poder acceder remotamente desde nuestro equipo.</p>
+<h2 id="instalación-del-cliente-vsphere-client-en-windows10">Instalación del cliente vSphere Client en Windows10</h2>
+<p>Desde casa he accedido a través de la VPN. He instalado OpenVPN sobre Windows y he configurado el cliente para conectarme a la red del Centro.</p>
+<p>Accedemos desde el navegador a la dirección del servidor configurada en VMWare, la cual es <strong>172.22.221.68</strong>. Nos aparece lo siguiente:</p>
+<p><img src="/images/vmware/vmw1.jpg" alt="vmw1.jpg"></p>
+<p>Aquí nos aparece el enlace para descargar el cliente vSphere, lo descargamos y lo instalamos sobre nuestro sistema.</p>
+<p>Cuando esté instalado lo abrimos, nos pedirá la ip del servidor y nuestras crenciales, cuando lo introducimos tendrá este aspecto.</p>
+<p><img src="/images/vmware/credenciales.png" alt="credenciales.png"></p>
+<p><img src="/images/vmware/vmw2.jpg" alt="vmw2.jpg"></p>
+<h2 id="crear-máquina-virtual-en-vmware-a-través-del-cliente">Crear máquina virtual en VMWare a través del Cliente</h2>
+<p>Seleccionamos nuestro servidor y creamos la una máquina virtual nueva.</p>
+<p><img src="/images/vmware/vmw5.jpg" alt="vmw5.jpg"></p>
+<p><img src="/images/vmware/vmw3.jpg" alt="vmw3.jpg"></p>
+<p>Tenemos dos opciones de configuración, típica o avanzada, en la típica se configuran varios valores por defecto y en la avanada podemos indicar la ram que vamos a usar el número de cpu e hilos entre otras cosas. No es relevante qué vamos a elegir aquí para esta práctica.</p>
+<p><img src="/images/vmware/mvw4.jpg" alt="vmw4.jpg"></p>
+<p>Nos pedirá el nombre que le vamos a poner a la máquina, en mi caso le he puesto xannan.</p>
+<p><img src="/images/vmware/vmw6.jpg" alt="vmw6.jpg"></p>
+<p>Seleccionamos el almacenamiento</p>
+<p><img src="/images/vmware/vmw7.jpg" alt="vmw7.jpg"></p>
+<p>Seleccionamos el sistema operativo que vamos a instalar en mi caso puse &lsquo;otro linux 64&rsquo;</p>
+<p><img src="/images/vmware/vmw8.jpg" alt="vmw8.jpg"></p>
+<p>Dejamos por defecto la interfaz de red</p>
+<p><img src="/images/vmware/vmw9.jpg" alt="vmw9.jpg"></p>
+<p>Dejamos por defecto los valores para crear el disco</p>
+<p><img src="/images/vmware/vmw10.jpg" alt="vmw10.jpg"></p>
+<p>Nos hará un resumen de la máquina que va a crear y le damos a &lsquo;Finish&rsquo; para finalizar.</p>
+<p>Ya tendríamos la máquina virtual creada</p>
+<p><img src="/images/vmware/mv1.jpg" alt="mv1.jpg"></p>
+<p>A continuación le vamos a insertar una iso que tenemos en el equipo local a través del cliente de esta forma. La máquina deberá de estar encendida en ese momento.</p>
+<p><img src="/images/vmware/isodisk.jpg" alt="isodisk.jpg"></p>
+<p>Reiniciamos la máquina virtual para que arranque desde el cd con la iso e iniciará la instalación.</p>
+<p><img src="/images/vmware/instalacion1.jpg" alt="instalacion1.jpg"></p>
+<p>Desafortunadamente la instalación no se lleva a cabo, se queda congelado y no podemos continuar. Posiblemente por un fallo relacionado con las redes suponiendo que estamos conectados a través de una VPN.</p>
+<p>Lo volvemos a intentar en el Centro, creamos una máquina virtual nueva con el mismo procedimiento y los mismos pasos efectuados y efectivamente desde allí podemos hacer la instalación, comprobamos que efectivamente la máquina tiene acceso a internet.</p>
+<p>Parte de la instalación de debian y comprobación de red</p>
+<p><a href="https://youtu.be/4riAUMLBVFc">Ver Video 1</a></p>
+<p>Comprobación de que la máquina está actualizada y con acceso a la red</p>
+<p><a href="https://www.youtube.com/watch?v=uu71yR7GQLA">Ver Video 2</a></p>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/vmware/">vmware</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Servidor de base de datos. MariaDB en Ubuntu </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/mysql_sancho/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Servidor de base de datos. MariaDB en Ubuntu"/>
+<meta name="twitter:description" content="En sancho (Ubuntu) vamos a instalar un servidor de base de datos mariadb (bd."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Servidor de base de datos. MariaDB en Ubuntu</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Wed, Jan 13, 2021 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">6-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p><img src="/images/escenario/mysqlu.jpg" alt="mysqlu.jpg"></p>
+<p>En sancho (Ubuntu) vamos a instalar un servidor de base de datos mariadb (bd.celia.gonzalonazareno.org).</p>
+<h3 id="1-instalación-de-mariadb-en-ubuntu">1. Instalación de mariadb en Ubuntu</h3>
+<p>Antes de nada tendremos que actualizar la paquetería</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt-get update
+sudo apt-get upgrade
+</code></pre></div><p>Instalamos mysql agregando el repositorio</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt-get install software-properties-common
+
+sudo apt-key adv --fetch-keys <span class="s1">&#39;https://mariadb.org/mariadb_release_signing_key.asc&#39;</span>
+
+sudo add-apt-repository <span class="s1">&#39;deb [arch=amd64,arm64,ppc64el] https://mirror.one.com/mariadb/repo/10.4/ubuntu focal main&#39;</span>
+
+sudo apt install mariadb-server
+</code></pre></div><p>Procederemos a la instalación segura de mysql</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo mysql_secure_installation
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">ubuntu@sancho:~$ sudo mysql_secure_installation
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+In order to log into MariaDB to secure it, we<span class="s1">&#39;ll need the current
+</span><span class="s1">password for the root user. If you&#39;</span>ve just installed MariaDB, and
+haven<span class="s1">&#39;t set the root password yet, you should just press enter here.
+</span><span class="s1">
+</span><span class="s1">Enter current password for root (enter for none): 
+</span><span class="s1">OK, successfully used password, moving on...
+</span><span class="s1">
+</span><span class="s1">Setting the root password or using the unix_socket ensures that nobody
+</span><span class="s1">can log into the MariaDB root user without the proper authorisation.
+</span><span class="s1">
+</span><span class="s1">You already have your root account protected, so you can safely answer &#39;</span>n<span class="s1">&#39;.
+</span><span class="s1">
+</span><span class="s1">Switch to unix_socket authentication [Y/n] n
+</span><span class="s1"> ... skipping.
+</span><span class="s1">
+</span><span class="s1">You already have your root account protected, so you can safely answer &#39;</span>n<span class="s1">&#39;.
+</span><span class="s1">
+</span><span class="s1">Change the root password? [Y/n] n
+</span><span class="s1"> ... skipping.
+</span><span class="s1">
+</span><span class="s1">By default, a MariaDB installation has an anonymous user, allowing anyone
+</span><span class="s1">to log into MariaDB without having to have a user account created for
+</span><span class="s1">them.  This is intended only for testing, and to make the installation
+</span><span class="s1">go a bit smoother.  You should remove them before moving into a
+</span><span class="s1">production environment.
+</span><span class="s1">
+</span><span class="s1">Remove anonymous users? [Y/n] Y
+</span><span class="s1"> ... Success!
+</span><span class="s1">
+</span><span class="s1">Normally, root should only be allowed to connect from &#39;</span>localhost<span class="s1">&#39;.  This
+</span><span class="s1">ensures that someone cannot guess at the root password from the network.
+</span><span class="s1">
+</span><span class="s1">Disallow root login remotely? [Y/n] Y
+</span><span class="s1"> ... Success!
+</span><span class="s1">
+</span><span class="s1">By default, MariaDB comes with a database named &#39;</span>test<span class="s1">&#39; that anyone can
+</span><span class="s1">access.  This is also intended only for testing, and should be removed
+</span><span class="s1">before moving into a production environment.
+</span><span class="s1">
+</span><span class="s1">Remove test database and access to it? [Y/n] Y
+</span><span class="s1"> - Dropping test database...
+</span><span class="s1"> ... Success!
+</span><span class="s1"> - Removing privileges on test database...
+</span><span class="s1"> ... Success!
+</span><span class="s1">
+</span><span class="s1">Reloading the privilege tables will ensure that all changes made so far
+</span><span class="s1">will take effect immediately.
+</span><span class="s1">
+</span><span class="s1">Reload privilege tables now? [Y/n] Y
+</span><span class="s1"> ... Success!
+</span><span class="s1">
+</span><span class="s1">Cleaning up...
+</span><span class="s1">
+</span><span class="s1">All done!  If you&#39;</span>ve completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks <span class="k">for</span> using MariaDB!
+
+</code></pre></div><p>Vemos que está funcionando correctamente</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">ubuntu@sancho:~$ sudo systemctl status mariadb
+● mariadb.service - MariaDB 10.4.17 database server
+     Loaded: loaded <span class="o">(</span>/lib/systemd/system/mariadb.service<span class="p">;</span> enabled<span class="p">;</span> vendor preset: enabled<span class="o">)</span>
+    Drop-In: /etc/systemd/system/mariadb.service.d
+             └─migrated-from-my.cnf-settings.conf
+     Active: active <span class="o">(</span>running<span class="o">)</span> since Wed 2021-01-13 16:30:24 CET<span class="p">;</span> 24s ago
+       Docs: man:mysqld<span class="o">(</span>8<span class="o">)</span>
+             https://mariadb.com/kb/en/library/systemd/
+   Main PID: <span class="m">7291</span> <span class="o">(</span>mysqld<span class="o">)</span>
+     Status: <span class="s2">&#34;Taking your SQL requests now...&#34;</span>
+      Tasks: <span class="m">32</span> <span class="o">(</span>limit: 533<span class="o">)</span>
+     Memory: 81.5M
+     CGroup: /system.slice/mariadb.service
+             └─7291 /usr/sbin/mysqld
+
+Jan <span class="m">13</span> 16:30:34 sancho /etc/mysql/debian-start<span class="o">[</span>7331<span class="o">]</span>: Processing databases
+Jan <span class="m">13</span> 16:30:34 sancho /etc/mysql/debian-start<span class="o">[</span>7331<span class="o">]</span>: information_schema
+Jan <span class="m">13</span> 16:30:34 sancho /etc/mysql/debian-start<span class="o">[</span>7331<span class="o">]</span>: mysql
+Jan <span class="m">13</span> 16:30:34 sancho /etc/mysql/debian-start<span class="o">[</span>7331<span class="o">]</span>: performance_schema
+Jan <span class="m">13</span> 16:30:34 sancho /etc/mysql/debian-start<span class="o">[</span>7331<span class="o">]</span>: Phase 6/7: Checking and upgrading tables
+Jan <span class="m">13</span> 16:30:34 sancho /etc/mysql/debian-start<span class="o">[</span>7331<span class="o">]</span>: Processing databases
+Jan <span class="m">13</span> 16:30:34 sancho /etc/mysql/debian-start<span class="o">[</span>7331<span class="o">]</span>: information_schema
+Jan <span class="m">13</span> 16:30:34 sancho /etc/mysql/debian-start<span class="o">[</span>7331<span class="o">]</span>: performance_schema
+Jan <span class="m">13</span> 16:30:34 sancho /etc/mysql/debian-start<span class="o">[</span>7331<span class="o">]</span>: Phase 7/7: Running <span class="s1">&#39;FLUSH PRIVILEGES&#39;</span>
+Jan <span class="m">13</span> 16:30:34 sancho /etc/mysql/debian-start<span class="o">[</span>7331<span class="o">]</span>: OK
+
+</code></pre></div><h3 id="2-configurar-mariadb-para-acceder-remotamente">2. Configurar mariadb para acceder remotamente</h3>
+<p>Ahora ya podemos acceder a mysql, crear un usuario que tendrá acceso remotamente desde quijote (10.0.2.4) a la base de datos alojada en Sancho.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">ubuntu@sancho:~$ sudo mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with <span class="p">;</span> or <span class="se">\g</span>.
+Your MariaDB connection id is <span class="m">56</span>
+Server version: 10.4.17-MariaDB-1:10.4.17+maria~focal-log mariadb.org binary distribution
+
+Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type <span class="s1">&#39;help;&#39;</span> or <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> help. Type <span class="s1">&#39;\c&#39;</span> to clear the current input statement.
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; CREATE USER <span class="s1">&#39;celia&#39;</span>@<span class="s1">&#39;10.0.2.4&#39;</span> IDENTIFIED BY <span class="s1">&#39;celia&#39;</span><span class="p">;</span>
+Query OK, <span class="m">0</span> rows affected <span class="o">(</span>0.015 sec<span class="o">)</span>
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; quit
+Bye
+</code></pre></div><p>Tenemos que indicar en la configuración de mariadb el &lsquo;bind-address&rsquo; para que escuche desde otras máquinas.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo nano /etc/mysql/my.cnf 
+</code></pre></div><p>Cambiamos la direccion de localhost a 0.0.0.0</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">[</span>mysqld<span class="o">]</span>
+<span class="c1">#</span>
+<span class="c1"># * Basic Settings</span>
+<span class="c1">#</span>
+<span class="nv">user</span>            <span class="o">=</span> mysql
+pid-file        <span class="o">=</span> /var/run/mysqld/mysqld.pid
+<span class="nv">socket</span>          <span class="o">=</span> /var/run/mysqld/mysqld.sock
+<span class="nv">port</span>            <span class="o">=</span> <span class="m">3306</span>
+<span class="nv">basedir</span>         <span class="o">=</span> /usr
+<span class="nv">datadir</span>         <span class="o">=</span> /var/lib/mysql
+<span class="nv">tmpdir</span>          <span class="o">=</span> /tmp
+<span class="nv">lc_messages_dir</span> <span class="o">=</span> /usr/share/mysql
+<span class="nv">lc_messages</span>     <span class="o">=</span> en_US
+skip-external-locking
+<span class="c1">#</span>
+<span class="c1"># Instead of skip-networking the default is now to listen only on</span>
+<span class="c1"># localhost which is more compatible and is not less secure.</span>
+bind-address            <span class="o">=</span> 0.0.0.0
+
+</code></pre></div><p>Reiniciamos el servicio</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo systemctl restart mariadb
+</code></pre></div><h3 id="3-prueba-de-funcionamiento">3. Prueba de funcionamiento</h3>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">[</span>centos@quijote ~<span class="o">]</span>$ mysql -u celia -p -h bd.celia.gonzalonazareno.org
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with <span class="p">;</span> or <span class="se">\g</span>.
+Your MariaDB connection id is <span class="m">36</span>
+Server version: 10.4.17-MariaDB-1:10.4.17+maria~focal-log mariadb.org binary distribution
+
+Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type <span class="s1">&#39;help;&#39;</span> or <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> help. Type <span class="s1">&#39;\c&#39;</span> to clear the current input statement.
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; show databases
+    -&gt; <span class="p">;</span>
++--------------------+
+<span class="p">|</span> Database           <span class="p">|</span>
++--------------------+
+<span class="p">|</span> information_schema <span class="p">|</span>
++--------------------+
+<span class="m">1</span> row in <span class="nb">set</span> <span class="o">(</span>0.004 sec<span class="o">)</span>
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; 
+
+
+</code></pre></div><p>Entrega una prueba de funcionamiento donde se vea como se realiza una conexión a la base de datos desde quijote</p>
+<p>Para ello vamos a crear una base de datos desde sancho y la veremos desde quijote. Tendremos que darle los privilegios al usuario para ver las bases de datos.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">ubuntu@sancho:~$ sudo mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with <span class="p">;</span> or <span class="se">\g</span>.
+Your MariaDB connection id is <span class="m">45</span>
+Server version: 10.4.17-MariaDB-1:10.4.17+maria~focal-log mariadb.org binary distribution
+
+Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type <span class="s1">&#39;help;&#39;</span> or <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> help. Type <span class="s1">&#39;\c&#39;</span> to clear the current input statement.
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; GRANT ALL PRIVILEGES ON *.* TO <span class="s1">&#39;celia&#39;</span>@<span class="s1">&#39;10.0.2.4&#39;</span> IDENTIFIED BY <span class="s1">&#39;celia&#39;</span> WITH GRANT OPTION<span class="p">;</span>
+Query OK, <span class="m">0</span> rows affected <span class="o">(</span>0.002 sec<span class="o">)</span>
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; FLUSH PRIVILEGES<span class="p">;</span>
+Query OK, <span class="m">0</span> rows affected <span class="o">(</span>0.001 sec<span class="o">)</span>
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; quit
+Bye
+
+</code></pre></div><ul>
+<li>Desde sancho:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">ubuntu@sancho:~$ mysql -u celia -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with <span class="p">;</span> or <span class="se">\g</span>.
+Your MariaDB connection id is <span class="m">46</span>
+Server version: 10.4.17-MariaDB-1:10.4.17+maria~focal-log mariadb.org binary distribution
+
+Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type <span class="s1">&#39;help;&#39;</span> or <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> help. Type <span class="s1">&#39;\c&#39;</span> to clear the current input statement.
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; show databases<span class="p">;</span>
++--------------------+
+<span class="p">|</span> Database           <span class="p">|</span>
++--------------------+
+<span class="p">|</span> db_quijote         <span class="p">|</span>
+<span class="p">|</span> information_schema <span class="p">|</span>
+<span class="p">|</span> mysql              <span class="p">|</span>
+<span class="p">|</span> performance_schema <span class="p">|</span>
++--------------------+
+<span class="m">4</span> rows in <span class="nb">set</span> <span class="o">(</span>0.001 sec<span class="o">)</span>
+
+</code></pre></div><ul>
+<li>Desde quijote:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">[</span>centos@quijote ~<span class="o">]</span>$ mysql -u celia -p -h bd.celia.gonzalonazareno.org
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with <span class="p">;</span> or <span class="se">\g</span>.
+Your MariaDB connection id is <span class="m">47</span>
+Server version: 10.4.17-MariaDB-1:10.4.17+maria~focal-log mariadb.org binary distribution
+
+Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type <span class="s1">&#39;help;&#39;</span> or <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> help. Type <span class="s1">&#39;\c&#39;</span> to clear the current input statement.
+
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; show databases<span class="p">;</span>
++--------------------+
+<span class="p">|</span> Database           <span class="p">|</span>
++--------------------+
+<span class="p">|</span> db_quijote         <span class="p">|</span>
+<span class="p">|</span> information_schema <span class="p">|</span>
+<span class="p">|</span> mysql              <span class="p">|</span>
+<span class="p">|</span> performance_schema <span class="p">|</span>
++--------------------+
+<span class="m">4</span> rows in <span class="nb">set</span> <span class="o">(</span>0.002 sec<span class="o">)</span>
+
+</code></pre></div></div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/mariadb/">mariadb</a><a class="tag" href="/tags/ubuntu/">ubuntu</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

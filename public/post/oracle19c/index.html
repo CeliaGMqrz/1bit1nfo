@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Instalación de un servidor Oracle database 19c sobre Linux 8 </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/oracle19c/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Instalación de un servidor Oracle database 19c sobre Linux 8"/>
+<meta name="twitter:description" content="1. Requisitos para el entorno de trabajo Vamos a instalar ORACLE 19c sobre Linux 8."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Instalación de un servidor Oracle database 19c sobre Linux 8</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Tue, Dec 8, 2020 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">7-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p><img src="/images/oracle19c/logo.png" alt="logo.png"></p>
+<h2 id="1-requisitos-para-el-entorno-de-trabajo">1. Requisitos para el entorno de trabajo</h2>
+<p>Vamos a instalar ORACLE 19c sobre Linux 8. Para ello vamos a trabajar en una máquina virtual.</p>
+<p>Requisitos:</p>
+<p>Nuestra máquina virtual constará de los siguentes requisitos</p>
+<ul>
+<li>2 Gb de Ram (mínimo), en mi caso le puesto 6Gb</li>
+<li>2 CPU</li>
+<li>30 Gb de almacenamiento mínimo, en mi caso le he puesto 60Gb</li>
+<li>Sistema Linux: (Red Hat Enterprise Linux for x86_64 (v. 8.3 for x86_64))</li>
+<li>Red puente hacia la máquina anfitriona</li>
+</ul>
+<h2 id="preinstalación">Preinstalación</h2>
+<p>Necesitamos instalar el paquete de Oracle con los paquetes esenciales anteriores a su instalación</p>
+<ul>
+<li>Permisos de superusuario</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">su</span> <span class="p">-</span>
+</code></pre></div><ul>
+<li>Obtenemos el paquete de preinstalación de oracle</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">curl </span><span class="n">-o</span> <span class="n">oracle-database-preinstall</span><span class="p">-</span><span class="n">19c</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">el7</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">yum</span><span class="p">.</span><span class="n">oracle</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">repo</span><span class="p">/</span><span class="n">OracleLinux</span><span class="p">/</span><span class="n">OL7</span><span class="p">/</span><span class="n">latest</span><span class="p">/</span><span class="n">x86_64</span><span class="p">/</span><span class="n">getPackage</span><span class="p">/</span><span class="n">oracle-database-preinstall</span><span class="p">-</span><span class="n">19c</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">el7</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span>
+</code></pre></div><ul>
+<li>Cuando intentamos instalar el paquete nos da un fallo de dependencias entonces las instalamos y con ellas otros paquetes necesarios. Estas dependencias pueden variar de un sistema a otro, hay que fijarse muy bien en el error que te muestra e instalar las dependencias /librerias necesarias.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">root</span><span class="nv">@localhost</span> <span class="n">user</span><span class="p">]</span><span class="c">#  rpm -ivh oracle-database-preinstall-19c-1.0-1.el7.x86_64.rpm </span>
+<span class="n">advertencia</span><span class="err">:</span><span class="n">oracle-database-preinstall</span><span class="p">-</span><span class="n">19c</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">el7</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span><span class="err">:</span> <span class="n">EncabezadoV3</span> <span class="n">RSA</span><span class="p">/</span><span class="n">SHA256</span> <span class="n">Signature</span><span class="p">,</span> <span class="n">ID</span> <span class="n">de</span> <span class="n">clave</span> <span class="n">ec551f03</span><span class="err">:</span> <span class="n">NOKEY</span>
+<span class="n">error</span><span class="err">:</span> <span class="n">Error</span> <span class="n">de</span> <span class="n">dependencias</span><span class="err">:</span>
+	<span class="n">compat-libcap1</span> <span class="n">es</span> <span class="n">necesario</span> <span class="n">por</span> <span class="n">oracle-database-preinstall</span><span class="p">-</span><span class="n">19c</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">el7</span><span class="p">.</span><span class="n">x86_64</span>
+	<span class="n">compat-libstdc</span><span class="p">++-</span><span class="n">33</span> <span class="n">es</span> <span class="n">necesario</span> <span class="n">por</span> <span class="n">oracle-database-preinstall</span><span class="p">-</span><span class="n">19c</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">el7</span><span class="p">.</span><span class="n">x86_64</span>
+	<span class="n">libaio-devel</span> <span class="n">es</span> <span class="n">necesario</span> <span class="n">por</span> <span class="n">oracle-database-preinstall</span><span class="p">-</span><span class="n">19c</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">el7</span><span class="p">.</span><span class="n">x86_64</span>
+
+</code></pre></div><ul>
+<li>Instalamos paquetes necesarios:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">yum</span> <span class="n">install</span> <span class="n">-y</span> <span class="n">gcc-c</span> <span class="p">++</span> <span class="n">make</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">-y</span> <span class="n">ksh</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">-y</span> <span class="n">sysstat</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">-y</span> <span class="n">xorg-x11-utils</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">java</span><span class="p">-</span><span class="n">11-openjdk-devel</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">-y</span> <span class="n">libnsl</span>
+</code></pre></div><ul>
+<li>Instalamos dependencias:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dnf</span> <span class="n">install</span> <span class="n">libaio-devel</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">wget </span><span class="n">http</span><span class="err">:</span><span class="p">//</span><span class="n">mirror</span><span class="p">.</span><span class="n">centos</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">centos</span><span class="p">/</span><span class="n">7</span><span class="p">/</span><span class="n">os</span><span class="p">/</span><span class="n">x86_64</span><span class="p">/</span><span class="n">Packages</span><span class="p">/</span><span class="n">compat-libstdc</span><span class="p">++-</span><span class="n">33</span><span class="p">-</span><span class="n">3</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">3</span><span class="p">-</span><span class="n">72</span><span class="p">.</span><span class="n">el7</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span>
+
+<span class="n">rpm</span> <span class="n">-ivh</span> <span class="n">compat-libstdc</span><span class="p">++-</span><span class="n">33</span><span class="p">-</span><span class="n">3</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">3</span><span class="p">-</span><span class="n">72</span><span class="p">.</span><span class="n">el7</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span> 
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">wget </span><span class="n">http</span><span class="err">:</span><span class="p">//</span><span class="n">mirror</span><span class="p">.</span><span class="n">centos</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">centos</span><span class="p">/</span><span class="n">7</span><span class="p">/</span><span class="n">os</span><span class="p">/</span><span class="n">x86_64</span><span class="p">/</span><span class="n">Packages</span><span class="p">/</span><span class="n">compat-libcap1</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">10</span><span class="p">-</span><span class="n">7</span><span class="p">.</span><span class="n">el7</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span>
+
+<span class="n">rpm</span> <span class="n">-ivh</span> <span class="n">compat-libcap1</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">10</span><span class="p">-</span><span class="n">7</span><span class="p">.</span><span class="n">el7</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span> 
+
+</code></pre></div><ul>
+<li>Volvemos a instalar el paquete de preinstalación y vemos que ahora se ha instalado correctamente, una vez cumplidas todas las dependencias.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">root</span><span class="nv">@localhost</span> <span class="n">user</span><span class="p">]</span><span class="c"># rpm -ivh oracle-database-preinstall-19c-1.0-1.el7.x86_64.rpm </span>
+<span class="n">advertencia</span><span class="err">:</span><span class="n">oracle-database-preinstall</span><span class="p">-</span><span class="n">19c</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">el7</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span><span class="err">:</span> <span class="n">EncabezadoV3</span> <span class="n">RSA</span><span class="p">/</span><span class="n">SHA256</span> <span class="n">Signature</span><span class="p">,</span> <span class="n">ID</span> <span class="n">de</span> <span class="n">clave</span> <span class="n">ec551f03</span><span class="err">:</span> <span class="n">NOKEY</span>
+<span class="n">Verifying</span><span class="p">...</span>                          <span class="c">################################# [100%]</span>
+<span class="n">Preparando</span><span class="p">...</span>                         <span class="c">################################# [100%]</span>
+<span class="n">Actualizando</span> <span class="p">/</span> <span class="n">instalando</span><span class="p">...</span>
+   <span class="n">1</span><span class="err">:</span><span class="n">oracle-database-preinstall</span><span class="p">-</span><span class="n">19c</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="c">################################# [100%]</span>
+
+</code></pre></div><h2 id="usuario-oracle-y-grupos-cambio-de-contraseña">Usuario oracle y grupos. Cambio de contraseña.</h2>
+<ul>
+<li>Comprobamos que se ha creado el usuario de oracle</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">root</span><span class="nv">@localhost</span> <span class="n">user</span><span class="p">]</span><span class="c"># grep &#39;oracle&#39; /etc/passwd </span>
+<span class="n">oracle</span><span class="err">❌</span><span class="n">65535</span><span class="err">:</span><span class="n">65535</span><span class="p">::/</span><span class="n">home</span><span class="p">/</span><span class="n">oracle</span><span class="err">:</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">bash</span>
+
+</code></pre></div><ul>
+<li>Comprobamos que se han creado los grupos necesarios para oracle</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">root</span><span class="nv">@localhost</span> <span class="n">user</span><span class="p">]</span><span class="c"># grep &#39;oracle&#39; /etc/group </span>
+<span class="n">oinstall</span><span class="err">❌</span><span class="n">65535</span><span class="err">:</span><span class="n">oracle</span>
+<span class="n">dba</span><span class="err">❌</span><span class="n">65536</span><span class="err">:</span><span class="n">oracle</span>
+<span class="n">oper</span><span class="err">❌</span><span class="n">65537</span><span class="err">:</span><span class="n">oracle</span>
+<span class="n">backupdba</span><span class="err">❌</span><span class="n">65538</span><span class="err">:</span><span class="n">oracle</span>
+<span class="n">dgdba</span><span class="err">❌</span><span class="n">65539</span><span class="err">:</span><span class="n">oracle</span>
+<span class="n">kmdba</span><span class="err">❌</span><span class="n">65540</span><span class="err">:</span><span class="n">oracle</span>
+<span class="n">racdba</span><span class="err">❌</span><span class="n">65541</span><span class="err">:</span><span class="n">oracle</span>
+</code></pre></div><ul>
+<li>Cambiamos la contraseña de Oracle para asegurarnos la nuestra</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">passwd</span> <span class="n">oracle</span>
+</code></pre></div><h2 id="creación-del-directorio-de-trabajo">Creación del directorio de trabajo</h2>
+<ul>
+<li>Creamos el directorio de trabajo</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">mkdir</span> <span class="n">-p</span> <span class="p">/</span><span class="n">u01</span><span class="p">/</span><span class="n">app</span><span class="p">/</span><span class="n">oracle</span><span class="p">/</span><span class="n">product</span><span class="p">/</span><span class="n">19</span><span class="p">.</span><span class="n">3</span><span class="p">/</span><span class="n">dbhome_1</span>
+<span class="nb">cd </span><span class="p">/</span><span class="n">u01</span><span class="p">/</span><span class="n">app</span><span class="p">/</span><span class="n">oracle</span><span class="p">/</span><span class="n">product</span><span class="p">/</span><span class="n">19</span><span class="p">.</span><span class="n">3</span><span class="p">/</span><span class="n">dbhome_1</span>
+</code></pre></div><h2 id="descarga-de-oracle-19c-e-instalación-del-mismo">Descarga de Oracle 19c e instalación del mismo</h2>
+<ul>
+<li>Descargamos el software desde la pagina oficial comprimido en .zip</li>
+</ul>
+<p><a href="https://www.oracle.com/es/database/technologies/oracle19c-linux-downloads.html">https://www.oracle.com/es/database/technologies/oracle19c-linux-downloads.html</a></p>
+<ul>
+<li>Descomprimimos en el directorio que hemos creado anteriormente</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">root</span><span class="nv">@localhost</span> <span class="n">dbhome_1</span><span class="p">]</span><span class="c"># unzip /home/user/Descargas/LINUX.X64_193000_db_home.zip </span>
+</code></pre></div><ul>
+<li>Vemos los archivos actuales</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">root</span><span class="nv">@localhost</span> <span class="n">dbhome_1</span><span class="p">]</span><span class="c"># ls</span>
+<span class="n">addnode</span>     <span class="n">deinstall</span>      <span class="n">javavm</span>   <span class="n">OPatch</span>                          <span class="n">QOpatch</span>        <span class="n">sqldeveloper</span>
+<span class="n">apex</span>        <span class="n">demo</span>           <span class="n">jdbc</span>     <span class="n">opmn</span>                            <span class="nb">R </span>             <span class="n">sqlj</span>
+<span class="n">assistants</span>  <span class="n">diagnostics</span>    <span class="n">jdk</span>      <span class="n">oracle19c-linux-downloads</span><span class="p">.</span><span class="n">html</span>  <span class="n">racg</span>           <span class="n">sqlpatch</span>
+<span class="n">bin</span>         <span class="n">dmu</span>            <span class="n">jlib</span>     <span class="n">oracore</span>                         <span class="n">rdbms</span>          <span class="n">sqlplus</span>
+<span class="n">clone</span>       <span class="n">drdaas</span>         <span class="n">ldap</span>     <span class="n">ord</span>                             <span class="n">relnotes</span>       <span class="n">srvm</span>
+<span class="n">crs</span>         <span class="n">dv</span>             <span class="n">lib</span>      <span class="n">ords</span>                            <span class="n">root</span><span class="p">.</span><span class="n">sh</span>        <span class="n">suptools</span>
+<span class="n">css</span>         <span class="n">env</span><span class="p">.</span><span class="n">ora</span>        <span class="nb">md </span>      <span class="n">oss</span>                             <span class="n">root</span><span class="p">.</span><span class="n">sh</span><span class="p">.</span><span class="n">old</span>    <span class="n">ucp</span>
+<span class="n">ctx</span>         <span class="n">has</span>            <span class="n">mgw</span>      <span class="n">oui</span>                             <span class="n">root</span><span class="p">.</span><span class="n">sh</span><span class="p">.</span><span class="n">old</span><span class="p">.</span><span class="n">1</span>  <span class="n">usm</span>
+<span class="n">cv</span>          <span class="n">hs</span>             <span class="n">network</span>  <span class="n">owm</span>                             <span class="n">runInstaller</span>   <span class="n">utl</span>
+<span class="n">data</span>        <span class="n">install</span>        <span class="n">nls</span>      <span class="n">perl</span>                            <span class="n">schagent</span><span class="p">.</span><span class="n">conf</span>  <span class="n">wwg</span>
+<span class="n">dbjava</span>      <span class="n">instantclient</span>  <span class="n">odbc</span>     <span class="n">plsql</span>                           <span class="n">sdk</span>            <span class="n">xdk</span>
+<span class="n">dbs</span>         <span class="n">inventory</span>      <span class="n">olap</span>     <span class="n">precomp</span>                         <span class="n">slax</span>
+
+</code></pre></div><ul>
+<li>Le damos los permisos necesarios al usuario oracle sobre nuestro directorio de trabajo, es decir lo hacemos propietario del mismo.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">chown</span> <span class="n">-R</span> <span class="n">oracle</span><span class="err">:</span><span class="n">oinstall</span> <span class="p">/</span><span class="n">u01</span>
+</code></pre></div><ul>
+<li>Comprobamos que se ha cambiado el propietario recursivamente</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">root</span><span class="nv">@localhost</span> <span class="n">dbhome_1</span><span class="p">]</span><span class="c"># ls -l / | grep &#39;u01&#39;</span>
+<span class="n">drwxrwxrwx</span><span class="p">.</span>   <span class="n">3</span> <span class="n">oracle</span> <span class="n">oinstall</span>   <span class="n">17</span> <span class="n">dic</span>  <span class="n">7</span> <span class="n">20</span><span class="err">:</span><span class="n">38</span> <span class="n">u01</span>
+</code></pre></div><ul>
+<li>Entramos como usuario Oracle</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">su</span> <span class="p">-</span> <span class="n">oracle</span>
+
+
+<span class="p">[</span><span class="n">oracle</span><span class="nv">@localhost</span> <span class="p">~]$</span> <span class="nb">pwd
+</span><span class="nb"></span><span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">oracle</span>
+
+</code></pre></div><ul>
+<li>Cambiamos las variables de entorno editando el siguiente fichero de configuración, yo he descargado el editor &lsquo;nano&rsquo; porque me resulta más cómo de &lsquo;vi&rsquo;</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">yum</span> <span class="n">install</span> <span class="n">nano</span>
+<span class="n">nano</span> <span class="p">.</span><span class="n">bash_profile</span>
+</code></pre></div><ul>
+<li>El fichero debe quedar de la siguiente forma</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell">
+<span class="c"># .bash_profile</span>
+
+<span class="c"># Get the aliases and functions</span>
+<span class="k">if</span> <span class="p">[</span> <span class="o">-f</span> <span class="p">~/.</span><span class="n">bashrc</span> <span class="p">];</span> <span class="n">then</span>
+        <span class="p">.</span> <span class="p">~/.</span><span class="n">bashrc</span>
+<span class="n">fi</span>
+
+<span class="c"># User specific environment and startup programs</span>
+
+<span class="n">ORACLE_BASE</span><span class="p">=/</span><span class="n">u01</span><span class="p">/</span><span class="n">app</span><span class="p">/</span><span class="n">oracle</span>
+<span class="n">ORACLE_HOME</span><span class="p">=</span><span class="nv">$ORACLE_BASE</span><span class="p">/</span><span class="n">product</span><span class="p">/</span><span class="n">19</span><span class="p">.</span><span class="n">3</span><span class="p">/</span><span class="n">dbhome_1</span>
+<span class="n">ORACLE_SID</span><span class="p">=</span><span class="n">orcl</span>
+<span class="n">PATH</span><span class="p">=</span><span class="nv">$PATH</span><span class="err">:</span><span class="nv">$HOME</span><span class="p">/.</span><span class="n">local</span><span class="p">/</span><span class="n">bin</span><span class="err">:</span><span class="nv">$HOME</span><span class="p">/</span><span class="n">bin</span><span class="err">:</span><span class="nv">$ORACLE_HOME</span><span class="p">/</span><span class="n">bin</span>
+<span class="n">export</span> <span class="n">PATH</span> <span class="n">ORACLE_BASE</span> <span class="n">ORACLE_HOME</span> <span class="n">ORACLE_SID</span>
+
+</code></pre></div><ul>
+<li>Comprobamos que tenemos las variables operativas</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">oracle</span><span class="nv">@localhost</span> <span class="p">~]$</span> <span class="n">env</span> <span class="p">|</span> <span class="n">grep</span> <span class="n">ORACLE</span>
+<span class="n">ORACLE_SID</span><span class="p">=</span><span class="n">orcl</span>
+<span class="n">ORACLE_BASE</span><span class="p">=/</span><span class="n">u01</span><span class="p">/</span><span class="n">app</span><span class="p">/</span><span class="n">oracle</span>
+<span class="n">ORACLE_HOME</span><span class="p">=/</span><span class="n">u01</span><span class="p">/</span><span class="n">app</span><span class="p">/</span><span class="n">oracle</span><span class="p">/</span><span class="n">product</span><span class="p">/</span><span class="n">19</span><span class="p">.</span><span class="n">3</span><span class="p">/</span><span class="n">dbhome_1</span>
+
+</code></pre></div><ul>
+<li>Vemos que usando la variable accedemos a nuestro directorio de trabajo</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">oracle</span><span class="nv">@localhost</span> <span class="p">~]$</span> <span class="nb">cd </span><span class="nv">$ORACLE_HOME</span>
+<span class="p">[</span><span class="n">oracle</span><span class="nv">@localhost</span> <span class="n">dbhome_1</span><span class="p">]$</span> <span class="nb">pwd
+</span><span class="nb"></span><span class="p">/</span><span class="n">u01</span><span class="p">/</span><span class="n">app</span><span class="p">/</span><span class="n">oracle</span><span class="p">/</span><span class="n">product</span><span class="p">/</span><span class="n">19</span><span class="p">.</span><span class="n">3</span><span class="p">/</span><span class="n">dbhome_1</span>
+</code></pre></div><ul>
+<li>Comprobamos que tenemos el ejecutable de Oracle y que tiene los propietarios adecuados.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">oracle</span><span class="nv">@localhost</span> <span class="n">dbhome_1</span><span class="p">]$</span> <span class="nb">ls </span><span class="n">-l</span> <span class="n">runInstaller</span>
+<span class="n">-rwxrwxrwx</span><span class="p">.</span> <span class="n">1</span> <span class="n">oracle</span> <span class="n">oinstall</span> <span class="n">1783</span> <span class="n">mar</span>  <span class="n">8</span>  <span class="n">2017</span> <span class="n">runInstaller</span>
+</code></pre></div><ul>
+<li>Vamos a conectarnos por ssh al usuario oracle pero antes vamos a ejecutar una variable para que se pueda traer la ventana de oracle a nuestra máquina anfitriona</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">oracle</span><span class="nv">@localhost</span> <span class="n">dbhome_1</span><span class="p">]$</span> <span class="n">export</span> <span class="n">DISPLAY</span><span class="p">=</span><span class="err">:</span><span class="n">0</span>
+<span class="p">[</span><span class="n">oracle</span><span class="nv">@localhost</span> <span class="n">dbhome_1</span><span class="p">]$</span> <span class="nb">echo </span><span class="nv">$DISPLAY</span>
+<span class="err">:</span><span class="n">0</span>
+</code></pre></div><ul>
+<li>Desde la máquina fisica nos conectamos por ssh al usuario oracle utilizando la opción -X</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">celiagm</span><span class="nv">@debian</span><span class="err">:</span><span class="p">~$</span> <span class="n">ssh</span> <span class="n">-X</span> <span class="n">oracle</span><span class="nv">@192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">100</span><span class="p">.</span><span class="n">213</span>
+<span class="n">oracle</span><span class="nv">@192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">100</span><span class="p">.</span><span class="n">213</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">password</span><span class="err">:</span> 
+<span class="n">Activate</span> <span class="n">the</span> <span class="n">web</span> <span class="n">console</span> <span class="n">with</span><span class="err">:</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="p">-</span><span class="n">-now</span> <span class="n">cockpit</span><span class="p">.</span><span class="n">socket</span>
+
+<span class="n">Last</span> <span class="n">login</span><span class="err">:</span> <span class="n">Tue</span> <span class="n">Dec</span>  <span class="n">8</span> <span class="n">14</span><span class="err">:</span><span class="n">00</span><span class="err">:</span><span class="n">55</span> <span class="n">2020</span> <span class="n">from</span> <span class="p">::</span><span class="n">1</span>
+</code></pre></div><ul>
+<li>Ahora nos vamos a editar un fichero de configuración de oracle para evitar que nos salga un error muy común en la instalación de Oracle sobre Linux 8. Este error es &lsquo;supportedOSCheck&rsquo;</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">oracle</span><span class="nv">@localhost</span> <span class="n">dbhome_1</span><span class="p">]$</span> <span class="n">su</span> <span class="p">-</span>
+<span class="n">Contraseña</span><span class="err">:</span> 
+<span class="p">[</span><span class="n">root</span><span class="nv">@localhost</span> <span class="p">~]</span><span class="c"># nano /u01/app/oracle/product/19.3/dbhome_1/cv/admin/cvu_config </span>
+</code></pre></div><ul>
+<li>Añadimos la siguiente linea</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">CV_ASSUME_DISTID</span><span class="p">=</span><span class="n">OEL8</span><span class="p">.</span><span class="n">1</span>
+</code></pre></div><ul>
+<li>Ahora sí, ejecutamos la instalación desde el usuario Oracle remotamente:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">oracle</span><span class="nv">@localhost</span> <span class="n">dbhome_1</span><span class="p">]$</span> <span class="p">./</span><span class="n">runInstaller</span>
+<span class="n">Iniciando</span> <span class="n">el</span> <span class="n">asistente</span> <span class="n">de</span> <span class="n">configuración</span> <span class="n">de</span> <span class="n">Oracle</span> <span class="n">Database</span><span class="p">...</span>
+
+<span class="n">El</span> <span class="n">archivo</span> <span class="n">de</span> <span class="n">respuesta</span> <span class="n">para</span> <span class="n">esta</span> <span class="n">sesión</span> <span class="n">se</span> <span class="n">puede</span> <span class="n">encontrar</span> <span class="n">en</span><span class="err">:</span>
+ <span class="p">/</span><span class="n">u01</span><span class="p">/</span><span class="n">app</span><span class="p">/</span><span class="n">oracle</span><span class="p">/</span><span class="n">product</span><span class="p">/</span><span class="n">19</span><span class="p">.</span><span class="n">3</span><span class="p">/</span><span class="n">dbhome_1</span><span class="p">/</span><span class="n">install</span><span class="p">/</span><span class="n">response</span><span class="p">/</span><span class="n">db_2020</span><span class="p">-</span><span class="n">12</span><span class="p">-</span><span class="n">08_02</span><span class="p">-</span><span class="n">08</span><span class="p">-</span><span class="n">39PM</span><span class="p">.</span><span class="n">rsp</span>
+
+<span class="n">Encontrará</span> <span class="n">el</span> <span class="n">log</span> <span class="n">de</span> <span class="n">esta</span> <span class="n">sesión</span> <span class="n">de</span> <span class="n">instalación</span> <span class="n">en</span><span class="err">:</span>
+ <span class="p">/</span><span class="n">tmp</span><span class="p">/</span><span class="n">InstallActions2020</span><span class="p">-</span><span class="n">12</span><span class="p">-</span><span class="n">08_02</span><span class="p">-</span><span class="n">08</span><span class="p">-</span><span class="n">39PM</span><span class="p">/</span><span class="n">installActions2020</span><span class="p">-</span><span class="n">12</span><span class="p">-</span><span class="n">08_02</span><span class="p">-</span><span class="n">08</span><span class="p">-</span><span class="n">39PM</span><span class="p">.</span><span class="n">log</span>
+<span class="n">Se</span> <span class="n">han</span> <span class="n">movido</span> <span class="n">los</span> <span class="n">logs</span> <span class="n">de</span> <span class="n">sesión</span> <span class="n">de</span> <span class="n">instalación</span> <span class="n">a:</span>
+ <span class="p">/</span><span class="n">u01</span><span class="p">/</span><span class="n">app</span><span class="p">/</span><span class="n">oraInventory</span><span class="p">/</span><span class="n">logs</span><span class="p">/</span><span class="n">InstallActions2020</span><span class="p">-</span><span class="n">12</span><span class="p">-</span><span class="n">08_02</span><span class="p">-</span><span class="n">08</span><span class="p">-</span><span class="n">39PM</span>
+</code></pre></div><h2 id="pasos-seguidos-para-la-instalación">Pasos seguidos para la instalación</h2>
+<ul>
+<li>Vamos a crear una base de datos de instancia única.</li>
+</ul>
+<p><img src="/images/oracle19c/instalador1.png" alt="instalador1.png"></p>
+<ul>
+<li>Elegiremos la clase de Servidor para que nos permita configuraciones más avanzadas</li>
+</ul>
+<p><img src="/images/oracle19c/instalador2.png" alt="instalador2.png"></p>
+<ul>
+<li>Elegiremos la Edición Enterprise</li>
+</ul>
+<p><img src="/images/oracle19c/instalador3.png" alt="instalador3.png"></p>
+<ul>
+<li>Como hemos creado nuestro directorio de trabajo previamente se ha configurado por defecto, lo dejamos tal cual.</li>
+</ul>
+<p><img src="/images/oracle19c/instalador4.png" alt="instalador4.png"></p>
+<ul>
+<li>Lo mimso con la ruta del directorio de inventario y el nombre del grupo del sistema cuyos usuarios tendrán permisos sobre el inventario.</li>
+</ul>
+<p><img src="/images/oracle19c/instalador5.png" alt="instalador5.png"></p>
+<ul>
+<li>Elegiremos la opción de Uso General / Procesamiento de Transaciones</li>
+</ul>
+<p><img src="/images/oracle19c/instalador6.png" alt="instalador6.png"></p>
+<ul>
+<li>Ahora se elige el nombre de la base de datos global, el identificador del Sistema Oracle (SID) y el nombre de Datos de Conexión.</li>
+</ul>
+<p><img src="/images/oracle19c/instalador7.png" alt="instalador7.png"></p>
+<ul>
+<li>Comprobaremos que está seleccionado &lsquo;Usar Unicode&rsquo;</li>
+</ul>
+<p><img src="/images/oracle19c/instalador8.png" alt="instalador8.png"></p>
+<ul>
+<li>Instalamos el esquema de ejemplo</li>
+</ul>
+<p><img src="/images/oracle19c/instalador9.png" alt="instalador9.png"></p>
+<ul>
+<li>Indicamos la ubicación del sistema de archivos donde se va almacenar nuestros datos. Se recomienda usar otro disco distinto. Pero en este caso para una instalación de prueba para nuestra práctica lo dejaremos así.</li>
+</ul>
+<p><img src="/images/oracle19c/instalador10.png" alt="instalador10.png"></p>
+<ul>
+<li>No utilizaremos Cloud Control</li>
+</ul>
+<p><img src="/images/oracle19c/instalador11.png" alt="instalador11.png"></p>
+<ul>
+<li>Si deseamos tener una recuperación de la base de datos podemos marcar esta casilla, pero ahora no lo activaremos, se recomienda hacerlo.</li>
+</ul>
+<p><img src="/images/oracle19c/instalador12.png" alt="instalador12.png"></p>
+<ul>
+<li>También se recomiendan usar varias contraseñas para los distintos usuarios, en este caso como es de prueba lo haremos con la misma.</li>
+</ul>
+<p><img src="/images/oracle19c/instalador13.png" alt="instalador13.png"></p>
+<ul>
+<li>Este paso pertenece a la selección de privilegios en cuanto a los grupos creados previamentes, lo dejamos como se ha configurado por defecto.</li>
+</ul>
+<p><img src="/images/oracle19c/instalador14.png" alt="instalador14.png"></p>
+<ul>
+<li>Se comprobaran los requisitos del sistema y si todo ha ido bien nos mostrará un resumen de las comprobaciones. Después procedemos a &lsquo;Instalar&rsquo;</li>
+</ul>
+<p><img src="/images/oracle19c/instalador15.png" alt="instalador15.png"></p>
+<ul>
+<li>Una vez se haya acabado la instalación, la cuál dura unos minutos, nos indica que se ha configurado correctamente.</li>
+</ul>
+<p><img src="/images/oracle19c/instalador16.png" alt="instalador16.png"></p>
+<h2 id="comprobación-de-que-se-puede-ejecutar-sql-plus">Comprobación de que se puede ejecutar SQL PLUS</h2>
+<ul>
+<li>Iniciamos sql desde la línea de comandos</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">sqlplus</span> <span class="p">/</span> <span class="n">as</span> <span class="n">sysdba</span>
+</code></pre></div><ul>
+<li>Comprobamos que se ha instalado correctamente</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">[</span><span class="n">oracle</span><span class="nv">@localhost</span> <span class="n">dbhome_1</span><span class="p">]$</span> <span class="n">sqlplus</span> <span class="p">/</span> <span class="n">as</span> <span class="n">sysdba</span>
+
+<span class="n">SQL</span><span class="p">*</span><span class="n">Plus</span><span class="err">:</span> <span class="n">Release</span> <span class="n">19</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span> <span class="p">-</span> <span class="n">Production</span> <span class="n">on</span> <span class="n">Tue</span> <span class="n">Dec</span> <span class="n">8</span> <span class="n">14</span><span class="err">:</span><span class="n">45</span><span class="err">:</span><span class="n">56</span> <span class="n">2020</span>
+<span class="n">Version</span> <span class="n">19</span><span class="p">.</span><span class="n">3</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span>
+
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="n">1982</span><span class="p">,</span> <span class="n">2019</span><span class="p">,</span> <span class="n">Oracle</span><span class="p">.</span>  <span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="p">.</span>
+
+
+<span class="n">Conectado</span> <span class="n">a:</span>
+<span class="n">Oracle</span> <span class="n">Database</span> <span class="n">19c</span> <span class="n">Enterprise</span> <span class="n">Edition</span> <span class="n">Release</span> <span class="n">19</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span> <span class="p">-</span> <span class="n">Production</span>
+<span class="n">Version</span> <span class="n">19</span><span class="p">.</span><span class="n">3</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span>
+
+<span class="n">SQL</span><span class="p">&gt;</span> 
+
+</code></pre></div><h2 id="añadir-datos">Añadir datos</h2>
+<ul>
+<li>Nos conectamos de la siguiente forma a sql plus como administrador, nos pedirá la contraseña.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">sqlplus</span> <span class="n">sys</span> <span class="n">as</span> <span class="n">sysdba</span>
+</code></pre></div><ul>
+<li>Ahora vamos a inicializar la instancia</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">startup</span>
+</code></pre></div><p>Nos saldrá algo parecido a:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">SQL</span><span class="p">&gt;</span> <span class="n">startup</span>
+<span class="n">ORACLE</span> <span class="n">instance</span> <span class="n">started</span><span class="p">.</span>
+
+<span class="n">Total</span> <span class="n">System</span> <span class="n">Global</span> <span class="n">Area</span> <span class="n">1795159792</span> <span class="n">bytes</span>
+<span class="n">Fixed</span> <span class="n">Size</span>		    <span class="n">9135856</span> <span class="n">bytes</span>
+<span class="n">Variable</span> <span class="n">Size</span>		  <span class="n">419430400</span> <span class="n">bytes</span>
+<span class="n">Database</span> <span class="n">Buffers</span>	 <span class="n">1358954496</span> <span class="n">bytes</span>
+<span class="n">Redo</span> <span class="n">Buffers</span>		    <span class="n">7639040</span> <span class="n">bytes</span>
+<span class="n">Base</span> <span class="n">de</span> <span class="n">datos</span> <span class="n">montada</span><span class="p">.</span>
+<span class="n">Base</span> <span class="n">de</span> <span class="n">datos</span> <span class="n">abierta</span><span class="p">.</span>
+</code></pre></div><ul>
+<li>Procedemos a crear el usuario que se va conectar a la base de datos y nos sucede un error. Este error se debe a que tenemos un contenedor creado den la base de datos actual.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">SQL</span><span class="p">&gt;</span> <span class="n">create</span> <span class="n">user</span> <span class="n">celiagm</span> <span class="n">identified</span> <span class="n">by</span> <span class="n">celiagm</span><span class="p">;</span>
+<span class="n">create</span> <span class="n">user</span> <span class="n">celiagm</span> <span class="n">identified</span> <span class="n">by</span> <span class="n">celiagm</span>
+            <span class="p">*</span>
+<span class="n">ERROR</span> <span class="n">en</span> <span class="n">linea</span> <span class="n">1</span><span class="err">:</span>
+<span class="n">ORA</span><span class="p">-</span><span class="n">65096</span><span class="err">:</span> <span class="n">nombre</span> <span class="n">de</span> <span class="n">usuario</span> <span class="n">o</span> <span class="n">rol</span> <span class="n">comun</span> <span class="n">no</span> <span class="n">valido</span>
+
+</code></pre></div><ul>
+<li>Para crear un usuario común ejecutaremos lo siguiente.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">alter</span> <span class="n">session</span> <span class="nb">set </span><span class="s2">&#34;_ORACLE_SCRIPT&#34;</span><span class="p">=</span><span class="n">true</span><span class="p">;</span>
+</code></pre></div><ul>
+<li>Ahora si podemos crear el usuario y le damos los privilegios necesarios.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">SQL</span><span class="p">&gt;</span> <span class="n">create</span> <span class="n">user</span> <span class="n">celiagm</span> <span class="n">identified</span> <span class="n">by</span> <span class="n">celiagm</span><span class="p">;</span>
+
+<span class="n">Usuario</span> <span class="n">creado</span><span class="p">.</span>
+
+<span class="n">SQL</span><span class="p">&gt;</span> <span class="n">grant</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">celiagm</span><span class="p">;</span>
+
+<span class="n">Concesion</span> <span class="n">terminada</span> <span class="n">correctamente</span><span class="p">.</span>
+
+<span class="n">SQL</span><span class="p">&gt;</span> <span class="n">grant</span> <span class="n">resource</span> <span class="n">to</span> <span class="n">celiagm</span><span class="p">;</span>
+
+<span class="n">Concesion</span> <span class="n">terminada</span> <span class="n">correctamente</span><span class="p">.</span>
+
+<span class="n">SQL</span><span class="p">&gt;</span> <span class="n">grant</span> <span class="n">unlimited</span> <span class="n">tablespace</span> <span class="n">to</span> <span class="n">celiagm</span><span class="p">;</span>
+
+<span class="n">Concesion</span> <span class="n">terminada</span> <span class="n">correctamente</span><span class="p">.</span>
+
+</code></pre></div><ul>
+<li>Nos desconectamos como administrador y entramos como el usuario creado.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">disconnect</span>
+<span class="n">connect</span> <span class="n">celiagm</span><span class="p">/</span><span class="n">celiagm</span>
+</code></pre></div><h4 id="crear-las-tablas-e-insertar-datos">Crear las tablas e insertar datos</h4>
+<p>Para ello vamos a utilizar un proyecto que hice en el primer año del ciclo que se trata de una base de datos sobre una escuela infantil.</p>
+<p>La puedes encontrar <a href="https://github.com/CeliaGMqrz/utilidades/blob/main/fase2.sql">aquí</a></p>
+<p>Nota: Cuando consultes &lsquo;select * from cat&rsquo; debes de tener 12 filas seleccionadas, es decir 12 tablas.</p>
+<p>Consulta de prueba:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">SQL</span><span class="p">&gt;</span> <span class="nb">select </span><span class="n">nif</span> <span class="n">from</span> <span class="n">relaciones</span> <span class="nb">where </span><span class="n">relacion</span> <span class="p">=</span> <span class="s1">&#39;Padre&#39;</span><span class="p">;</span>
+
+<span class="n">NIF</span>
+<span class="p">---------</span>
+<span class="n">41255644C</span>
+<span class="n">47845789X</span>
+<span class="n">K4747894D</span>
+<span class="n">47458759P</span>
+<span class="n">20011122Q</span>
+<span class="n">Y4005598D</span>
+<span class="n">47789222B</span>
+<span class="n">42556648E</span>
+<span class="n">20045444H</span>
+<span class="n">K4747894D</span>
+<span class="n">26603366E</span>
+
+</code></pre></div></div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/oracle-database-19c/">oracle database 19c</a><a class="tag" href="/tags/linux-8/">Linux 8</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

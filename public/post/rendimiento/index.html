@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Gestión de peticiones y rendimiento de servidores Web </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/rendimiento/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Gestión de peticiones y rendimiento de servidores Web"/>
+<meta name="twitter:description" content="Los servidores web pueden ser configurados para manejar peticiones de diferente forma."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Gestión de peticiones y rendimiento de servidores Web</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Tue, Feb 16, 2021 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">6-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p><img src="/images/rendimiento/vs.jpg" alt="vs.jpg"></p>
+<p>Los servidores web pueden ser configurados para manejar peticiones de diferente forma. En esta entrada vamos a hablar de los <strong>MPM</strong> (Módulos de multiprocesamiento) que nos permiten configurar el servidor web para gestionar las peticiones que llegan al servidor.</p>
+<p>Se pueden hacer distintas configuraciones en los servidores web para que sirvan páginas PHP y Pyhton. Comprobaremos el <strong>rendimiento</strong> de las mismas dependiendo de la configuración adoptada. Se mencionarán distintas aplicaciones para mejorar este rendimiento (aceleradores PHP, varnish &hellip;)</p>
+<h2 id="módulos-de-multiprocesamiento-mpms">Módulos de multiprocesamiento (MPMs)</h2>
+<p>Los <strong>MPMs</strong>son formas de procesar las peticiones que un servidor web como por ejemplo, Apache, puede usar y normalmente suele elegirse la más ventajosa teniendo en cuenta el sistema operativo donde esté funcionando y dependiendo también de qué aplicaciones web vayan a ejecutarse.</p>
+<p>Estos módulos son los que se encargan básicamente de las funciones internas del servidor, como puede ser procesar las peticiones HTTP, administrar procesos o hilos de Apache.</p>
+<p>Podemos tener varios módulos MPM instalados pero solamente uno cargado y funcionando.</p>
+<p><strong>Multiprocesos de Apache</strong></p>
+<ul>
+<li>
+<p>Multiproceso del tipo <strong>Prefork</strong> (mpm-prefork)</p>
+<ul>
+<li>
+<p>Apache inicia varios subprocesos y cada petición es atendida por uno de estos; Cuando termina con la petición podría atender a otro cliente o ser terminado (MaxRequestPerChild).</p>
+</li>
+<li>
+<p>Este tipo es el más estable ya que un error crítico solo afectaría a una petición.</p>
+</li>
+<li>
+<p>Requiere más recursos (RAM y CPU) para atender cierto número de peticiones simultáneas, respecto a otras configuraciones.</p>
+</li>
+<li>
+<p>Favorece el uso de PHP.</p>
+</li>
+<li>
+<p>Prefork es la configuración estándar para la mayoría de las instalaciones de apache.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Multiproceso tipo <strong>Worker</strong> (mpm-worker)</p>
+<ul>
+<li>Apache inicia varios subprocesos y estos mantienen varios hilos (threads) con los cuales procesan las peticiones. De forma que un subproceso puede atender varios clientes. (ThreadsPerChild).</li>
+<li>El hecho de que un subproceso pueda manejar varias peticiones supone utilizar menos recursos.</li>
+<li>Inconveniente: Módulos/extensiones son Thread-Safe.Un fallo crítico afecta a varias peticiones.Es decir, MPM Worker al usar threads sólo soporta módulos de Apache que sean thread-safe, por lo que el famoso mod_php no puede ser usado con Apache MPM Worker.</li>
+<li>No se puede usar aceleradores PHP junto a Worker.</li>
+<li>Es ideal para servir contenido estático.</li>
+<li>Solo disponible en Apache2.x</li>
+<li>No es compatible con mod_php, pero existe una alternativa que es php-fpm, que nos ofrece un mejor uso de recursos y mayor eficiencia, aunque la configuración es algo más compleja.</li>
+</ul>
+</li>
+</ul>
+<p><strong>¿Qué es mejor Prefork o Worker?</strong></p>
+<p>Segun el punto de vista desde el rendimiento, Prefork está pensado más para servir contenido dinámico y Worker para contenido estático.</p>
+<p>El servidor con Worker puede manejar más peticiones que el Prefork y no consume tantos recursos. Prefork utiliza mucha más CPU.</p>
+<p>Dependiendo el tipo de contenido que vayamos a servir elegiría uno u otro.</p>
+<ul>
+<li>
+<p>Multiproceso tipo <strong>Event</strong> (mpm-event)</p>
+<ul>
+<li>Ya es estable</li>
+<li>Es una mejora de MPM worker y soluciona el problema de optimización de Worker con la opciñon Keep Alive de Apache.</li>
+<li>Está basado en MPM Worker y tiene las mismas ventajas e incovenientes y tampoco es compatible con mod_php.</li>
+</ul>
+</li>
+<li>
+<p>Multiprocesamiento tipo <strong>ITK</strong> (mpm-itk)</p>
+<ul>
+<li>Es nuevo y experimental, muy parecido a Prefork, utiliza subprocesos y no hilos (threads).</li>
+<li>Permite asignar a cada virtualhost servido un usuario del sistema, así en un servidor compartido que aloja varios sitios web, los usuarios no pueden interactuar con los archivos del resto.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Factores a tener en cuenta para elegir MPM</strong></p>
+<ul>
+<li>Volumen de visitas y tráfico de nuestro servidor. Si el tráfico es elevado descartaríamos Prefork, aunque podríamos acompañarlo con un sistema de cache &lsquo;Varnish Cache&rsquo; para aumentar el volumen de visitas soportadas.</li>
+<li>Servir contenido estático o dinámico: Como hemos dicho anteriormente si queremos servir contenido estático está claro que es mejor usar Worker o Event, si queremos servir contenido dinámico, tendriamos que tener en cuenta el consumo de recursos y optar por Prefork.</li>
+<li>Recursos del servidor.</li>
+<li>Necesidades específicas. Si queremos desplegar una aplicación que en concreto necesite un MPM pues no hay más que pensar.</li>
+</ul>
+<h2 id="gestión-de-peticiones">Gestión de peticiones</h2>
+<p>Una vez visto los tipos de MPM que puede usar Apache, vamos a ir a una máquina virtual donde tenemos alojado un servidor web Apache. Por defecto Apache se configura con el módulo MPM Event, lo vemos de la siguiente forma</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apachectl -V <span class="p">|</span> egrep <span class="s1">&#39;MPM&#39;</span>
+</code></pre></div><p>Como podemos comprobar nos muestra que estamos usando el MPM de tipo event.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">root@servidor:/home/vagrant# apachectl -V <span class="p">|</span> egrep <span class="s1">&#39;MPM&#39;</span>
+Server MPM:     event
+</code></pre></div><p>Si quisieramos cambiarlo tendríamos que desactivar el actual y activar el nuevo que vayamos a usar</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">a2dismod mpm_event
+a2enmod mpm_prefork
+service apache2 restart
+
+apachectl -V <span class="p">|</span> egrep <span class="err">&#39;</span>MPM
+
+<span class="c1"># Salida:</span>
+
+Server MPM:     prefork
+
+</code></pre></div><h2 id="el-comando-ab">El comando ab</h2>
+<p>La utilidad ab (Apache Benchmark) sirve para hacer pruebas de carga a un servidor apache, viene con el paquete apache2-utils.</p>
+<p>Por ejemplo vamos a hacer peticiones al servidor web que tenemos en la maquina virtual</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">ab -t <span class="m">10</span> -c <span class="m">20</span> -k http://192.168.100.128/index.html
+</code></pre></div><p>-t (Segundos que dure la prueba)
+-c (Nivel de concurrencia: peticiones.)
+-k (Conexión persistente: No hace conexion tcp/ip en cada petición)</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~/Documentos/asir2/vagrant/virtualhosting$ ab -t <span class="m">10</span> -c <span class="m">20</span> -k http://192.168.100.128/index.html
+This is ApacheBench, Version 2.3 &lt;<span class="nv">$Revision</span>: <span class="m">1843412</span> $&gt;
+Copyright <span class="m">1996</span> Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 192.168.100.128 <span class="o">(</span>be patient<span class="o">)</span>
+Completed <span class="m">5000</span> requests
+Completed <span class="m">10000</span> requests
+Completed <span class="m">15000</span> requests
+Completed <span class="m">20000</span> requests
+Completed <span class="m">25000</span> requests
+Completed <span class="m">30000</span> requests
+Completed <span class="m">35000</span> requests
+Completed <span class="m">40000</span> requests
+Completed <span class="m">45000</span> requests
+Completed <span class="m">50000</span> requests
+Finished <span class="m">50000</span> requests
+
+
+Server Software:        Apache/2.4.38
+Server Hostname:        192.168.100.128
+Server Port:            <span class="m">80</span>
+
+Document Path:          /index.html
+Document Length:        <span class="m">10701</span> bytes
+
+Concurrency Level:      <span class="m">20</span>
+Time taken <span class="k">for</span> tests:   3.707 seconds
+Complete requests:      <span class="m">50000</span>
+Failed requests:        <span class="m">0</span>
+Keep-Alive requests:    <span class="m">49515</span>
+Total transferred:      <span class="m">550528672</span> bytes
+HTML transferred:       <span class="m">535050000</span> bytes
+Requests per second:    13486.90 <span class="o">[</span><span class="c1">#/sec] (mean)</span>
+Time per request:       1.483 <span class="o">[</span>ms<span class="o">]</span> <span class="o">(</span>mean<span class="o">)</span>
+Time per request:       0.074 <span class="o">[</span>ms<span class="o">]</span> <span class="o">(</span>mean, across all concurrent requests<span class="o">)</span>
+Transfer rate:          145018.04 <span class="o">[</span>Kbytes/sec<span class="o">]</span> received
+
+Connection Times <span class="o">(</span>ms<span class="o">)</span>
+              min  mean<span class="o">[</span>+/-sd<span class="o">]</span> median   max
+Connect:        <span class="m">0</span>    <span class="m">0</span>   0.0      <span class="m">0</span>       <span class="m">1</span>
+Processing:     <span class="m">0</span>    <span class="m">1</span>   1.7      <span class="m">1</span>      <span class="m">35</span>
+Waiting:        <span class="m">0</span>    <span class="m">1</span>   1.6      <span class="m">1</span>      <span class="m">35</span>
+Total:          <span class="m">0</span>    <span class="m">1</span>   1.7      <span class="m">1</span>      <span class="m">35</span>
+
+Percentage of the requests served within a certain <span class="nb">time</span> <span class="o">(</span>ms<span class="o">)</span>
+  50%      <span class="m">1</span>
+  66%      <span class="m">1</span>
+  75%      <span class="m">2</span>
+  80%      <span class="m">2</span>
+  90%      <span class="m">3</span>
+  95%      <span class="m">4</span>
+  98%      <span class="m">7</span>
+  99%      <span class="m">9</span>
+ 100%     <span class="m">35</span> <span class="o">(</span>longest request<span class="o">)</span>
+
+</code></pre></div><p>Comprobamos que las peticiones por segundo que ha analizado son:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">. . .
+Requests per second:    13486.90 <span class="o">[</span><span class="c1">#/sec] (mean)</span>
+. . . 
+</code></pre></div><h2 id="pruebas-de-rendimiento">Pruebas de rendimiento</h2>
+<p>Si hicieramos distintas pruebas a día de hoy, tanto con <strong>apache2</strong> como con <strong>nginx</strong> llegamos a la conclusión que nginx obtiene mejores resultados usando php-fpm</p>
+<p><img src="/images/rendimiento/php1.png" alt="php1.png"></p>
+<p>Si instalamos apache2 con el módulo de PHP se desactiva MPM event y se activa el prefork y el rendimiento es más lento.</p>
+<p>Para solucionar este problema de rendimiento vamos a desactivar el módulo prefork y activar el mpm-event.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">a2dismod mpm_prefork
+a2enmod mpm_event
+systemctl restart apache2
+</code></pre></div><h2 id="aumento-del-rendimiento-en-servidores-web">Aumento del rendimiento en servidores web</h2>
+<p>Hemos visto que Nginx con php-fpm tiene mejores resultados, aun así podemos mejorar el rendimiento de este. Podemos usar los siguientes servicios:</p>
+<ul>
+<li>
+<p>Memcached: Este servicio guarda en memoria contenido en la caché u objetos en memoria RAM a través de un plugin utilizando un puerto.</p>
+</li>
+<li>
+<p>Varnish: Es un acelerador de HTTP que funciona como <strong>proxy inverso</strong>. Se situa delante del servidor web, cacheando la respuesta del servidor web en memoria. De forma que cuando un cliente demanda la url por segunda vez, Varnish le da la respuesta ahorrando recursos en el backend y permitiendo más conexiones simultáneas.</p>
+</li>
+</ul>
+<p>Para ver el aumento de rendimiento con Varnish accede a este <a href="https://unbitdeinformacioncadadia.netlify.app/posts/2021/02/aumento-del-rendimiento-de-nginx-con-varnish/">post</a></p>
+<p>Fuentes:</p>
+<p><a href="https://fp.josedomingo.org/serviciosgs/u05/">https://fp.josedomingo.org/serviciosgs/u05/</a></p>
+<p><a href="https://blog.ichasco.com/nginx-mejorar-el-rendimiento-con-la-cache/">https://blog.ichasco.com/nginx-mejorar-el-rendimiento-con-la-cache/</a></p>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/varnish/">varnish</a><a class="tag" href="/tags/rendimiento/">rendimiento</a><a class="tag" href="/tags/apache/">apache</a><a class="tag" href="/tags/nginx/">nginx</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Celia García Márquez | Compilación de un kernel linux a medida </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Informática">
+    
+    <link rel="stylesheet"
+          href="https://1bit1nfo.netlify.app/css/style.min.632053cf9f355189adf9c13322ca0fc44922cb5d98277ed289dff13e3aa7f061.css"
+          integrity="sha256-YyBTz581UYmt&#43;cEzIsoPxEkiy12YJ37Sid/xPjqn8GE="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="https://1bit1nfo.netlify.app/css/markupHighlight.min.cc84ed683057cc175ddfa738ea6ba2d5c882b95cb64f50bf9be918cb3791887b.css"
+        integrity="sha256-zITtaDBXzBdd36c46mui1ciCuVy2T1C/m&#43;kYyzeRiHs="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://1bit1nfo.netlify.app/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1bit1nfo.netlify.app/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1bit1nfo.netlify.app/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1bit1nfo.netlify.app/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://1bit1nfo.netlify.app/post/kernel/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://1bit1nfo.netlify.app/js/anatole-header.min.d8599ee07b7d3f11bafbac30657ccc591e8d7fd36a9f580cd4c09e24e0e4a971.js"
+            integrity="sha256-2Fme4Ht9PxG6&#43;6wwZXzMWR6Nf9Nqn1gM1MCeJODkqXE="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="https://1bit1nfo.netlify.app/js/anatole-theme-switcher.min.e289e9ebb2a4e7a7f895859c8a2b0da2de1ec73f22cea58d8475aa0597023837.js"
+                integrity="sha256-4onp67Kk56f4lYWciisNot4exz8izqWNhHWqBZcCODc="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://1bit1nfo.netlify.app/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Compilación de un kernel linux a medida"/>
+<meta name="twitter:description" content="Ejercicio planteado:
+Al ser linux un kérnel libre, es posible descargar el código fuente, configurarlo y comprimirlo."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://1bit1nfo.netlify.app/images/avatar_red.jpg" alt="profile picture">
+            <h3 title=""><a href="/">1bitde1nfo</a></h3>
+            <div class="description">
+                <p>Informática</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/cgmarquez/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/CeliaGMqrz" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:cg.marquez95@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Celia García Márquez  2020-2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Compilación de un kernel linux a medida</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> Sun, Nov 15, 2020 
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">5-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>Ejercicio planteado:</p>
+<p>Al ser linux un kérnel libre, es posible descargar el código fuente, configurarlo y comprimirlo. Además, esta tarea a priori compleja, es más sencilla de lo que parece gracias a las herramientas disponibles.</p>
+<p>En esta tarea debes tratar de compilar un kérnel completamente funcional que reconozca todo el hardware básico de tu equipo y que sea a la vez lo más pequeño posible, es decir que incluya un vmlinuz lo más pequeño posible y que incorpore sólo los módulos imprescindibles. Para ello utiliza el método explicado en clase y entrega finalmente el fichero deb con el kérnel compilado por ti.</p>
+<p>El hardware básico incluye como mínimo el teclado, la interfaz de red y la consola gráfica (texto).</p>
+<hr>
+<h2 id="1-obtener-el-código-fuente-del-kernel">1. Obtener el código fuente del kernel</h2>
+<ul>
+<li>Buscamos las <strong>fuentes</strong> en la paqueteria de Debian</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apt search linux-source
+</code></pre></div><p>Salida:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">linux-source/stable 4.19+105+deb10u7 all
+  Linux kernel <span class="nb">source</span> <span class="o">(</span>meta-package<span class="o">)</span>
+
+linux-source-4.19/stable 4.19.152-1 all
+  Linux kernel <span class="nb">source</span> <span class="k">for</span> version 4.19 with Debian patches
+
+</code></pre></div><ul>
+<li>Segun la versión de kernel que tenemos instalado:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apt policy linux-source
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">linux-source:
+  Instalados: <span class="o">(</span>ninguno<span class="o">)</span>
+  Candidato:  4.19+105+deb10u7
+  Tabla de versión:
+     4.19+105+deb10u7 <span class="m">500</span>
+        <span class="m">500</span> http://security.debian.org/debian-security buster/updates/main amd64 Packages
+     4.19+105+deb10u6 <span class="m">500</span>
+        <span class="m">500</span> http://deb.debian.org/debian buster/main amd64 Packages
+</code></pre></div><ul>
+<li>Entonces descargamos la versión del kernel que nos pertenece. Además del paquete <strong>build-essential</strong> y <strong>qtbase5-dev</strong>, que son esenciales para su compilación.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apt install linux-source<span class="o">=</span>4.19+105+deb10u7 build-essential qtbase5-dev
+</code></pre></div><h2 id="2-descomprimir-las-fuentes-en-un-directorio-seguro-como-usuario">2. Descomprimir las fuentes en un directorio &lsquo;seguro&rsquo; como usuario.</h2>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">mkdir /home/celiagm/compilar_kernel
+sudo mv linux-source-4.19.tar.xz /home/celiagm/compilar_kernel/
+<span class="nb">cd</span> /home/celiagm/compilar_kernel/
+tar -xf linux-source-4.19.tar.xz 
+</code></pre></div><ul>
+<li>Vemos el tamaño</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~/compilar_kernel$ du -hs linux-source-4.19
+910M	linux-source-4.19
+
+</code></pre></div><ul>
+<li>Vemos el <strong>contenido</strong> de nuestras fuentes</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~/compilar_kernel$ <span class="nb">cd</span> linux-source-4.19/
+celiagm@debian:~/compilar_kernel/linux-source-4.19$ ls
+arch   COPYING  Documentation  fs       ipc      kernel    MAINTAINERS  net      scripts   tools
+block  CREDITS  drivers        include  Kbuild   lib       Makefile     README   security  usr
+certs  crypto   firmware       init     Kconfig  LICENSES  mm           samples  sound     virt
+</code></pre></div><ul>
+<li>Para ver la <strong>ayuda</strong> de make</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">make <span class="nb">help</span>
+</code></pre></div><h2 id="3-copiar-la-configuración-del-kernel-que-tenemos-actualmente">3. Copiar la configuración del kernel que tenemos actualmente</h2>
+<ul>
+<li>Esta es la opción que nos muestra la ayuda</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"> oldconfig	  - Update current config utilising a provided .config as base
+</code></pre></div><ul>
+<li>Ahora copiamos el fichero de configuración que tenemos inicialmente en nuestro kernel a nuestro directorio</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">cp /boot/config-4.19.0-12-amd64 .config
+</code></pre></div><ul>
+<li>Ejecutamos <strong>make oldconfig</strong></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">make oldconfig
+</code></pre></div><ul>
+<li>Miramos el número de elementos que se van a compilar como modulos y estaticamente.</li>
+</ul>
+<p>Modulos:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">grep <span class="s2">&#34;=m&#34;</span> .config<span class="p">|</span>wc -l
+</code></pre></div><p>Estatica:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">grep <span class="s2">&#34;=y&#34;</span> .config<span class="p">|</span>wc -l
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~/compilar_kernel/linux-source-4.19$ grep <span class="s2">&#34;=m&#34;</span> .config<span class="p">|</span>wc -l
+<span class="m">3381</span>
+celiagm@debian:~/compilar_kernel/linux-source-4.19$ grep <span class="s2">&#34;=y&#34;</span> .config<span class="p">|</span>wc -l
+<span class="m">2013</span>
+</code></pre></div><h2 id="4-selección-y-reducción-de-elementos-loadmodconfig">4. Selección y reducción de elementos (loadmodconfig)</h2>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">make localmodconfig
+</code></pre></div><ul>
+<li>Vemos que se ha reducido sifgnificativamente.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~/compilar_kernel/linux-source-4.19$ grep <span class="s2">&#34;=m&#34;</span> .config<span class="p">|</span>wc -l
+<span class="m">182</span>
+celiagm@debian:~/compilar_kernel/linux-source-4.19$ grep <span class="s2">&#34;=y&#34;</span> .config<span class="p">|</span>wc -l
+<span class="m">1449</span>
+</code></pre></div><h2 id="5-primera-compilación">5. Primera compilación</h2>
+<ul>
+<li>
+<p>Realizamos la primera compilación (indicandole el numero de nucleos que vayamos a utilizar para agilizar el proceso)</p>
+</li>
+<li>
+<p>Nos aseguramos que tenemos estos paquetes instalados antes de proceder con la compilación:</p>
+</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">libelf-devel
+libssl-dev
+pkg-config
+</code></pre></div><ul>
+<li>Procedemos a la compilación. Con la opción <strong>-j</strong> le pasamos como parámetro el número de núcleos que queremos que utilice nuestro pc.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">make -j <span class="m">4</span> bindeb-pkg
+</code></pre></div><h2 id="6-tamaño-del-fichero-deb">6. Tamaño del fichero deb</h2>
+<ul>
+<li>Comprobar el peso del fichero deb, en el directorio padre que es donde se han generado los ficheros deb</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~/compilar_kernel$ du -hs linux-image-4.19.152_4.19.152-1_amd64.deb 
+11M	linux-image-4.19.152_4.19.152-1_amd64.deb
+
+</code></pre></div><h2 id="7-instalarlo-y-comprobar-funcionamiento">7. Instalarlo y comprobar funcionamiento</h2>
+<ul>
+<li>Ver los kernel instalados</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">dpkg -l <span class="p">|</span> grep linux-image
+</code></pre></div><ul>
+<li>Desinstalar el kernel que <strong>no funciona</strong> cuando sea necesario:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apt-get remove --purge linux-image-X.X.X-X
+</code></pre></div><ul>
+<li>Instalar el &lsquo;nuevo&rsquo; kernel</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo dpkg -i linux-image-4.19.152_4.19.152-1_amd64.deb 
+</code></pre></div><ul>
+<li>Vemos que funciona correctamente.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~$ uname -r
+4.19.152
+
+</code></pre></div><h2 id="8-reducir-elementos">8. Reducir elementos.</h2>
+<ul>
+<li>Con el siguiente comando se nos abre una ventana y podemos elegir los módulos o elementos que queremos quitar.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">make xconfig
+</code></pre></div><h4 id="1º-reducción">1º REDUCCIÓN</h4>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">RF switch subsystem support <span class="o">(</span>RFKILL<span class="o">)</span>: soporte para interruptor de tarjetas wifi y bluetooh
+Bluetooth subsystem support <span class="o">(</span>BT<span class="o">)</span>: Bluetooth
+QoS and/or fair queueing <span class="o">(</span>NET_SCHED<span class="o">)</span>: elegir paquetes retraso primero o en cola
+Network packet filtering framework <span class="o">(</span>Netfilter<span class="o">)</span> <span class="o">(</span>NETFILTER<span class="o">)</span>: filtrado de paquetes, cortafuegos
+Multimedia support <span class="o">(</span>MEDIA_SUPPORT<span class="o">)</span>: Soporte para multimedia
+Sound card support <span class="o">(</span>SOUND<span class="o">)</span>: Soporte para el sonido
+Linux guest support <span class="o">(</span>HYPERVISOR_GUEST<span class="o">)</span>: Soporte para maquinas virtuales
+Macintosh device drivers <span class="o">(</span>MACINTOSH_DRIVERS<span class="o">)</span>
+Macintosh device drivers <span class="o">(</span>MACINTOSH_DRIVERS<span class="o">)</span>
+Hardware Monitoring support <span class="o">(</span>HWMON<span class="o">)</span>: Monitoreo de hardware
+Hardware crypto devices <span class="o">(</span>CRYPTO_HW<span class="o">)</span>: Encriptación de hardware
+Virtualization <span class="o">(</span>VIRTUALIZATION<span class="o">)</span>
+
+</code></pre></div><p>Numero de elementos:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~/compilar_kernel/linux-source-4.19$ grep <span class="s2">&#34;=m&#34;</span> .config<span class="p">|</span>wc -l
+<span class="m">135</span>
+celiagm@debian:~/compilar_kernel/linux-source-4.19$ grep <span class="s2">&#34;=y&#34;</span> .config<span class="p">|</span>wc -l
+<span class="m">1315</span>
+</code></pre></div><p>Tamaño conseguido:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~/compilar_kernel$ du -hs linux-image-4.19.152_4.19.152-1_amd64.deb 
+9,1M	linux-image-4.19.152_4.19.152-1_amd64.deb
+
+</code></pre></div><h4 id="2º-reducción">2º REDUCCIÓN</h4>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">DMA memory allocation support <span class="o">(</span>ZONE_DMA<span class="o">)</span>
+Symmetric multi-processing support <span class="o">(</span>SMP<span class="o">)</span>
+Memtest <span class="o">(</span>MEMTEST<span class="o">)</span>
+Enable DMI scanning <span class="o">(</span>DMI<span class="o">)</span>
+Platform support <span class="k">for</span> Chrome hardware <span class="o">(</span>CHROME_PLATFORMS<span class="o">)</span>
+IBM Calgary IOMMU support <span class="o">(</span>CALGARY_IOMMU<span class="o">)</span>
+Enable support <span class="k">for</span> 16-bit segments <span class="o">(</span>X86_16BIT<span class="o">)</span>
+Allow <span class="k">for</span> memory hot-add <span class="o">(</span>MEMORY_HOTPLUG<span class="o">)</span>
+Track memory changes <span class="o">(</span>MEM_SOFT_DIRTY<span class="o">)</span>
+x86 architectural random number generator
+Supervisor Mode Access Prevention <span class="o">(</span>X86_SMAP<span class="o">)</span>
+The IPv6 protocol <span class="o">(</span>IPV6<span class="o">)</span>
+Battery <span class="o">(</span>ACPI_BATTERY<span class="o">)</span>
+AMD MCE features <span class="o">(</span>X86_MCE_AMD<span class="o">)</span>
+IP: multicast routing <span class="o">(</span>IP_MROUTE<span class="o">)</span>
+LED Support <span class="o">(</span>NEW_LEDS<span class="o">)</span>
+Accessibility support <span class="o">(</span>ACCESSIBILITY<span class="o">)</span>
+Virtualization drivers <span class="o">(</span>VIRT_DRIVERS<span class="o">)</span>
+Staging drivers <span class="o">(</span>STAGING<span class="o">)</span>
+Network File Systems <span class="o">(</span>NETWORK_FILESYSTEMS<span class="o">)</span>
+
+</code></pre></div><p>Numero de elementos:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~/compilar_kernel/linux-source-4.19$ grep <span class="s2">&#34;=m&#34;</span> .config<span class="p">|</span>wc -l
+<span class="m">128</span>
+celiagm@debian:~/compilar_kernel/linux-source-4.19$ grep <span class="s2">&#34;=y&#34;</span> .config<span class="p">|</span>wc -l
+<span class="m">1197</span>
+
+</code></pre></div><p>Tamaño conseguido:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~/compilar_kernel$ du -hs linux-image-4.19.152_4.19.152-2_amd64.deb 
+8,1M	linux-image-4.19.152_4.19.152-2_amd64.deb
+
+</code></pre></div><h4 id="3º-reducción">3º REDUCCIÓN</h4>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">Support <span class="k">for</span> paging of anonymous memory <span class="o">(</span>swap<span class="o">)</span> <span class="o">(</span>SWAP<span class="o">)</span>
+Enable the block layer <span class="o">(</span>BLOCK<span class="o">)</span>
+Namespaces support <span class="o">(</span>NAMESPACES<span class="o">)</span>
+
+
+esenciales???
+Extended Error Log support <span class="o">(</span>ACPI_EXTLOG<span class="o">)</span>
+ACPI Platform Error Interface <span class="o">(</span>APEI<span class="o">)</span> <span class="o">(</span>ACPI_APEI<span class="o">)</span>
+/dev/agpgart <span class="o">(</span>AGP Support<span class="o">)</span> <span class="o">(</span>AGP<span class="o">)</span>
+Support <span class="k">for</span> PCI Hotplug <span class="o">(</span>HOTPLUG_PCI<span class="o">)</span>
+ACPI <span class="o">(</span>Advanced Configuration and Power Interface<span class="o">)</span> Support <span class="o">(</span>ACPI<span class="o">)</span> 
+</code></pre></div><p>Numero de elementos:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~/compilar_kernel/linux-source-4.19$ grep <span class="s2">&#34;=m&#34;</span> .config<span class="p">|</span>wc -l
+<span class="m">108</span>
+celiagm@debian:~/compilar_kernel/linux-source-4.19$ grep <span class="s2">&#34;=y&#34;</span> .config<span class="p">|</span>wc -l
+<span class="m">1052</span>
+
+
+</code></pre></div><p>Tamaño conseguido:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">celiagm@debian:~/compilar_kernel$ du -hs linux-image-4.19.152_4.19.152-4_amd64.deb 
+7,0M	linux-image-4.19.152_4.19.152-4_amd64.deb
+
+
+</code></pre></div></div>
+        <div class="post-footer">
+            <div class="info">
+                
+                <span class="separator"><a class="tag" href="/tags/kernel-linux/">kernel linux</a></span>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://1bit1nfo.netlify.app/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script></body>
+
+</html>
