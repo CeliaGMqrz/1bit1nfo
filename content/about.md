@@ -1,25 +1,27 @@
 +++
-title = "About"
-description = "Hugo, the world's fastest framework for building websites"
-date = "2019-02-28"
-aliases = ["about-us", "about-hugo", "contact"]
-author = "Hugo Authors"
+title = "Sobre mí"
+description = "Un bit de información cada día"
+date = "2021-03-15"
+aliases = ["about-us", "sobre mí", "contacto"]
+author = "Celia García"
 +++
 
-Written in Go, Hugo is an open source static site generator available under the [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+![avatar](/images/avatar_red.jpg)
 
-Hugo makes use of a variety of open source projects including:
+Bienvenid@s.
+Me llamo Celia, soy estudiante de **Administración de Sistemas Informáticos en Red** en el instituto IES Gonzalo Nazareno, y en este sitio web voy a ir publicando posts sobre los diferentes conocimientos que estoy adquiriendo en mi ciclo. 
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+Espero que sea de ayuda y aprendamos juntos.
 
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
+Podeis contactar conmigo en:
 
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
+* [**Linkedin**](https://www.linkedin.com/in/cgmarquez/)
+* [**Github**](https://github.com/CeliaGMqrz)
 
-Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
+O si lo preferis podeis escribir un correo a: **cg.marquez95@gmail.com**
 
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+
+Este sitio web ha sido generado con Hugo: [**Más info**](https://github.com/gohugoio).
+
+Toda la documentación para crear este sitio esta en mi repositorio de git: [**Documentación de este sitio web**](https://github.com/CeliaGMqrz/gen_pagina_estatica_hugo)
+
