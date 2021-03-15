@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>index on 1bit1nfo</title>
-    <link>https://example.com/tags/index/</link>
+    <link>1bit1nfo.netlify.app/tags/index/</link>
     <description>Recent content in index on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://example.com/tags/index/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language><atom:link href="1bit1nfo.netlify.app/tags/index/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Posts</title>
-      <link>https://example.com/post/</link>
+      <link>1bit1nfo.netlify.app/post/</link>
       <pubDate>Sat, 13 Mar 2021 21:47:41 +0000</pubDate>
       
-      <guid>https://example.com/post/</guid>
+      <guid>1bit1nfo.netlify.app/post/</guid>
       <description></description>
     </item>
     
