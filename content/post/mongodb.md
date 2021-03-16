@@ -10,8 +10,6 @@ thumbnail= "images/mongodb/mongo.png"
 +++
 
 
-# Instalación de un servidor MongoDB
-
 Instalación de un servidor MongoDB y configuración para permitir el acceso remoto desde la red local.
 
 ## Instalación de MongoDB sobre Debian Buster
@@ -120,7 +118,7 @@ switched to db academia
 
 Si volvemos a ejecutar 'show dbs' no aparecerá la nueva base de datos que hemos creado ya que está vacía, necesitaremos introducir los datos.
 
-### Crear un usuario
+### Crear un usuario administrador
 
 Antes de crear un usuario con el que vamos a trabajar tenemos que crear el usuario administrador con el rol de root en la base de datos Admin
 
@@ -139,7 +137,7 @@ Una vez creado entramos con el usuario root
 mongo -u root -p pass
 ```
 
-Ahora para crear un usuario en la nueva base de datos, haremos lo siguiente, que consiste en crear un usuario con su nombre y contraseña y además un rol que será el propietario de la base de datos que esta en uso actualmente, en este caso, 'academia'.
+Ahora para **crear un usuario en la nueva base de datos,** haremos lo siguiente, que consiste en crear un usuario con su nombre y contraseña y además un rol que será el propietario de la base de datos que esta en uso actualmente, en este caso, 'academia'.
 
 ```powershell
 db.createUser(
