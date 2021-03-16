@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 08 Mar 2021 12:53:56 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Instalacion de MongoDB y acceso remoto desde un cliente local</title>
+      <link>https://1bit1nfo.netlify.app/post/mongodb/</link>
+      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/post/mongodb/</guid>
+      <description>Instalación de un servidor MongoDB Instalación de un servidor MongoDB y configuración para permitir el acceso remoto desde la red local.</description>
+    </item>
+    
     <item>
       <title>Introducción a la integración continua y despliegue continuo</title>
       <link>https://1bit1nfo.netlify.app/post/integracion_continua/</link>

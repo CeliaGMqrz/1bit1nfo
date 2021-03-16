@@ -3,27 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://1bit1nfo.netlify.app/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/mongodb/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/mongodb/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://1bit1nfo.netlify.app/about/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://1bit1nfo.netlify.app/</loc>
-    <lastmod>2021-03-08T12:53:56+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://1bit1nfo.netlify.app/post/integracion_continua/</loc>
-    <lastmod>2021-03-08T12:53:56+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/post/</loc>
-    <lastmod>2021-03-08T12:53:56+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/tags/</loc>
     <lastmod>2021-03-08T12:53:56+01:00</lastmod>
   </url>
   
