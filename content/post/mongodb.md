@@ -6,7 +6,7 @@ description = "Instalacion de Mongodb sobre debian buster y acceso remoto"
 tags = [
     "mongodb",
 ]
-thumbnail= "images/mongodb/mongo.png"
+thumbnail= "images/mongodb/1.png"
 +++
 
 
