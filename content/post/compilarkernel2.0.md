@@ -1,5 +1,5 @@
 ---
-title: "Compilación de un kernel linux a medida (I)"
+title: "Compilación de un kernel linux a medida"
 date: 2021-03-18T20:07:29+01:00
 draft: false
 toc: false
