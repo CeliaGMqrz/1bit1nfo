@@ -6,7 +6,7 @@ description = "Reduccion del kernel linux"
 tags = [
     "kernel linux",
 ]
-thumbnail= "images/kernel/kernel.png"
+thumbnail= "images/kernel/kernel.jpg"
 +++
 
 ## Conceptos previos

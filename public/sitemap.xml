@@ -4,27 +4,12 @@
   
   <url>
     <loc>https://1bit1nfo.netlify.app/</loc>
-    <lastmod>2021-03-18T20:07:29+01:00</lastmod>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://1bit1nfo.netlify.app/post/compilarkernel2.0/</loc>
-    <lastmod>2021-03-18T20:07:29+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/tags/kernel-linux/</loc>
-    <lastmod>2021-03-18T20:07:29+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/post/</loc>
-    <lastmod>2021-03-18T20:07:29+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/tags/</loc>
-    <lastmod>2021-03-18T20:07:29+01:00</lastmod>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -33,7 +18,22 @@
   </url>
   
   <url>
+    <loc>https://1bit1nfo.netlify.app/tags/kernel-linux/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://1bit1nfo.netlify.app/tags/mongodb/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/</loc>
     <lastmod>2021-03-16T00:00:00+00:00</lastmod>
   </url>
   
