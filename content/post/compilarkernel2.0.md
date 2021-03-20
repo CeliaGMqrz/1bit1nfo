@@ -1,12 +1,13 @@
----
-title: "Compilación de un kernel linux a medida"
-date: 2021-03-18T20:07:29+01:00
-draft: false
-toc: false
-images:
-tags: ['kernel linux']
----
-![kernel.jpg](/images/kernel/kernel.jpg)
++++
+author = "Celia García Márquez"
+title = "Compilación de un kernel linux a medida"
+date = "2021-03-16"
+description = "Reduccion del kernel linux"
+tags = [
+    "kernel linux",
+]
+thumbnail= "images/kernel/kernel.png"
++++
 
 ## Conceptos previos
 

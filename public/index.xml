@@ -8,7 +8,7 @@
     <language>en</language>
     <lastBuildDate>Thu, 18 Mar 2021 20:07:29 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Compilación de un kernel linux a medida (I)</title>
+      <title>Compilación de un kernel linux a medida</title>
       <link>https://1bit1nfo.netlify.app/post/compilarkernel2.0/</link>
       <pubDate>Thu, 18 Mar 2021 20:07:29 +0100</pubDate>
       
@@ -345,15 +345,6 @@ Al ser linux un kérnel libre, es posible descargar el código fuente, configura
       
       <guid>https://1bit1nfo.netlify.app/post/nginx/</guid>
       <description>Servidor Web Nginxx NGINX es un servidor web open source de alta performance que ofrece el contenido estático de un sitio web de forma rápida y fácil de configurar.</description>
-    </item>
-    
-    <item>
-      <title>Compilar un programa en C con Makefile</title>
-      <link>https://1bit1nfo.netlify.app/post/compilar/</link>
-      <pubDate>Sat, 31 Oct 2020 18:13:42 +0100</pubDate>
-      
-      <guid>https://1bit1nfo.netlify.app/post/compilar/</guid>
-      <description>Compilación de un programa en C utilizando un Makefile Requisitos previos  Suponemos que tenemos una máquina virtual con Debian Buster, en este caso voy a usar Vagrant con qemu-kvm para crearla.</description>
     </item>
     
     <item>
