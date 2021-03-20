@@ -546,12 +546,13 @@ celiagm@debian:~/compilar$ du -hs linux-image-4.19.171_4.19.171-22_amd64.deb
 ```
 
 #### 9º REDUCCIÓN
-
+```sh
 ISDN support (ISDN)
 Touchscreens (INPUT_TOUCHSCREEN)
 Joysticks/Gamepads (INPUT_JOYSTICK)
 Tablets (INPUT_TABLET)
-
+```
+Elementos:
 ```sh
 celiagm@debian:~/compilar/linux-source-4.19$ grep "=y" .config|wc -l
 1123
@@ -559,7 +560,7 @@ celiagm@debian:~/compilar/linux-source-4.19$ grep "=m" .config|wc -l
 122
 
 ```
-
+Tamaño:
 ```sh
 celiagm@debian:~/compilar$ du -hs linux-image-4.19.171_4.19.171-23_amd64.deb 
 6,6M	linux-image-4.19.171_4.19.171-23_amd64.deb
@@ -584,11 +585,12 @@ SPI support
 
 ```
 Número de elementos:
+
 ```sh
-celiagm@debian:~/compilar/linux-source-4.19$ grep "=y" .config|wc -l
-1107
 celiagm@debian:~/compilar/linux-source-4.19$ grep "=m" .config|wc -l
-119
+117
+celiagm@debian:~/compilar/linux-source-4.19$ grep "=y" .config|wc -l
+1089
 ```
 
 Tamaño conseguido:
@@ -598,13 +600,7 @@ celiagm@debian:~/compilar/debs$ du -hs linux-image-4.19.171_4.19.171-25_amd64.de
 
 ```
 
-```sh
-celiagm@debian:~/compilar/linux-source-4.19$ grep "=m" .config|wc -l
-117
-celiagm@debian:~/compilar/linux-source-4.19$ grep "=y" .config|wc -l
-1089
 
-```
 Anotaciones:
 
 * Hemos conseguido quitar el touchpad.
