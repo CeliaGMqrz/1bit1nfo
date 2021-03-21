@@ -68,7 +68,7 @@ Como usuario con privilegios (añadido al grupo libvirt)
 virsh -c qemu:///system list --all
 ```
 
-#### Definición y creación de redes
+### Definición y creación de redes
 
 Tenemos un fichero .xml en el que tenemos la red definida
 
@@ -162,7 +162,7 @@ virsh -c qemu:///system net-undefine default
 virsh -c qemu:///system net-info default
 ```
 
-#### Definicion del pool por defecto con virsh
+### Definicion del pool por defecto con virsh
 
 Tendremos un directorio donde estarán los distintos volumenes de almacenamiento.
 
@@ -198,7 +198,7 @@ virsh -c qemu:///system pool-define default-pool.xml
 virsh -c qemu:///system pool-start default
 ```
 
-#### Manejo de volumenes 
+### Manejo de volumenes 
 
 Para crear un fichero de hasta 10 GiB de capacidad en un fichero en formato qcow2, definimos el fichero vol1.xml:
 
@@ -251,7 +251,7 @@ Format specific information:
 virsh -c qemu:///system vol-delete vol1 --pool default
 ``` 
 
-#### Creación de un dominio 
+### Creación de un dominio 
 
 Dominio (Máquinas Virtuales). 
 

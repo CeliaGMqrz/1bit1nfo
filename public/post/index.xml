@@ -6,7 +6,17 @@
     <description>Recent content in Posts on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 16 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Virtualización con Libvirt y KVM</title>
+      <link>https://1bit1nfo.netlify.app/post/migracion_app_mv/</link>
+      <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/post/migracion_app_mv/</guid>
+      <description>Conceptos previos KVM
+KVM es un software de código abierto y significa &amp;lsquo;Máquina Virtual basada en el Kernel&amp;rsquo; en español.</description>
+    </item>
+    
     <item>
       <title>Compilación de un kernel linux a medida</title>
       <link>https://1bit1nfo.netlify.app/post/compilarkernel2.0/</link>

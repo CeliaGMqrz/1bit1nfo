@@ -4,7 +4,27 @@
   
   <url>
     <loc>https://1bit1nfo.netlify.app/</loc>
-    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
+    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/libvirt/</loc>
+    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/</loc>
+    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/tags/</loc>
+    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://1bit1nfo.netlify.app/post/migracion_app_mv/</loc>
+    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -24,16 +44,6 @@
   
   <url>
     <loc>https://1bit1nfo.netlify.app/tags/mongodb/</loc>
-    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/post/</loc>
-    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://1bit1nfo.netlify.app/tags/</loc>
     <lastmod>2021-03-16T00:00:00+00:00</lastmod>
   </url>
   
