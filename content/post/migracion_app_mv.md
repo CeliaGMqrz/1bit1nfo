@@ -35,7 +35,7 @@ QEMU trata desde el nivel más bajo que emula el procesador y los periféricos. 
 Para usar libvirt instalaremos los siguientes paquetes
 
 ```sh
-apt install libvrt-daemon-system qemu-kvm
+apt install libvirt-daemon-system qemu-kvm
 ```
 
 Libvirt proporciona mecanismos para conectarse a un hipervisor qemu-kvm (local o remotamente), los mas habituales son:
