@@ -18,6 +18,15 @@ KVM es un software de código abierto y significa &amp;lsquo;Máquina Virtual ba
     </item>
     
     <item>
+      <title>Cliente remoto usando el interprete de un servidor MySQL</title>
+      <link>https://1bit1nfo.netlify.app/post/mysql_clienteremoto/</link>
+      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/post/mysql_clienteremoto/</guid>
+      <description>Objetivo Conectar un cliente remoto a la base de datos insertada en el servidor MySQL</description>
+    </item>
+    
+    <item>
       <title>Compilación de un kernel linux a medida</title>
       <link>https://1bit1nfo.netlify.app/post/compilarkernel2.0/</link>
       <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
@@ -428,6 +437,15 @@ $ sudo apt install software-properties-common apt-transport-https Descargamos la
       
       <guid>https://1bit1nfo.netlify.app/post/kubernetes/</guid>
       <description>Introducción a Kubernetes  Instalación de minikube  curl -LO https://storage.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://1bit1nfo.netlify.app/post/virtualizacion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/post/virtualizacion/</guid>
+      <description>Crea con virt-install una imagen de Debian Buster con formato qcow2 y un tamaño máximo de 3GiB.</description>
     </item>
     
   </channel>

@@ -13,6 +13,22 @@ thumbnail= "images/mysql/mysql.png"
 
 Conectar un cliente remoto a la base de datos insertada en el servidor MySQL
 
+## Requisitos previos
+
+* Una máquina virtual con Debian Buster (paquetería actualizada). En mi caso usaré una máquina alzada con vagrant y virtualbox
+* Un servidor MySQL instalado. Instalaremos MariaDB.
+* Otra máquina virtual que actuará como cliente remoto con una red compartida con el servidor.
+
+Hemos ejecutado los siguientes comandos para hacer todo lo mencionado
+```sh
+# Actualizamos la máquina
+$ sudo apt update && apt upgrade
+# Instalamos mariadb desde los repositorios de debian
+$ sudo apt install mariadb-server
+# Ejecutamos el script de seguridad de mariadb (opcional)
+$ sudo mysql_secure_installation
+```
+
 
 ## Creación de la base de datos y usuario de prueba
 

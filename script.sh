@@ -1,4 +1,5 @@
 #!/bin/bash
+eval $(/home/celiagm/github/homebrew/brew/bin/brew shellenv)
 git add *
 git commit -am "modificaciones"
 git push
