@@ -106,7 +106,7 @@ ______
 * Obtener ayuda
 
 ```sh
-virsh -c qemu://system help network
+virsh -c qemu:///system help network
 ```
 
 * Listar las redes 
