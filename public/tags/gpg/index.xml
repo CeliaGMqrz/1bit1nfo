@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gpg on 1bit1nfo</title>
-    <link>https://1bit1nfo.netlify.app/tags/gpg/</link>
+    <link>https://www.celiagm.es/tags/gpg/</link>
     <description>Recent content in gpg on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 24 Oct 2020 14:45:15 +0200</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/gpg/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Oct 2020 14:45:15 +0200</lastBuildDate><atom:link href="https://www.celiagm.es/tags/gpg/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cifrado Asimétrico con GPG y OpenSSL</title>
-      <link>https://1bit1nfo.netlify.app/post/cifrado_asimetrico/</link>
+      <link>https://www.celiagm.es/post/cifrado_asimetrico/</link>
       <pubDate>Sat, 24 Oct 2020 14:45:15 +0200</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/cifrado_asimetrico/</guid>
+      <guid>https://www.celiagm.es/post/cifrado_asimetrico/</guid>
       <description>Práctica: Cifrado asimétrico con gpg y openssl En esta práctica vamos a cifrar ficheros utilizando cifrado asimétrico utilizando el programa gpg.</description>
     </item>
     

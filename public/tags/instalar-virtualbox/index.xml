@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>instalar virtualbox on 1bit1nfo</title>
-    <link>https://1bit1nfo.netlify.app/tags/instalar-virtualbox/</link>
+    <link>https://www.celiagm.es/tags/instalar-virtualbox/</link>
     <description>Recent content in instalar virtualbox on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 15 Oct 2020 15:50:23 +0200</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/instalar-virtualbox/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Oct 2020 15:50:23 +0200</lastBuildDate><atom:link href="https://www.celiagm.es/tags/instalar-virtualbox/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Instalación de Virtualbox en Debian Buster</title>
-      <link>https://1bit1nfo.netlify.app/post/instalacion_vbox_debian/</link>
+      <link>https://www.celiagm.es/post/instalacion_vbox_debian/</link>
       <pubDate>Thu, 15 Oct 2020 15:50:23 +0200</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/instalacion_vbox_debian/</guid>
+      <guid>https://www.celiagm.es/post/instalacion_vbox_debian/</guid>
       <description>Instalar Virtualbox 6.0 en Debian Buster VirtualBox no viene en el repositorio predeterminado de Debian 10, por tanto lo instalaremos desde el repositorio oficial de Oracle.</description>
     </item>
     

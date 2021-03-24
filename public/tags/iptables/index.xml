@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>iptables on 1bit1nfo</title>
-    <link>https://1bit1nfo.netlify.app/tags/iptables/</link>
+    <link>https://www.celiagm.es/tags/iptables/</link>
     <description>Recent content in iptables on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 25 Jan 2021 17:15:21 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/iptables/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Jan 2021 17:15:21 +0100</lastBuildDate><atom:link href="https://www.celiagm.es/tags/iptables/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cortafuegos perimetral. Iptables</title>
-      <link>https://1bit1nfo.netlify.app/post/cortafuegos/</link>
+      <link>https://www.celiagm.es/post/cortafuegos/</link>
       <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/cortafuegos/</guid>
+      <guid>https://www.celiagm.es/post/cortafuegos/</guid>
       <description>Introducción Vamos a construir un cortafuegos en dulcinea que nos permita controlar el tráfico de nuestra red.</description>
     </item>
     

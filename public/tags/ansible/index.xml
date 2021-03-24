@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ansible on 1bit1nfo</title>
-    <link>https://1bit1nfo.netlify.app/tags/ansible/</link>
+    <link>https://www.celiagm.es/tags/ansible/</link>
     <description>Recent content in ansible on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 20 Jan 2021 17:15:21 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/ansible/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Jan 2021 17:15:21 +0100</lastBuildDate><atom:link href="https://www.celiagm.es/tags/ansible/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Introducción a Ansible</title>
-      <link>https://1bit1nfo.netlify.app/post/ansible/</link>
+      <link>https://www.celiagm.es/post/ansible/</link>
       <pubDate>Wed, 20 Jan 2021 17:15:21 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/ansible/</guid>
+      <guid>https://www.celiagm.es/post/ansible/</guid>
       <description>Conceptos Ansible es un software que automatiza el aprovisionamiento de software, la gestión de configuraciones y el depliegue de aplicaciones.</description>
     </item>
     

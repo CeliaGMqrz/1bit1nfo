@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>openstack on 1bit1nfo</title>
-    <link>https://1bit1nfo.netlify.app/tags/openstack/</link>
+    <link>https://www.celiagm.es/tags/openstack/</link>
     <description>Recent content in openstack on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 22 Jan 2021 12:48:10 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/openstack/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Jan 2021 12:48:10 +0100</lastBuildDate><atom:link href="https://www.celiagm.es/tags/openstack/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Proyecto: Escenario planteado sobre OpenStack</title>
-      <link>https://1bit1nfo.netlify.app/post/proyecto/</link>
+      <link>https://www.celiagm.es/post/proyecto/</link>
       <pubDate>Fri, 22 Jan 2021 12:48:10 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/proyecto/</guid>
+      <guid>https://www.celiagm.es/post/proyecto/</guid>
       <description>Introducción En el IES Gonzalo Nazareno, en el segundo año del ciclo superior de Administración de sistemas informáticos en red, se ha propuesto un escenario implantado sobre Openstack en el que nosotros, los alumnos, hemos puesto en práctica muchas tareas relacionadas con servidores linux.</description>
     </item>
     

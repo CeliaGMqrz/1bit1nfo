@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>entorno lamp on 1bit1nfo</title>
-    <link>https://1bit1nfo.netlify.app/tags/entorno-lamp/</link>
+    <link>https://www.celiagm.es/tags/entorno-lamp/</link>
     <description>Recent content in entorno lamp on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 11 Nov 2020 19:21:43 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/entorno-lamp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Nov 2020 19:21:43 +0100</lastBuildDate><atom:link href="https://www.celiagm.es/tags/entorno-lamp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Instalación de un entorno LAMP</title>
-      <link>https://1bit1nfo.netlify.app/post/lamp/</link>
+      <link>https://www.celiagm.es/post/lamp/</link>
       <pubDate>Wed, 11 Nov 2020 19:21:43 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/lamp/</guid>
+      <guid>https://www.celiagm.es/post/lamp/</guid>
       <description>Instalación de un servidor LAMP Crea una instancia de vagrant basado en un box de debian o ubuntu  Primero creamos el fichero Vagrantfile  nano Vagrantfile  Le añadimos estas lineas para configurar nuestra máquina debian  # -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.</description>
     </item>
     
