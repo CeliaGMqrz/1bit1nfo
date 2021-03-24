@@ -378,6 +378,13 @@ Desde esta herramienta podemos ver que podemos administrar la base de datos de f
 ![consulta.png](/images/mysql/consulta.png)
 
 
+Nota:
+
+La máquina virtual servidor en la que hemos configurado phpmyadmin y mysql está conectada a dos redes, una conectada modo puente con la anfitriona desde la que nos hemos conectado desde el navegador y otra que comparte con el cliente. Desde el cliente si tuviesemos entorno gráfico podriamos entrar con la siguiente url **10.0.1.2/phpmyadmin**. Aunque podemos instalar lynx y probar su funcionamiento de esta forma:
+
+
+![clientephp.png](/images/mysql/clientephp.png)
+
 Fuentes:
 
 https://chachocool.com/como-instalar-phpmyadmin-en-debian-10-buster/
