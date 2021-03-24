@@ -196,7 +196,7 @@ Una vez que hemos descomprimido vamos a crear un directorio para alojar los arch
 sudo mkdir -p /var/lib/phpmyadmin/tmp
 ```
 
-Ahora vamos a darle **permisos** para que apache pueda utilizar los directorio 
+Ahora vamos a darle **permisos** para que apache pueda utilizar los directorios.
 
 ```sh
 sudo chown -R www-data:www-data /var/lib/phpmyadmin
@@ -384,6 +384,10 @@ La máquina virtual servidor en la que hemos configurado phpmyadmin y mysql est�
 
 
 ![clientephp.png](/images/mysql/clientephp.png)
+
+## Conclusión
+
+Phpmyadmin es una herramienta muy intuitiva y fácil de manejar para gestionar las bases de datos además es muy útil ya que podemos acceder desde un navegador.
 
 Fuentes:
 
