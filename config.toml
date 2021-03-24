@@ -21,11 +21,11 @@ pygmentsCodefencesGuessSyntax = true
 [params]
 title = "Un bit de información cada día"
 author = "Celia García Márquez"
-copyright = "2020-2021"
-description = "Celia García Márquez"
+copyright = "Celia García Márquez - 2020-2021"
+description = "Blog sobre informática"
 profilePicture = "images/avatar_red.jpg"
-keywords = ""
-favicon = "favicons/"
+keywords = "informática"
+favicon = "favicons/favicon.ico"
 # example ["css/custom.css"]
 customCss = []
 # example ["js/custom.js"]

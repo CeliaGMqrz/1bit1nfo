@@ -4,7 +4,7 @@ title = "Cliente remoto usando el interprete de un servidor MySQL"
 date = "2021-03-16"
 description = "MySQL: Cliente remoto"
 tags = [
-    "mongodb",
+    "mysql",
 ]
 thumbnail= "images/mysql/mysql.png"
 +++
