@@ -6,7 +6,16 @@
     <description>Recent content in mysql on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 11 Nov 2020 19:21:43 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cliente remoto usando el interprete de un servidor MySQL</title>
+      <link>https://1bit1nfo.netlify.app/post/mysql_clienteremoto/</link>
+      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/post/mysql_clienteremoto/</guid>
+      <description>Objetivo Conectar un cliente remoto a la base de datos insertada en el servidor MySQL</description>
+    </item>
+    
     <item>
       <title>Instalación de un entorno LAMP</title>
       <link>https://1bit1nfo.netlify.app/post/lamp/</link>
