@@ -1,6 +1,6 @@
 +++
 author = "Celia García Márquez"
-title = "Phpmyadming para administrar MySQL"
+title = "Phpmyadmin para administrar MySQL"
 date = "2021-03-24"
 description = "MySQL: phpmyadmin, cliente remoto"
 tags = [

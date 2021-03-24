@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Phpmyadming para administrar MySQL</title>
+      <link>https://1bit1nfo.netlify.app/post/phpmyadmin/</link>
+      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://1bit1nfo.netlify.app/post/phpmyadmin/</guid>
+      <description>Descripción Instalación de una herramienta de administración web para MySQL y prueba desde un cliente remoto</description>
+    </item>
+    
     <item>
       <title>Virtualización con Libvirt y KVM</title>
       <link>https://1bit1nfo.netlify.app/post/migracion_app_mv/</link>
