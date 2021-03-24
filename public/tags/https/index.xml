@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>https on 1bit1nfo</title>
-    <link>https://www.celiagm.es/tags/https/</link>
+    <link>http://www.celiagm.es/tags/https/</link>
     <description>Recent content in https on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 21 Jan 2021 10:11:23 +0100</lastBuildDate><atom:link href="https://www.celiagm.es/tags/https/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Jan 2021 10:11:23 +0100</lastBuildDate><atom:link href="http://www.celiagm.es/tags/https/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configurar HTTPS en Centos 8 (Quijote)</title>
-      <link>https://www.celiagm.es/post/https_centos/</link>
+      <link>http://www.celiagm.es/post/https_centos/</link>
       <pubDate>Thu, 21 Jan 2021 10:11:23 +0100</pubDate>
       
-      <guid>https://www.celiagm.es/post/https_centos/</guid>
+      <guid>http://www.celiagm.es/post/https_centos/</guid>
       <description>¡! Este post está relacionado con un entrono de trabajo con openstack incluido en otras entradas de mi blog.</description>
     </item>
     
     <item>
       <title>Configurar HTTPS con Let&#39;s Encrypt en un servidor con Nginx</title>
-      <link>https://www.celiagm.es/post/ovh_httpss/</link>
+      <link>http://www.celiagm.es/post/ovh_httpss/</link>
       <pubDate>Sun, 29 Nov 2020 21:09:40 +0100</pubDate>
       
-      <guid>https://www.celiagm.es/post/ovh_httpss/</guid>
+      <guid>http://www.celiagm.es/post/ovh_httpss/</guid>
       <description>HTTPS (Seguridad) Objetivo: Vamos a configurar el protocolo HTTPS para el acceso a nuestras aplicaciones, para ello tienes que tener en cuenta los siguiente.</description>
     </item>
     

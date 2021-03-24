@@ -2,53 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>apache on 1bit1nfo</title>
-    <link>https://www.celiagm.es/tags/apache/</link>
+    <link>http://www.celiagm.es/tags/apache/</link>
     <description>Recent content in apache on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 16 Feb 2021 17:15:21 +0100</lastBuildDate><atom:link href="https://www.celiagm.es/tags/apache/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Feb 2021 17:15:21 +0100</lastBuildDate><atom:link href="http://www.celiagm.es/tags/apache/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Aumento del rendimiento de Nginx con Varnish</title>
-      <link>https://www.celiagm.es/post/varnish/</link>
+      <link>http://www.celiagm.es/post/varnish/</link>
       <pubDate>Tue, 16 Feb 2021 17:15:21 +0100</pubDate>
       
-      <guid>https://www.celiagm.es/post/varnish/</guid>
+      <guid>http://www.celiagm.es/post/varnish/</guid>
       <description>Para ver la introducción a este tema puedes entrar en este post:</description>
     </item>
     
     <item>
       <title>Gestión de peticiones y rendimiento de servidores Web</title>
-      <link>https://www.celiagm.es/post/rendimiento/</link>
+      <link>http://www.celiagm.es/post/rendimiento/</link>
       <pubDate>Tue, 16 Feb 2021 17:15:21 +0100</pubDate>
       
-      <guid>https://www.celiagm.es/post/rendimiento/</guid>
+      <guid>http://www.celiagm.es/post/rendimiento/</guid>
       <description>Los servidores web pueden ser configurados para manejar peticiones de diferente forma.</description>
     </item>
     
     <item>
       <title>Servidor Web Apache2 (httpd) en Centos8</title>
-      <link>https://www.celiagm.es/post/httpd_centos/</link>
+      <link>http://www.celiagm.es/post/httpd_centos/</link>
       <pubDate>Wed, 13 Jan 2021 11:36:08 +0100</pubDate>
       
-      <guid>https://www.celiagm.es/post/httpd_centos/</guid>
+      <guid>http://www.celiagm.es/post/httpd_centos/</guid>
       <description>Este artículo trata sobre la instalación de un servidor web Apache2 sobre Centos8 incluido dentro de un entorno previamente creado en un cloud.</description>
     </item>
     
     <item>
       <title>Instalación de un entorno LAMP</title>
-      <link>https://www.celiagm.es/post/lamp/</link>
+      <link>http://www.celiagm.es/post/lamp/</link>
       <pubDate>Wed, 11 Nov 2020 19:21:43 +0100</pubDate>
       
-      <guid>https://www.celiagm.es/post/lamp/</guid>
+      <guid>http://www.celiagm.es/post/lamp/</guid>
       <description>Instalación de un servidor LAMP Crea una instancia de vagrant basado en un box de debian o ubuntu  Primero creamos el fichero Vagrantfile  nano Vagrantfile  Le añadimos estas lineas para configurar nuestra máquina debian  # -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.</description>
     </item>
     
     <item>
       <title>Guia de Virtual Hosting Con Apache</title>
-      <link>https://www.celiagm.es/post/virtualhosting_apache/</link>
+      <link>http://www.celiagm.es/post/virtualhosting_apache/</link>
       <pubDate>Wed, 21 Oct 2020 21:54:22 +0200</pubDate>
       
-      <guid>https://www.celiagm.es/post/virtualhosting_apache/</guid>
+      <guid>http://www.celiagm.es/post/virtualhosting_apache/</guid>
       <description>VirtualHosting con Apache Conceptos previos ¿Qué es un sitio web? Un sitio web es un conjunto de páginas web, propiamente dicho.</description>
     </item>
     

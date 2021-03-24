@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>virtualhosting on 1bit1nfo</title>
-    <link>https://www.celiagm.es/tags/virtualhosting/</link>
+    <link>http://www.celiagm.es/tags/virtualhosting/</link>
     <description>Recent content in virtualhosting on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 11 Nov 2020 17:51:13 +0100</lastBuildDate><atom:link href="https://www.celiagm.es/tags/virtualhosting/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Nov 2020 17:51:13 +0100</lastBuildDate><atom:link href="http://www.celiagm.es/tags/virtualhosting/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Servidor Nginx</title>
-      <link>https://www.celiagm.es/post/nginx/</link>
+      <link>http://www.celiagm.es/post/nginx/</link>
       <pubDate>Wed, 11 Nov 2020 17:51:13 +0100</pubDate>
       
-      <guid>https://www.celiagm.es/post/nginx/</guid>
+      <guid>http://www.celiagm.es/post/nginx/</guid>
       <description>Servidor Web Nginxx NGINX es un servidor web open source de alta performance que ofrece el contenido estático de un sitio web de forma rápida y fácil de configurar.</description>
     </item>
     
     <item>
       <title>Guia de Virtual Hosting Con Apache</title>
-      <link>https://www.celiagm.es/post/virtualhosting_apache/</link>
+      <link>http://www.celiagm.es/post/virtualhosting_apache/</link>
       <pubDate>Wed, 21 Oct 2020 21:54:22 +0200</pubDate>
       
-      <guid>https://www.celiagm.es/post/virtualhosting_apache/</guid>
+      <guid>http://www.celiagm.es/post/virtualhosting_apache/</guid>
       <description>VirtualHosting con Apache Conceptos previos ¿Qué es un sitio web? Un sitio web es un conjunto de páginas web, propiamente dicho.</description>
     </item>
     

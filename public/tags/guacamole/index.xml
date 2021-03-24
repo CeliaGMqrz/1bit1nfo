@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>guacamole on 1bit1nfo</title>
-    <link>https://www.celiagm.es/tags/guacamole/</link>
+    <link>http://www.celiagm.es/tags/guacamole/</link>
     <description>Recent content in guacamole on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 07 Mar 2021 21:11:44 +0100</lastBuildDate><atom:link href="https://www.celiagm.es/tags/guacamole/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Mar 2021 21:11:44 +0100</lastBuildDate><atom:link href="http://www.celiagm.es/tags/guacamole/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Despliegue CMS en Java</title>
-      <link>https://www.celiagm.es/post/cms_java/</link>
+      <link>http://www.celiagm.es/post/cms_java/</link>
       <pubDate>Sun, 07 Mar 2021 21:11:44 +0100</pubDate>
       
-      <guid>https://www.celiagm.es/post/cms_java/</guid>
+      <guid>http://www.celiagm.es/post/cms_java/</guid>
       <description>En esta entrada vamos a tratar de desplegar una aplicación CMS escrito en Java.</description>
     </item>
     
     <item>
       <title>Introducción a Docker</title>
-      <link>https://www.celiagm.es/post/contenedores/</link>
+      <link>http://www.celiagm.es/post/contenedores/</link>
       <pubDate>Sun, 07 Mar 2021 21:11:44 +0100</pubDate>
       
-      <guid>https://www.celiagm.es/post/contenedores/</guid>
+      <guid>http://www.celiagm.es/post/contenedores/</guid>
       <description>Contenedores y aplicaciones ¿Qué son los contendores?
 Son diferentes compartimentos en el que cada aplicación visualiza un sistema operativo virtualmente sin compartirlo con nadie.</description>
     </item>

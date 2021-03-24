@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>instalacion visualcode on 1bit1nfo</title>
-    <link>https://www.celiagm.es/tags/instalacion-visualcode/</link>
+    <link>http://www.celiagm.es/tags/instalacion-visualcode/</link>
     <description>Recent content in instalacion visualcode on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 15 Oct 2020 22:22:11 +0200</lastBuildDate><atom:link href="https://www.celiagm.es/tags/instalacion-visualcode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Oct 2020 22:22:11 +0200</lastBuildDate><atom:link href="http://www.celiagm.es/tags/instalacion-visualcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Instalación de VisualCode en Debian Buster</title>
-      <link>https://www.celiagm.es/post/instalacion_vscode/</link>
+      <link>http://www.celiagm.es/post/instalacion_vscode/</link>
       <pubDate>Thu, 15 Oct 2020 22:22:11 +0200</pubDate>
       
-      <guid>https://www.celiagm.es/post/instalacion_vscode/</guid>
+      <guid>http://www.celiagm.es/post/instalacion_vscode/</guid>
       <description>Instalar Visual Code en Debian 10 Instalar dependencias.
 $ sudo apt install software-properties-common apt-transport-https Descargamos la llave GPG del repositorio.</description>
     </item>

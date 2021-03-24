@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>servidores on 1bit1nfo</title>
-    <link>https://www.celiagm.es/tags/servidores/</link>
+    <link>http://www.celiagm.es/tags/servidores/</link>
     <description>Recent content in servidores on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 18 Nov 2020 18:22:12 +0100</lastBuildDate><atom:link href="https://www.celiagm.es/tags/servidores/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 Nov 2020 18:22:12 +0100</lastBuildDate><atom:link href="http://www.celiagm.es/tags/servidores/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Instalación y configuración inicial de los servidores</title>
-      <link>https://www.celiagm.es/post/escenario/</link>
+      <link>http://www.celiagm.es/post/escenario/</link>
       <pubDate>Wed, 18 Nov 2020 18:22:12 +0100</pubDate>
       
-      <guid>https://www.celiagm.es/post/escenario/</guid>
+      <guid>http://www.celiagm.es/post/escenario/</guid>
       <description>En esta tarea se va a crear el escenario de trabajo que se va a usar durante todo el curso, que va a constar inicialmente de 3 instancias con nombres relacionados con el libro &amp;ldquo;Don Quijote de la Mancha&amp;rdquo;.</description>
     </item>
     

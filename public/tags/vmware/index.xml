@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vmware on 1bit1nfo</title>
-    <link>https://www.celiagm.es/tags/vmware/</link>
+    <link>http://www.celiagm.es/tags/vmware/</link>
     <description>Recent content in vmware on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 22 Dec 2020 13:53:35 +0100</lastBuildDate><atom:link href="https://www.celiagm.es/tags/vmware/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Dec 2020 13:53:35 +0100</lastBuildDate><atom:link href="http://www.celiagm.es/tags/vmware/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Instalación y configuración básica de VMWare ESXi</title>
-      <link>https://www.celiagm.es/post/vmware/</link>
+      <link>http://www.celiagm.es/post/vmware/</link>
       <pubDate>Tue, 22 Dec 2020 13:53:35 +0100</pubDate>
       
-      <guid>https://www.celiagm.es/post/vmware/</guid>
+      <guid>http://www.celiagm.es/post/vmware/</guid>
       <description>Descripción de la tarea: Utiliza el servidor físico que se te haya asignado e instala la versión adecuada del sistema de virtualización VMWare ESXi (ten en cuenta que recibe diferentes denominaciones comerciales, pero nos referimos al sistema de virtualización de VMWare que proporciona virtualización de alto rendimiento mediante la técnica de la paravirtualización).</description>
     </item>
     

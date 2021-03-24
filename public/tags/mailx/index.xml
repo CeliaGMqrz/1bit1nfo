@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mailx on 1bit1nfo</title>
-    <link>https://www.celiagm.es/tags/mailx/</link>
+    <link>http://www.celiagm.es/tags/mailx/</link>
     <description>Recent content in mailx on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 22 Jan 2021 12:48:10 +0100</lastBuildDate><atom:link href="https://www.celiagm.es/tags/mailx/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Jan 2021 12:48:10 +0100</lastBuildDate><atom:link href="http://www.celiagm.es/tags/mailx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Servidor de Correos. Postfix (I)</title>
-      <link>https://www.celiagm.es/post/servidor_correo1/</link>
+      <link>http://www.celiagm.es/post/servidor_correo1/</link>
       <pubDate>Fri, 22 Jan 2021 12:48:10 +0100</pubDate>
       
-      <guid>https://www.celiagm.es/post/servidor_correo1/</guid>
+      <guid>http://www.celiagm.es/post/servidor_correo1/</guid>
       <description>1. Objetivo. Instalación y configuración de un servidor de correos en una máquina de OVH, para el dominio iesgn05.</description>
     </item>
     
