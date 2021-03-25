@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>java on 1bit1nfo</title>
-    <link>http://www.celiagm.es/tags/java/</link>
+    <link>https://1bit1nfo.netlify.app/tags/java/</link>
     <description>Recent content in java on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 07 Mar 2021 21:11:44 +0100</lastBuildDate><atom:link href="http://www.celiagm.es/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Mar 2021 21:11:44 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Despliegue CMS en Java</title>
-      <link>http://www.celiagm.es/post/cms_java/</link>
+      <link>https://1bit1nfo.netlify.app/post/cms_java/</link>
       <pubDate>Sun, 07 Mar 2021 21:11:44 +0100</pubDate>
       
-      <guid>http://www.celiagm.es/post/cms_java/</guid>
+      <guid>https://1bit1nfo.netlify.app/post/cms_java/</guid>
       <description>En esta entrada vamos a tratar de desplegar una aplicación CMS escrito en Java.</description>
     </item>
     
     <item>
       <title>Introducción a Docker</title>
-      <link>http://www.celiagm.es/post/contenedores/</link>
+      <link>https://1bit1nfo.netlify.app/post/contenedores/</link>
       <pubDate>Sun, 07 Mar 2021 21:11:44 +0100</pubDate>
       
-      <guid>http://www.celiagm.es/post/contenedores/</guid>
+      <guid>https://1bit1nfo.netlify.app/post/contenedores/</guid>
       <description>Contenedores y aplicaciones ¿Qué son los contendores?
 Son diferentes compartimentos en el que cada aplicación visualiza un sistema operativo virtualmente sin compartirlo con nadie.</description>
     </item>

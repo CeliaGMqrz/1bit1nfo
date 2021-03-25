@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DMZ on 1bit1nfo</title>
-    <link>http://www.celiagm.es/tags/dmz/</link>
+    <link>https://1bit1nfo.netlify.app/tags/dmz/</link>
     <description>Recent content in DMZ on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 05 Dec 2020 13:21:43 +0100</lastBuildDate><atom:link href="http://www.celiagm.es/tags/dmz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Dec 2020 13:21:43 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/dmz/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Red DMZ. Modificacion del escenario.</title>
-      <link>http://www.celiagm.es/post/modificacion/</link>
+      <link>https://1bit1nfo.netlify.app/post/modificacion/</link>
       <pubDate>Sat, 05 Dec 2020 13:21:43 +0100</pubDate>
       
-      <guid>http://www.celiagm.es/post/modificacion/</guid>
+      <guid>https://1bit1nfo.netlify.app/post/modificacion/</guid>
       <description>Modificación del escenario Nota: Si no has visto la primera parte se encuentra aquí:</description>
     </item>
     
