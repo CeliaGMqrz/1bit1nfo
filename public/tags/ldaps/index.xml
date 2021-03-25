@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ldaps on 1bit1nfo</title>
-    <link>https://1bit1nfo.netlify.app/tags/ldaps/</link>
+    <link>http://www.celiagm.es/tags/ldaps/</link>
     <description>Recent content in ldaps on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 25 Jan 2021 09:27:32 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/ldaps/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Jan 2021 09:27:32 +0100</lastBuildDate><atom:link href="http://www.celiagm.es/tags/ldaps/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configurar LDAPs en Debian. OpenLDAP. (Freston)</title>
-      <link>https://1bit1nfo.netlify.app/post/ldaps/</link>
+      <link>http://www.celiagm.es/post/ldaps/</link>
       <pubDate>Mon, 25 Jan 2021 09:27:32 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/ldaps/</guid>
+      <guid>http://www.celiagm.es/post/ldaps/</guid>
       <description>¡! Este post está relacionado con un entrono de trabajo con openstack incluido en otras entradas de mi blog.</description>
     </item>
     

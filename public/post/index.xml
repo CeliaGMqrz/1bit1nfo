@@ -2,440 +2,440 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 1bit1nfo</title>
-    <link>https://1bit1nfo.netlify.app/post/</link>
+    <link>http://www.celiagm.es/post/</link>
     <description>Recent content in Posts on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 24 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://www.celiagm.es/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Phpmyadmin, MySQL y Apache2</title>
-      <link>https://1bit1nfo.netlify.app/post/phpmyadmin/</link>
+      <link>http://www.celiagm.es/post/phpmyadmin/</link>
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/phpmyadmin/</guid>
+      <guid>http://www.celiagm.es/post/phpmyadmin/</guid>
       <description>Descripción Instalación de una herramienta de administración web para MySQL y prueba desde un cliente remoto</description>
     </item>
     
     <item>
       <title>Virtualización con Libvirt y KVM</title>
-      <link>https://1bit1nfo.netlify.app/post/migracion_app_mv/</link>
+      <link>http://www.celiagm.es/post/migracion_app_mv/</link>
       <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/migracion_app_mv/</guid>
+      <guid>http://www.celiagm.es/post/migracion_app_mv/</guid>
       <description>Conceptos previos KVM
 KVM es un software de código abierto y significa &amp;lsquo;Máquina Virtual basada en el Kernel&amp;rsquo; en español.</description>
     </item>
     
     <item>
       <title>Cliente remoto usando el interprete de un servidor MySQL</title>
-      <link>https://1bit1nfo.netlify.app/post/mysql_clienteremoto/</link>
+      <link>http://www.celiagm.es/post/mysql_clienteremoto/</link>
       <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/mysql_clienteremoto/</guid>
+      <guid>http://www.celiagm.es/post/mysql_clienteremoto/</guid>
       <description>Objetivo Conectar un cliente remoto a la base de datos insertada en el servidor MySQL</description>
     </item>
     
     <item>
       <title>Compilación de un kernel linux a medida</title>
-      <link>https://1bit1nfo.netlify.app/post/compilarkernel2.0/</link>
+      <link>http://www.celiagm.es/post/compilarkernel2.0/</link>
       <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/compilarkernel2.0/</guid>
+      <guid>http://www.celiagm.es/post/compilarkernel2.0/</guid>
       <description>Conceptos previos El kernel linux es el núcleo del sistema operativo.</description>
     </item>
     
     <item>
       <title>Instalacion de MongoDB y acceso remoto desde un cliente local</title>
-      <link>https://1bit1nfo.netlify.app/post/mongodb/</link>
+      <link>http://www.celiagm.es/post/mongodb/</link>
       <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/mongodb/</guid>
+      <guid>http://www.celiagm.es/post/mongodb/</guid>
       <description>Instalación de un servidor MongoDB y configuración para permitir el acceso remoto desde la red local.</description>
     </item>
     
     <item>
       <title>Introducción a la integración continua y despliegue continuo</title>
-      <link>https://1bit1nfo.netlify.app/post/integracion_continua/</link>
+      <link>http://www.celiagm.es/post/integracion_continua/</link>
       <pubDate>Mon, 08 Mar 2021 12:53:56 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/integracion_continua/</guid>
+      <guid>http://www.celiagm.es/post/integracion_continua/</guid>
       <description>Conceptos previos. La integración contínua es un método por el cuál se hacen integraciones automáticas de un proyecto habitualmente en un periodo de tiempo muy corto para detectar los fallos cuanto antes.</description>
     </item>
     
     <item>
       <title>Despliegue CMS en Java</title>
-      <link>https://1bit1nfo.netlify.app/post/cms_java/</link>
+      <link>http://www.celiagm.es/post/cms_java/</link>
       <pubDate>Sun, 07 Mar 2021 21:11:44 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/cms_java/</guid>
+      <guid>http://www.celiagm.es/post/cms_java/</guid>
       <description>En esta entrada vamos a tratar de desplegar una aplicación CMS escrito en Java.</description>
     </item>
     
     <item>
       <title>Introducción a Docker</title>
-      <link>https://1bit1nfo.netlify.app/post/contenedores/</link>
+      <link>http://www.celiagm.es/post/contenedores/</link>
       <pubDate>Sun, 07 Mar 2021 21:11:44 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/contenedores/</guid>
+      <guid>http://www.celiagm.es/post/contenedores/</guid>
       <description>Contenedores y aplicaciones ¿Qué son los contendores?
 Son diferentes compartimentos en el que cada aplicación visualiza un sistema operativo virtualmente sin compartirlo con nadie.</description>
     </item>
     
     <item>
       <title>VPN con OpenVPN y certificados x509</title>
-      <link>https://1bit1nfo.netlify.app/post/vpn/</link>
+      <link>http://www.celiagm.es/post/vpn/</link>
       <pubDate>Wed, 24 Feb 2021 08:27:54 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/vpn/</guid>
+      <guid>http://www.celiagm.es/post/vpn/</guid>
       <description>Conceptos ¿Qué es una VPN?
 Se trata de una Red privada virtual.</description>
     </item>
     
     <item>
       <title>VPN con OpenVPN y certificados x509 (II)</title>
-      <link>https://1bit1nfo.netlify.app/post/site-to-site/</link>
+      <link>http://www.celiagm.es/post/site-to-site/</link>
       <pubDate>Wed, 24 Feb 2021 08:27:54 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/site-to-site/</guid>
+      <guid>http://www.celiagm.es/post/site-to-site/</guid>
       <description>Escenario:
 Tenemos dos servidores, dos maquinas conectadas a las redes locales diferentes y un cliente.</description>
     </item>
     
     <item>
       <title>Aumento del rendimiento de Nginx con Varnish</title>
-      <link>https://1bit1nfo.netlify.app/post/varnish/</link>
+      <link>http://www.celiagm.es/post/varnish/</link>
       <pubDate>Tue, 16 Feb 2021 17:15:21 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/varnish/</guid>
+      <guid>http://www.celiagm.es/post/varnish/</guid>
       <description>Para ver la introducción a este tema puedes entrar en este post:</description>
     </item>
     
     <item>
       <title>Gestión de peticiones y rendimiento de servidores Web</title>
-      <link>https://1bit1nfo.netlify.app/post/rendimiento/</link>
+      <link>http://www.celiagm.es/post/rendimiento/</link>
       <pubDate>Tue, 16 Feb 2021 17:15:21 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/rendimiento/</guid>
+      <guid>http://www.celiagm.es/post/rendimiento/</guid>
       <description>Los servidores web pueden ser configurados para manejar peticiones de diferente forma.</description>
     </item>
     
     <item>
       <title>Cortafuegos perimetral. Iptables</title>
-      <link>https://1bit1nfo.netlify.app/post/cortafuegos/</link>
+      <link>http://www.celiagm.es/post/cortafuegos/</link>
       <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/cortafuegos/</guid>
+      <guid>http://www.celiagm.es/post/cortafuegos/</guid>
       <description>Introducción Vamos a construir un cortafuegos en dulcinea que nos permita controlar el tráfico de nuestra red.</description>
     </item>
     
     <item>
       <title>Servidor de Correos. Postfix (III).</title>
-      <link>https://1bit1nfo.netlify.app/post/servidor_correo3/</link>
+      <link>http://www.celiagm.es/post/servidor_correo3/</link>
       <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/servidor_correo3/</guid>
+      <guid>http://www.celiagm.es/post/servidor_correo3/</guid>
       <description>Gestión de correos desde un cliente Tarea 8: Configurar postfix con Maildir Descripción:</description>
     </item>
     
     <item>
       <title>Servidor de Correos. Postfix (IV). Webmail Roundcube.</title>
-      <link>https://1bit1nfo.netlify.app/post/servidor_correo4/</link>
+      <link>http://www.celiagm.es/post/servidor_correo4/</link>
       <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/servidor_correo4/</guid>
+      <guid>http://www.celiagm.es/post/servidor_correo4/</guid>
       <description>Descripción (Tarea 10 y 12)
 Vamos a instalar un webmail (Roundcube), sobre Debian Buster alojado en una máquina de OVH, para gestionar el correo del equipo mediante una interfaz web.</description>
     </item>
     
     <item>
       <title>Configurar LDAPs en Debian. OpenLDAP. (Freston)</title>
-      <link>https://1bit1nfo.netlify.app/post/ldaps/</link>
+      <link>http://www.celiagm.es/post/ldaps/</link>
       <pubDate>Mon, 25 Jan 2021 09:27:32 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/ldaps/</guid>
+      <guid>http://www.celiagm.es/post/ldaps/</guid>
       <description>¡! Este post está relacionado con un entrono de trabajo con openstack incluido en otras entradas de mi blog.</description>
     </item>
     
     <item>
       <title>Proyecto: Escenario planteado sobre OpenStack</title>
-      <link>https://1bit1nfo.netlify.app/post/proyecto/</link>
+      <link>http://www.celiagm.es/post/proyecto/</link>
       <pubDate>Fri, 22 Jan 2021 12:48:10 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/proyecto/</guid>
+      <guid>http://www.celiagm.es/post/proyecto/</guid>
       <description>Introducción En el IES Gonzalo Nazareno, en el segundo año del ciclo superior de Administración de sistemas informáticos en red, se ha propuesto un escenario implantado sobre Openstack en el que nosotros, los alumnos, hemos puesto en práctica muchas tareas relacionadas con servidores linux.</description>
     </item>
     
     <item>
       <title>Servidor de Correos. Postfix (I)</title>
-      <link>https://1bit1nfo.netlify.app/post/servidor_correo1/</link>
+      <link>http://www.celiagm.es/post/servidor_correo1/</link>
       <pubDate>Fri, 22 Jan 2021 12:48:10 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/servidor_correo1/</guid>
+      <guid>http://www.celiagm.es/post/servidor_correo1/</guid>
       <description>1. Objetivo. Instalación y configuración de un servidor de correos en una máquina de OVH, para el dominio iesgn05.</description>
     </item>
     
     <item>
       <title>Servidor de Correos. Postfix (II). Alias y Redirecciones.</title>
-      <link>https://1bit1nfo.netlify.app/post/servidor_correo2/</link>
+      <link>http://www.celiagm.es/post/servidor_correo2/</link>
       <pubDate>Fri, 22 Jan 2021 12:48:10 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/servidor_correo2/</guid>
+      <guid>http://www.celiagm.es/post/servidor_correo2/</guid>
       <description>1. Uso de cron para notificar a root de una tarea Vamos a comprobar como los procesos del servidor pueden mandar correos para informar sobre su estado.</description>
     </item>
     
     <item>
       <title>Instalación de aplicación web CMS python</title>
-      <link>https://1bit1nfo.netlify.app/post/mezzanine/</link>
+      <link>http://www.celiagm.es/post/mezzanine/</link>
       <pubDate>Thu, 21 Jan 2021 13:04:33 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/mezzanine/</guid>
+      <guid>http://www.celiagm.es/post/mezzanine/</guid>
       <description>Objetivo: En este post vamos a trabajar sobre el entorno de trabajo de openstack nuevamente, el mismo sobre el que tratamos en el blog.</description>
     </item>
     
     <item>
       <title>Instalación: aplicación web CMS Wagtail con Python</title>
-      <link>https://1bit1nfo.netlify.app/post/app_web_python_django/</link>
+      <link>http://www.celiagm.es/post/app_web_python_django/</link>
       <pubDate>Thu, 21 Jan 2021 13:04:33 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/app_web_python_django/</guid>
+      <guid>http://www.celiagm.es/post/app_web_python_django/</guid>
       <description>Objetivo: Instalar un CMS en un entorno virtual y personalizar el sitio web con Wagtail</description>
     </item>
     
     <item>
       <title>Configurar HTTPS en Centos 8 (Quijote)</title>
-      <link>https://1bit1nfo.netlify.app/post/https_centos/</link>
+      <link>http://www.celiagm.es/post/https_centos/</link>
       <pubDate>Thu, 21 Jan 2021 10:11:23 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/https_centos/</guid>
+      <guid>http://www.celiagm.es/post/https_centos/</guid>
       <description>¡! Este post está relacionado con un entrono de trabajo con openstack incluido en otras entradas de mi blog.</description>
     </item>
     
     <item>
       <title>Introducción a Ansible</title>
-      <link>https://1bit1nfo.netlify.app/post/ansible/</link>
+      <link>http://www.celiagm.es/post/ansible/</link>
       <pubDate>Wed, 20 Jan 2021 17:15:21 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/ansible/</guid>
+      <guid>http://www.celiagm.es/post/ansible/</guid>
       <description>Conceptos Ansible es un software que automatiza el aprovisionamiento de software, la gestión de configuraciones y el depliegue de aplicaciones.</description>
     </item>
     
     <item>
       <title>Servidor de base de datos. MariaDB en Ubuntu</title>
-      <link>https://1bit1nfo.netlify.app/post/mysql_sancho/</link>
+      <link>http://www.celiagm.es/post/mysql_sancho/</link>
       <pubDate>Wed, 13 Jan 2021 14:51:48 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/mysql_sancho/</guid>
+      <guid>http://www.celiagm.es/post/mysql_sancho/</guid>
       <description>En sancho (Ubuntu) vamos a instalar un servidor de base de datos mariadb (bd.</description>
     </item>
     
     <item>
       <title>Servidor Web Apache2 (httpd) en Centos8</title>
-      <link>https://1bit1nfo.netlify.app/post/httpd_centos/</link>
+      <link>http://www.celiagm.es/post/httpd_centos/</link>
       <pubDate>Wed, 13 Jan 2021 11:36:08 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/httpd_centos/</guid>
+      <guid>http://www.celiagm.es/post/httpd_centos/</guid>
       <description>Este artículo trata sobre la instalación de un servidor web Apache2 sobre Centos8 incluido dentro de un entorno previamente creado en un cloud.</description>
     </item>
     
     <item>
       <title>Configurar un DNS con bind9</title>
-      <link>https://1bit1nfo.netlify.app/post/dns_freston/</link>
+      <link>http://www.celiagm.es/post/dns_freston/</link>
       <pubDate>Tue, 12 Jan 2021 19:49:10 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/dns_freston/</guid>
+      <guid>http://www.celiagm.es/post/dns_freston/</guid>
       <description>Objetivo: Vamos a instalar un servidor dns en freston que nos permita gestionar la resolución directa e inversa de nuestros nombres.</description>
     </item>
     
     <item>
       <title>Instalación y configuración básica de VMWare ESXi</title>
-      <link>https://1bit1nfo.netlify.app/post/vmware/</link>
+      <link>http://www.celiagm.es/post/vmware/</link>
       <pubDate>Tue, 22 Dec 2020 13:53:35 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/vmware/</guid>
+      <guid>http://www.celiagm.es/post/vmware/</guid>
       <description>Descripción de la tarea: Utiliza el servidor físico que se te haya asignado e instala la versión adecuada del sistema de virtualización VMWare ESXi (ten en cuenta que recibe diferentes denominaciones comerciales, pero nos referimos al sistema de virtualización de VMWare que proporciona virtualización de alto rendimiento mediante la técnica de la paravirtualización).</description>
     </item>
     
     <item>
       <title>Instalación y configuración inicial de OpenLDAP</title>
-      <link>https://1bit1nfo.netlify.app/post/ldap1/</link>
+      <link>http://www.celiagm.es/post/ldap1/</link>
       <pubDate>Mon, 14 Dec 2020 20:18:59 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/ldap1/</guid>
+      <guid>http://www.celiagm.es/post/ldap1/</guid>
       <description>Descripción:
 Realiza la instalación y configuración básica de OpenLDAP en frestón utilizando como base el nombre DNS asignado.</description>
     </item>
     
     <item>
       <title>Instalación de un servidor Oracle database 19c sobre Linux 8</title>
-      <link>https://1bit1nfo.netlify.app/post/oracle19c/</link>
+      <link>http://www.celiagm.es/post/oracle19c/</link>
       <pubDate>Tue, 08 Dec 2020 15:28:36 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/oracle19c/</guid>
+      <guid>http://www.celiagm.es/post/oracle19c/</guid>
       <description>1. Requisitos para el entorno de trabajo Vamos a instalar ORACLE 19c sobre Linux 8.</description>
     </item>
     
     <item>
       <title>Red DMZ. Modificacion del escenario.</title>
-      <link>https://1bit1nfo.netlify.app/post/modificacion/</link>
+      <link>http://www.celiagm.es/post/modificacion/</link>
       <pubDate>Sat, 05 Dec 2020 13:21:43 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/modificacion/</guid>
+      <guid>http://www.celiagm.es/post/modificacion/</guid>
       <description>Modificación del escenario Nota: Si no has visto la primera parte se encuentra aquí:</description>
     </item>
     
     <item>
       <title>Actualizacion de Centos7 a Centos8</title>
-      <link>https://1bit1nfo.netlify.app/post/actualizacion_centos/</link>
+      <link>http://www.celiagm.es/post/actualizacion_centos/</link>
       <pubDate>Mon, 30 Nov 2020 20:59:38 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/actualizacion_centos/</guid>
+      <guid>http://www.celiagm.es/post/actualizacion_centos/</guid>
       <description>Objetivo: Actualizar CentOS 7 a CentOS 8 garantizando que todos los servicios previos continúen funcionando:</description>
     </item>
     
     <item>
       <title>Configurar HTTPS con Let&#39;s Encrypt en un servidor con Nginx</title>
-      <link>https://1bit1nfo.netlify.app/post/ovh_httpss/</link>
+      <link>http://www.celiagm.es/post/ovh_httpss/</link>
       <pubDate>Sun, 29 Nov 2020 21:09:40 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/ovh_httpss/</guid>
+      <guid>http://www.celiagm.es/post/ovh_httpss/</guid>
       <description>HTTPS (Seguridad) Objetivo: Vamos a configurar el protocolo HTTPS para el acceso a nuestras aplicaciones, para ello tienes que tener en cuenta los siguiente.</description>
     </item>
     
     <item>
       <title>Instalación/migración de aplicaciones web PHP</title>
-      <link>https://1bit1nfo.netlify.app/post/ovh_php/</link>
+      <link>http://www.celiagm.es/post/ovh_php/</link>
       <pubDate>Sat, 28 Nov 2020 20:44:54 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/ovh_php/</guid>
+      <guid>http://www.celiagm.es/post/ovh_php/</guid>
       <description>OBJETIVO:
 Realizar la migración de la aplicación drupal que tienes instalada en el entorno de desarrollo a nuestro entorno de producción, para ello ten en cuenta lo siguiente:</description>
     </item>
     
     <item>
       <title>Instalar Openstackclient y deshabilitar la seguridad de puertos</title>
-      <link>https://1bit1nfo.netlify.app/post/openstackclient/</link>
+      <link>http://www.celiagm.es/post/openstackclient/</link>
       <pubDate>Thu, 19 Nov 2020 19:31:53 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/openstackclient/</guid>
+      <guid>http://www.celiagm.es/post/openstackclient/</guid>
       <description>Necesitamos instalar Openstackclient, para ello lo vamos hacer desde un entorno virtual para no comprometer la paquetería de nuestro sistema, ya que no es necesario para nuestro sistema actualmente.</description>
     </item>
     
     <item>
       <title>Crear Autoridad Certificadora y Certificado autofirmado</title>
-      <link>https://1bit1nfo.netlify.app/post/entidadca/</link>
+      <link>http://www.celiagm.es/post/entidadca/</link>
       <pubDate>Thu, 19 Nov 2020 18:51:45 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/entidadca/</guid>
+      <guid>http://www.celiagm.es/post/entidadca/</guid>
       <description>HTTPS / SSL Tarea 1: Certificado autofirmado PARTE 1 OBJETIVO:</description>
     </item>
     
     <item>
       <title>Instalación y configuración inicial de los servidores</title>
-      <link>https://1bit1nfo.netlify.app/post/escenario/</link>
+      <link>http://www.celiagm.es/post/escenario/</link>
       <pubDate>Wed, 18 Nov 2020 18:22:12 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/escenario/</guid>
+      <guid>http://www.celiagm.es/post/escenario/</guid>
       <description>En esta tarea se va a crear el escenario de trabajo que se va a usar durante todo el curso, que va a constar inicialmente de 3 instancias con nombres relacionados con el libro &amp;ldquo;Don Quijote de la Mancha&amp;rdquo;.</description>
     </item>
     
     <item>
       <title>Compilación de un kernel linux a medida</title>
-      <link>https://1bit1nfo.netlify.app/post/kernel/</link>
+      <link>http://www.celiagm.es/post/kernel/</link>
       <pubDate>Sun, 15 Nov 2020 20:07:29 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/kernel/</guid>
+      <guid>http://www.celiagm.es/post/kernel/</guid>
       <description>Ejercicio planteado:
 Al ser linux un kérnel libre, es posible descargar el código fuente, configurarlo y comprimirlo.</description>
     </item>
     
     <item>
       <title>Instalación de un entorno LAMP</title>
-      <link>https://1bit1nfo.netlify.app/post/lamp/</link>
+      <link>http://www.celiagm.es/post/lamp/</link>
       <pubDate>Wed, 11 Nov 2020 19:21:43 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/lamp/</guid>
+      <guid>http://www.celiagm.es/post/lamp/</guid>
       <description>Instalación de un servidor LAMP Crea una instancia de vagrant basado en un box de debian o ubuntu  Primero creamos el fichero Vagrantfile  nano Vagrantfile  Le añadimos estas lineas para configurar nuestra máquina debian  # -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.</description>
     </item>
     
     <item>
       <title>Servidor Nginx</title>
-      <link>https://1bit1nfo.netlify.app/post/nginx/</link>
+      <link>http://www.celiagm.es/post/nginx/</link>
       <pubDate>Wed, 11 Nov 2020 17:51:13 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/nginx/</guid>
+      <guid>http://www.celiagm.es/post/nginx/</guid>
       <description>Servidor Web Nginxx NGINX es un servidor web open source de alta performance que ofrece el contenido estático de un sitio web de forma rápida y fácil de configurar.</description>
     </item>
     
     <item>
       <title>Cifrado Asimétrico con GPG y OpenSSL</title>
-      <link>https://1bit1nfo.netlify.app/post/cifrado_asimetrico/</link>
+      <link>http://www.celiagm.es/post/cifrado_asimetrico/</link>
       <pubDate>Sat, 24 Oct 2020 14:45:15 +0200</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/cifrado_asimetrico/</guid>
+      <guid>http://www.celiagm.es/post/cifrado_asimetrico/</guid>
       <description>Práctica: Cifrado asimétrico con gpg y openssl En esta práctica vamos a cifrar ficheros utilizando cifrado asimétrico utilizando el programa gpg.</description>
     </item>
     
     <item>
       <title>Guia de Virtual Hosting Con Apache</title>
-      <link>https://1bit1nfo.netlify.app/post/virtualhosting_apache/</link>
+      <link>http://www.celiagm.es/post/virtualhosting_apache/</link>
       <pubDate>Wed, 21 Oct 2020 21:54:22 +0200</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/virtualhosting_apache/</guid>
+      <guid>http://www.celiagm.es/post/virtualhosting_apache/</guid>
       <description>VirtualHosting con Apache Conceptos previos ¿Qué es un sitio web? Un sitio web es un conjunto de páginas web, propiamente dicho.</description>
     </item>
     
     <item>
       <title>Instalación de VisualCode en Debian Buster</title>
-      <link>https://1bit1nfo.netlify.app/post/instalacion_vscode/</link>
+      <link>http://www.celiagm.es/post/instalacion_vscode/</link>
       <pubDate>Thu, 15 Oct 2020 22:22:11 +0200</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/instalacion_vscode/</guid>
+      <guid>http://www.celiagm.es/post/instalacion_vscode/</guid>
       <description>Instalar Visual Code en Debian 10 Instalar dependencias.
 $ sudo apt install software-properties-common apt-transport-https Descargamos la llave GPG del repositorio.</description>
     </item>
     
     <item>
       <title>Instalación de Virtualbox en Debian Buster</title>
-      <link>https://1bit1nfo.netlify.app/post/instalacion_vbox_debian/</link>
+      <link>http://www.celiagm.es/post/instalacion_vbox_debian/</link>
       <pubDate>Thu, 15 Oct 2020 15:50:23 +0200</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/instalacion_vbox_debian/</guid>
+      <guid>http://www.celiagm.es/post/instalacion_vbox_debian/</guid>
       <description>Instalar Virtualbox 6.0 en Debian Buster VirtualBox no viene en el repositorio predeterminado de Debian 10, por tanto lo instalaremos desde el repositorio oficial de Oracle.</description>
     </item>
     
     <item>
       <title>Ejemplos para youtube</title>
-      <link>https://1bit1nfo.netlify.app/post/rich-content/</link>
+      <link>http://www.celiagm.es/post/rich-content/</link>
       <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/rich-content/</guid>
+      <guid>http://www.celiagm.es/post/rich-content/</guid>
       <description>YouTube Privacy Enhanced Shortcode    Twitter Simple Shortcode .</description>
     </item>
     
     <item>
       <title>Ejemplos para imagenes</title>
-      <link>https://1bit1nfo.netlify.app/post/image-test/</link>
+      <link>http://www.celiagm.es/post/image-test/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/image-test/</guid>
+      <guid>http://www.celiagm.es/post/image-test/</guid>
       <description>Thumbnails can be enabled easily by setting the thumbnail parameter in the frontmatter to an image such as &amp;quot;images/landscape.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://1bit1nfo.netlify.app/post/kubernetes/</link>
+      <link>http://www.celiagm.es/post/kubernetes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/kubernetes/</guid>
+      <guid>http://www.celiagm.es/post/kubernetes/</guid>
       <description>Introducción a Kubernetes  Instalación de minikube  curl -LO https://storage.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://1bit1nfo.netlify.app/post/virtualizacion/</link>
+      <link>http://www.celiagm.es/post/virtualizacion/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/virtualizacion/</guid>
+      <guid>http://www.celiagm.es/post/virtualizacion/</guid>
       <description>Crea con virt-install una imagen de Debian Buster con formato qcow2 y un tamaño máximo de 3GiB.</description>
     </item>
     

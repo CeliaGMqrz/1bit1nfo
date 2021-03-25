@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>webmail on 1bit1nfo</title>
-    <link>https://1bit1nfo.netlify.app/tags/webmail/</link>
+    <link>http://www.celiagm.es/tags/webmail/</link>
     <description>Recent content in webmail on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 25 Jan 2021 17:15:21 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/webmail/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Jan 2021 17:15:21 +0100</lastBuildDate><atom:link href="http://www.celiagm.es/tags/webmail/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Servidor de Correos. Postfix (IV). Webmail Roundcube.</title>
-      <link>https://1bit1nfo.netlify.app/post/servidor_correo4/</link>
+      <link>http://www.celiagm.es/post/servidor_correo4/</link>
       <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/servidor_correo4/</guid>
+      <guid>http://www.celiagm.es/post/servidor_correo4/</guid>
       <description>Descripción (Tarea 10 y 12)
 Vamos a instalar un webmail (Roundcube), sobre Debian Buster alojado en una máquina de OVH, para gestionar el correo del equipo mediante una interfaz web.</description>
     </item>

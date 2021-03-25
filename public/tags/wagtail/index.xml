@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>wagtail on 1bit1nfo</title>
-    <link>https://1bit1nfo.netlify.app/tags/wagtail/</link>
+    <link>http://www.celiagm.es/tags/wagtail/</link>
     <description>Recent content in wagtail on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 21 Jan 2021 13:04:33 +0100</lastBuildDate><atom:link href="https://1bit1nfo.netlify.app/tags/wagtail/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Jan 2021 13:04:33 +0100</lastBuildDate><atom:link href="http://www.celiagm.es/tags/wagtail/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Instalación: aplicación web CMS Wagtail con Python</title>
-      <link>https://1bit1nfo.netlify.app/post/app_web_python_django/</link>
+      <link>http://www.celiagm.es/post/app_web_python_django/</link>
       <pubDate>Thu, 21 Jan 2021 13:04:33 +0100</pubDate>
       
-      <guid>https://1bit1nfo.netlify.app/post/app_web_python_django/</guid>
+      <guid>http://www.celiagm.es/post/app_web_python_django/</guid>
       <description>Objetivo: Instalar un CMS en un entorno virtual y personalizar el sitio web con Wagtail</description>
     </item>
     
