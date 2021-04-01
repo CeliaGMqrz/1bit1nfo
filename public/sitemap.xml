@@ -632,15 +632,19 @@
   </url>
   
   <url>
-    <loc>https://www.celiagm.es/post/virtualizacion/</loc>
-  </url>
-  
-  <url>
     <loc>https://www.celiagm.es/categories/</loc>
   </url>
   
   <url>
     <loc>https://www.celiagm.es/tags/index/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/tags/virsh/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/post/virtualizacion/</loc>
   </url>
   
 </urlset>
