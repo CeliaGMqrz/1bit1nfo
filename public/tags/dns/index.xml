@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>dns on 1bit1nfo</title>
-    <link>http://www.celiagm.es/tags/dns/</link>
+    <link>https://www.celiagm.es/tags/dns/</link>
     <description>Recent content in dns on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 12 Jan 2021 19:49:10 +0100</lastBuildDate><atom:link href="http://www.celiagm.es/tags/dns/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Jan 2021 19:49:10 +0100</lastBuildDate><atom:link href="https://www.celiagm.es/tags/dns/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configurar un DNS con bind9</title>
-      <link>http://www.celiagm.es/post/dns_freston/</link>
+      <link>https://www.celiagm.es/post/dns_freston/</link>
       <pubDate>Tue, 12 Jan 2021 19:49:10 +0100</pubDate>
       
-      <guid>http://www.celiagm.es/post/dns_freston/</guid>
+      <guid>https://www.celiagm.es/post/dns_freston/</guid>
       <description>Objetivo: Vamos a instalar un servidor dns en freston que nos permita gestionar la resolución directa e inversa de nuestros nombres.</description>
     </item>
     

@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>varnish on 1bit1nfo</title>
-    <link>http://www.celiagm.es/tags/varnish/</link>
+    <link>https://www.celiagm.es/tags/varnish/</link>
     <description>Recent content in varnish on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 16 Feb 2021 17:15:21 +0100</lastBuildDate><atom:link href="http://www.celiagm.es/tags/varnish/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Feb 2021 17:15:21 +0100</lastBuildDate><atom:link href="https://www.celiagm.es/tags/varnish/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Aumento del rendimiento de Nginx con Varnish</title>
-      <link>http://www.celiagm.es/post/varnish/</link>
+      <link>https://www.celiagm.es/post/varnish/</link>
       <pubDate>Tue, 16 Feb 2021 17:15:21 +0100</pubDate>
       
-      <guid>http://www.celiagm.es/post/varnish/</guid>
+      <guid>https://www.celiagm.es/post/varnish/</guid>
       <description>Para ver la introducción a este tema puedes entrar en este post:</description>
     </item>
     
     <item>
       <title>Gestión de peticiones y rendimiento de servidores Web</title>
-      <link>http://www.celiagm.es/post/rendimiento/</link>
+      <link>https://www.celiagm.es/post/rendimiento/</link>
       <pubDate>Tue, 16 Feb 2021 17:15:21 +0100</pubDate>
       
-      <guid>http://www.celiagm.es/post/rendimiento/</guid>
+      <guid>https://www.celiagm.es/post/rendimiento/</guid>
       <description>Los servidores web pueden ser configurados para manejar peticiones de diferente forma.</description>
     </item>
     

@@ -1,3 +1,13 @@
+---
+title: "Virtualización con Libvirt"
+date: 2021-04-1T13:53:35+01:00
+draft: false
+toc: false
+images:
+tags: ['virsh']
+---
+
+
 1. Crea con `virt-install` una imagen de Debian Buster con formato qcow2 y un tamaño máximo de 3GiB. Esta imagen se denominará `buster-base.qcow2`. El sistema de ficheros del sistema instalado en esta imagen será XFS. La imagen debe estar configurada para
 poder usar hasta dos interfaces de red por dhcp. El usuario `debian` con contraseña `debian` puede utilizar sudo sin contraseña.
 
@@ -54,11 +64,11 @@ nano red2.xml
 
 
 ```sh
-root@debian:/etc/libvirt/qemu/networks# virsh net-define red2.xml 
+root@debian:/etc/libvirt/qemu/networks# virsh net-define red2.xml
 Network red2 defined from red2.xml
 ```
 
-* Listamos las redes que tenemos 
+* Listamos las redes que tenemos
 
 ```sh
 root@debian:/etc/libvirt/qemu/networks# virsh net-list --all
@@ -75,7 +85,7 @@ root@debian:/etc/libvirt/qemu/networks# virsh net-list --all
 https://1bit1nfo.netlify.app/post/migracion_app_mv/
 ```
 
-* Listamos las redes y comprobamos que estan activas 
+* Listamos las redes y comprobamos que estan activas
 
 ```sh
 root@debian:/etc/libvirt/qemu/networks# virsh net-list --all
@@ -88,7 +98,7 @@ root@debian:/etc/libvirt/qemu/networks# virsh net-list --all
 
 ### Crear imagen
 
-Una vez creadas las redes y activadas vamos a crear la mv con la imagen qcow2 
+Una vez creadas las redes y activadas vamos a crear la mv con la imagen qcow2
 
 ```sh
 virt-install --connect qemu:///system --name buster-base --cdrom ~/isos/debian-10.8.0-amd64-netinst.iso --disk size=3 --network bridge=virbr0 --network bridge=virbr2 --memory 1024 --vcpus 1
@@ -99,8 +109,8 @@ Hacemos la instalación, teniendo en cuenta el sistema de archivos con formato X
 ```sh
 debian@debian-kvm:~$ lsblk -f
 NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
-sr0                                                                     
-vda                                                                     
+sr0
+vda
 └─vda1 xfs          30a9cfb1-0b31-4368-8b7a-c6779804e450      2G    35% /
 
 ```
@@ -109,11 +119,11 @@ Cuando se haya finalizado la instalación vamos a descargar sudo.
 
 ```sh
 su -
-apt install sudo 
-adduser debian sudo 
+apt install sudo
+adduser debian sudo
 nano /etc/sudoers
 ```
-* Editar y poner lo siguiente 
+* Editar y poner lo siguiente
 ```sh
 # User privilege specification
 root    ALL=(ALL:ALL) ALL
@@ -127,7 +137,7 @@ debian ALL=(ALL) NOPASSWD:ALL
 Comprobamos que se ha creado el archivo buster-base.xml
 
 ```sh
-celiagm@debian:/etc/libvirt/qemu$ sudo cat buster-base.xml 
+celiagm@debian:/etc/libvirt/qemu$ sudo cat buster-base.xml
 <!--
 WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
 OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
@@ -313,7 +323,7 @@ ssh-keygen -t ecdsa -b 521
 En la mv creamos el fichero 'authorized_keys'
 
 ```sh
-debian@debian-kvm:~/.ssh$ cat authorized_keys 
+debian@debian-kvm:~/.ssh$ cat authorized_keys
 ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAF5SCIOXoPk1sXDH43L1r4YqoP15DHGxRfCvat01stXT0YEIeXujgFalyETMu3WqlIjLtca/b5JV4Gk//rk0IdfVQAXhQFgruXQ6e7EYSru0D9XCaTuiJ4oMzoFu/+caYUT+o5HeOSHTWj1EfOqqbJDsuACJ5vvjubPrQ54P6orN3D1dQ== celiagm@debian
 ```
 
@@ -321,19 +331,19 @@ ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAF5SCIO
 
 
 ```sh
-root@debian:/var/lib/libvirt/images# virt-sparsify --compress buster-base.qcow2 buster-base_red.qcow2 
+root@debian:/var/lib/libvirt/images# virt-sparsify --compress buster-base.qcow2 buster-base_red.qcow2
 [   0.0] Create overlay file in /tmp to protect source disk
 [   0.0] Examine source disk
  100% ⟦▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒⟧ --:--
 [   7,1] Fill free space in /dev/sda1 with zero
 [   8,7] Copy to destination and make sparse
 [  64,8] Sparsify operation completed with no errors.
-virt-sparsify: Before deleting the old disk, carefully check that the 
+virt-sparsify: Before deleting the old disk, carefully check that the
 target disk boots and works correctly.
 
 ```
 
-* Comprobamos que está creada la imagen y ocupa menos espacio 
+* Comprobamos que está creada la imagen y ocupa menos espacio
 
 ```sh
 root@debian:/var/lib/libvirt/images# ls -lh
@@ -361,7 +371,7 @@ root@debian:/var/lib/libvirt/images# qemu-img create -f qcow2 -b buster-base_red
 Formatting 'maquina1.qcow2', fmt=qcow2 size=5368709120 backing_file=buster-base_red.qcow2 cluster_size=65536 lazy_refcounts=off refcount_bits=16
 ```
 
-Comprobamos que se ha creado 
+Comprobamos que se ha creado
 
 ```sh
 root@debian:/var/lib/libvirt/images# ls -lh
@@ -375,12 +385,12 @@ total 5,8G
 
 2. Crea una red interna de nombre intra con salida al exterior mediante NAT que utilice el direccionamiento 10.10.20.0/24
 
-Creamos el nuevo fichero .xml. 
+Creamos el nuevo fichero .xml.
 
 Le proporcionamos un identificador y le proporcionamos una mac respetando los tres primeros octetos.
 
 ```sh
-cat /proc/sys/kernel/random/uuid 
+cat /proc/sys/kernel/random/uuid
 ```
 `intra.xml`
 ```sh
@@ -401,10 +411,10 @@ cat /proc/sys/kernel/random/uuid
   </ip>
 </network>
 ```
-La definimos, la iniciamos y comprobamos que esta activo 
+La definimos, la iniciamos y comprobamos que esta activo
 
 ```sh
-root@debian:/etc/libvirt/qemu/networks# virsh net-define intra.xml 
+root@debian:/etc/libvirt/qemu/networks# virsh net-define intra.xml
 Network intra defined from intra.xml
 
 root@debian:/etc/libvirt/qemu/networks# virsh net-start intra
@@ -453,7 +463,7 @@ Creamos el dominio, llamado maquina1.xml
 </domain>
 ```
 
-Comprobamos que es válido el fichero xml 
+Comprobamos que es válido el fichero xml
 
 ```sh
 root@debian:/etc/libvirt/qemu# virt-xml-validate maquina1.xml
@@ -462,14 +472,14 @@ maquina1.xml validates
 
 Definimos y arrancamos la máquina
 ```sh
-root@debian:/etc/libvirt/qemu# virsh define maquina1.xml 
+root@debian:/etc/libvirt/qemu# virsh define maquina1.xml
 Domain maquina1 defined from maquina1.xml
 
 root@debian:/etc/libvirt/qemu# virsh start maquina1
 Domain maquina1 started
 ```
 
-Vemos que está encendida 
+Vemos que está encendida
 
 ```sh
 root@debian:/etc/libvirt/qemu# virsh list --all
@@ -481,7 +491,7 @@ root@debian:/etc/libvirt/qemu# virsh list --all
 
 ```
 
-Nos conectamos a ella 
+Nos conectamos a ella
 
 ```sh
 $ virt-viewer -c qemu:///system maquina1
@@ -506,9 +516,9 @@ Creamos el volumen de 1Gb
   </target>
 </volume>
 ```
-Creamos el volumen en el pool por defecto 
+Creamos el volumen en el pool por defecto
 ```sh
-root@debian:/var/lib/libvirt/images# virsh vol-create default vol.xml 
+root@debian:/var/lib/libvirt/images# virsh vol-create default vol.xml
 Vol vol1.img created from vol.xml
 ```
 
@@ -525,4 +535,293 @@ root@debian:/var/lib/libvirt/images# virsh vol-list default
 5. Una vez iniciada la MV maquina1, conecta el volumen a la máquina, crea un sistema de ficheros XFS en el volumen y móntalo en el directorio /var/lib/pgsql. Ten cuidado con los propietarios y grupos que pongas, para que funcione adecuadamente el siguiente punto.
 
 
+Conectamos el volumen creado de 1Gb a la máquina
 
+```powershell
+ root@debian:/var/lib/libvirt/images# virsh attach-disk maquina1 --source /var/lib/libvirt/images/vol1.img --target vdc --persistent
+Disk attached successfully
+
+```
+
+Le damos formato XFS , para ello tenemos que intalar los siguientes paquetes
+
+```powershell
+sudo apt-get install xfsprogs dosfstools
+```
+
+```powershell
+root@debian-kvm:/home/debian# mkfs
+mkfs         mkfs.cramfs  mkfs.ext3    mkfs.fat     mkfs.msdos   mkfs.xfs
+mkfs.bfs     mkfs.ext2    mkfs.ext4    mkfs.minix   mkfs.vfat
+root@debian-kvm:/home/debian# lsblk -l
+NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+vda  254:0    0   5G  0 disk
+vda1 254:1    0   3G  0 part /
+vdb  254:16   0   1G  0 disk
+root@debian-kvm:/home/debian# mkfs.xfs /dev/vdb
+meta-data=/dev/vdb               isize=512    agcount=4, agsize=65536 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=0
+data     =                       bsize=4096   blocks=262144, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+root@debian-kvm:/home/debian# lsblk -f
+NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+vda
+└─vda1 xfs          30a9cfb1-0b31-4368-8b7a-c6779804e450      2G    35% /
+vdb    xfs          6ebae309-2c2f-4c67-b098-20a9afbda1a5
+```
+
+Antes de montarlo en el directorio `/var/lib/pgsql.` vamos a ver qué permisos tenemos que darle y que usuarios tenemos que crear para la base de datos en postgresql.
+
+Creamos el grupo postgres
+
+```powershell
+debian@debian-kvm:~$ sudo groupadd postgres
+
+debian@debian-kvm:~$ sudo useradd postgres -m -g postgres
+```
+
+Creamos el directorio y le damos los permisos adecuados
+
+```powershell
+sudo chown -R postgres:postgres /var/lib/pgsql
+```
+
+Comprobamos que se han modificado los propietarios
+
+```powershell
+root@debian-kvm:/var/lib# ls -l | grep 'pgsql'
+drwxr-xr-x 2 postgres postgres   6 mar 31 21:18 pgsql
+
+```
+
+Montamos el disco en el directorio requerido
+
+```powershell
+root@debian-kvm:~# mount -t xfs /dev/vdb /var/lib/pgsql/
+root@debian-kvm:~# lsblk -f
+NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+vda
+└─vda1 xfs          30a9cfb1-0b31-4368-8b7a-c6779804e450      2G    35% /
+vdb    xfs          6ebae309-2c2f-4c67-b098-20a9afbda1a5  980,8M     3% /var/lib/pgsql
+
+```
+
+6. Instala en maquina1 el sistema de BBDD PostgreSQL que ubicará sus ficheros con las bases de datos en /var/lib/pgsql utilizando una conexión ssh.
+
+Instalamos PostgreSQL
+
+```powershell
+root@debian-kvm:~# apt-get install postgresql
+```
+
+Nos dice que lo ha alojado todo en el directorio `/var/lib/postgresql`
+
+Por lo que desmontaremos el disco , y cambiamos el nombre del directorio
+
+```powershell
+# Desmontamos y vemos que se ha desmontado correctamente
+root@debian-kvm:~# umount /var/lib/pgsql/
+root@debian-kvm:~# lsblk -f
+NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+vda
+└─vda1 xfs          30a9cfb1-0b31-4368-8b7a-c6779804e450    1,8G    41% /
+vdb    xfs          6ebae309-2c2f-4c67-b098-20a9afbda1a5
+
+#Cambiamos el nombre del directorio
+root@debian-kvm:~# mv /var/lib/pgsql/ /var/lib/postgresql/
+
+#Listamos para ver los permisos
+root@debian-kvm:~# ls -l /var/lib/postgresql/
+total 0
+drwxr-xr-x 3 postgres postgres 18 mar 31 21:28 11
+drwxr-xr-x 2 postgres postgres  6 mar 31 21:18 pgsql
+
+# Lo volvemos a montar
+root@debian-kvm:~# mount -t xfs /dev/vdb /var/lib/postgresql/
+root@debian-kvm:~# lsblk -f
+NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+vda
+└─vda1 xfs          30a9cfb1-0b31-4368-8b7a-c6779804e450    1,8G    41% /
+vdb    xfs          6ebae309-2c2f-4c67-b098-20a9afbda1a5  980,8M     3% /var/lib/postgresql
+
+```
+
+Vamos a darle una contraseña al usuario postgres
+
+```powershell
+root@debian-kvm:~# passwd postgres
+Nueva contraseña:
+Vuelva a escribir la nueva contraseña:
+passwd: contraseña actualizada correctamente
+
+```
+
+7. (Opcional) Puebla la base de datos con una BBDD de prueba (escribe en la tarea el nombre de usuario y contraseña para acceder a la BBDD).
+
+Primero vamos a crear de forma interactiva, para no tener que usar el usuario postgres, el usuario 'debian' con la base de datos 'debian'
+
+```sh
+debian@debian-kvm:~$ sudo -u postgres createuser --interactive
+Ingrese el nombre del rol a agregar: debian
+¿Será el nuevo rol un superusuario? (s/n) s
+
+debian@debian-kvm:~$ createdb debian
+
+debian@debian-kvm:~$ psql
+psql (11.10 (Debian 11.10-0+deb10u1))
+Digite «help» para obtener ayuda.
+
+debian=# \password
+Ingrese la nueva contraseña:
+Ingrésela nuevamente:
+
+```
+
+Agregamos una tabla de prueba con sus registros 
+
+```sh
+-- Creamos la tabla
+debian=# CREATE TABLE equipos
+debian-# (
+debian(#     codigo              VARCHAR(10),
+debian(#     nombre              VARCHAR(20),
+debian(#     year_fundacion      NUMERIC(4),
+debian(#     CONSTRAINT pk_equipos PRIMARY KEY (codigo)
+debian(# );
+CREATE TABLE
+
+-- Añadimos registros 
+
+debian=# ALTER TABLE equipos ADD numtitulos NUMERIC(3);
+ALTER TABLE
+debian=# INSERT INTO equipos (codigo,nombre,year_fundacion,numtitulos) VALUES ('ABC123','Real Madrid','1902','116');
+INSERT 0 1
+debian=# INSERT INTO equipos (codigo,nombre,year_fundacion,numtitulos) VALUES ('ABC456','Real Betis Balompie','1907','116');
+INSERT 0 1
+debian=# INSERT INTO equipos (codigo,nombre,year_fundacion,numtitulos) VALUES ('AVC783','Sevilla Fútbol Club','1890','116');
+INSERT 0 1
+
+-- Mostramos resultados 
+
+debian=# \d
+       Listado de relaciones
+ Esquema | Nombre  | Tipo  | Dueño  
+---------+---------+-------+--------
+ public  | equipos | tabla | debian
+(1 fila)
+
+
+```
+
+8. Crea una regla de NAT para que la base de datos sea accesible desde el exterior
+
+
+El usuario debian va ser el que se conecte de forma remota 
+
+El usuario de prueba será 'debian' con la contraseña 'debian'.
+
+
+Ahora vamos a editar el fichero de configuracion de postgres para hacer que sea accesible desde otras maquinas
+
+```powershell
+nano /etc/postgresql/11/main/postgresql.conf
+```
+
+Buscamos las líneas siguientes y las modificamos así
+
+```powershell
+listen_addresses = '*'          # what IP address(es) to listen on;
+
+#unix_socket_group = ''                 # (change requires restart)
+unix_socket_permissions = 0700          # begin with 0 to use octal notation
+
+```
+
+Editamos el siguiente fichero también y cambiamos lo siguiente
+
+```powershell
+
+nano /etc/postgresql/11/main/pg_hba.conf
+
+```
+Cambiamos
+
+```powershell
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+
+# lo cambiamos por
+
+host    all             all             all                   md5
+```
+
+Para permitir las conexiones desde cualquier dirección ip con cualquier usuario y base de datos (si éste tiene permiso para ello).
+
+Ahora reiniciamos el servicio de postgres
+
+```powershell
+sudo systemctl restart postgresql
+```
+
+Comprobamos que está funcionando
+
+```sh
+root@debian-kvm:/# sudo systemctl status postgresql
+● postgresql.service - PostgreSQL RDBMS
+   Loaded: loaded (/lib/systemd/system/postgresql.service; enabled; vendor preset: enabled)
+   Active: active (exited) since Wed 2021-03-31 22:18:03 CEST; 5s ago
+  Process: 3249 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
+ Main PID: 3249 (code=exited, status=0/SUCCESS)
+
+mar 31 22:18:03 debian-kvm systemd[1]: Starting PostgreSQL RDBMS...
+mar 31 22:18:03 debian-kvm systemd[1]: Started PostgreSQL RDBMS.
+
+```
+
+Ahora que está accesible solo tenemos que crear la regla NAT
+
+Primero miramos por donde está escuchando postgres
+
+```sh
+root@debian-kvm:/# netstat -tlpn
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      290/sshd
+tcp        0      0 0.0.0.0:5432            0.0.0.0:*               LISTEN      3231/postgres
+tcp6       0      0 :::22                   :::*                    LISTEN      290/sshd
+tcp6       0      0 :::5432                 :::*                    LISTEN      3231/postgres
+```
+
+Comprobamos que es el puerto **5434**, por lo tanto
+
+```sh
+sudo iptables -A INPUT -p tcp -s 10.10.20.158/24 --dport 5432 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --sport 5432 -m state --state ESTABLISHED -j ACCEPT
+```
+
+Comprobamos que podemos acceder desde la máquina anfitriona y podemos ver la tabla creada. Le pasaremos el parámetro -h (host) --port (puerto ) -U (usuario) -W (contraseña de forma forzada)
+
+```sh
+celiagm@debian:~$ psql -h 10.10.20.158 --port 5432 -U debian -W
+Contraseña: 
+psql (11.11 (Debian 11.11-0+deb10u1), servidor 11.10 (Debian 11.10-0+deb10u1))
+conexión SSL (protocolo: TLSv1.3, cifrado: TLS_AES_256_GCM_SHA384, bits: 256, compresión: desactivado)
+Digite «help» para obtener ayuda.
+
+debian=# \d
+       Listado de relaciones
+ Esquema | Nombre  | Tipo  | Dueño  
+---------+---------+-------+--------
+ public  | equipos | tabla | debian
+(1 fila)
+
+debian=# 
+
+```
+9. Pausa la ejecución para comprobar los pasos hasta este punto

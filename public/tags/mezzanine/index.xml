@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mezzanine on 1bit1nfo</title>
-    <link>http://www.celiagm.es/tags/mezzanine/</link>
+    <link>https://www.celiagm.es/tags/mezzanine/</link>
     <description>Recent content in Mezzanine on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 21 Jan 2021 13:04:33 +0100</lastBuildDate><atom:link href="http://www.celiagm.es/tags/mezzanine/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Jan 2021 13:04:33 +0100</lastBuildDate><atom:link href="https://www.celiagm.es/tags/mezzanine/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Instalación de aplicación web CMS python</title>
-      <link>http://www.celiagm.es/post/mezzanine/</link>
+      <link>https://www.celiagm.es/post/mezzanine/</link>
       <pubDate>Thu, 21 Jan 2021 13:04:33 +0100</pubDate>
       
-      <guid>http://www.celiagm.es/post/mezzanine/</guid>
+      <guid>https://www.celiagm.es/post/mezzanine/</guid>
       <description>Objetivo: En este post vamos a trabajar sobre el entorno de trabajo de openstack nuevamente, el mismo sobre el que tratamos en el blog.</description>
     </item>
     

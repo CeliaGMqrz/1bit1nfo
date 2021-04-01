@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kernel linux on 1bit1nfo</title>
-    <link>http://www.celiagm.es/tags/kernel-linux/</link>
+    <link>https://www.celiagm.es/tags/kernel-linux/</link>
     <description>Recent content in kernel linux on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 16 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://www.celiagm.es/tags/kernel-linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.celiagm.es/tags/kernel-linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Compilación de un kernel linux a medida</title>
-      <link>http://www.celiagm.es/post/compilarkernel2.0/</link>
+      <link>https://www.celiagm.es/post/compilarkernel2.0/</link>
       <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://www.celiagm.es/post/compilarkernel2.0/</guid>
+      <guid>https://www.celiagm.es/post/compilarkernel2.0/</guid>
       <description>Conceptos previos El kernel linux es el núcleo del sistema operativo.</description>
     </item>
     
     <item>
       <title>Compilación de un kernel linux a medida</title>
-      <link>http://www.celiagm.es/post/kernel/</link>
+      <link>https://www.celiagm.es/post/kernel/</link>
       <pubDate>Sun, 15 Nov 2020 20:07:29 +0100</pubDate>
       
-      <guid>http://www.celiagm.es/post/kernel/</guid>
+      <guid>https://www.celiagm.es/post/kernel/</guid>
       <description>Ejercicio planteado:
 Al ser linux un kérnel libre, es posible descargar el código fuente, configurarlo y comprimirlo.</description>
     </item>
