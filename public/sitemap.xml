@@ -4,7 +4,32 @@
   
   <url>
     <loc>https://www.celiagm.es/</loc>
-    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
+    <lastmod>2021-04-06T08:53:45+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/post/intrconexion/</loc>
+    <lastmod>2021-04-06T08:53:45+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/post/</loc>
+    <lastmod>2021-04-06T08:53:45+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/post/insta_oracle/</loc>
+    <lastmod>2021-04-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/tags/oracle/</loc>
+    <lastmod>2021-04-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/tags/</loc>
+    <lastmod>2021-04-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -18,16 +43,6 @@
   </url>
   
   <url>
-    <loc>https://www.celiagm.es/post/</loc>
-    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.celiagm.es/tags/</loc>
-    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.celiagm.es/tags/libvirt/</loc>
     <lastmod>2021-03-21T00:00:00+00:00</lastmod>
   </url>
@@ -35,6 +50,11 @@
   <url>
     <loc>https://www.celiagm.es/post/migracion_app_mv/</loc>
     <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/post/appweboracle/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -625,6 +645,10 @@
   <url>
     <loc>https://www.celiagm.es/tags/thumbnail/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/post/interconexion/</loc>
   </url>
   
   <url>

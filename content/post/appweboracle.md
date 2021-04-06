@@ -1,7 +1,7 @@
 +++
 author = "Celia García Márquez"
 title = "Aplicación web python, flask y Oracle"
-date = "2021-03-16"
+date = "2021-04-06"
 description = "Crear una aplicación web que interactúe con la base de datos Oracle"
 tags = [
     "oracle",
@@ -25,7 +25,7 @@ Realización de una aplicación web en cualquier lenguaje que conecte con el ser
 
 Para acortar un poco la documetación he dividido este post en varios, así que antes de comenzar a hacer la aplicación web se han seguido estos pasos:
 
-  1. [Instalacion de Oracle sobre CentOS8]()
+  1. [Instalacion de Oracle sobre CentOS8](https://www.celiagm.es/post/insta_oracle/)
 
   2. [Habilitar el acceso remoto a la base de datos]()
 

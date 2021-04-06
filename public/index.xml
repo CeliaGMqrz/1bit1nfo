@@ -6,7 +6,25 @@
     <description>Recent content on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 24 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.celiagm.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Apr 2021 08:53:45 +0200</lastBuildDate><atom:link href="https://www.celiagm.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Interconexión de Servidores de Bases de Datos.</title>
+      <link>https://www.celiagm.es/post/intrconexion/</link>
+      <pubDate>Tue, 06 Apr 2021 08:53:45 +0200</pubDate>
+      
+      <guid>https://www.celiagm.es/post/intrconexion/</guid>
+      <description>Descripción de la tarea Las interconexiones de servidores de bases de datos son operaciones que pueden ser muy útiles en diferentes contextos.</description>
+    </item>
+    
+    <item>
+      <title>Instalación de Oracle sobre CentOS8</title>
+      <link>https://www.celiagm.es/post/insta_oracle/</link>
+      <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/insta_oracle/</guid>
+      <description>Instalación de oracle en Centos8 Vamos a instalar oracle de la siguiente forma:</description>
+    </item>
+    
     <item>
       <title>Phpmyadmin, MySQL y Apache2</title>
       <link>https://www.celiagm.es/post/phpmyadmin/</link>
@@ -24,6 +42,15 @@
       <guid>https://www.celiagm.es/post/migracion_app_mv/</guid>
       <description>Conceptos previos KVM
 KVM es un software de código abierto y significa &amp;lsquo;Máquina Virtual basada en el Kernel&amp;rsquo; en español.</description>
+    </item>
+    
+    <item>
+      <title>Aplicación web python, flask y Oracle</title>
+      <link>https://www.celiagm.es/post/appweboracle/</link>
+      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/appweboracle/</guid>
+      <description>Objetivo Realización de una aplicación web en cualquier lenguaje que conecte con el servidor ORACLE tras autenticarse y muestre alguna información almacenada en el mismo.</description>
     </item>
     
     <item>
@@ -437,6 +464,15 @@ $ sudo apt install software-properties-common apt-transport-https Descargamos la
       
       <guid>https://www.celiagm.es/post/image-test/</guid>
       <description>Thumbnails can be enabled easily by setting the thumbnail parameter in the frontmatter to an image such as &amp;quot;images/landscape.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.celiagm.es/post/interconexion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/interconexion/</guid>
+      <description></description>
     </item>
     
     <item>
