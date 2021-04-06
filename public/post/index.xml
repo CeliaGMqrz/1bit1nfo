@@ -35,6 +35,15 @@
     </item>
     
     <item>
+      <title>Conexión remota a Oracle19c</title>
+      <link>https://www.celiagm.es/post/clienteoracle/</link>
+      <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/clienteoracle/</guid>
+      <description>Cliente remoto Vamos a usar otra máquina virtual, en mi caso voy a clonar el servidor de oracle CentOS8 y la clonación la utlizaré de cliente.</description>
+    </item>
+    
+    <item>
       <title>Phpmyadmin, MySQL y Apache2</title>
       <link>https://www.celiagm.es/post/phpmyadmin/</link>
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>

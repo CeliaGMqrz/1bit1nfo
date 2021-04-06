@@ -27,7 +27,7 @@ Para acortar un poco la documetación he dividido este post en varios, así que 
 
   1. [Instalacion de Oracle sobre CentOS8](https://www.celiagm.es/post/insta_oracle/)
 
-  2. [Habilitar el acceso remoto a la base de datos]()
+  2. [Habilitar el acceso remoto a la base de datos](https://www.celiagm.es/post/clienteoracle/)
 
 
 ## Aplicacion web que conecte con ORACLE 
@@ -90,7 +90,7 @@ Successfully installed cx-Oracle-8.1.0
 ```
 ## Aplicación simple en python
 
-* Creamos una carpeta de trabajo y creamos el [fichero.py]()
+* Creamos una carpeta de trabajo y creamos el `app.py`
 
 ```sh
 (mientorno) [centos@localhost entornos]$ mkdir app_oracle
@@ -165,7 +165,7 @@ else:
 ```
 Este código es un código muy simple que si se ejecuta hace lo siguiente:
 
-![app.py](app.png)
+![app.py](/images/mysql/app.jpeg)
 
 
 ## Aplicación web con flask, python y Oracle 
@@ -178,9 +178,9 @@ Ahora vamos hacer una aplicación parecida pero sirviendola en internet con una 
 [oracle@bd ~]$ export PYTHON_PASSWORD=celia
 [oracle@bd ~]$ export PYTHON_USERNAME=c##celia
 
-* El código lo puedes encontrar en el siguiente [repositorio]()
+* El código lo puedes encontrar en el siguiente [repositorio](https://github.com/CeliaGMqrz/app_oracle_flask)
 
-Siendo propiamente el mismo este -> [demo.py]()
+Siendo propiamente el mismo este -> [demo.py](https://github.com/CeliaGMqrz/app_oracle_flask/blob/master/demo.py)
 
 * Ejecutamos la app web 
 
@@ -201,4 +201,4 @@ Connecting to localhost/ORCLCDB
 
 captura de pantalla de la pagina funcionando 
 
-![]()
+![appweb.jpeg](/images/mysql/appweb.jpeg)
