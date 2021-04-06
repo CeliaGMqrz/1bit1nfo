@@ -174,10 +174,13 @@ Ahora vamos hacer una aplicación parecida pero sirviendola en internet con una 
 
 * Exportamos las variables pertinentes 
 
+```sh
+
 [oracle@bd ~]$ export PYTHON_CONNECTSTRING=localhost/ORCLCDB
 [oracle@bd ~]$ export PYTHON_PASSWORD=celia
 [oracle@bd ~]$ export PYTHON_USERNAME=c##celia
 
+```
 * El código lo puedes encontrar en el siguiente [repositorio](https://github.com/CeliaGMqrz/app_oracle_flask)
 
 Siendo propiamente el mismo este -> [demo.py](https://github.com/CeliaGMqrz/app_oracle_flask/blob/master/demo.py)
