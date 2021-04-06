@@ -81,10 +81,6 @@ root@debian:/etc/libvirt/qemu/networks# virsh net-list --all
 ```
 * Iniciamos las redes oportunas, las marcamos como autostart
 
-```sh
-https://1bit1nfo.netlify.app/post/migracion_app_mv/
-```
-
 * Listamos las redes y comprobamos que estan activas
 
 ```sh
@@ -576,9 +572,10 @@ vda
 vdb    xfs          6ebae309-2c2f-4c67-b098-20a9afbda1a5
 ```
 
-Antes de montarlo en el directorio `/var/lib/pgsql.` vamos a ver qué permisos tenemos que darle y que usuarios tenemos que crear para la base de datos en postgresql.
+Antes de montarlo en el directorio `/var/lib/postgresql.` vamos a ver qué permisos tenemos que darle y que usuarios tenemos que crear para la base de datos en postgresql.
 
-Creamos el grupo postgres
+
+* Creamos el grupo postgres
 
 ```powershell
 debian@debian-kvm:~$ sudo groupadd postgres
@@ -589,80 +586,41 @@ debian@debian-kvm:~$ sudo useradd postgres -m -g postgres
 Creamos el directorio y le damos los permisos adecuados
 
 ```powershell
-sudo chown -R postgres:postgres /var/lib/pgsql
-```
-
-Comprobamos que se han modificado los propietarios
-
-```powershell
-root@debian-kvm:/var/lib# ls -l | grep 'pgsql'
-drwxr-xr-x 2 postgres postgres   6 mar 31 21:18 pgsql
-
+root@debian-kvm:/var/lib# mkdir postgresql
+root@debian-kvm:/var/lib# chown -R postgres:postgres postgresql/
+root@debian-kvm:/var/lib# ls -l | grep 'post'
+drwxr-xr-x 2 postgres postgres   6 abr  5 19:50 postgresql
 ```
 
 Montamos el disco en el directorio requerido
 
 ```powershell
-root@debian-kvm:~# mount -t xfs /dev/vdb /var/lib/pgsql/
-root@debian-kvm:~# lsblk -f
-NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
-vda
-└─vda1 xfs          30a9cfb1-0b31-4368-8b7a-c6779804e450      2G    35% /
-vdb    xfs          6ebae309-2c2f-4c67-b098-20a9afbda1a5  980,8M     3% /var/lib/pgsql
-
+root@debian-kvm:/var/lib# mount -t xfs /dev/vdb /var/lib/postgresql/
 ```
 
-6. Instala en maquina1 el sistema de BBDD PostgreSQL que ubicará sus ficheros con las bases de datos en /var/lib/pgsql utilizando una conexión ssh.
+5. Instala en maquina1 el sistema de BBDD PostgreSQL que ubicará sus ficheros con las bases de datos en /var/lib/postgresql utilizando una conexión ssh.
 
-Instalamos PostgreSQL
+Lo instalamos:
 
-```powershell
-root@debian-kvm:~# apt-get install postgresql
+```sh
+apt-get install postgresql
 ```
 
-Nos dice que lo ha alojado todo en el directorio `/var/lib/postgresql`
+Comprobamos que se ha creado
 
-Por lo que desmontaremos el disco , y cambiamos el nombre del directorio
-
-```powershell
-# Desmontamos y vemos que se ha desmontado correctamente
-root@debian-kvm:~# umount /var/lib/pgsql/
-root@debian-kvm:~# lsblk -f
-NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
-vda
-└─vda1 xfs          30a9cfb1-0b31-4368-8b7a-c6779804e450    1,8G    41% /
-vdb    xfs          6ebae309-2c2f-4c67-b098-20a9afbda1a5
-
-#Cambiamos el nombre del directorio
-root@debian-kvm:~# mv /var/lib/pgsql/ /var/lib/postgresql/
-
-#Listamos para ver los permisos
-root@debian-kvm:~# ls -l /var/lib/postgresql/
+```sh
+root@debian-kvm:/var/lib/postgresql# ls -lh
 total 0
-drwxr-xr-x 3 postgres postgres 18 mar 31 21:28 11
-drwxr-xr-x 2 postgres postgres  6 mar 31 21:18 pgsql
-
-# Lo volvemos a montar
-root@debian-kvm:~# mount -t xfs /dev/vdb /var/lib/postgresql/
-root@debian-kvm:~# lsblk -f
-NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
-vda
-└─vda1 xfs          30a9cfb1-0b31-4368-8b7a-c6779804e450    1,8G    41% /
-vdb    xfs          6ebae309-2c2f-4c67-b098-20a9afbda1a5  980,8M     3% /var/lib/postgresql
-
+drwxr-xr-x 3 postgres postgres 18 mar 31 21:48 11
 ```
 
 Vamos a darle una contraseña al usuario postgres
 
 ```powershell
-root@debian-kvm:~# passwd postgres
-Nueva contraseña:
-Vuelva a escribir la nueva contraseña:
-passwd: contraseña actualizada correctamente
-
+passwd postgres
 ```
 
-7. (Opcional) Puebla la base de datos con una BBDD de prueba (escribe en la tarea el nombre de usuario y contraseña para acceder a la BBDD).
+1. (Opcional) Puebla la base de datos con una BBDD de prueba (escribe en la tarea el nombre de usuario y contraseña para acceder a la BBDD).
 
 Primero vamos a crear de forma interactiva, para no tener que usar el usuario postgres, el usuario 'debian' con la base de datos 'debian'
 
@@ -825,3 +783,26 @@ debian=#
 
 ```
 9. Pausa la ejecución para comprobar los pasos hasta este punto
+
+
+10. Continúa la ejecución cuando el usuario pulse 'C'
+
+11. Crea una imagen que utilice buster-base.qcow2 como imagen base y que tenga un tamaño de 4 GiB. Esta imagen se llamará maquina2.qcow2
+
+```sh
+qemu-img create -f qcow2 -b buster-base_red.qcow2 maquina2.qcow2 4G
+```
+
+```sh
+root@debian:/var/lib/libvirt/images# qemu-img create -f qcow2 -b buster-base_red.qcow2 maquina2.qcow2 4G
+Formatting 'maquina2.qcow2', fmt=qcow2 size=4294967296 backing_file=buster-base_red.qcow2 cluster_size=65536 lazy_refcounts=off refcount_bits=16
+```
+
+* Comprobamos que se ha creado también la máquina2.
+
+```sh
+root@debian:/var/lib/libvirt/images# ls -lh | grep 'maquina'
+-rw-r--r-- 1 libvirt-qemu libvirt-qemu 347M abr  5 19:32 maquina1.qcow2
+-rw-r--r-- 1 root         root         193K abr  5 19:33 maquina2.qcow2
+
+```
