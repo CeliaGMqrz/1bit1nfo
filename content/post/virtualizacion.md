@@ -598,20 +598,28 @@ Montamos el disco en el directorio requerido
 root@debian-kvm:/var/lib# mount -t xfs /dev/vdb /var/lib/postgresql/
 ```
 
-5. Instala en maquina1 el sistema de BBDD PostgreSQL que ubicará sus ficheros con las bases de datos en /var/lib/postgresql utilizando una conexión ssh.
-
-Lo instalamos:
+Vemos que se ha montado 
 
 ```sh
-apt-get install postgresql
+root@debian-kvm:/var/lib# lsblk -f 
+NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+vda                                                                     
+└─vda1 xfs          30a9cfb1-0b31-4368-8b7a-c6779804e450    1,7G    43% /
+vdb    xfs          6ebae309-2c2f-4c67-b098-20a9afbda1a5  980,8M     3% /var/lib/postgresql
+
 ```
+
+5. Instala en maquina1 el sistema de BBDD PostgreSQL que ubicará sus ficheros con las bases de datos en /var/lib/postgresql utilizando una conexión ssh.
+
+Instalamos prostgres como se indica en el siguiente [post](https://www.celiagm.es/post/postgresql_debian/)
+
 
 Comprobamos que se ha creado
 
 ```sh
 root@debian-kvm:/var/lib/postgresql# ls -lh
 total 0
-drwxr-xr-x 3 postgres postgres 18 mar 31 21:48 11
+drwxr-xr-x 3 postgres postgres 18 abr  7 15:11 11
 ```
 
 Vamos a darle una contraseña al usuario postgres
@@ -622,67 +630,78 @@ passwd postgres
 
 1. (Opcional) Puebla la base de datos con una BBDD de prueba (escribe en la tarea el nombre de usuario y contraseña para acceder a la BBDD).
 
-Primero vamos a crear de forma interactiva, para no tener que usar el usuario postgres, el usuario 'debian' con la base de datos 'debian'
+Creamos el usario celia y la base de datos 'prueba'
 
 ```sh
-debian@debian-kvm:~$ sudo -u postgres createuser --interactive
-Ingrese el nombre del rol a agregar: debian
-¿Será el nuevo rol un superusuario? (s/n) s
-
-debian@debian-kvm:~$ createdb debian
-
-debian@debian-kvm:~$ psql
-psql (11.10 (Debian 11.10-0+deb10u1))
+debian@debian-kvm:~$ sudo su
+root@debian-kvm:/home/debian# su - postgresql
+su: el usuario postgresql no existe
+root@debian-kvm:/home/debian# su - postgres
+$ psql	
+psql (11.11 (Debian 11.11-1.pgdg100+1))
 Digite «help» para obtener ayuda.
 
-debian=# \password
-Ingrese la nueva contraseña:
-Ingrésela nuevamente:
+postgres=# create user celia with password 'celia';
+CREATE ROLE
+postgres=# create database prueba;
+CREATE DATABASE
+postgres=# grant all privileges on database prueba to celia;
+GRANT
+postgres=# exit
+```
+
+Entramos como usuario celia y poblamos la base de datos 
+
+```sh
+psql -h localhost -U celia -W -d prueba
 
 ```
 
 Agregamos una tabla de prueba con sus registros 
 
 ```sh
--- Creamos la tabla
-debian=# CREATE TABLE equipos
-debian-# (
-debian(#     codigo              VARCHAR(10),
-debian(#     nombre              VARCHAR(20),
-debian(#     year_fundacion      NUMERIC(4),
-debian(#     CONSTRAINT pk_equipos PRIMARY KEY (codigo)
-debian(# );
-CREATE TABLE
+create table departamento(
+dept_no integer,
+dnombre varchar(20),
+loc varchar(20),
+primary key (dept_no)
+);
 
 -- Añadimos registros 
 
-debian=# ALTER TABLE equipos ADD numtitulos NUMERIC(3);
-ALTER TABLE
-debian=# INSERT INTO equipos (codigo,nombre,year_fundacion,numtitulos) VALUES ('ABC123','Real Madrid','1902','116');
-INSERT 0 1
-debian=# INSERT INTO equipos (codigo,nombre,year_fundacion,numtitulos) VALUES ('ABC456','Real Betis Balompie','1907','116');
-INSERT 0 1
-debian=# INSERT INTO equipos (codigo,nombre,year_fundacion,numtitulos) VALUES ('AVC783','Sevilla Fútbol Club','1890','116');
-INSERT 0 1
+insert into departamento
+values ('10','CONTABILIDAD','SEVILLA');
+insert into departamento
+values ('20','INVESTIGACION','MADRID');
+insert into departamento
+values ('30','VENTAS','BARCELONA');
+insert into departamento
+values ('40','PRODUCCION','BILBAO');
+```
 
--- Mostramos resultados 
+Mostramos la tabla con los registros 
 
-debian=# \d
-       Listado de relaciones
- Esquema | Nombre  | Tipo  | Dueño  
----------+---------+-------+--------
- public  | equipos | tabla | debian
+```sh
+prueba=> \d
+         Listado de relaciones
+ Esquema |    Nombre    | Tipo  | Dueño 
+---------+--------------+-------+-------
+ public  | departamento | tabla | celia
 (1 fila)
 
+prueba=> select * from departamento;
+ dept_no |    dnombre    |    loc    
+---------+---------------+-----------
+      10 | CONTABILIDAD  | SEVILLA
+      20 | INVESTIGACION | MADRID
+      30 | VENTAS        | BARCELONA
+      40 | PRODUCCION    | BILBAO
+(4 filas)
 
 ```
 
+
 8. Crea una regla de NAT para que la base de datos sea accesible desde el exterior
-
-
-El usuario debian va ser el que se conecte de forma remota 
-
-El usuario de prueba será 'debian' con la contraseña 'debian'.
 
 
 Ahora vamos a editar el fichero de configuracion de postgres para hacer que sea accesible desde otras maquinas
@@ -747,13 +766,13 @@ Ahora que está accesible solo tenemos que crear la regla NAT
 Primero miramos por donde está escuchando postgres
 
 ```sh
-root@debian-kvm:/# netstat -tlpn
+root@debian-kvm:/home/debian# netstat -tlpn
 Active Internet connections (only servers)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      290/sshd
-tcp        0      0 0.0.0.0:5432            0.0.0.0:*               LISTEN      3231/postgres
-tcp6       0      0 :::22                   :::*                    LISTEN      290/sshd
-tcp6       0      0 :::5432                 :::*                    LISTEN      3231/postgres
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      408/sshd            
+tcp        0      0 0.0.0.0:5432            0.0.0.0:*               LISTEN      8164/postgres       
+tcp6       0      0 :::22                   :::*                    LISTEN      408/sshd            
+tcp6       0      0 :::5432                 :::*                    LISTEN      8164/postgres    
 ```
 
 Comprobamos que es el puerto **5434**, por lo tanto
@@ -766,20 +785,21 @@ sudo iptables -A OUTPUT -p tcp --sport 5432 -m state --state ESTABLISHED -j ACCE
 Comprobamos que podemos acceder desde la máquina anfitriona y podemos ver la tabla creada. Le pasaremos el parámetro -h (host) --port (puerto ) -U (usuario) -W (contraseña de forma forzada)
 
 ```sh
-celiagm@debian:~$ psql -h 10.10.20.158 --port 5432 -U debian -W
+celiagm@debian:~$ psql -h 10.10.20.158 --port 5432 -U celia -W prueba
 Contraseña: 
-psql (11.11 (Debian 11.11-0+deb10u1), servidor 11.10 (Debian 11.10-0+deb10u1))
+psql (11.11 (Debian 11.11-0+deb10u1))
 conexión SSL (protocolo: TLSv1.3, cifrado: TLS_AES_256_GCM_SHA384, bits: 256, compresión: desactivado)
 Digite «help» para obtener ayuda.
 
-debian=# \d
-       Listado de relaciones
- Esquema | Nombre  | Tipo  | Dueño  
----------+---------+-------+--------
- public  | equipos | tabla | debian
+prueba=> \d
+         Listado de relaciones
+ Esquema |    Nombre    | Tipo  | Dueño 
+---------+--------------+-------+-------
+ public  | departamento | tabla | celia
 (1 fila)
 
-debian=# 
+prueba=> 
+
 
 ```
 9. Pausa la ejecución para comprobar los pasos hasta este punto
@@ -806,3 +826,7 @@ root@debian:/var/lib/libvirt/images# ls -lh | grep 'maquina'
 -rw-r--r-- 1 root         root         193K abr  5 19:33 maquina2.qcow2
 
 ```
+
+12. Crea una nueva máquina (maquina2) que utilice imagen anterior, con 1 GiB de RAM y que también esté conectada a intra.
+
+
