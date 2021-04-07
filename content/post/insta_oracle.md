@@ -273,6 +273,8 @@ Introduzca la contrase?a:
 Conectado.
 
 ```
+## Poblar la base de datos
+
 Creamos unas tablas de prueba 
 
 ```sql
