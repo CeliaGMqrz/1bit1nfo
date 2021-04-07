@@ -264,10 +264,6 @@ prueba2=> select * from dblink('dbname=prueba1 host=192.168.100.225 user=celia1 
 (4 rows)
 ```
 
-
-
-alter table empleado add constraint fk_depno foreign key (dept_no) references dblink('dbname=prueba1 host=192.168.100.225 user=celia1 password=celia1', 'departamento (dept_no)');
-
-
+Como hemos visto se ha creado los enlaces correctamente y hemos podido hacer consultas a tablas externas.
 
 ## Enlace entre bases de datos ORACLE y Postgresql.
