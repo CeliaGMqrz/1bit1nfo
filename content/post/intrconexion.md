@@ -1,11 +1,14 @@
----
-title: "Interconexión de Servidores de Bases de Datos."
-date: 2021-04-06T08:53:45+02:00
-Description: "Enlaces entre distintos servidores de bases de datos."
-Tags: []
-Categories: []
-DisableComments: false
----
++++
+author = "Celia García Márquez"
+title = "Interconexión de Servidores de Bases de Datos"
+date = "2021-04-07"
+description = "Enlaces entre distintos servidores de bases de datos"
+tags = [
+    "interconexiones bbdd",
+]
+thumbnail= "images/interconexiones/banner.png"
++++
+
 
 ## Descripción de la tarea 
 
