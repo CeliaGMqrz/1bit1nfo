@@ -28,7 +28,17 @@
   </url>
   
   <url>
+    <loc>https://www.celiagm.es/post/postgresql_debian/</loc>
+    <lastmod>2021-04-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.celiagm.es/tags/oracle/</loc>
+    <lastmod>2021-04-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/tags/postgresql/</loc>
     <lastmod>2021-04-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -650,10 +660,6 @@
   <url>
     <loc>https://www.celiagm.es/tags/thumbnail/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.celiagm.es/post/interconexion/</loc>
   </url>
   
   <url>

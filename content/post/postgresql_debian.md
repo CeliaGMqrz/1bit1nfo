@@ -1,7 +1,7 @@
 +++
 author = "Celia García Márquez"
 title = "Instalación de Postgresql sobre Debian Buster"
-date = "2021-04-06"
+date = "2021-04-07"
 description = "Instalacion de postgresql"
 tags = [
     "postgresql",
