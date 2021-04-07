@@ -53,6 +53,15 @@
     </item>
     
     <item>
+      <title>Virtualización con Libvirt</title>
+      <link>https://www.celiagm.es/post/virtualizacion/</link>
+      <pubDate>Thu, 25 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/virtualizacion/</guid>
+      <description>En este post se va a llevar a cabo una práctica para manejar libvirt.</description>
+    </item>
+    
+    <item>
       <title>Phpmyadmin, MySQL y Apache2</title>
       <link>https://www.celiagm.es/post/phpmyadmin/</link>
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
@@ -491,15 +500,6 @@ $ sudo apt install software-properties-common apt-transport-https Descargamos la
       
       <guid>https://www.celiagm.es/post/kubernetes/</guid>
       <description>Introducción a Kubernetes  Instalación de minikube  curl -LO https://storage.</description>
-    </item>
-    
-    <item>
-      <title>Virtualización con Libvirt</title>
-      <link>https://www.celiagm.es/post/virtualizacion/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.celiagm.es/post/virtualizacion/</guid>
-      <description>Crea con virt-install una imagen de Debian Buster con formato qcow2 y un tamaño máximo de 3GiB.</description>
     </item>
     
   </channel>

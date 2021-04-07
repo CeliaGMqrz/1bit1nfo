@@ -363,7 +363,7 @@ __________________________
 
 ## 2. Escribe un shell script que ejecutado por un usuario con acceso a qemu:///system realice los siguientes pasos:
 
-1. Crea una imagen nueva, que utilice `buster-base.qcow2` como imagen base y tenga 5 GiB de tamaño máximo. Esta imagen se denominará `maquina1.qcow2`
+**1. Crea una imagen nueva, que utilice `buster-base.qcow2` como imagen base y tenga 5 GiB de tamaño máximo. Esta imagen se denominará `maquina1.qcow2`**
 
 ```sh
 qemu-img create -f qcow2 -b buster-base_red.qcow2 maquina1.qcow2 5G
@@ -386,7 +386,7 @@ total 5,8G
 -rw-r--r-- 1 root         root         193K mar 22 18:18 maquina1.qcow2
 ```
 
-2. Crea una red interna de nombre intra con salida al exterior mediante **NAT** que utilice el direccionamiento `10.10.20.0/24`
+**2. Crea una red interna de nombre intra con salida al exterior mediante **NAT** que utilice el direccionamiento `10.10.20.0/24`**
 
 Creamos el nuevo fichero .xml.
 
@@ -438,7 +438,7 @@ root@debian:/home/celiagm/isos# virsh net-list --all
 ```
 
 
-3. Crea una máquina virtual (maquina1) conectada a la red **intra**, con 1 GiB de RAM, que utilice como disco raíz `maquina1.qcow2` y que se inicie automáticamente. Arranca la máquina.
+**3. Crea una máquina virtual (maquina1) conectada a la red **intra**, con 1 GiB de RAM, que utilice como disco raíz `maquina1.qcow2` y que se inicie automáticamente. Arranca la máquina.**
 
 Creamos el dominio, llamado maquina1.xml
 
@@ -501,7 +501,7 @@ Nos conectamos a ella
 $ virt-viewer -c qemu:///system maquina1
 ```
 
-4. Crea un **volumen adicional** de 1 GiB de tamaño en formato **RAW** ubicado en el pool por defecto
+**4. Crea un **volumen adicional** de 1 GiB de tamaño en formato **RAW** ubicado en el pool por defecto**
 
 Creamos el volumen de 1Gb
 
@@ -537,7 +537,7 @@ root@debian:/var/lib/libvirt/images# virsh vol-list default
  vol1.img                                                    /var/lib/libvirt/images/vol1.img
 ```
 
-5. Una vez iniciada la MV maquina1, conecta el volumen a la máquina, crea un sistema de ficheros XFS en el volumen y móntalo en el directorio `/var/lib/postgresql`. Ten cuidado con los **propietarios** y **grupos** que pongas, para que funcione adecuadamente el siguiente punto.
+**5. Una vez iniciada la MV maquina1, conecta el volumen a la máquina, crea un sistema de ficheros XFS en el volumen y móntalo en el directorio `/var/lib/postgresql`. Ten cuidado con los **propietarios** y **grupos** que pongas, para que funcione adecuadamente el siguiente punto.**
 
 
 Conectamos el volumen creado de 1Gb a la máquina
@@ -618,7 +618,7 @@ vdb    xfs          6ebae309-2c2f-4c67-b098-20a9afbda1a5  980,8M     3% /var/lib
 
 ```
 
-6. Instala en maquina1 el sistema de BBDD **PostgreSQL** que ubicará sus ficheros con las bases de datos en `/var/lib/postgresql` utilizando una conexión ssh.
+**6. Instala en maquina1 el sistema de BBDD **PostgreSQL** que ubicará sus ficheros con las bases de datos en `/var/lib/postgresql` utilizando una conexión ssh.**
 
 Instalamos prostgres como se indica en el siguiente [post](https://www.celiagm.es/post/postgresql_debian/)
 
@@ -637,7 +637,7 @@ Vamos a darle una contraseña al usuario postgres
 passwd postgres
 ```
 
-7. (Opcional) **Puebla la base de datos** con una BBDD de prueba (escribe en la tarea el nombre de usuario y contraseña para acceder a la BBDD).
+**7. (Opcional) **Puebla la base de datos** con una BBDD de prueba (escribe en la tarea el nombre de usuario y contraseña para acceder a la BBDD).**
 
 Creamos el usario `celia` y la base de datos `prueba`
 
@@ -710,7 +710,7 @@ prueba=> select * from departamento;
 ```
 
 
-8. Crea una **regla de NAT** para que la base de datos sea accesible desde el exterior
+**8. Crea una **regla de NAT** para que la base de datos sea accesible desde el exterior**
 
 
 Ahora vamos a editar el fichero de configuracion de postgres para hacer que sea accesible desde otras maquinas
@@ -811,12 +811,12 @@ prueba=>
 
 
 ```
-9. Pausa la ejecución para comprobar los pasos hasta este punto
+**9. Pausa la ejecución para comprobar los pasos hasta este punto**
 
 
-10. Continúa la ejecución cuando el usuario pulse 'C'
+**10. Continúa la ejecución cuando el usuario pulse 'C'**
 
-11. Crea una imagen que utilice `buster-base.qcow2` como imagen base y que tenga un tamaño de 4 GiB. Esta imagen se llamará `maquina2.qcow2`
+**11. Crea una imagen que utilice `buster-base.qcow2` como imagen base y que tenga un tamaño de 4 GiB. Esta imagen se llamará `maquina2.qcow2`**
 
 ```sh
 qemu-img create -f qcow2 -b buster-base_red.qcow2 maquina2.qcow2 4G
@@ -836,6 +836,6 @@ root@debian:/var/lib/libvirt/images# ls -lh | grep 'maquina'
 
 ```
 
-12. Crea una nueva máquina (maquina2) que utilice imagen anterior, con 1 GiB de RAM y que también esté conectada a **intra**.
+**12. Crea una nueva máquina (maquina2) que utilice imagen anterior, con 1 GiB de RAM y que también esté conectada a **intra**.**
 
 

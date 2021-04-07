@@ -58,6 +58,21 @@
   </url>
   
   <url>
+    <loc>https://www.celiagm.es/tags/kvm/</loc>
+    <lastmod>2021-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/tags/libvirt/</loc>
+    <lastmod>2021-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/post/virtualizacion/</loc>
+    <lastmod>2021-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.celiagm.es/tags/mysql/</loc>
     <lastmod>2021-03-24T00:00:00+00:00</lastmod>
   </url>
@@ -65,11 +80,6 @@
   <url>
     <loc>https://www.celiagm.es/post/phpmyadmin/</loc>
     <lastmod>2021-03-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.celiagm.es/tags/libvirt/</loc>
-    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -677,14 +687,6 @@
   
   <url>
     <loc>https://www.celiagm.es/tags/index/</loc>
-  </url>
-  
-  <url>
-    <loc>https://www.celiagm.es/tags/virsh/</loc>
-  </url>
-  
-  <url>
-    <loc>https://www.celiagm.es/post/virtualizacion/</loc>
   </url>
   
 </urlset>
