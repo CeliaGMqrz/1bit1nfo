@@ -6,7 +6,16 @@
     <description>Recent content on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 06 Apr 2021 08:53:45 +0200</lastBuildDate><atom:link href="https://www.celiagm.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.celiagm.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Instalación de Postgresql sobre Debian Buster</title>
+      <link>https://www.celiagm.es/post/postgresql_debian/</link>
+      <pubDate>Wed, 07 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/postgresql_debian/</guid>
+      <description>¿Qué sabemos de PostgreSQL? PostgreSQL es un sistema de gestión de bases de datos relacional orientado a objetos y de código abierto.</description>
+    </item>
+    
     <item>
       <title>Interconexión de Servidores de Bases de Datos.</title>
       <link>https://www.celiagm.es/post/intrconexion/</link>
@@ -32,15 +41,6 @@
       
       <guid>https://www.celiagm.es/post/insta_oracle/</guid>
       <description>Instalación de oracle en Centos8 Vamos a instalar oracle de la siguiente forma:</description>
-    </item>
-    
-    <item>
-      <title>Instalación de Postgresql sobre Debian Buster</title>
-      <link>https://www.celiagm.es/post/postgresql_debian/</link>
-      <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.celiagm.es/post/postgresql_debian/</guid>
-      <description>¿Qué sabemos de PostgreSQL? PostgreSQL es un sistema de gestión de bases de datos relacional orientado a objetos y de código abierto.</description>
     </item>
     
     <item>

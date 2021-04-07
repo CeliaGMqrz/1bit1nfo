@@ -6,7 +6,7 @@ description = "Instalacion de postgresql"
 tags = [
     "postgresql",
 ]
-thumbnail= "images/postgresql/banner.png"
+thumbnail= "images/postgres/banner.png"
 +++
 
 ## ¿Qué sabemos de PostgreSQL?
