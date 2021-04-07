@@ -6,7 +6,7 @@ description = "Instalacion de Oracle"
 tags = [
     "oracle",
 ]
-thumbnail= "images/mysql/oracle1.png"
+thumbnail= "images/mysql/oracle.png"
 +++
 
 

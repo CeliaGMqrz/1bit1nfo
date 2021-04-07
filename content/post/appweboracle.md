@@ -185,6 +185,8 @@ Ahora vamos hacer una aplicación parecida pero sirviendola en internet con una 
 
 Siendo propiamente el mismo este -> [demo.py](https://github.com/CeliaGMqrz/app_oracle_flask/blob/master/demo.py)
 
+> Tenemos que instalar con `pip install -r requirements`, los paquetes que vienen en el fichero requirements.
+
 * Ejecutamos la app web 
 
 ```sh
