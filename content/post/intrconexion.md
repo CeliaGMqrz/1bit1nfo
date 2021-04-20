@@ -240,6 +240,12 @@ Type "help" for help.
 prueba2=# create extension dblink;
 CREATE EXTENSION
 prueba2=# quit
+
+```
+
+## Funcionamiento 
+
+```sh
 postgres@postgres2:~$ psql -h localhost -U celia2 -W -d prueba2
 Password: 
 psql (11.11 (Debian 11.11-1.pgdg100+1))
@@ -257,6 +263,7 @@ prueba2=> select * from dblink('dbname=prueba1 host=192.168.100.225 user=celia1 
 ```
 
 Como hemos visto se ha creado los enlaces correctamente y hemos podido hacer consultas a tablas externas.
+
 
 # Enlace entre bases de datos ORACLE y Postgresql
 
