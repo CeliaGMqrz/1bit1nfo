@@ -25,7 +25,7 @@ Se pide:
 * Realizar un enlace entre un servidor **ORACLE** y otro **Postgres** o MySQL empleando Heterogeneus Services, explicando la configuración necesaria en ambos extremos y demostrando su funcionamiento.
 
 
-## Enlace entre bases de datos PostgreSQL - PostgreSQL.
+# Enlace entre bases de datos PostgreSQL - PostgreSQL.
 
 Primero tenemos que crear el entorno de trabajo, en este caso he usado dos máquinas virtuales con Debian Buster, sobre las que está instalado postgresql. Para ver el entorno de trabajo vaya este post [Instalación de postgresql sobre Debian Buster](https://www.celiagm.es/post/postgresql_debian/)
 
@@ -258,7 +258,7 @@ prueba2=> select * from dblink('dbname=prueba1 host=192.168.100.225 user=celia1 
 
 Como hemos visto se ha creado los enlaces correctamente y hemos podido hacer consultas a tablas externas.
 
-## Enlace entre bases de datos ORACLE y Postgresql
+# Enlace entre bases de datos ORACLE y Postgresql
 
 Vamos a crear un enlace desde Oracle ubicado en un CentOS8 a Postgresql ubicado en Debian Buster.
 
@@ -677,7 +677,7 @@ BILBAO
 
 ```
 
-## Enlace Servidor Oracle - Servidor Oracle 
+# Enlace Servidor Oracle - Servidor Oracle 
 
 
 ### Configuración Servidor ORACLE 1
