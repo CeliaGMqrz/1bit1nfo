@@ -839,3 +839,4 @@ root@debian:/var/lib/libvirt/images# ls -lh | grep 'maquina'
 **12. Crea una nueva máquina (maquina2) que utilice imagen anterior, con 1 GiB de RAM y que también esté conectada a **intra**.**
 
 
+**13. Para el servicio postgreSQL, desmonta el dispositivo de bloques, desmonta el volumen de maquina1, monta el volumen en maquina2 en el directorio /var/lib/pgsql teniendo de nuevo cuidado con los propietarios y permisos del directorio.**
