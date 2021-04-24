@@ -233,6 +233,7 @@ Vemos que efectivamente se ha conectando con éxito.
 
 ```sh
 vagrant@debian2:~$ sudo iscsiadm -m node -T iqn.2021-04.iscsi:tgt1 --portal "10.0.4.3" --login
+
 Logging in to [iface: default, target: iqn.2021-04.iscsi:tgt1, portal: 10.0.4.3,3260] (multiple)
 Login to [iface: default, target: iqn.2021-04.iscsi:tgt1, portal: 10.0.4.3,3260] successful.
 ```
@@ -364,6 +365,191 @@ vagrant@debian2:/iscsi/tgt1$
 
 > Crea un target con 2 LUN y autenticación por CHAP y conéctala a un cliente windows. Explica cómo se escanea la red en windows y cómo se utilizan las unidades nuevas (formateándolas con NTFS)
 
+#### Máquina 1: Servidor Debian 
+
+Creamos dos volúmenes lógicos de 200M cada - 
+
+```sh
+vagrant@debian1:~$ sudo lvcreate -L 200M -n v1_gp1 gp1
+  Logical volume "v1_gp1" created.
+vagrant@debian1:~$ sudo lvcreate -L 200M -n v2_gp1 gp1
+  Logical volume "v2_gp1" created.
+vagrant@debian1:~$ lsblk -f
+NAME         FSTYPE      LABEL UUID                                   FSAVAIL FSUSE% MOUNTPOINT
+sda                                                                                  
+├─sda1       ext4              983742b1-65a8-49d1-a148-a3865ea09e24     16.1G     7% /
+├─sda2                                                                               
+└─sda5       swap              04559374-06db-46f1-aa31-e7a4e6ec3286                  [SWAP]
+sdb          LVM2_member       bc0nrL-OLGb-0Y2M-IC0g-zJiX-T5Mk-7UGptu                
+├─gp1-v_gp1                                                                          
+├─gp1-v1_gp1                                                                         
+└─gp1-v2_gp1          
+```
 
 
+De igual forma que creamos el primer target, ahora vamos a crear otro pero definiremos dos LUN.
 
+```sh
+## Crear el target
+
+<target iqn.2021-04.iscsi:tgt2>
+      backing-store /dev/gp1/v1_gp1
+      backing-store /dev/gp1/v2_gp1
+      initiator-address 10.0.4.5
+      incominguser celia.celia celia.celia
+</target>
+
+```
+
+Ahora reiniciamos el servicio y habilitamos el target con los dos lun, podemos ver que se han habilitado los nuevos lun con los discos indicados 
+
+```sh
+vagrant@debian1:~$ sudo /etc/init.d/tgt reload
+[ ok ] Reloading tgt configuration (via systemctl): tgt.service.
+vagrant@debian1:~$ sudo nano /etc/tgt/targets.conf 
+vagrant@debian1:~$ sudo tgtadm --mode target --op show
+Target 1: iqn.2021-04.iscsi:tgt1
+    System information:
+        Driver: iscsi
+        State: ready
+    I_T nexus information:
+        I_T nexus: 1
+            Initiator: iqn.1993-08.org.debian:01:59ae50965476 alias: debian2
+            Connection: 0
+                IP Address: 10.0.4.4
+    LUN information:
+        LUN: 0
+            Type: controller
+            SCSI ID: IET     00010000
+            SCSI SN: beaf10
+            Size: 0 MB, Block size: 1
+            Online: Yes
+            Removable media: No
+            Prevent removal: No
+            Readonly: No
+            SWP: No
+            Thin-provisioning: No
+            Backing store type: null
+            Backing store path: None
+            Backing store flags: 
+        LUN: 1
+            Type: disk
+            SCSI ID: IET     00010001
+            SCSI SN: beaf11
+            Size: 524 MB, Block size: 512
+            Online: Yes
+            Removable media: No
+            Prevent removal: No
+            Readonly: No
+            SWP: No
+            Thin-provisioning: No
+            Backing store type: rdwr
+            Backing store path: /dev/gp1/v_gp1
+            Backing store flags: 
+    Account information:
+    ACL information:
+        ALL
+Target 2: iqn.2021-04.iscsi:tgt2
+    System information:
+        Driver: iscsi
+        State: ready
+    I_T nexus information:
+    LUN information:
+        LUN: 0
+            Type: controller
+            SCSI ID: IET     00020000
+            SCSI SN: beaf20
+            Size: 0 MB, Block size: 1
+            Online: Yes
+            Removable media: No
+            Prevent removal: No
+            Readonly: No
+            SWP: No
+            Thin-provisioning: No
+            Backing store type: null
+            Backing store path: None
+            Backing store flags: 
+        LUN: 1
+            Type: disk
+            SCSI ID: IET     00020001
+            SCSI SN: beaf21
+            Size: 210 MB, Block size: 512
+            Online: Yes
+            Removable media: No
+            Prevent removal: No
+            Readonly: No
+            SWP: No
+            Thin-provisioning: No
+            Backing store type: rdwr
+            Backing store path: /dev/gp1/v1_gp1
+            Backing store flags: 
+        LUN: 2ca
+            Type: disk
+            SCSI ID: IET     00020002
+            SCSI SN: beaf22
+            Size: 210 MB, Block size: 512
+            Online: Yes
+            Removable media: No
+            Prevent removal: No
+            Readonly: No
+            SWP: No
+            Thin-provisioning: No
+            Backing store type: rdwr
+            Backing store path: /dev/gp1/v2_gp1
+            Backing store flags: 
+    Account information:
+        celia.celia
+    ACL information:
+        10.0.4.5
+vagrant@debian1:~$ 
+
+```
+
+### Máquina 3: Cliente windows
+
+En la máquina windows vamos a buscar 'iscsi initiator' 
+
+![win1.png](/images/iscsi/win1.png)
+
+
+Ahora vamos a la pestaña configuración y le cambiamos el nombre 
+
+![win2.png](/images/iscsi/win2.png)
+
+Vamos a la pestaña de Targets , refrescamos y debe de aparecer los targets en linea, elegimos en este caso el segundo que es el que tiene los dos LUN.
+
+![win3.png](/images/iscsi/win3.png)
+
+Antes de conectarnos con OK, vamos a Avanced y configuramos el usuario y la contraseña
+
+![win4.png](/images/iscsi/win4.png)
+
+Una vez configurado y aceptado vemos que se ha conectado correctamente.
+
+![win5.png](/images/iscsi/win5.png)
+
+Para formatear los discos vamos a la utilidad 'disk Management' y ya nos aparece que los dos discos estan para su uso
+
+![win6.png](/images/iscsi/win6.png)
+
+Los formateamos con NTFS
+
+![win7.png](/images/iscsi/win7.png)
+
+Una vez formateados podemos ver que están operativos para funcionar.
+
+![win8.png](/images/iscsi/win8.png)
+
+Podemos crear un directorio y fichero de prueba
+
+![win9.png](/images/iscsi/win9.png)
+
+
+Como hemos podido comprobar con esta imagen tenemos un servidor en el que tenemos un disco con tres particiones, una de ellas compartida en red con un cliente debian y las dos ultimas con un cliente windows a partir de targets y sus LUN bien definidas.
+
+![final.png](/images/iscsi/final.png)
+
+
+## Conclusión 
+
+Esto puede ser realmente útil para un fácil acceso a tu almacenamiento desde la red estés en el sitio que estés si dispones de una VPN por ejemplo.
