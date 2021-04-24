@@ -367,7 +367,7 @@ vagrant@debian2:/iscsi/tgt1$
 
 #### Máquina 1: Servidor Debian 
 
-Creamos dos volúmenes lógicos de 200M cada - 
+Creamos dos volúmenes lógicos de 200M cada uno.
 
 ```sh
 vagrant@debian1:~$ sudo lvcreate -L 200M -n v1_gp1 gp1
@@ -387,7 +387,7 @@ sdb          LVM2_member       bc0nrL-OLGb-0Y2M-IC0g-zJiX-T5Mk-7UGptu
 ```
 
 
-De igual forma que creamos el primer target, ahora vamos a crear otro pero definiremos dos LUN.
+De igual forma que creamos el primer target, ahora vamos a crear otro pero definiremos dos **LUN**. Utilizaremos la autentificación **CHAP** , es decir le pondremos el usuario y la contraseña para que se pueda autentificar con el cliente windows.
 
 ```sh
 ## Crear el target
@@ -396,7 +396,7 @@ De igual forma que creamos el primer target, ahora vamos a crear otro pero defin
       backing-store /dev/gp1/v1_gp1
       backing-store /dev/gp1/v2_gp1
       initiator-address 10.0.4.5
-      incominguser celia.celia celia.celia
+      incominguser usuario contrasenia
 </target>
 
 ```
