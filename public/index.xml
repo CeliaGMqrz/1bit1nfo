@@ -512,5 +512,23 @@ $ sudo apt install software-properties-common apt-transport-https Descargamos la
       <description>Introducción a Kubernetes  Instalación de minikube  curl -LO https://storage.</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://www.celiagm.es/post/sistemas_ficheros/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/sistemas_ficheros/</guid>
+      <description>Sistemas de ficheros avanzados ZFS/Btrfs Son sistemas de archivos de alto rendimiento.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.celiagm.es/post/usuarios_adb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/usuarios_adb/</guid>
+      <description>(ORACLE, Postgres, MySQL) Crea un usuario llamado Becario y, sin usar los roles de ORACLE, dale los siguientes privilegios:</description>
+    </item>
+    
   </channel>
 </rss>

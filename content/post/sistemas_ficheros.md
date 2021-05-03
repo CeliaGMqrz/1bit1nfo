@@ -1,4 +1,13 @@
-# Sistemas de ficheros avanzados
++++
+author = "Celia García Márquez"
+title = "Sistemas de ficheros avanzados. Btrfs."
+date = "2021-05-03"
+description = "Sistemas de ficheros avanzados"
+tags = [
+    "Btrfs",
+]
+thumbnail= "images/btrfs/btrfs.png"
++++
 
 ## ZFS/Btrfs
 
@@ -558,6 +567,8 @@ Label: none  uuid: feef8097-1952-4633-ac08-04dd1eeee2f6
 ```
 
 ## Fragmentación 
+
+![defrag.png](/images/btrfs/defrag.png)
 
 Para hacer una Fragmentación ejecutamos lo siguiente 
 
