@@ -13,7 +13,7 @@ thumbnail= "images/btrfs/btrfs.png"
 
 Son sistemas de archivos de alto rendimiento.
 
-En este post hablaremos sobre Btrfs, que es el que hemos elegido para la práctica.
+En este post hablaremos sobre **Btrfs**, que es el que hemos elegido para la práctica.
 
 **Btrfs** lo desarrolló Oracle Corporation para GNU/Linux. Surge con el objetivo de sustituir el sistema de archivos ZFS linux. Actualmente se considera estable. A diferencia del sistema original tiene una serie de caracteristicas que lo aventaja.
 
@@ -365,9 +365,8 @@ ____________________________
 
 ## Compresion al vuelo
 
-![compres.png](/images/btrfs/compes.png)
 
-Se trata de almacenar la información comprimida, de foma que hacer la lectura el sistema es capaz de descomprimirla en ese mismo momento. La compresión se realiza archivo por archivo. Hay tres algoritmos disponibles ZLIB, LZO y ZSTD. El método predeterminado utliza el algoritmo ZLIB.
+Se trata de almacenar la información comprimida, de foma que hacer la lectura el sistema es capaz de descomprimirla en ese mismo momento. La compresión se realiza archivo por archivo. Hay tres algoritmos disponibles ZLIB, LZO y ZSTD. El método predeterminado utliza el algoritmo **ZLIB**.
 
 Para ello vamos a utilzar el disco sdf, le damos formato y lo montamos en un directorio aparte.
 
@@ -452,11 +451,11 @@ Como conclusión podemos entender que el espacio está mejor aprovechado ya que 
 ![cow.png](/images/btrfs/cow.png)
 
 
-Btrfs utiliza Copy on Write. Esta técnica permite hacer copias a los ficheros pero de forma distinta. Consiste en tener los archivos aparentemente copiados pero estos son simplemente punteros hacia el original, no es un enlace tampoco, ya que al modificar una copia se crean dispositivos de bloques nuevos a partir de los ya creados. Pero los primeros dispositivos de bloques del fichero al hacer la 'copia' son los mismos en cada fichero copiado al original.
+**Btrfs** utiliza **Copy on Write**. Esta técnica permite hacer copias a los ficheros pero de forma distinta. Consiste en tener los archivos aparentemente copiados pero estos son simplemente punteros hacia el original, no es un enlace tampoco, ya que al modificar una copia se crean dispositivos de bloques nuevos a partir de los ya creados. Pero los primeros dispositivos de bloques del fichero al hacer la 'copia' son los mismos en cada fichero copiado al original.
 
 Con todo esto quiero decir que al hacer la copia del fichero si no se modifica la copia, el espacio consumido no aumenta al copiar sino al modificar el fichero copiado. Lo comprobamos de la siguiente forma.
 
-Usaremos el disco sdf, que hemos utlizado antes pero antes hemos borrado la información del ejercicio anterior.
+Usaremos el disco *sdf*, que hemos utlizado antes pero antes hemos borrado la información del ejercicio anterior.
 
 
 Creamos el fichero de prueba
@@ -582,6 +581,143 @@ Label: none  uuid: feef8097-1952-4633-ac08-04dd1eeee2f6
 ```
 
 > El cifrado no lo soporta btrfs
+
+
+## Snapshots con Btrfs 
+
+Un snapshots en este caso es una instantánea de un dispositivo de almacenamiento.
+
+Una vez tenemos formateado el disco en btrfs. Usaremos el disco sdf. 
+
+Tenemos que crear subvolúmenes.
+
+### Creacion de subvolúmenes 
+
+```sh
+# Creamos el directorio donde vamos a montar el disco 
+vagrant@btrfs2:~$ mkdir puntodemontaje
+# Montamos el volumen
+vagrant@btrfs2:~$ sudo mount /dev/sdf /home/vagrant/puntodemontaje/
+# Comprobamos que se ha montado correctamente
+vagrant@btrfs2:~$ lsblk -f
+NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+sda                                                                     
+├─sda1 ext4         983742b1-65a8-49d1-a148-a3865ea09e24   15.2G    12% /
+├─sda2                                                                  
+└─sda5 swap         04559374-06db-46f1-aa31-e7a4e6ec3286                [SWAP]
+sdb    btrfs        76597d6f-6564-4468-9f6d-2d4f1de13a39                
+sdc                                                                     
+sdd    btrfs        76597d6f-6564-4468-9f6d-2d4f1de13a39                
+sde    btrfs        76597d6f-6564-4468-9f6d-2d4f1de13a39                
+sdf    btrfs        feef8097-1952-4633-ac08-04dd1eeee2f6  736.4M     9% /home/vagrant/puntodemontaje
+
+# Creamos el subvolumen 1 y el subvolumen 2
+vagrant@btrfs2:~$ sudo btrfs subvolume create puntodemontaje/sub1
+Create subvolume 'puntodemontaje/sub1'
+vagrant@btrfs2:~$ sudo btrfs subvolume create puntodemontaje/sub2
+Create subvolume 'puntodemontaje/sub2'
+
+# Introducimos dos ficheros en el sub1
+
+vagrant@btrfs2:~/puntodemontaje/sub1$ ls
+fichero2.txt  fichero.txt
+
+```
+### Creacion de instantánea
+
+Ahora vamos a crear la instantánea del subvolumen 1, se comporta independientemente del subvolumen original, por lo que puede hacer lo que quiera sin afectar el original.
+
+
+```sh
+# Creamos una instantánea del sub1 en el sub2 
+
+vagrant@btrfs2:~$ sudo btrfs subvolume snapshot puntodemontaje/sub1/ puntodemontaje/sub2/snap_sub1
+Create a snapshot of 'puntodemontaje/sub1/' in 'puntodemontaje/sub2/snap_sub1'
+
+# Vemos que contiene los mismos ficheros que el sub1 
+vagrant@btrfs2:~$ ls -l puntodemontaje/sub2/snap_sub1/
+total 8
+-rw-r--r-- 1 root root  5 May  4 18:10 fichero2.txt
+-rw-r--r-- 1 root root 13 May  4 18:09 fichero.txt
+
+```
+Si ocurriese algo y se ha realizado la instantánea anteriormente primero desmontamos el subvolumen que está dañado y luego montamos la instantánea en su lugar. Podríamos utilizar /etc/fstab para montarlo automáticamente.
+
+
+```sh
+# En este caso eliminamos el fichero.txt del sub1 
+vagrant@btrfs2:~$ sudo rm puntodemontaje/sub1/fichero.txt 
+vagrant@btrfs2:~$ ls puntodemontaje/sub1/
+fichero2.txt
+
+```
+
+```sh
+# listamos los subvolumentes y las instantaneas 
+
+vagrant@btrfs2:~$ sudo btrfs subvolume list /home/vagrant/puntodemontaje
+
+ID 263 gen 245 top level 262 path sub1
+ID 264 gen 246 top level 262 path sub2
+ID 265 gen 245 top level 264 path sub2/snap_sub1
+
+# Si queremos volver al punto anterior en el subvolumen 1 ponemos predeterminado la instantanea 
+
+vagrant@btrfs2:~$ sudo btrfs subvolume set-default 265 /home/vagrant/puntodemontaje/sub1
+
+# Para que tenga que tenga efecto tenemos que desmontar y volver a montar el volumen 
+
+vagrant@btrfs2:~$ sudo umount /home/vagrant/puntodemontaje 
+vagrant@btrfs2:~$ sudo mount /dev/sdf /home/vagrant/puntodemontaje/
+
+# Comprobamos que se ha montado directamente desde la instantánea
+
+vagrant@btrfs2:~$ ls puntodemontaje/
+fichero2.txt  fichero.txt
+
+
+```
+Si listamos los subvolumenes comprobamos que guarda todos y cada uno de ellos pudiendo recuperar el que más nos convenga 
+
+
+Aquí estuve haciendo otras pruebas en otro directorio como se p uede apreciar.
+
+```sh
+vagrant@btrfs2:~$ sudo btrfs subvolume list /home/vagrant/puntodemontaje
+ID 258 gen 231 top level 5 path sub1
+ID 259 gen 236 top level 5 path sub2
+ID 260 gen 231 top level 258 path sub1/snapshot1
+ID 261 gen 236 top level 5 path sub3
+ID 262 gen 242 top level 261 path sub3/snapshot2
+ID 263 gen 247 top level 262 path sub3/snapshot2/sub1
+ID 264 gen 246 top level 262 path sub3/snapshot2/sub2
+ID 265 gen 245 top level 264 path sub3/snapshot2/sub2/snap_sub1
+
+```
+Si queremos recuperar los directorios solo tenemos que hacer el mismo procedimiento.
+
+```sh
+vagrant@btrfs2:~$ sudo btrfs subvolume set-default 262 /home/vagrant/puntodemontaje/
+
+vagrant@btrfs2:~$ sudo umount /home/vagrant/puntodemontaje 
+vagrant@btrfs2:~$ sudo mount /dev/sdf /home/vagrant/puntodemontaje/
+vagrant@btrfs2:~$ ls puntodemontaje/
+hola.txt  sub1  sub2
+
+vagrant@btrfs2:~/puntodemontaje$ tree
+.
+├── hola.txt
+├── sub1
+│   └── fichero2.txt
+└── sub2
+    └── snap_sub1
+        ├── fichero2.txt
+        └── fichero.txt
+
+3 directories, 4 files
+
+```
+
 
 Fuentes 
 

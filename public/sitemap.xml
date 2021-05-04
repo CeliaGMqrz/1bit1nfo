@@ -4,7 +4,27 @@
   
   <url>
     <loc>https://www.celiagm.es/</loc>
-    <lastmod>2021-04-20T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/tags/btrfs/</loc>
+    <lastmod>2021-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/post/</loc>
+    <lastmod>2021-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/post/sistemas_ficheros/</loc>
+    <lastmod>2021-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/tags/</loc>
+    <lastmod>2021-05-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -14,16 +34,6 @@
   
   <url>
     <loc>https://www.celiagm.es/post/intrconexion/</loc>
-    <lastmod>2021-04-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.celiagm.es/post/</loc>
-    <lastmod>2021-04-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.celiagm.es/tags/</loc>
     <lastmod>2021-04-20T00:00:00+00:00</lastmod>
   </url>
   
@@ -694,10 +704,6 @@
   
   <url>
     <loc>https://www.celiagm.es/post/kubernetes/</loc>
-  </url>
-  
-  <url>
-    <loc>https://www.celiagm.es/post/sistemas_ficheros/</loc>
   </url>
   
   <url>

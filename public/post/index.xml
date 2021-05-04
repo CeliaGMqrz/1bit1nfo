@@ -6,7 +6,17 @@
     <description>Recent content in Posts on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 20 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.celiagm.es/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.celiagm.es/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sistemas de ficheros avanzados. Btrfs.</title>
+      <link>https://www.celiagm.es/post/sistemas_ficheros/</link>
+      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/sistemas_ficheros/</guid>
+      <description>ZFS/Btrfs Son sistemas de archivos de alto rendimiento.
+En este post hablaremos sobre Btrfs, que es el que hemos elegido para la práctica.</description>
+    </item>
+    
     <item>
       <title>Interconexión de Servidores de Bases de Datos</title>
       <link>https://www.celiagm.es/post/intrconexion/</link>
@@ -492,15 +502,6 @@ $ sudo apt install software-properties-common apt-transport-https Descargamos la
       
       <guid>https://www.celiagm.es/post/kubernetes/</guid>
       <description>Introducción a Kubernetes  Instalación de minikube  curl -LO https://storage.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://www.celiagm.es/post/sistemas_ficheros/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.celiagm.es/post/sistemas_ficheros/</guid>
-      <description>Sistemas de ficheros avanzados ZFS/Btrfs Son sistemas de archivos de alto rendimiento.</description>
     </item>
     
     <item>
