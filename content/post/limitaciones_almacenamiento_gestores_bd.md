@@ -167,7 +167,7 @@ T_1M                                    0          0          0          0
 
 En cuanto a **MySQL** nos limita la posibilidad de asignar cuotas de almacenamiento a los usuarios en comparación a **Oracle** que si lo permite. Sin embargo también posee funciones de control de almacenamiento de tablas comunes y tablespaces, como la opción *autoextend* que tambien la presenta Oracle. Estos dos gestores serían los más eficientes según mi punto de vista si de almacenamiento nos referimos. Pero si tuviera que elegir uno de los gestores en este campo me quedaría con **ORACLE**.
 
-Fuente:
+Fuentes:
 
 https://www.postgresql.org/docs/current/storage.html
 
