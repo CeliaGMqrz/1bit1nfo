@@ -11,71 +11,75 @@ thumbnail= "images/almacenamiento/banner.png"
 
 ## POSTGRESQL
 
-### Características ventajosas de postgresql 
+### Características: Ventajas e inconvenientes de postgresql
 
-**Formato de almacenamiento a nivel de archivos y directorios**
+### Formato de almacenamiento a nivel de archivos y directorios de postgresql
 
-Los archivos de configuración y los datos utilizados por el clúster de la base de datos se almacenan juntos dentro del directorio de datos llamado **PGDATA**, ubicado en **/var/lib/pgsql/data**. Pueden existir varios clústeres, administrados por diferentes instancias en el servidor de la misma máquina. **PGDATA** contiene varios subdirectorios y archivos de control.
+* Los archivos de configuración y los datos utilizados por el clúster de la base de datos se almacenan juntos dentro del directorio de datos llamado **PGDATA**, ubicado en **/var/lib/pgsql/data**. Pueden existir varios clústeres, administrados por diferentes instancias en el servidor de la misma máquina. **PGDATA** contiene varios subdirectorios y archivos de control.
 
-Una tabla que tiene columnas con entradas excesivamente grandes dispondrá de una tabla **TOAST** (The Oversized-Attribute Storage Technique) asociada, esta tabla se usa para el almacenamiento fuera de línea de valores de campo que son demasiado grandes para mantenerlos en las filas. 
+* Una tabla que tiene columnas con entradas excesivamente grandes dispondrá de una tabla **TOAST** (The Oversized-Attribute Storage Technique) asociada, esta tabla se usa para el almacenamiento fuera de línea de valores de campo que son demasiado grandes para mantenerlos en las filas. 
 
-Las tablas de secuencias y TOAST tienen el mismo formato que una tabla normal.
+* Las tablas de secuencias y TOAST tienen el mismo formato que una tabla normal.
 
-Con la tabla TOAST podemos usar varias estrategias de almacenamiento. 
+* Con la tabla TOAST podemos usar varias estrategias de almacenamiento. 
 
-* Plain 
-* Extendend
-* External
-* Main
+  * Plain 
+  * Extendend
+  * External
+  * Main
 
-No voy a extenderme mucho en las estrategias pero si quieres ver mas información puedes consultar esta [documentacion oficial de postgresql](https://www.postgresql.org/docs/current/storage-toast.html)
+> No voy a extenderme mucho en las estrategias pero si quieres ver mas información puedes consultar esta [documentacion oficial de postgresql](https://www.postgresql.org/docs/current/storage-toast.html)
 
+### Tablespaces en postgresql
 
-En versiones antiguas (anterior a la 9.0), no soportaba **tablespaces** para definir dónde almacenar la base de datos, esquema , índices etc. Posteriormente se implementó.
+* En versiones antiguas (anterior a la 9.0), no soportaba **tablespaces** para definir dónde almacenar la base de datos, esquema , índices etc. Posteriormente se implementó.
 
-Mediante el uso de **tablespaces** un administrador puede controlar el diseño del disco de una instalación de POSTGRESQL, esto es muy útil si la partición o el volumen en el que se instaló el clúster se queda sin espacio y no se puede ampliar; Seguidamente se crearía un espacio de tabla en una partición diferente y se podría usar temporalmente hasta que se pueda volver a configurar el sistema. 
+* Mediante el uso de **tablespaces** un administrador puede controlar el diseño del disco de una instalación de POSTGRESQL, esto es muy útil si la partición o el volumen en el que se instaló el clúster se queda sin espacio y no se puede ampliar; Seguidamente se crearía un espacio de tabla en una partición diferente y se podría usar temporalmente hasta que se pueda volver a configurar el sistema. 
 
-También es de utilidad para conocer el patrón de uso de los objetos de la base de datos y así optimizar el **rendimiento**, Como por ejemplo un índice que se le da mucho uso se puede ubicar en un disco más rápido.
+* También es de utilidad para conocer el patrón de uso de los objetos de la base de datos y así optimizar el **rendimiento**, Como por ejemplo un índice que se le da mucho uso se puede ubicar en un disco más rápido.
 
-Recordamos la **sintaxis** básica para crear un tablespace en postgresql 
+* Recordamos la **sintaxis** básica para crear un tablespace en postgresql 
 
 ```sql
 CREATE TABLESPACE nombredeltablespace LOCATION '/ruta/del/disco/encuestion';
 ```
+### Función pg_total_relation_size
 
 Tenemos la opción **pg_total_relation_size** también para el control de espacio de almacemamiento. A través de la creación de una vista usando esta función podríamos observar el estado del almacenamiento de la base de datos, como por ejemplo ver el espacio que ocupa la base de datos.
 
 ### Desventajas de postgresql vs Oracle 
 
-Podríamos decir varias de ellas pero la más relevante que he encontrado es que al hacer una transacción si se encuentra algún fallo, automáticamente no se ejecuta nada. Sin embargo Oracle cuenta con la opción de recuperar un punto anterior en la ejecución de la transacción.
+* Podríamos decir varias de ellas pero la más relevante que he encontrado es que al hacer una transacción si se encuentra algún fallo, automáticamente no se ejecuta nada. Sin embargo Oracle cuenta con la opción de recuperar un punto anterior en la ejecución de la transacción.
 
+* En versiones anteriores no soportaba tablespaces.
+  
 
 ## MariaDB
 
 MySQL tiene un sistema de almacenamiento íntegro sobre espacios de tablas o **tablespaces**. Usa 'InnoDB' y 'NDB'.
 
-**¿Que es InnoDB?**
+* **¿Que es InnoDB?**
 
 Pues es un mecanismo de almacenamiento de datos exclusivo de MYSQL, incluido como formato de tabla estándar en todas las distribuciones de MYSQL (posterior a la 4.0).Permite recuperar un problema volviendo a ejecutar los registros(logs).
 
 Las tablas que utilizan el motor de almacenamiento InnoDB se escriben en el disco de archivos de datos denominados tablespaces. Un espacio de tabla puede contener una o más tablas InnoDB, así como ínidices asociados.
 
-**¿Qué es NDB Clúster?**
+* **¿Qué es NDB Clúster?**
 
 Es otro mecanismo de almacenamiento subyacente a MySQL Clúster. En general se usa para gestionar el almacenamiento de tablas.
 
 ### Similitudes y diferencias respecto a Oracle
 
-MySQL según hemos comentado anteriormente usa **tablespaces**, siendo esta la primera y más clara **similitud** entre este gestor de base de datos y **Oracle**.
+* MySQL según hemos comentado anteriormente usa **tablespaces**, siendo esta la primera y más clara **similitud** entre este gestor de base de datos y **Oracle**.
 
-De diferente forma pero se pueden gestionar los tablespaces tanto en Oracle como en MYSQL.
+* De diferente forma pero se pueden gestionar los tablespaces tanto en Oracle como en MYSQL.
 
 **IMPORTANTE** 
 
 Mariadb como tal no puede crear **tablespaces**. Como podemos ver en la [documentación](https://mariadb.com/kb/en/create-tablespace/)
 
 
-EN [MYSQL 5.7](https://dev.mysql.com/doc/refman/5.7/en/create-tablespace.html) sí podemos crear tablespaces con la siguiente sintaxis.
+* EN [MYSQL 5.7](https://dev.mysql.com/doc/refman/5.7/en/create-tablespace.html) sí podemos crear tablespaces con la siguiente sintaxis.
 
 ```sql
 CREATE TABLESPACE tablespace_name
@@ -124,9 +128,9 @@ autoextend on next 250K maxsize 200M;
 ```
 ### Limitación: Quota de almacenamiento
 
-Una de las **limitaciones** que tiene MySQL con InnoDB es que no se pueden aplicar quotas de almacenamiento a distintos usuarios, mientras que en Oracle sí.
+* Una de las **limitaciones** que tiene MySQL con InnoDB es que no se pueden aplicar quotas de almacenamiento a distintos usuarios, mientras que en Oracle sí.
 
-En oracle esta información está reflejada en **DBA_TS_QUOTAS**, que describe las cuotas de tablespace para todos los usuarios.
+* En oracle esta información está reflejada en **DBA_TS_QUOTAS**, que describe las cuotas de tablespace para todos los usuarios.
 
 Este sería un ejemplo en el que se modifica la quota de un usuario.
 

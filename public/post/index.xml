@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>Limitaciones de Postgresql y MariaDB VS Oracle (Almacenamiento)</title>
+      <link>https://www.celiagm.es/post/limitaciones_almacenamiento_gestores_bd/</link>
+      <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/limitaciones_almacenamiento_gestores_bd/</guid>
+      <description>POSTGRESQL Características ventajosas de postgresql Formato de almacenamiento a nivel de archivos y directorios</description>
+    </item>
+    
+    <item>
       <title>Sistemas de ficheros avanzados. Btrfs.</title>
       <link>https://www.celiagm.es/post/sistemas_ficheros/</link>
       <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>

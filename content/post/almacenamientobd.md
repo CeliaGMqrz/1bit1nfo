@@ -637,7 +637,7 @@ La entrada **EXTPROC_CONNECTION_DATA** se utiliza para llamar procedimientos ext
 
 ### 3.6. Escribe una entrada en tu blog explicando las limitaciones de Postgres y MariaDB respecto a ORACLE en cuanto a la gestión del almacenamiento. 
 
-Esta entrada la puedes encontrar [aquí]()
+Esta entrada la puedes encontrar [aquí](https://www.celiagm.es/post/limitaciones_almacenamiento_gestores_bd/)
 
 
 ___________________________
