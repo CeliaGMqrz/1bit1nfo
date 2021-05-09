@@ -15,12 +15,15 @@ En esta entrada se van a ver diferentes formas de gestionar el almacenamiento en
 
 > Para amenizar el post he separado el caso de Oracle en el siguiente post:
 
-![oracle.png](/images/almacenamiento/oracle.png)
+
 ## [1. Gestión de almacenamiento en ORACLE](https://www.celiagm.es/post/almacenamiento_oracle/)
 
+![oracle.png](/images/almacenamiento/oracle.png)
+
+
+## 2. Gestión de almacenamiento en POSTGRESQL. 
 
 ![postgres.png](/images/almacenamiento/postgres.png)
-## 2. Gestión de almacenamiento en POSTGRESQL. 
 
 > Averigua si pueden establecerse claúsulas de almacenamiento para las tablas o los espacios de tablas en Postgres.
 
@@ -30,9 +33,10 @@ En esta entrada se van a ver diferentes formas de gestionar el almacenamiento en
 Postgresql tiene varias funcionalidades que permite controlar el espacio de almacenamiento de forma específica. Estas funcionalidades las menciono en el siguiente [post](https://www.celiagm.es/post/limitaciones_almacenamiento_gestores_bd/)
 
 
-![mysql.png](/images/almacenamiento/mysql.png)
+
 ## 3. Gestión de almacenamiento en MySQL
 
+![mysql.png](/images/almacenamiento/mysql.png)
 
 > Averigua si existe el concepto de índice en MySQL y si coincide con el existente en ORACLE. Explica los distintos tipos de índices existentes.
 
@@ -85,10 +89,10 @@ SHOW INDEX FROM nombretabla [FROM db_name];
 La sintaxis completa para crear un **índice** la encuentras en la [documentacion oficial](https://mariadb.com/kb/en/create-index/)
 
 
-![mongodb.png](/images/almacenamiento/mongodb.png)
 
 ## 4. Gestión de almacenamiento en MongoDB
 
+![mongodb.png](/images/almacenamiento/mongodb.png)
 
 > Explica los distintos motores de almacenamiento que ofrece MongoDB, sus características principales y en qué casos es más recomendable utilizar cada uno de ellos.
 
