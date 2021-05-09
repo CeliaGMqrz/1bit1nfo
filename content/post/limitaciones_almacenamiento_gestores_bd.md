@@ -171,3 +171,11 @@ Fuente:
 
 https://www.postgresql.org/docs/current/storage.html
 
+https://programacion.net/articulo/estructuras_de_oracle_89/3
+
+https://dev.mysql.com/doc/refman/5.7/en/create-tablespace.html#create-tablespace-innodb-examples
+
+https://en.wikipedia.org/wiki/NDB_Cluster
+
+https://dev.mysql.com/doc/refman/8.0/en/general-tablespaces.html
+
