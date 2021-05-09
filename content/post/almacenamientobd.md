@@ -12,7 +12,9 @@ thumbnail= "images/almacenamiento/banner1.png"
 
 En esta entrada se van a ver diferentes formas de gestionar el almacenamiento en los distintos gestores de bases de datos, Postgres, Oracle y MariaDB/MySql.
 
-## 1. Entorno de trabajo.
+## 1. Entorno de trabajo 
+
+### Entorno de trabajo para Oracle
 
 Vamos a usar una máquina en vagrant con virtualbox, usando una imagen centos6 con oracle 11g.
 
