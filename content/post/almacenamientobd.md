@@ -17,10 +17,6 @@ En esta entrada se van a ver diferentes formas de gestionar el almacenamiento en
 
 ## [1. Gestión de almacenamiento en ORACLE](https://www.celiagm.es/post/almacenamiento_oracle/)
 
-__________________________
-___________________________
-
-
 ## 2. Gestión de almacenamiento en POSTGRESQL. 
 
 ### Averigua si pueden establecerse claúsulas de almacenamiento para las tablas o los espacios de tablas en Postgres.
@@ -30,17 +26,11 @@ Postgres puede establacer cláusulas de almacenamiento como lo hace Oracle. La d
 
 Postgresql tiene varias funcionalidades que permite controlar el espacio de almacenamiento de forma específica. Estas funcionalidades las menciono en el siguiente [post](https://www.celiagm.es/post/limitaciones_almacenamiento_gestores_bd/)
 
-___________________________
-___________________________
-
 
 ## 3. Gestión de almacenamiento en MySQL
 
 
 ### Averigua si existe el concepto de índice en MySQL y si coincide con el existente en ORACLE. Explica los distintos tipos de índices existentes.
-
-___________________________
-___________________________
 
 
 ## 4. Gestión de almacenamiento en MongoDB
