@@ -4,7 +4,37 @@
   
   <url>
     <loc>https://www.celiagm.es/</loc>
-    <lastmod>2021-05-03T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/post/almacenamientobd/</loc>
+    <lastmod>2021-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/tags/mariadb/</loc>
+    <lastmod>2021-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/tags/oracle/</loc>
+    <lastmod>2021-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/tags/postgres/</loc>
+    <lastmod>2021-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/post/</loc>
+    <lastmod>2021-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/tags/</loc>
+    <lastmod>2021-05-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -13,17 +43,7 @@
   </url>
   
   <url>
-    <loc>https://www.celiagm.es/post/</loc>
-    <lastmod>2021-05-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.celiagm.es/post/sistemas_ficheros/</loc>
-    <lastmod>2021-05-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.celiagm.es/tags/</loc>
     <lastmod>2021-05-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -69,11 +89,6 @@
   
   <url>
     <loc>https://www.celiagm.es/post/insta_oracle/</loc>
-    <lastmod>2021-04-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.celiagm.es/tags/oracle/</loc>
     <lastmod>2021-04-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -239,11 +254,6 @@
   
   <url>
     <loc>https://www.celiagm.es/tags/iptables/</loc>
-    <lastmod>2021-01-25T17:15:21+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.celiagm.es/tags/mariadb/</loc>
     <lastmod>2021-01-25T17:15:21+01:00</lastmod>
   </url>
   
@@ -700,6 +710,10 @@
   <url>
     <loc>https://www.celiagm.es/tags/thumbnail/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/post/almacenamientobbdd/</loc>
   </url>
   
   <url>

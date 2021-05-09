@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 03 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.celiagm.es/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.celiagm.es/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gestión del almacenamiento. Gestores de bases de datos</title>
+      <link>https://www.celiagm.es/post/almacenamientobd/</link>
+      <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/almacenamientobd/</guid>
+      <description>En esta entrada se van a ver diferentes formas de gestionar el almacenamiento en los distintos gestores de bases de datos, Postgres, Oracle y MariaDB/MySql.</description>
+    </item>
+    
     <item>
       <title>Sistemas de ficheros avanzados. Btrfs.</title>
       <link>https://www.celiagm.es/post/sistemas_ficheros/</link>
@@ -493,6 +502,16 @@ $ sudo apt install software-properties-common apt-transport-https Descargamos la
       
       <guid>https://www.celiagm.es/post/image-test/</guid>
       <description>Thumbnails can be enabled easily by setting the thumbnail parameter in the frontmatter to an image such as &amp;quot;images/landscape.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.celiagm.es/post/almacenamientobbdd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/almacenamientobbdd/</guid>
+      <description>Gestión del almacenamiento en ORACLE CONCEPTOS PREVIOS
+¿Qué es un Tablespace?</description>
     </item>
     
     <item>

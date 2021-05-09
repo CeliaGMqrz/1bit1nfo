@@ -6,7 +6,34 @@
     <description>Recent content in Tags on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 03 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.celiagm.es/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.celiagm.es/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mariadb</title>
+      <link>https://www.celiagm.es/tags/mariadb/</link>
+      <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/tags/mariadb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>oracle</title>
+      <link>https://www.celiagm.es/tags/oracle/</link>
+      <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/tags/oracle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>postgres</title>
+      <link>https://www.celiagm.es/tags/postgres/</link>
+      <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/tags/postgres/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Btrfs</title>
       <link>https://www.celiagm.es/tags/btrfs/</link>
@@ -49,15 +76,6 @@
       <pubDate>Wed, 07 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.celiagm.es/tags/postgresql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>oracle</title>
-      <link>https://www.celiagm.es/tags/oracle/</link>
-      <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.celiagm.es/tags/oracle/</guid>
       <description></description>
     </item>
     
@@ -211,15 +229,6 @@
       <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
       
       <guid>https://www.celiagm.es/tags/iptables/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>mariadb</title>
-      <link>https://www.celiagm.es/tags/mariadb/</link>
-      <pubDate>Mon, 25 Jan 2021 17:15:21 +0100</pubDate>
-      
-      <guid>https://www.celiagm.es/tags/mariadb/</guid>
       <description></description>
     </item>
     

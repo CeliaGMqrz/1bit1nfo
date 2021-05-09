@@ -6,7 +6,16 @@
     <description>Recent content in mariadb on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 25 Jan 2021 17:15:21 +0100</lastBuildDate><atom:link href="https://www.celiagm.es/tags/mariadb/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.celiagm.es/tags/mariadb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gestión del almacenamiento. Gestores de bases de datos</title>
+      <link>https://www.celiagm.es/post/almacenamientobd/</link>
+      <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/almacenamientobd/</guid>
+      <description>En esta entrada se van a ver diferentes formas de gestionar el almacenamiento en los distintos gestores de bases de datos, Postgres, Oracle y MariaDB/MySql.</description>
+    </item>
+    
     <item>
       <title>Servidor de Correos. Postfix (IV). Webmail Roundcube.</title>
       <link>https://www.celiagm.es/post/servidor_correo4/</link>
