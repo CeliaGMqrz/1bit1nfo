@@ -22,7 +22,7 @@
       <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.celiagm.es/post/limitaciones_almacenamiento_gestores_bd/</guid>
-      <description>POSTGRESQL Características ventajosas de postgresql Formato de almacenamiento a nivel de archivos y directorios</description>
+      <description>POSTGRESQL Características: Ventajas e inconvenientes de postgresql Formato de almacenamiento a nivel de archivos y directorios de postgresql   Los archivos de configuración y los datos utilizados por el clúster de la base de datos se almacenan juntos dentro del directorio de datos llamado PGDATA, ubicado en /var/lib/pgsql/data.</description>
     </item>
     
     <item>

@@ -108,7 +108,7 @@ CREATE TABLESPACE tablespace_name
 
 Tanto en ORACLE como en MYSQL tenemos la opción de **autoextender** el tablespace:
 
-De esta forma cuando un archivo de la tabla requiere espacio original lo podemos extender.
+De esta forma cuando un archivo de la tabla requiere espacio adicional lo podemos extender.
 
 La sintaxis sería:
 
