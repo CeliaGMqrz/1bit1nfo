@@ -34,9 +34,7 @@ thumbnail= "images/almacenamiento/banner.png"
 
 * En versiones antiguas (anterior a la 9.0), no soportaba **tablespaces** para definir dónde almacenar la base de datos, esquema , índices etc. Posteriormente se implementó.
 
-* Mediante el uso de **tablespaces** un administrador puede controlar el diseño del disco de una instalación de POSTGRESQL, esto es muy útil si la partición o el volumen en el que se instaló el clúster se queda sin espacio y no se puede ampliar; Seguidamente se crearía un espacio de tabla en una partición diferente y se podría usar temporalmente hasta que se pueda volver a configurar el sistema. 
-
-* También es de utilidad para conocer el patrón de uso de los objetos de la base de datos y así optimizar el **rendimiento**, Como por ejemplo un índice que se le da mucho uso se puede ubicar en un disco más rápido.
+* **El importante uso de tablespaces:** Mediante el uso de **tablespaces** un administrador puede controlar el diseño del disco de una instalación de POSTGRESQL, esto es muy útil si la partición o el volumen en el que se instaló el clúster se queda sin espacio y no se puede ampliar; Seguidamente se crearía un espacio de tabla en una partición diferente y se podría usar temporalmente hasta que se pueda volver a configurar el sistema.También es de utilidad para conocer el **patrón de uso de los objetos** de la base de datos y así optimizar el **rendimiento**, Como por ejemplo un índice que se le da mucho uso se puede ubicar en un disco más rápido.
 
 * Recordamos la **sintaxis** básica para crear un tablespace en postgresql 
 
@@ -51,8 +49,11 @@ Tenemos la opción **pg_total_relation_size** también para el control de espaci
 
 * Podríamos decir varias de ellas pero la más relevante que he encontrado es que al hacer una transacción si se encuentra algún fallo, automáticamente no se ejecuta nada. Sin embargo Oracle cuenta con la opción de recuperar un punto anterior en la ejecución de la transacción.
 
-* En versiones anteriores no soportaba tablespaces.
-  
+* En versiones anteriores no soportaba tablespaces. Y la funcionalidad de estos actualmente son menos eficientes que los de Oracle.
+
+* Postgresql no presenta tener una cláusula de almacenamiento de datos en sí como Oracle 
+
+
 
 ## MariaDB
 
