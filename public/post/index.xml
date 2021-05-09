@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>Gestión del almacenamiento. Oracle.</title>
+      <link>https://www.celiagm.es/post/almacenamiento_oracle/</link>
+      <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/almacenamiento_oracle/</guid>
+      <description>1. Entorno de trabajo Entorno de trabajo para Oracle Vamos a usar una máquina en vagrant con virtualbox, usando una imagen centos6 con oracle 11g.</description>
+    </item>
+    
+    <item>
       <title>Limitaciones de Postgresql y MariaDB VS Oracle (Almacenamiento)</title>
       <link>https://www.celiagm.es/post/limitaciones_almacenamiento_gestores_bd/</link>
       <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>

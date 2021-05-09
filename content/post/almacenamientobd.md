@@ -15,8 +15,8 @@ En esta entrada se van a ver diferentes formas de gestionar el almacenamiento en
 
 Para amenizar el post lo he repartido en varias entradas:
 
-1. [Gestión de almacenamiento en ORACLE]()
-2. [Géstión de almacenamiento en Postgres]()
+1. [Gestión de almacenamiento en ORACLE](https://www.celiagm.es/post/almacenamiento_oracle/)
+2. [Gestión de almacenamiento en Postgres]()
 3. [Gestión de almacenamiento en MYSQL]()
 4. [Gestión de almacenamiento en MongoDB]()
 
