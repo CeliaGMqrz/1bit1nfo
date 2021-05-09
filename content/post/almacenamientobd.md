@@ -13,7 +13,7 @@ thumbnail= "images/almacenamiento/banner1.png"
 En esta entrada se van a ver diferentes formas de gestionar el almacenamiento en los distintos gestores de bases de datos, Postgres, Oracle y MariaDB/MySql.
 
 
-Para amenizar el post he separado el caso de Oracle en el siguiente post:
+> Para amenizar el post he separado el caso de Oracle en el siguiente post:
 
 ## [1. Gestión de almacenamiento en ORACLE](https://www.celiagm.es/post/almacenamiento_oracle/)
 
