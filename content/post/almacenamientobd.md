@@ -15,7 +15,7 @@ En esta entrada se van a ver diferentes formas de gestionar el almacenamiento en
 
 Para amenizar el post he separado el caso de Oracle en el siguiente post:
 
-1. [Gestión de almacenamiento en ORACLE](https://www.celiagm.es/post/almacenamiento_oracle/)
+## [1. Gestión de almacenamiento en ORACLE](https://www.celiagm.es/post/almacenamiento_oracle/)
 
 __________________________
 ___________________________
