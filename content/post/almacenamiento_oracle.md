@@ -592,7 +592,7 @@ _SYSSMU10_2569484742$		       64
 ```
 
 
-## 5. Queremos limpiar nuestro fichero tnsnames.ora. Averigua cuales de sus entradas se están usando en algún enlace de la base de datos.
+### 3.5. Queremos limpiar nuestro fichero tnsnames.ora. Averigua cuales de sus entradas se están usando en algún enlace de la base de datos.
 
 
 **Concepto TSNAMES.ora**
