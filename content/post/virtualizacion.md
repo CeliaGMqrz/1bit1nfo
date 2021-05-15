@@ -1274,7 +1274,7 @@ Antes de comprobar todo esto habría que hacer un checkeo de que todo está en f
 * Comprobar que postgres está funcionando
 
 
-Una vez hecho eso en la máquina anfitriona accedemos a la base de datos con la dirección ip que ha adoptado ahora del puente.
+Una vez hecho eso en la máquina anfitriona accedemos a la base de datos con la **dirección ip** que ha adoptado ahora del puente.
 
 ```sh
 celiagm@debian:~$ psql -h 192.168.100.62 -U celia -W -d prueba
@@ -1317,14 +1317,14 @@ root@debian:/home/celiagm# virsh list --all
 
 Apagamos la máquina2 
 
-Aumentamos la RAM de máquina2 a 2GiB 
+Aumentamos la RAM de máquina2 a **2GiB** 
 
 ```sh
 
 1 Gb _> 1048576
 2 Gb _> 2097152
 virsh setmem maquina2 2097152 --config
-virsh setmemmax maquina2 2097152 --config
+virsh setmaxmem maquina2 2097152 --config
 ```
 
 Vemos que ha cambiado el fichero xml 
