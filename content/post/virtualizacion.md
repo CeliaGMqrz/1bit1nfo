@@ -868,8 +868,512 @@ root@debian:/var/lib/libvirt/images# ls -lh | grep 'maquina'
 
 ```
 
+> **12. Crea una nueva máquina (maquina2) que utilice imagen anterior, con 1 GiB de RAM y que también esté conectada a **intra**.**
 
-**12. Crea una nueva máquina (maquina2) que utilice imagen anterior, con 1 GiB de RAM y que también esté conectada a **intra**.**
+* Creamos el xml de maquina2 
+
+```shell
+<domain type="kvm">
+  <name>dominio2</name>
+  <memory unit="G">1</memory>
+  <vcpu>1</vcpu>
+  <os>
+    <type arch="x86_64">hvm</type>
+  </os>
+  <devices>
+    <emulator>/usr/bin/kvm</emulator>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='/var/lib/libvirt/images/maquina2.qcow2'/>
+      <target dev='vda'/>
+    </disk>
+    <interface type="network">
+      <source network="intra"/>
+      <mac address="52:54:00:23:c8:a9"/>
+    </interface>
+    <graphics type='vnc' port='-1' autoport='yes' listen='0.0.0.0' />
+  </devices>
+</domain>
+```
+* Validamos la sintaxis 
+
+```sh
+root@debian:/var/lib/libvirt/images# virt-xml-validate maquina2.xml 
+maquina2.xml validates
+```
+* Definimos la máquina 
+
+```sh
+root@debian:/var/lib/libvirt/images# virsh define maquina2.xml 
+Domain maquina2 defined from maquina2.xml
+
+root@debian:/var/lib/libvirt/images# virsh start maquina2
+Domain maquina2 started
+
+```
+
+* Comprobamos que se ha creado
+
+```shell
+root@debian:/var/lib/libvirt/images# virsh list --all
+ Id   Name               State
+-----------------------------------
+ 2    maquina2           running
+ -    buster-base        shut off
+ -    compilar_default   shut off
+ -    dominio2           shut off
+ -    maquina1           shut off
+```
+
+* Nos conectamos por ssh
+
+```sh
+debian@debian-kvm:~$ lsblk 
+NAME   MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+vda    254:0    0   4G  0 disk 
+└─vda1 254:1    0   3G  0 part /
+debian@debian-kvm:~$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 52:54:00:23:c8:a9 brd ff:ff:ff:ff:ff:ff
+    inet 10.10.20.161/24 brd 10.10.20.255 scope global dynamic enp0s3
+       valid_lft 3456sec preferred_lft 3456sec
+    inet6 fe80::5054:ff:fe23:c8a9/64 scope link 
+       valid_lft forever preferred_lft forever
+```
+
+> **13. Para el servicio postgreSQL, desmonta el dispositivo de bloques, desmonta el volumen de maquina1, monta el volumen en maquina2 en el directorio /var/lib/pgsql teniendo de nuevo cuidado con los propietarios y permisos del directorio.**
 
 
-**13. Para el servicio postgreSQL, desmonta el dispositivo de bloques, desmonta el volumen de maquina1, monta el volumen en maquina2 en el directorio /var/lib/pgsql teniendo de nuevo cuidado con los propietarios y permisos del directorio.**
+* Paramos el servicio de postgresql
+
+```shell
+debian@debian-kvm:~$ sudo systemctl stop postgresql
+debian@debian-kvm:~$ sudo systemctl status postgresql
+● postgresql.service - PostgreSQL RDBMS
+   Loaded: loaded (/lib/systemd/system/postgresql.service; enabled; vendor preset: enabled)
+   Active: inactive (dead) since Mon 2021-05-10 21:19:21 CEST; 5s ago
+  Process: 308 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
+ Main PID: 308 (code=exited, status=0/SUCCESS)
+
+may 10 21:17:52 debian-kvm systemd[1]: Starting PostgreSQL RDBMS...
+may 10 21:17:52 debian-kvm systemd[1]: Started PostgreSQL RDBMS.
+may 10 21:19:21 debian-kvm systemd[1]: postgresql.service: Succeeded.
+may 10 21:19:21 debian-kvm systemd[1]: Stopped PostgreSQL RDBMS.
+```
+
+* Desmontamos el dispositivo de bloques.
+
+```shell
+debian@debian-kvm:~$ sudo umount /var/lib/postgresql
+debian@debian-kvm:~$ lsblk -f
+NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+vda                                                                     
+└─vda1 xfs          30a9cfb1-0b31-4368-8b7a-c6779804e450    1,6G    48% /
+vdb    xfs          6ebae309-2c2f-4c67-b098-20a9afbda1a5   
+```
+
+* Apagamos la máquina 
+
+```sh
+virsh destroy maquina1
+```
+
+* Desmontamos el volumen de máquina 1 
+```sh
+root@debian:/var/lib/libvirt/images# virsh detach-disk maquina1 vdc --persistent
+Disk detached successfully
+```
+
+* Apagamos la maquina2
+
+```sh
+virsh destroy maquina2
+```
+
+* Montamos el volumen 
+
+```sh
+root@debian:/var/lib/libvirt/images# virsh attach-disk maquina2 --source /var/lib/libvirt/images/vol1.img --target vdc --persistent
+Disk attached successfully
+
+```
+* Encendemos la máquina2, creamos el directorio con los permisos adecuados y montamos el dispositivo
+
+
+```sh
+debian@debian-kvm:~$ sudo su
+root@debian-kvm:/home/debian# cd /var/lib/
+
+# Creamos el directorio de postgresql
+root@debian-kvm:/var/lib# mkdir postgresql
+# Creamos el grupo de postgresql
+root@debian-kvm:/var/lib# sudo groupadd postgres
+# Creamos el usuario postgresql
+root@debian-kvm:/var/lib# sudo useradd postgres -m -g postgres
+# Le concedemos los permisos necesarios
+root@debian-kvm:/var/lib# chown -R postgres:postgres postgresql/
+# comprobamos que se ha creado el directorio
+root@debian-kvm:/var/lib# ls -l | grep 'post'
+drwxr-xr-x 2 postgres postgres   6 may 11 19:06 postgresql
+# Montamos el disco en el directorio 
+root@debian-kvm:~# mount -t xfs /dev/vdb /var/lib/postgresql/
+# Vemos que se ha montado correctamente
+root@debian-kvm:~# lsblk -f
+NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+vda                                                                     
+└─vda1 xfs          30a9cfb1-0b31-4368-8b7a-c6779804e450      2G    35% /
+vdb    xfs          6ebae309-2c2f-4c67-b098-20a9afbda1a5  933,5M     8% /var/lib/postgresql
+
+# Entramos en el directorio y comprobamos que nos aparece el directorio correspondiente 11.
+root@debian-kvm:~# cd /var/lib/postgresql/
+
+root@debian-kvm:/var/lib/postgresql# ls
+11
+```
+
+> **14. Copia de forma adecuada todos los ficheros de configuración de PostgreSQL de maquina1 a maquina2**
+
+```sh
+## miramos donde se ubica la información de postgresl en maquina1
+
+root@debian-kvm:/home/debian# whereis postgresql
+postgresql: /usr/lib/postgresql /etc/postgresql /usr/share/postgresql
+```
+
+# copiar de maquina1 a maquina2 la carpeta de configuracion de postgresql 
+
+```sh
+# MAQUINA1
+root@debian-kvm:/home/debian# cd /etc/postgresql/11/main/
+conf.d/          pg_ctl.conf      pg_ident.conf    start.conf       
+environment      pg_hba.conf      postgresql.conf  
+
+root@debian-kvm:/home/debian# scp -r /etc/postgresql debian@10.10.20.161:/home/debian/
+The authenticity of host '10.10.20.161 (10.10.20.161)' can't be established.
+ECDSA key fingerprint is SHA256:Kmbtz8Ne+I5COcMNI2EnNxEEipTjZ5UPcCBzhLZ1DG4.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '10.10.20.161' (ECDSA) to the list of known hosts.
+debian@10.10.20.161's password: 
+start.conf                                                             100%  317    73.2KB/s   00:00    
+pg_ctl.conf                                                            100%  143    42.2KB/s   00:00    
+postgresql.conf                                                        100%   24KB   4.1MB/s   00:00    
+pg_hba.conf                                                            100% 4677     1.0MB/s   00:00    
+pg_ident.conf                                                          100% 1636   448.7KB/s   00:00    
+environment                                                            100%  315    87.2KB/s   00:00    
+
+root@debian-kvm:/home/debian# ls -l /etc/ | grep 'postgresql'
+drwxr-xr-x 3 postgres postgres    16 abr  7 15:11 postgresql
+drwxr-xr-x 3 root     root       122 abr  7 15:11 postgresql-common
+
+# MAQUINA2
+root@debian-kvm:/home/debian# ls -l
+total 0
+drwxr-xr-x 3 debian debian 16 may 11 19:20 postgresql
+
+root@debian-kvm:/home/debian# chown -R postgres:postgres postgresql/
+
+root@debian-kvm:/home/debian# ls -l
+total 0
+drwxr-xr-x 3 postgres postgres 16 may 11 19:20 postgresql
+
+root@debian-kvm:/home/debian# mv postgresql/ /etc/
+root@debian-kvm:/home/debian# cd /etc/postgresql/
+root@debian-kvm:/etc/postgresql# ls
+11
+
+```
+
+> **15. Instala PostgreSQL en maquina2 a través de ssh**
+
+Nos aseguramos que la versión de postgres que vamos a instalar es la misma que la maquina 1
+
+
+```sh
+sudo apt-get install gnupg
+
+sudo apt install -y vim wget
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
+RELEASE=$(lsb_release -cs)
+echo "deb http://apt.postgresql.org/pub/repos/apt/ ${RELEASE}"-pgdg main | sudo tee  /etc/apt/sources.list.d/pgdg.list
+
+sudo apt update
+
+sudo apt -y install postgresql-11
+```
+
+* Comprobamos que está instalado 
+
+```sh
+debian@debian-kvm:~$ whereis postgresql
+postgresql: /usr/lib/postgresql /etc/postgresql /usr/share/postgresql
+debian@debian-kvm:~$ lsblk -f
+NAME   FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+vda                                                                     
+└─vda1 xfs          30a9cfb1-0b31-4368-8b7a-c6779804e450    1,8G    41% /
+vdb    xfs          6ebae309-2c2f-4c67-b098-20a9afbda1a5  933,8M     8% /var/lib/postgresql
+debian@debian-kvm:~$ sudo systemctl status postgresql
+● postgresql.service - PostgreSQL RDBMS
+   Loaded: loaded (/lib/systemd/system/postgresql.service; enabled; vendor preset: enabled)
+   Active: active (exited) since Tue 2021-05-11 19:32:13 CEST; 3min 18s ago
+ Main PID: 3663 (code=exited, status=0/SUCCESS)
+    Tasks: 0 (limit: 1149)
+   Memory: 0B
+   CGroup: /system.slice/postgresql.service
+
+may 11 19:32:13 debian-kvm systemd[1]: Starting PostgreSQL RDBMS...
+may 11 19:32:13 debian-kvm systemd[1]: Started PostgreSQL RDBMS.
+
+```
+
+* Nos metemos como usuario postgresql y comprobamos que tenemos la base de datos de prueba 
+
+```sh
+debian@debian-kvm:~$ sudo su
+root@debian-kvm:/home/debian# su - postgres
+$ psql -h localhost -U celia -W -d prueba
+Contraseña: 
+psql (11.11 (Debian 11.11-1.pgdg100+1))
+conexión SSL (protocolo: TLSv1.3, cifrado: TLS_AES_256_GCM_SHA384, bits: 256, compresión: desactivado)
+Digite «help» para obtener ayuda.
+
+prueba=> \d
+         Listado de relaciones
+ Esquema |    Nombre    | Tipo  | Dueño 
+---------+--------------+-------+-------
+ public  | departamento | tabla | celia
+(1 fila)
+
+prueba=> 
+
+```
+
+![captura.png](/images/kvm/captura.png)
+
+> **16. Conecta maquina2 al bridge exterior de tu equipo, comprueba la IP que tiene el equipo en el bridge exterior y muéstrala por la salida estándar. Desconecta maquina2 de intra.**
+
+Creamos el fichero de configuracion xml para el bridge externo br0 que se llama en la máquina anfitriona.
+
+```sh
+root@debian:/etc/libvirt/qemu/networks# nano br0.xml
+```
+
+```sh
+<network>
+  <name>host-bridge</name>
+  <forward mode="bridge"/>
+  <bridge name="br0"/>
+</network>
+```
+
+Lo definimos y comprobamos que se ha creado aunque aún no está activo.
+
+```sh
+
+root@debian:/etc/libvirt/qemu/networks# virsh net-define br0.xml 
+Network host-bridge defined from br0.xml
+
+root@debian:/etc/libvirt/qemu/networks# virsh net-list --all
+ Name              State      Autostart   Persistent
+------------------------------------------------------
+ default           active     yes         yes
+ host-bridge       inactive   no          yes
+ intra             active     yes         yes
+ red2              active     yes         yes
+ vagrant-libvirt   inactive   no          yes
+```
+
+La iniciamos 
+
+```sh
+root@debian:/etc/libvirt/qemu/networks# virsh net-list --all
+ Name              State      Autostart   Persistent
+------------------------------------------------------
+ default           active     yes         yes
+ host-bridge       active     no          yes
+ intra             active     yes         yes
+ red2              active     yes         yes
+ vagrant-libvirt   inactive   no          yes
+
+```
+
+Comprobamos la ip de nuestro br0 en la maquina anfitriona
+
+```sh
+4: br0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 00:d8:61:07:23:7e brd ff:ff:ff:ff:ff:ff
+    inet 192.168.100.124/24 brd 192.168.100.255 scope global dynamic br0
+       valid_lft 3498sec preferred_lft 3498sec
+    inet6 fe80::2d8:61ff:fe07:237e/64 scope link 
+       valid_lft forever preferred_lft forever
+
+```
+
+Apagamos la máquina2 
+
+```sh
+virsh desroy maquina2 
+```
+
+Editamos el fichero de xml de maquina2 
+
+```sh
+virsh edit maquina2
+
+```
+
+Cambiamos la red que está puesta en este caso `intra` por `host-bridge` que es nuestro `br0`
+
+```sh
+virsh edit maquina2
+```
+Le cambiamos el nombre a la red
+
+```sh
+    <interface type='network'>
+      <mac address='52:54:00:23:c8:a9'/>
+      <source network='host-bridge'/>
+      <model type='rtl8139'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
+    </interface>
+
+```
+Encendemos la máquina y comprobamos que coge la dirección ip modo puente 
+
+```sh
+debian@debian-kvm:~$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 52:54:00:23:c8:a9 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.100.62/24 brd 192.168.100.255 scope global dynamic enp0s3
+       valid_lft 3566sec preferred_lft 3566sec
+    inet6 fe80::5054:ff:fe23:c8a9/64 scope link 
+       valid_lft forever preferred_lft forever
+
+```
+
+
+> **17. Comprueba que el servicio PostgreSQL funciona accediendo a través del bridge exterior.**
+
+
+Antes de comprobar todo esto habría que hacer un checkeo de que todo está en funcionamiento 
+
+* Comprobar que está montado el disco 
+* Reiniciar el servicio de postgres 
+* Comprobar que postgres está funcionando
+
+
+Una vez hecho eso en la máquina anfitriona accedemos a la base de datos con la dirección ip que ha adoptado ahora del puente.
+
+```sh
+celiagm@debian:~$ psql -h 192.168.100.62 -U celia -W -d prueba
+Contraseña: 
+psql (11.11 (Debian 11.11-0+deb10u1))
+conexión SSL (protocolo: TLSv1.3, cifrado: TLS_AES_256_GCM_SHA384, bits: 256, compresión: desactivado)
+Digite «help» para obtener ayuda.
+
+prueba=> \d
+         Listado de relaciones
+ Esquema |    Nombre    | Tipo  | Dueño 
+---------+--------------+-------+-------
+ public  | departamento | tabla | celia
+(1 fila)
+
+prueba=> 
+
+```
+
+
+> **18. Apaga maquina1 y aumenta la RAM de maquina2 a 2 GiB.**
+
+Apagamos la maquina 1
+
+```sh
+virsh destroy maquina1
+```
+
+```sh
+root@debian:/home/celiagm# virsh list --all
+ Id   Name               State
+-----------------------------------
+ 5    maquina2           running
+ -    buster-base        shut off
+ -    compilar_default   shut off
+ -    dominio2           shut off
+ -    maquina1           shut off
+
+```
+
+Apagamos la máquina2 
+
+Aumentamos la RAM de máquina2 a 2GiB 
+
+```sh
+
+1 Gb _> 1048576
+2 Gb _> 2097152
+virsh setmem maquina2 2097152 --config
+virsh setmemmax maquina2 2097152 --config
+```
+
+Vemos que ha cambiado el fichero xml 
+
+```sh
+  <memory unit='KiB'>2097152</memory>
+  <currentMemory unit='KiB'>2097152</currentMemory>
+
+```
+
+Comprobamos la **RAM** una vez encendida la máquina
+
+
+```sh
+# dmidecode 3.2
+Getting SMBIOS data from sysfs.
+SMBIOS 2.8 present.
+
+Handle 0x1000, DMI type 16, 23 bytes
+Physical Memory Array
+        Location: Other
+        Use: System Memory
+        Error Correction Type: Multi-bit ECC
+        Maximum Capacity: 2 GB
+        Error Information Handle: Not Provided
+        Number Of Devices: 1
+
+Handle 0x1100, DMI type 17, 40 bytes
+Memory Device
+        Array Handle: 0x1000
+        Error Information Handle: Not Provided
+        Total Width: Unknown
+        Data Width: Unknown
+        Size: 2048 MB
+        Form Factor: DIMM
+        Set: None
+        Locator: DIMM 0
+        Bank Locator: Not Specified
+        Type: RAM
+        Type Detail: Other
+        Speed: Unknown
+        Manufacturer: QEMU
+        Serial Number: Not Specified
+        Asset Tag: Not Specified
+        Part Number: Not Specified
+        Rank: Unknown
+        Configured Memory Speed: Unknown
+        Minimum Voltage: Unknown
+        Maximum Voltage: Unknown
+        Configured Voltage: Unknown
+
+```
