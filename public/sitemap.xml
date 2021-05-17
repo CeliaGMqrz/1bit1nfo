@@ -4,7 +4,32 @@
   
   <url>
     <loc>https://www.celiagm.es/</loc>
-    <lastmod>2021-05-09T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/tags/bbdd/</loc>
+    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/post/usuarios_adb/</loc>
+    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/post/</loc>
+    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/tags/</loc>
+    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.celiagm.es/tags/usuarios/</loc>
+    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -34,16 +59,6 @@
   
   <url>
     <loc>https://www.celiagm.es/tags/postgres/</loc>
-    <lastmod>2021-05-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.celiagm.es/post/</loc>
-    <lastmod>2021-05-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.celiagm.es/tags/</loc>
     <lastmod>2021-05-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -724,10 +739,6 @@
   
   <url>
     <loc>https://www.celiagm.es/post/kubernetes/</loc>
-  </url>
-  
-  <url>
-    <loc>https://www.celiagm.es/post/usuarios_adb/</loc>
   </url>
   
   <url>

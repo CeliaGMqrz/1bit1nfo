@@ -554,6 +554,8 @@ ________
 
 ## MySQL
 
+## Ejercicio 8
+
 > **8. Averigua que privilegios de sistema hay en MySQL y como se asignan a un usuario.**
 
 Los privilegios determinan qué se puede hacer y que no. Estos se otorgan a los usuarios existentes en la base de datos. 
@@ -656,6 +658,8 @@ GRANT CREATE ON *.* TO 'becario'@'localhost';
 
 https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html
        
+## Ejercicio 9
+
 > **9. Averigua cual es la forma de asignar y revocar privilegios sobre una tabla concreta en MySQL.**
 
 * Asignar permisos sobre una tabla 
@@ -703,7 +707,7 @@ De esta forma quitaríamos todos los permisos a un usuario
 ```sql
 REVOKE ALL ON BD.* from usuario@localhost
 ```
-
+## Ejercicio 10
        
 > **10. Averigua si existe el concepto de rol en MySQL y señala las diferencias con los roles de ORACLE.**
    
@@ -746,6 +750,7 @@ https://dev.mysql.com/doc/refman/8.0/en/roles.html#:~:text=A%20MySQL%20role%20is
 https://docs.oracle.com/cd/A97630_01/server.920/a96521/privs.htm#:~:text=A%20role%20groups%20several%20privileges,to%20help%20in%20database%20administration.
 
 
+## Ejercicio 11
 
 > **11. Averigua si existe el concepto de perfil como conjunto de límites sobre el uso de recursos osobre la contraseña en MySQL y señala las diferencias con los perfiles de ORACLE.**
 
@@ -792,6 +797,7 @@ https://dev.mysql.com/doc/refman/8.0/en/user-resources.html
 
 https://docs.oracle.com/cd/B19306_01/server.102/b14200/statements_6010.htm
 
+## Ejercicio 12
 
 > **12. Realiza consultas al diccionario de datos de MySQL para averiguar todos los privilegios que tiene un usuario concreto.**
 
@@ -808,7 +814,7 @@ mysql> show grants for 'becario';
 1 row in set (0.00 sec)
 
 ```
-
+## Ejercicio 13
 > **13. Realiza consultas al diccionario de datos en MySQL para averiguar qué usuarios pueden consultar una tabla concreta.**
 
 En la tabla de concesión tables_priv podemos ver los privilegios de cada usuario sobre qué tabla. 
