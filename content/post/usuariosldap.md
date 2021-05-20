@@ -753,7 +753,6 @@ olcAccess: {7}to dn.subtree="ou=Group,dc=freston,dc=celia,dc=gonzalonazareno,d
 
 ```
 
-```
 Fuentes:
 
 https://syspass-doc.readthedocs.io/en/3.1/configuration/ldap.html

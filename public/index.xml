@@ -6,7 +6,16 @@
     <description>Recent content on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 16 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.celiagm.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.celiagm.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Usuarios, grupos y ACLs en LDAP</title>
+      <link>https://www.celiagm.es/post/usuariosldap/</link>
+      <pubDate>Tue, 18 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/usuariosldap/</guid>
+      <description>Crear usuarios  Crea 10 usuarios con los nombres que prefieras en LDAP, esos usuarios deben ser objetos de los tipos posixAccount e inetOrgPerson.</description>
+    </item>
+    
     <item>
       <title>Gestión de usuarios. Gestores Bases de datos</title>
       <link>https://www.celiagm.es/post/usuarios_adb/</link>
