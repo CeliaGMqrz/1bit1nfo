@@ -574,7 +574,7 @@ SQL>
 
 ```
 
-![dbext.png](/images/oracle/dbext.png)
+![dbext.png](/images/oracle19c/dbext.png)
 
 
 ## 7. Version Enterprise Manager

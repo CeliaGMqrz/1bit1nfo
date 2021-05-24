@@ -6,7 +6,16 @@
     <description>Recent content in mysql on 1bit1nfo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 24 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.celiagm.es/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.celiagm.es/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Auditorías. Gestión de Bases de datos.</title>
+      <link>https://www.celiagm.es/post/auditoriasbd/</link>
+      <pubDate>Mon, 24 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.celiagm.es/post/auditoriasbd/</guid>
+      <description>En esta entrada vamos a hablar sobre la importancia que tiene proteger la información, en este caso la que guarda una base de datos y cómo controlar dicha información mediante auditorías.</description>
+    </item>
+    
     <item>
       <title>Phpmyadmin, MySQL y Apache2</title>
       <link>https://www.celiagm.es/post/phpmyadmin/</link>
